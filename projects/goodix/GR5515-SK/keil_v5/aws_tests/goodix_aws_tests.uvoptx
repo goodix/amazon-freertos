@@ -113,7 +113,7 @@
         <tDllPa></tDllPa>
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
-        <tIfile>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\build\scripts\sram.ini</tIfile>
+        <tIfile>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\scripts\sram.ini</tIfile>
         <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
@@ -5530,7 +5530,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\sdk\linker\lib\ble_sdk.lib</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\sdk\linker\lib\ble_sdk.lib</PathWithFileName>
       <FilenameWithoutPath>ble_sdk.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5550,7 +5550,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\arm\startup_gr55xx.s</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\arm\startup_gr55xx.s</PathWithFileName>
       <FilenameWithoutPath>startup_gr55xx.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5570,7 +5570,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\system_gr55xx.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\system_gr55xx.c</PathWithFileName>
       <FilenameWithoutPath>system_gr55xx.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5582,7 +5582,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\interrupt_gr55xx.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\interrupt_gr55xx.c</PathWithFileName>
       <FilenameWithoutPath>interrupt_gr55xx.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5594,7 +5594,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\platform_gr55xx.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\platform_gr55xx.c</PathWithFileName>
       <FilenameWithoutPath>platform_gr55xx.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5614,7 +5614,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_delay.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_delay.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_delay.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5626,7 +5626,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5638,7 +5638,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_adc.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_adc.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_adc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5650,7 +5650,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aes.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aes.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aes.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5662,7 +5662,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aon_gpio.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aon_gpio.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_gpio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5674,7 +5674,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aon_gpio_ex.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aon_gpio_ex.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_gpio_ex.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5686,7 +5686,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aon_wdt.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aon_wdt.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_wdt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5698,7 +5698,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_calendar.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_calendar.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_calendar.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5710,7 +5710,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_cgc.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_cgc.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_cgc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5722,7 +5722,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_conf.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_conf.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_conf.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5734,7 +5734,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_cortex.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_cortex.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_cortex.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5746,7 +5746,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_def.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_def.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_def.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5758,7 +5758,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_dma.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_dma.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_dma.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5770,7 +5770,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_dual_tim.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_dual_tim.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_dual_tim.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5782,7 +5782,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_efuse.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_efuse.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_efuse.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5794,7 +5794,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_exflash.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_exflash.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_exflash.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5806,7 +5806,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_gpio.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_gpio.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_gpio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5818,7 +5818,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_gpio_ex.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_gpio_ex.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_gpio_ex.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5830,7 +5830,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_hmac.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_hmac.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_hmac.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5842,7 +5842,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_i2c.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_i2c.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_i2c.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5854,7 +5854,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_i2s.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_i2s.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_i2s.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5866,7 +5866,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_msio.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_msio.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_msio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5878,7 +5878,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_msio_ex.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_msio_ex.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_msio_ex.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5890,7 +5890,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_pkc.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_pkc.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pkc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5902,7 +5902,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_pwm.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_pwm.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pwm.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5914,7 +5914,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_pwr.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_pwr.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pwr.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5926,7 +5926,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_qspi.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_qspi.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_qspi.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5938,7 +5938,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_rng.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_rng.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_rng.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5950,7 +5950,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_spi.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_spi.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_spi.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5962,7 +5962,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_tim.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_tim.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_tim.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5974,7 +5974,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_uart.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_uart.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_uart.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5986,7 +5986,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_wdt.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_wdt.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_wdt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -5998,7 +5998,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_xqspi.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_xqspi.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_xqspi.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6010,7 +6010,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_adc.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_adc.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_adc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6022,7 +6022,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_aes.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_aes.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_aes.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6034,7 +6034,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_aon_gpio.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_aon_gpio.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_aon_gpio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6046,7 +6046,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_aon_wdt.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_aon_wdt.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_aon_wdt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6058,7 +6058,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_calendar.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_calendar.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_calendar.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6070,7 +6070,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_cgc.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_cgc.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_cgc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6082,7 +6082,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_dma.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_dma.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_dma.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6094,7 +6094,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_dual_tim.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_dual_tim.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_dual_tim.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6106,7 +6106,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_efuse.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_efuse.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_efuse.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6118,7 +6118,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_gpio.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_gpio.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_gpio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6130,7 +6130,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_hmac.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_hmac.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_hmac.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6142,7 +6142,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_i2c.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_i2c.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_i2c.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6154,7 +6154,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_i2s.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_i2s.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_i2s.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6166,7 +6166,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_iso7816.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_iso7816.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_iso7816.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6178,7 +6178,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_msio.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_msio.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_msio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6190,7 +6190,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_pkc.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_pkc.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_pkc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6202,7 +6202,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_pwm.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_pwm.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_pwm.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6214,7 +6214,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_pwr.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_pwr.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_pwr.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6226,7 +6226,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_rng.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_rng.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_rng.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6238,7 +6238,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_spi.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_spi.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_spi.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6250,7 +6250,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_tim.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_tim.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_tim.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6262,7 +6262,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_uart.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_uart.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_uart.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6274,7 +6274,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_wdt.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_wdt.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_wdt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6286,7 +6286,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_xqspi.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_xqspi.h</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_xqspi.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6306,7 +6306,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6318,7 +6318,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_adc.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_adc.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_adc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6330,7 +6330,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_aes.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_aes.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aes.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6342,7 +6342,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_aon_gpio.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_aon_gpio.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6354,7 +6354,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_aon_wdt.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_aon_wdt.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_wdt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6366,7 +6366,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_calendar.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_calendar.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_calendar.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6378,7 +6378,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_dual_tim.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_dual_tim.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_dual_tim.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6390,7 +6390,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_efuse.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_efuse.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_efuse.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6402,7 +6402,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_exflash.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_exflash.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_exflash.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6414,7 +6414,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_gpio.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_gpio.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6426,7 +6426,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_hmac.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_hmac.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_hmac.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6438,7 +6438,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_i2c.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_i2c.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_i2c.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6450,7 +6450,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_i2s.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_i2s.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_i2s.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6462,7 +6462,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_pkc.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_pkc.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pkc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6474,7 +6474,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_pwm.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_pwm.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6486,7 +6486,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_pwr.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_pwr.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pwr.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6498,7 +6498,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_qspi.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_qspi.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_qspi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6510,7 +6510,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_rng.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_rng.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_rng.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6522,7 +6522,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_spi.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_spi.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_spi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6534,7 +6534,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_tim.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_tim.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_tim.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6546,7 +6546,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_uart.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_uart.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_uart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6558,7 +6558,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_wdt.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_wdt.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_wdt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6570,7 +6570,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_xqspi.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_xqspi.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_xqspi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6582,7 +6582,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_adc_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_adc_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_adc_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6594,7 +6594,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_aes_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aes_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aes_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6606,7 +6606,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_aon_gpio_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aon_gpio_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_gpio_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6618,7 +6618,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_aon_wdt_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aon_wdt_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_aon_wdt_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6630,7 +6630,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6642,7 +6642,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_calendar_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_calendar_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_calendar_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6654,7 +6654,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_dual_tim_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_dual_tim_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_dual_tim_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6666,7 +6666,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_efuse_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_efuse_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_efuse_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6678,7 +6678,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_exflash_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_exflash_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_exflash_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6690,7 +6690,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_gpio_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_gpio_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_gpio_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6702,7 +6702,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_hmac_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_hmac_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_hmac_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6714,7 +6714,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_i2c_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_i2c_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_i2c_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6726,7 +6726,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_i2s_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_i2s_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_i2s_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6738,7 +6738,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_pkc_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pkc_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pkc_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6750,7 +6750,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_pwm_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pwm_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pwm_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6762,7 +6762,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_pwr_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pwr_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_pwr_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6774,7 +6774,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_qspi_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_qspi_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_qspi_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6786,7 +6786,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_rng_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_rng_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_rng_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6798,7 +6798,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_spi_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_spi_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_spi_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6810,7 +6810,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_tim_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_tim_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_tim_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6822,7 +6822,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_uart_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_uart_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_uart_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6834,7 +6834,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_wdt_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_wdt_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_wdt_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6846,7 +6846,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_xqspi_br.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_xqspi_br.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_xqspi_br.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6858,7 +6858,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_cgc.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_cgc.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_cgc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6870,7 +6870,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_cortex.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_cortex.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_cortex.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6882,7 +6882,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_dma.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_dma.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6894,7 +6894,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_msio.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_msio.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_msio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6906,7 +6906,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_msp_template.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_msp_template.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_msp_template.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6918,7 +6918,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_utils.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_utils.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_hal_utils.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6930,7 +6930,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_adc.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_adc.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_adc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6942,7 +6942,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_aes.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_aes.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_aes.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6954,7 +6954,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_aon_gpio.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_aon_gpio.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_aon_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6966,7 +6966,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_cgc.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_cgc.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_cgc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6978,7 +6978,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_dma.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_dma.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -6990,7 +6990,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_dual_tim.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_dual_tim.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_dual_tim.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7002,7 +7002,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_gpio.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_gpio.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7014,7 +7014,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_hmac.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_hmac.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_hmac.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7026,7 +7026,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_i2c.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_i2c.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_i2c.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7038,7 +7038,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_i2s.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_i2s.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_i2s.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7050,7 +7050,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_msio.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_msio.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_msio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7062,7 +7062,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_pkc.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_pkc.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_pkc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7074,7 +7074,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_pwm.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_pwm.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_pwm.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7086,7 +7086,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_rng.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_rng.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_rng.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7098,7 +7098,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_spi.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_spi.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_spi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7110,7 +7110,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_tim.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_tim.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_tim.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7122,7 +7122,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_uart.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_uart.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_uart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7134,7 +7134,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_xqspi.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_xqspi.c</PathWithFileName>
       <FilenameWithoutPath>gr55xx_ll_xqspi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7154,7 +7154,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\hal_flash.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\hal_flash.c</PathWithFileName>
       <FilenameWithoutPath>hal_flash.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7166,7 +7166,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\hal_flash.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\hal_flash.h</PathWithFileName>
       <FilenameWithoutPath>hal_flash.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7178,7 +7178,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\vflash\vflash.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash\vflash.c</PathWithFileName>
       <FilenameWithoutPath>vflash.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7190,7 +7190,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\vflash\vflash.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash\vflash.h</PathWithFileName>
       <FilenameWithoutPath>vflash.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7210,7 +7210,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_timer\app_timer.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer\app_timer.c</PathWithFileName>
       <FilenameWithoutPath>app_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7222,7 +7222,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_timer\app_timer.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer\app_timer.h</PathWithFileName>
       <FilenameWithoutPath>app_timer.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7242,7 +7242,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log.c</PathWithFileName>
       <FilenameWithoutPath>app_log.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7254,7 +7254,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log.h</PathWithFileName>
       <FilenameWithoutPath>app_log.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7266,7 +7266,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log_cfg.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_cfg.h</PathWithFileName>
       <FilenameWithoutPath>app_log_cfg.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7278,7 +7278,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log_port.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_port.c</PathWithFileName>
       <FilenameWithoutPath>app_log_port.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7290,7 +7290,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log_port.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_port.h</PathWithFileName>
       <FilenameWithoutPath>app_log_port.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7310,7 +7310,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error\app_error.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error\app_error.c</PathWithFileName>
       <FilenameWithoutPath>app_error.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7322,7 +7322,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error\app_error.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error\app_error.h</PathWithFileName>
       <FilenameWithoutPath>app_error.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7334,7 +7334,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error\app_error_cfg.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error\app_error_cfg.h</PathWithFileName>
       <FilenameWithoutPath>app_error_cfg.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7354,7 +7354,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_assert\app_assert.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert\app_assert.c</PathWithFileName>
       <FilenameWithoutPath>app_assert.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7366,7 +7366,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_assert\app_assert.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert\app_assert.h</PathWithFileName>
       <FilenameWithoutPath>app_assert.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7386,7 +7386,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\ring_buffer\ring_buffer.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer\ring_buffer.c</PathWithFileName>
       <FilenameWithoutPath>ring_buffer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7398,7 +7398,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\ring_buffer\ring_buffer.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer\ring_buffer.h</PathWithFileName>
       <FilenameWithoutPath>ring_buffer.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7418,7 +7418,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\utility\utility.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility\utility.c</PathWithFileName>
       <FilenameWithoutPath>utility.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7430,7 +7430,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\utility\utility.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility\utility.h</PathWithFileName>
       <FilenameWithoutPath>utility.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7450,7 +7450,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt\SEGGER_RTT.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt\SEGGER_RTT.c</PathWithFileName>
       <FilenameWithoutPath>SEGGER_RTT.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7462,7 +7462,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt\SEGGER_RTT.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt\SEGGER_RTT.h</PathWithFileName>
       <FilenameWithoutPath>SEGGER_RTT.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7474,7 +7474,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt\SEGGER_RTT_Conf.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt\SEGGER_RTT_Conf.h</PathWithFileName>
       <FilenameWithoutPath>SEGGER_RTT_Conf.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7494,7 +7494,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_prf_types.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_types.h</PathWithFileName>
       <FilenameWithoutPath>ble_prf_types.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7506,7 +7506,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_prf_utils.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_utils.c</PathWithFileName>
       <FilenameWithoutPath>ble_prf_utils.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7518,7 +7518,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_prf_utils.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_utils.h</PathWithFileName>
       <FilenameWithoutPath>ble_prf_utils.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7530,7 +7530,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_srv_disc_utils.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_srv_disc_utils.c</PathWithFileName>
       <FilenameWithoutPath>ble_srv_disc_utils.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -7542,7 +7542,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_srv_disc_utils.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_srv_disc_utils.h</PathWithFileName>
       <FilenameWithoutPath>ble_srv_disc_utils.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

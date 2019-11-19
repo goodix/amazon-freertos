@@ -1,5 +1,5 @@
-#! armcc -E -I ..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\build\config\ --cpu Cortex-M4.fp
-;#! armcc -E -I ..\..\..\..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\build\config\ --cpu Cortex-M4
+#! armcc -E -I ..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\config\ --cpu Cortex-M4.fp
+;#! armcc -E -I ..\..\..\..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\config\ --cpu Cortex-M4
 ;#! armcc -E -I ..\Src\config\ --cpu Cortex-M4
 
 #include "flash_scatter_config.h"

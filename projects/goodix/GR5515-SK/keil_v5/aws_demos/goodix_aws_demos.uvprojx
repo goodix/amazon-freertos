@@ -82,7 +82,7 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\build\scripts\after_build.bat  @L</UserProg1Name>
+            <UserProg1Name>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\scripts\after_build.bat  @L</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -139,7 +139,7 @@
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
           <Flash3>"" ()</Flash3>
-          <Flash4>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\build\scripts\download.ini</Flash4>
+          <Flash4>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\scripts\download.ini</Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp>gr5515-sk/startup</pFcarmGrp>
           <pFcArmRoot></pFcArmRoot>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>GR5515_SK __CHECK_DEVICE_DEFINES __little_endian__=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\..\freertos_kernel\;..\..\..\..\..\freertos_kernel\include;..\..\..\..\..\freertos_kernel\portable\RVDS\GR5515-SK;..\..\..\..\..\tools\cbmc\windows;..\..\..\..\..\libraries\3rdparty\jsmn;..\..\..\..\..\libraries\3rdparty\mbedtls\include\;..\..\..\..\..\libraries\3rdparty\mbedtls\include\mbedtls;..\..\..\..\..\libraries\3rdparty\pkcs11;..\..\..\..\..\libraries\3rdparty\tinycbor;..\..\..\..\..\libraries\3rdparty\unity\src;..\..\..\..\..\libraries\3rdparty\unity\extras\fixture\src;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include\tinycrypt;..\..\..\..\..\libraries\3rdparty\tinycrypt\asn1;..\..\..\..\..\libraries\abstractions\ble_hal\include;..\..\..\..\..\libraries\abstractions\pkcs11;..\..\..\..\..\libraries\abstractions\pkcs11\include;..\..\..\..\..\libraries\abstractions\pkcs11\mbedtls;..\..\..\..\..\libraries\abstractions\pkcs11\test;..\..\..\..\..\libraries\abstractions\platform\include;..\..\..\..\..\libraries\abstractions\platform\include\platform;..\..\..\..\..\libraries\abstractions\platform\include\types;..\..\..\..\..\libraries\abstractions\platform\freertos;..\..\..\..\..\libraries\abstractions\platform\freertos\include;..\..\..\..\..\libraries\abstractions\platform\freertos\include\platform;..\..\..\..\..\libraries\abstractions\posix\include\;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX\sys;..\..\..\..\..\libraries\abstractions\secure_sockets\include;..\..\..\..\..\libraries\c_sdk\aws\defender\include\;..\..\..\..\..\libraries\c_sdk\aws\defender\src\private;..\..\..\..\..\libraries\c_sdk\aws\shadow\include;..\..\..\..\..\libraries\c_sdk\aws\shadow\include\types;..\..\..\..\..\libraries\c_sdk\aws\shadow\src;..\..\..\..\..\libraries\c_sdk\aws\shadow\src\private;..\..\..\..\..\libraries\c_sdk\standard\ble\src;..\..\..\..\..\libraries\c_sdk\standard\ble\include;..\..\..\..\..\libraries\c_sdk\standard\common\include;..\..\..\..\..\libraries\c_sdk\standard\common\include\private;..\..\..\..\..\libraries\c_sdk\standard\common\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src\private;..\..\..\..\..\libraries\c_sdk\standard\mqtt\test\access;..\..\..\..\..\libraries\c_sdk\standard\serializer\include;..\..\..\..\..\libraries\freertos_plus\aws\ota;..\..\..\..\..\libraries\freertos_plus\aws\ota\include;..\..\..\..\..\libraries\freertos_plus\aws\ota\src;..\..\..\..\..\libraries\freertos_plus\standard\freertos_plus_posix\include;..\..\..\..\..\libraries\freertos_plus\standard\utils\include;..\..\..\..\..\libraries\freertos_plus\standard\crypto\include;..\..\..\..\..\libraries\freertos_plus\standard\tls\include;..\..\..\..\..\demos\network_manager;..\..\..\..\..\demos\dev_mode_key_provisioning;..\..\..\..\..\demos\dev_mode_key_provisioning\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\build\config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\boards;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\sdk;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_assert;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_key;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_timer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\at_cmd;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\bsp;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\gui;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\gui\gui_config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\vflash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hci_uart;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\pwr_mgmt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\ring_buffer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\sensorsim;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\utility;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\patch\ind;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\arm;..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\cmsis\include;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble\user_callback;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\posix;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ota;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos\application_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos\application_code\goodix_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos\config_files;..\..\..\..\..\demos;..\..\..\..\..\demos\include;..\..\..\..\..\demos\network_manager</IncludePath>
+              <IncludePath>..\..\..\..\..\freertos_kernel\;..\..\..\..\..\freertos_kernel\include;..\..\..\..\..\freertos_kernel\portable\RVDS\GR5515-SK;..\..\..\..\..\tools\cbmc\windows;..\..\..\..\..\libraries\3rdparty\jsmn;..\..\..\..\..\libraries\3rdparty\mbedtls\include\;..\..\..\..\..\libraries\3rdparty\mbedtls\include\mbedtls;..\..\..\..\..\libraries\3rdparty\pkcs11;..\..\..\..\..\libraries\3rdparty\tinycbor;..\..\..\..\..\libraries\3rdparty\unity\src;..\..\..\..\..\libraries\3rdparty\unity\extras\fixture\src;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include\tinycrypt;..\..\..\..\..\libraries\3rdparty\tinycrypt\asn1;..\..\..\..\..\libraries\abstractions\ble_hal\include;..\..\..\..\..\libraries\abstractions\pkcs11;..\..\..\..\..\libraries\abstractions\pkcs11\include;..\..\..\..\..\libraries\abstractions\pkcs11\mbedtls;..\..\..\..\..\libraries\abstractions\pkcs11\test;..\..\..\..\..\libraries\abstractions\platform\include;..\..\..\..\..\libraries\abstractions\platform\include\platform;..\..\..\..\..\libraries\abstractions\platform\include\types;..\..\..\..\..\libraries\abstractions\platform\freertos;..\..\..\..\..\libraries\abstractions\platform\freertos\include;..\..\..\..\..\libraries\abstractions\platform\freertos\include\platform;..\..\..\..\..\libraries\abstractions\posix\include\;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX\sys;..\..\..\..\..\libraries\abstractions\secure_sockets\include;..\..\..\..\..\libraries\c_sdk\aws\defender\include\;..\..\..\..\..\libraries\c_sdk\aws\defender\src\private;..\..\..\..\..\libraries\c_sdk\aws\shadow\include;..\..\..\..\..\libraries\c_sdk\aws\shadow\include\types;..\..\..\..\..\libraries\c_sdk\aws\shadow\src;..\..\..\..\..\libraries\c_sdk\aws\shadow\src\private;..\..\..\..\..\libraries\c_sdk\standard\ble\src;..\..\..\..\..\libraries\c_sdk\standard\ble\include;..\..\..\..\..\libraries\c_sdk\standard\common\include;..\..\..\..\..\libraries\c_sdk\standard\common\include\private;..\..\..\..\..\libraries\c_sdk\standard\common\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src\private;..\..\..\..\..\libraries\c_sdk\standard\mqtt\test\access;..\..\..\..\..\libraries\c_sdk\standard\serializer\include;..\..\..\..\..\libraries\freertos_plus\aws\ota;..\..\..\..\..\libraries\freertos_plus\aws\ota\include;..\..\..\..\..\libraries\freertos_plus\aws\ota\src;..\..\..\..\..\libraries\freertos_plus\standard\freertos_plus_posix\include;..\..\..\..\..\libraries\freertos_plus\standard\utils\include;..\..\..\..\..\libraries\freertos_plus\standard\crypto\include;..\..\..\..\..\libraries\freertos_plus\standard\tls\include;..\..\..\..\..\demos\network_manager;..\..\..\..\..\demos\dev_mode_key_provisioning;..\..\..\..\..\demos\dev_mode_key_provisioning\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\boards;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\sdk;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_key;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\at_cmd;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\bsp;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\gui;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\gui\gui_config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hci_uart;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\pwr_mgmt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\sensorsim;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\patch\ind;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\arm;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\cmsis\include;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble\user_callback;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\posix;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ota;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos\application_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos\application_code\goodix_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_demos\config_files;..\..\..\..\..\demos;..\..\..\..\..\demos\include;..\..\..\..\..\demos\network_manager</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -369,10 +369,10 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x00060000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\arm\flash_scatter_common.sct</ScatterFile>
+            <ScatterFile>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\arm\flash_scatter_common.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\patch\symbol_table\rom_symbol.txt  --diag_suppress=6314  --diag_suppress=6329</Misc>
+            <Misc>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\patch\symbol_table\rom_symbol.txt  --diag_suppress=6314  --diag_suppress=6329</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -2886,7 +2886,7 @@
             <File>
               <FileName>ble_sdk.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\sdk\linker\lib\ble_sdk.lib</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\sdk\linker\lib\ble_sdk.lib</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -2915,7 +2915,7 @@
             <File>
               <FileName>startup_gr55xx.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\arm\startup_gr55xx.s</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\arm\startup_gr55xx.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -2925,17 +2925,17 @@
             <File>
               <FileName>system_gr55xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\system_gr55xx.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\system_gr55xx.c</FilePath>
             </File>
             <File>
               <FileName>interrupt_gr55xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\interrupt_gr55xx.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\interrupt_gr55xx.c</FilePath>
             </File>
             <File>
               <FileName>platform_gr55xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\toolchain\gr551x\source\platform_gr55xx.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\platform_gr55xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2945,287 +2945,287 @@
             <File>
               <FileName>gr55xx_delay.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_delay.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_delay.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_adc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_adc.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_adc.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aes.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aes.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aes.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aon_gpio.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aon_gpio.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_gpio_ex.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aon_gpio_ex.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aon_gpio_ex.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_wdt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_aon_wdt.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_aon_wdt.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_calendar.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_calendar.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_calendar.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_cgc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_cgc.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_cgc.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_conf.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_conf.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_conf.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_cortex.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_cortex.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_cortex.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_def.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_def.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_def.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_dma.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_dma.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_dma.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_dual_tim.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_dual_tim.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_dual_tim.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_efuse.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_efuse.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_efuse.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_exflash.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_exflash.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_exflash.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_gpio.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_gpio.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_gpio_ex.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_gpio_ex.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_gpio_ex.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_hmac.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_hmac.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_hmac.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_i2c.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_i2c.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_i2c.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_i2s.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_i2s.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_i2s.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_msio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_msio.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_msio.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_msio_ex.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_msio_ex.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_msio_ex.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pkc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_pkc.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_pkc.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pwm.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_pwm.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_pwm.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pwr.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_pwr.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_pwr.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_qspi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_qspi.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_qspi.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_rng.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_rng.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_rng.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_spi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_spi.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_spi.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_tim.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_tim.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_tim.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_uart.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_uart.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_wdt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_wdt.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_wdt.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_xqspi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_hal_xqspi.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_xqspi.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_adc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_adc.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_adc.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aes.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_aes.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_aes.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aon_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_aon_gpio.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_aon_gpio.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aon_wdt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_aon_wdt.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_aon_wdt.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_calendar.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_calendar.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_calendar.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_cgc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_cgc.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_cgc.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_dma.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_dma.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_dma.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_dual_tim.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_dual_tim.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_dual_tim.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_efuse.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_efuse.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_efuse.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_gpio.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_gpio.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_hmac.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_hmac.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_hmac.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_i2c.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_i2c.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_i2c.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_i2s.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_i2s.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_i2s.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_iso7816.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_iso7816.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_iso7816.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_msio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_msio.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_msio.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pkc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_pkc.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_pkc.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pwm.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_pwm.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_pwm.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pwr.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_pwr.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_pwr.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_rng.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_rng.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_rng.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_spi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_spi.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_spi.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_tim.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_tim.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_tim.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_uart.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_uart.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_wdt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_wdt.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_wdt.h</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_xqspi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\inc\gr55xx_ll_xqspi.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_xqspi.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3235,47 +3235,47 @@
             <File>
               <FileName>gr55xx_hal.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_adc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_adc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aes.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_aes.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_aes.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_aon_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_aon_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_wdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_aon_wdt.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_aon_wdt.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_calendar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_calendar.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_calendar.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_dual_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_dual_tim.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_dual_tim.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_efuse.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_efuse.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_efuse.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_exflash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_exflash.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_exflash.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -3331,152 +3331,152 @@
             <File>
               <FileName>gr55xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_hmac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_hmac.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_hmac.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_i2c.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_i2c.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_i2s.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_i2s.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_i2s.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pkc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_pkc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_pkc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_pwm.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_pwr.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_pwr.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_qspi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_qspi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_qspi.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_rng.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_rng.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_spi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_spi.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_tim.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_tim.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_uart.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_uart.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_wdt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_wdt.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_wdt.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_xqspi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src\gr55xx_hal_xqspi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_xqspi.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_adc_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_adc_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_adc_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aes_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_aes_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aes_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_gpio_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_aon_gpio_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aon_gpio_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_aon_wdt_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_aon_wdt_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aon_wdt_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_calendar_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_calendar_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_calendar_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_dual_tim_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_dual_tim_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_dual_tim_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_efuse_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_efuse_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_efuse_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_exflash_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_exflash_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_exflash_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_gpio_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_gpio_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_gpio_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_hmac_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_hmac_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_hmac_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_i2c_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_i2c_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_i2c_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_i2s_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_i2s_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_i2s_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pkc_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_pkc_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pkc_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pwm_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_pwm_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pwm_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_pwr_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_pwr_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pwr_br.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -3532,67 +3532,67 @@
             <File>
               <FileName>gr55xx_hal_qspi_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_qspi_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_qspi_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_rng_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_rng_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_rng_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_spi_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_spi_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_spi_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_tim_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_tim_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_tim_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_uart_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_uart_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_uart_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_wdt_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_wdt_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_wdt_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_xqspi_br.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\bridge\gr55xx_hal_xqspi_br.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_xqspi_br.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_cgc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_cgc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_cgc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_cortex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_cortex.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_cortex.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_dma.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_msio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_msio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_msio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_msp_template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_msp_template.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_msp_template.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_hal_utils.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_utils.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -3648,92 +3648,92 @@
             <File>
               <FileName>gr55xx_ll_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_adc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_adc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aes.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_aes.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_aes.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aon_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_aon_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_aon_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_cgc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_cgc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_cgc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_dma.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_dual_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_dual_tim.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_dual_tim.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_hmac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_hmac.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_hmac.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_i2c.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_i2c.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_i2s.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_i2s.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_i2s.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_msio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_msio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_msio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pkc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_pkc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_pkc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_pwm.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_rng.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_rng.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_spi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_spi.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_tim.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_tim.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_uart.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_uart.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_xqspi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\drivers\src_inner\gr55xx_ll_xqspi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_xqspi.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3743,42 +3743,42 @@
             <File>
               <FileName>gr551x_spi_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_spi_flash.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_spi_flash.c</FilePath>
             </File>
             <File>
               <FileName>gr551x_spi_flash.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_spi_flash.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_spi_flash.h</FilePath>
             </File>
             <File>
               <FileName>gr551x_temp_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_temp_api.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_temp_api.c</FilePath>
             </File>
             <File>
               <FileName>gr551x_temp_api.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_temp_api.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_temp_api.h</FilePath>
             </File>
             <File>
               <FileName>gr551x_tim_delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_tim_delay.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_tim_delay.c</FilePath>
             </File>
             <File>
               <FileName>gr551x_tim_delay.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_tim_delay.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_tim_delay.h</FilePath>
             </File>
             <File>
               <FileName>gr551x_vbat_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_vbat_api.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_vbat_api.c</FilePath>
             </File>
             <File>
               <FileName>gr551x_vbat_api.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\drivers_ext\gr551x\gr551x_vbat_api.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_vbat_api.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3788,22 +3788,22 @@
             <File>
               <FileName>hal_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\hal_flash.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\hal_flash.c</FilePath>
             </File>
             <File>
               <FileName>hal_flash.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\hal_flash.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\hal_flash.h</FilePath>
             </File>
             <File>
               <FileName>vflash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\vflash\vflash.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash\vflash.c</FilePath>
             </File>
             <File>
               <FileName>vflash.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\hal_flash\vflash\vflash.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash\vflash.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3813,12 +3813,12 @@
             <File>
               <FileName>app_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_timer\app_timer.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer\app_timer.c</FilePath>
             </File>
             <File>
               <FileName>app_timer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_timer\app_timer.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer\app_timer.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3828,27 +3828,27 @@
             <File>
               <FileName>app_log.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log.c</FilePath>
             </File>
             <File>
               <FileName>app_log.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log.h</FilePath>
             </File>
             <File>
               <FileName>app_log_cfg.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log_cfg.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_cfg.h</FilePath>
             </File>
             <File>
               <FileName>app_log_port.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log_port.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_port.c</FilePath>
             </File>
             <File>
               <FileName>app_log_port.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_log\app_log_port.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_port.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3858,17 +3858,17 @@
             <File>
               <FileName>app_error.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error\app_error.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error\app_error.c</FilePath>
             </File>
             <File>
               <FileName>app_error.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error\app_error.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error\app_error.h</FilePath>
             </File>
             <File>
               <FileName>app_error_cfg.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_error\app_error_cfg.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error\app_error_cfg.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3878,12 +3878,12 @@
             <File>
               <FileName>app_assert.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_assert\app_assert.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert\app_assert.c</FilePath>
             </File>
             <File>
               <FileName>app_assert.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\app_assert\app_assert.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert\app_assert.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3893,12 +3893,12 @@
             <File>
               <FileName>ring_buffer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\ring_buffer\ring_buffer.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer\ring_buffer.c</FilePath>
             </File>
             <File>
               <FileName>ring_buffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\ring_buffer\ring_buffer.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer\ring_buffer.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3908,12 +3908,12 @@
             <File>
               <FileName>utility.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\utility\utility.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility\utility.c</FilePath>
             </File>
             <File>
               <FileName>utility.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\libraries\utility\utility.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility\utility.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3923,17 +3923,17 @@
             <File>
               <FileName>SEGGER_RTT.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt\SEGGER_RTT.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt\SEGGER_RTT.c</FilePath>
             </File>
             <File>
               <FileName>SEGGER_RTT.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt\SEGGER_RTT.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt\SEGGER_RTT.h</FilePath>
             </File>
             <File>
               <FileName>SEGGER_RTT_Conf.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\external\segger_rtt\SEGGER_RTT_Conf.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt\SEGGER_RTT_Conf.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3943,27 +3943,27 @@
             <File>
               <FileName>ble_prf_types.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_prf_types.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_types.h</FilePath>
             </File>
             <File>
               <FileName>ble_prf_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_prf_utils.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_utils.c</FilePath>
             </File>
             <File>
               <FileName>ble_prf_utils.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_prf_utils.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_utils.h</FilePath>
             </File>
             <File>
               <FileName>ble_srv_disc_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_srv_disc_utils.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_srv_disc_utils.c</FilePath>
             </File>
             <File>
               <FileName>ble_srv_disc_utils.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V0_94\components\profiles\common\ble_srv_disc_utils.h</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_srv_disc_utils.h</FilePath>
             </File>
           </Files>
         </Group>

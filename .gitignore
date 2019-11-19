@@ -41,8 +41,8 @@ projects/goodix/GR5515-SK/keil_v5/aws_demos/*.long*
 projects/goodix/GR5515-SK/keil_v5/aws_demos/Listings/*
 projects/goodix/GR5515-SK/keil_v5/aws_demos/Objects/*
 projects/goodix/GR5515-SK/keil_v5/aws_demos/build/*
-vendors/goodix/GR551x_SDK_V0_94/projects/ble/ble_peripheral/ble_app_uart/*
-vendors/goodix/GR551x_SDK_V0_94/projects/ble/ble_peripheral/ble_app_template_freertos/*
+vendors/goodix/GR551x_SDK_V1_00/projects/ble/ble_peripheral/ble_app_uart/*
+vendors/goodix/GR551x_SDK_V1_00/projects/ble/ble_peripheral/ble_app_template_freertos/*
 projects/goodix/GR5515-SK/keil_v5/aws_demos/log_fw_encrypt_sign/*
 *.obj
 *.bin
