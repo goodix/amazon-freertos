@@ -144,7 +144,6 @@ typedef struct _qspi_handle
     __IO uint32_t         error_code;       /**< QSPI Error code                    */
 
     uint32_t              timeout;          /**< Timeout for the QSPI memory access */
-
 } qspi_handle_t;
 /** @} */
 
@@ -187,7 +186,7 @@ typedef struct _qspi_command_t
 
 /** @} */
 
-/** @addtogroup HAL_QSPI_STRUCTURES Callback Structures
+/** @addtogroup HAL_QSPI_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -231,7 +230,7 @@ typedef struct _hal_qspi_callback
 #define HAL_QSPI_ERROR_TIMEOUT          ((uint32_t)0x00000001) /**< Timeout error            */
 #define HAL_QSPI_ERROR_TRANSFER         ((uint32_t)0x00000002) /**< Transfer error           */
 #define HAL_QSPI_ERROR_DMA              ((uint32_t)0x00000004) /**< DMA transfer error       */
-#define HAL_QSPI_ERROR_INVALID_PARAM    ((uint32_t)0x00000008) /**< Invalid parameters error */
+#define HAL_QSPI_ERROR_INVALID_PARAM    ((uint32_t)0x00000008) /**< Invalid parameter error */
 /** @} */
 
 /** @defgroup QSPI_Clock_Mode QSPI Clock Mode
@@ -602,7 +601,7 @@ void hal_qspi_msp_deinit(qspi_handle_t *p_qspi);
     This subsection provides a set of functions allowing to manage the QSPI
     data transfers.
 
-    [..] The QSPI supports master and slave mode :
+    [..] The QSPI supports master and slave mode:
 
     (#) There are two modes of transfer:
        (++) Blocking mode: The communication is performed in polling mode.

@@ -49,7 +49,9 @@
  *****************************************************************************************
  */
 #ifdef DISPLAY_DRIVER_TYPE_HW_SPI
-static spi_handle_t s_SPIMHandle;
+#include "app_spi.h"
+static volatile uint8_t  master_tx_done = 0;
+static void app_spi_callback(app_spi_evt_t *p_evt);
 #endif
 
 /*
@@ -58,26 +60,49 @@ static spi_handle_t s_SPIMHandle;
  */
 void st7735_init(void)
 {
-    gpio_init_t GPIO_InitStruct = GPIO_DEFAULT_CONFIG;
-    GPIO_InitStruct.mode = GPIO_MODE_OUTPUT;
-    GPIO_InitStruct.pin  = DISPLAY_CMD_AND_DATA_PIN | DISPLAY_SPIM_CS0_PIN | DISPLAY_SPIM_CLK_PIN | DISPLAY_SPIM_MOSI_PIN;       
-    hal_gpio_init(GPIO0, &GPIO_InitStruct);
+    app_io_init_t io_init = APP_IO_DEFAULT_CONFIG;
+    io_init.mode = APP_IO_MODE_OUT_PUT;
+    io_init.pin  = DISPLAY_BACK_LIGHT_PIN | DISPLAY_CMD_AND_DATA_PIN;
+    io_init.mux  = APP_IO_MUX_7;
+    app_io_init(APP_IO_TYPE_NORMAL, &io_init);
+    app_io_write_pin(DISPLAY_SPIM_GPIO_TYPE, DISPLAY_BACK_LIGHT_PIN, APP_IO_PIN_SET);
+    
+#ifdef DISPLAY_DRIVER_TYPE_SW_IO
+    io_init.mode = APP_IO_MODE_OUT_PUT;
+    io_init.pin  = DISPLAY_SPIM_CS0_PIN | DISPLAY_SPIM_CLK_PIN | DISPLAY_SPIM_MOSI_PIN;
+    io_init.mux  = APP_IO_MUX_7;
+    app_io_init(DISPLAY_SPIM_GPIO_TYPE, &io_init);
+#else
+    app_spi_params_t spi_params;
+    spi_params.id = APP_SPI_ID_MASTER;
+    
+    spi_params.pin_cfg.cs.type = DISPLAY_SPIM_GPIO_TYPE;
+    spi_params.pin_cfg.cs.pin = DISPLAY_SPIM_CS0_PIN;
+    spi_params.pin_cfg.cs.mux = APP_IO_MUX_7;
+    
+    spi_params.pin_cfg.clk.type = DISPLAY_SPIM_GPIO_TYPE;
+    spi_params.pin_cfg.clk.pin = DISPLAY_SPIM_CLK_PIN;
+    spi_params.pin_cfg.clk.mux = APP_IO_MUX_4;
+    
+    spi_params.pin_cfg.mosi.type = DISPLAY_SPIM_GPIO_TYPE;
+    spi_params.pin_cfg.mosi.pin = DISPLAY_SPIM_MOSI_PIN;
+    spi_params.pin_cfg.mosi.mux = APP_IO_MUX_4;
 
-    GPIO_InitStruct.pin  = GPIO_PIN_2;
-    hal_gpio_init(GPIO0, &GPIO_InitStruct);
-    hal_gpio_write_pin(GPIO0, GPIO_PIN_2, GPIO_PIN_SET);
+    spi_params.pin_cfg.miso.type = DISPLAY_SPIM_GPIO_TYPE;
+    spi_params.pin_cfg.miso.pin = DISPLAY_SPIM_MOSI_PIN;
+    spi_params.pin_cfg.miso.mux = APP_IO_MUX_4;
+
+    spi_params.use_mode.type = APP_SPI_TYPE_DMA;
+    spi_params.use_mode.tx_dma_channel = DMA_Channel0;
+    spi_params.use_mode.rx_dma_channel = DMA_Channel1;
     
-#ifdef DISPLAY_DRIVER_TYPE_HW_SPI
-    s_SPIMHandle.p_instance              = SPIM;
-    s_SPIMHandle.init.data_size          = SPI_DATASIZE_8BIT;
-    s_SPIMHandle.init.clock_polarity     = SPI_POLARITY_LOW;
-    s_SPIMHandle.init.clock_phase        = SPI_PHASE_1EDGE;
-    s_SPIMHandle.init.baudrate_prescaler = SystemCoreClock / 4000000;
-    s_SPIMHandle.init.ti_mode            = SPI_TIMODE_DISABLE;
-    s_SPIMHandle.init.slave_select       = SPI_SLAVE_SELECT_0;
-    
-    hal_spi_deinit(&s_SPIMHandle);
-    hal_spi_init(&s_SPIMHandle);
+    spi_params.init.data_size          = SPI_DATASIZE_8BIT;
+    spi_params.init.clock_polarity     = SPI_POLARITY_LOW;
+    spi_params.init.clock_phase        = SPI_PHASE_1EDGE;
+    spi_params.init.baudrate_prescaler = SystemCoreClock / 4000000;
+    spi_params.init.ti_mode            = SPI_TIMODE_DISABLE;
+    spi_params.init.slave_select       = SPI_SLAVE_SELECT_0;
+    app_spi_init(&spi_params, app_spi_callback);
 #endif
 }
 
@@ -86,14 +111,14 @@ void st7735_init(void)
 void st7735_write_cmd(uint8_t cmd)
 {
     uint8_t i;
-    
+
     SEND_CMD;
     CS_LOW;
     for(i=0;i<8;i++)
     {
         if (cmd &0x80)
            SDA_HIGH;
-        else 
+        else
            SDA_LOW;
 
         SCK_LOW;
@@ -106,14 +131,14 @@ void st7735_write_cmd(uint8_t cmd)
 void st7735_write_data(uint8_t data)
 {
     uint8_t i;
-    
+
     SEND_DATA;
     CS_LOW;
     for(i=0;i<8;i++)
     {
     if(data&0x80)
         SDA_HIGH;
-    else 
+    else
         SDA_LOW;
     SCK_LOW;
     SCK_HIGH;
@@ -127,54 +152,69 @@ void st7735_write_buffer(uint8_t *p_data, uint16_t length)
     uint16_t i= 0;
     SEND_DATA;
     CS_LOW;
-    for (i=0; i<length; i ++) 
+    for (i=0; i<length; i ++)
     {
         st7735_write_data(p_data[i]);
-    }   
+    }
     CS_HIGH;
 }
 
 #else
 /*--------------------------------DISPLAY_DRIVER_TYPE_HW_SPI------------------------------------*/
+
+static void app_spi_callback(app_spi_evt_t *p_evt)
+{
+    if (p_evt->type == APP_SPI_EVT_TX_CPLT)
+    {
+        master_tx_done = 1;
+    }
+}
+
 void st7735_write_cmd(uint8_t cmd)
 {
     SEND_CMD;
-    CS_LOW;
-    hal_spi_transmit(&s_SPIMHandle, &cmd, 1, 5000);
-    CS_HIGH;
+    master_tx_done = 0;
+    app_spi_transmit_async(APP_SPI_ID_MASTER, &cmd, 1);
+    while(master_tx_done == 0);
 }
 
 void st7735_write_data(uint8_t data)
 {
     SEND_DATA;
-    CS_LOW;
-    hal_spi_transmit(&s_SPIMHandle, &data, 1, 5000);
-    CS_HIGH;
+    master_tx_done = 0;
+    app_spi_transmit_async(APP_SPI_ID_MASTER, &data, 1);
+    while(master_tx_done == 0);
 }
 
 void st7735_write_buffer(uint8_t *p_data, uint16_t length)
 {
+    uint16_t last_size;
+    uint16_t count_size;
+    uint16_t i;
     SEND_DATA;
-    CS_LOW;
-    hal_spi_transmit(&s_SPIMHandle, p_data, length, 5000);
-    CS_HIGH;
-}
-
-void hal_spi_msp_init(spi_handle_t *hspi)
-{
-    gpio_init_t GPIO_InitStructure;
-  
-    GPIO_InitStructure.mode = GPIO_MODE_MUX;
-    GPIO_InitStructure.pin = DISPLAY_SPIM_CLK_PIN | DISPLAY_SPIM_MOSI_PIN;
-    GPIO_InitStructure.mux = GPIO_MUX_4;
-    hal_gpio_init(DISPLAY_SPIM_GPIO_PORT, &GPIO_InitStructure);
-
-    NVIC_ClearPendingIRQ(SPI_M_IRQn);
-    NVIC_EnableIRQ(SPI_M_IRQn);
-}
-
-void hal_spi_msp_deinit(spi_handle_t *p_spi)
-{
+    if(length <= 4095)
+    {
+        master_tx_done = 0;
+        app_spi_transmit_async(APP_SPI_ID_MASTER, p_data, length);
+        while(master_tx_done == 0);
+    }
+    else
+    {
+        last_size = length % 4095;
+        count_size = length / 4095;
+        for(i = 0; i < count_size; i++)
+        {
+            master_tx_done = 0;
+            app_spi_transmit_async(APP_SPI_ID_MASTER, p_data + i * 4095, 4095);
+            while(master_tx_done == 0);
+        }
+        if(last_size)
+        {
+            master_tx_done = 0;
+            app_spi_transmit_async(APP_SPI_ID_MASTER, p_data + i * 4095, last_size);
+            while(master_tx_done == 0);
+        }
+    }
 }
 
 #endif
@@ -183,5 +223,4 @@ void st7735_delay(uint16_t time)
 {
     delay_ms(time);
 }
-
 

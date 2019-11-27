@@ -452,7 +452,7 @@ typedef struct _mpu_region_init_t
   */
 
 /** @addtogroup CORTEX_Exported_Functions_Group1 Initialization and de-initialization functions
- *  @brief    Initialization and Configuration functions
+ *  @brief    Initialization and Configuration functions.
  *
 @verbatim
   ==============================================================================
@@ -468,7 +468,7 @@ typedef struct _mpu_region_init_t
 
 /**
  ****************************************************************************************
- * @brief  Sets the priority grouping field (pre-emption priority and subpriority)
+ * @brief  Set the priority grouping field (pre-emption priority and subpriority)
  *         using the required unlock sequence.
  *
  * @note   When the NVIC_PriorityGroup_0 is selected, IRQ pre-emption is no more possible.
@@ -498,9 +498,9 @@ void hal_nvic_set_priority_grouping(uint32_t priority_group);
 
 /**
  ****************************************************************************************
- * @brief  Sets the priority of an interrupt.
+ * @brief  Set the priority of an interrupt.
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  * @param[in]  preempt_priority: The pre-emption priority for the IRQn channel.
@@ -515,12 +515,12 @@ void hal_nvic_set_priority(IRQn_Type IRQn, uint32_t preempt_priority, uint32_t s
 
 /**
  ****************************************************************************************
- * @brief  Enables a device specific interrupt in the NVIC interrupt controller.
+ * @brief  Enable a device specific interrupt in the NVIC interrupt controller.
  *
  * @note   To configure interrupts priority correctly, the NVIC_PriorityGroupConfig()
  *         function should be called before.
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  ****************************************************************************************
@@ -529,9 +529,9 @@ void hal_nvic_enable_irq(IRQn_Type IRQn);
 
 /**
  ****************************************************************************************
- * @brief  Disables a device specific interrupt in the NVIC interrupt controller.
+ * @brief  Disable a device specific interrupt in the NVIC interrupt controller.
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  ****************************************************************************************
@@ -540,17 +540,18 @@ void hal_nvic_disable_irq(IRQn_Type IRQn);
 
 /**
  ****************************************************************************************
- * @brief  Initiates a system reset request to reset the MCU.
+ * @brief  Initiate a system reset request to reset the MCU.
  ****************************************************************************************
  */
 void hal_nvic_system_reset(void);
 
+
 /**
  ****************************************************************************************
- * @brief  Initializes the System Timer and its interrupt, and starts the System Tick Timer.
+ * @brief  Initialize the System Timer and its interrupt, and start the System Tick Timer.
  *         Counter is in free running mode to generate periodic interrupts.
  *
- * @param[in]  ticks_number: Specifies the ticks Number of ticks between two interrupts.
+ * @param[in]  ticks_number: Specifies the number of ticks between two interrupts.
  *
  * @retval status
  *             - 0  Function succeeded.
@@ -562,7 +563,7 @@ uint32_t hal_systick_config(uint32_t ticks_number);
 /** @} */
 
 /** @addtogroup CORTEX_Exported_Functions_Group2 Peripheral Control functions
- *  @brief   Cortex control functions
+ *  @brief   Cortex control functions.
  *
 @verbatim
   ==============================================================================
@@ -580,7 +581,7 @@ uint32_t hal_systick_config(uint32_t ticks_number);
 #if (__MPU_PRESENT == 1U)
 /**
  ****************************************************************************************
- * @brief  Initializes and configures the Region and the memory to be protected.
+ * @brief  Initialize and configures the Region and the memory to be protected.
  *
  * @param[in]  p_mpu_init: Pointer to a mpu_region_init_t structure that contains
  *                     the initialization and configuration information.
@@ -591,7 +592,7 @@ void hal_mpu_config_region(mpu_region_init_t *p_mpu_init);
 
 /**
  ****************************************************************************************
- * @brief  Gets the priority grouping field from the NVIC Interrupt Controller.
+ * @brief  Get the priority grouping field from the NVIC Interrupt Controller.
  *
  * @return Priority grouping field (SCB->AIRCR [10:8] PRIGROUP field)
  ****************************************************************************************
@@ -600,10 +601,10 @@ uint32_t hal_nvic_get_priority_grouping(void);
 
 /**
  ****************************************************************************************
- * @brief  Gets the priority of an interrupt.
+ * @brief  Get the priority of an interrupt.
  *
- * @param[in]  IRQn: External interrupt number
- *         This parameter can be an enumerator of IRQn_Type enumeration
+ * @param[in]  IRQn: External interrupt number.
+ *         This parameter can be an enumerator of IRQn_Type enumeration.
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  * @param[in]   priority_group: The priority grouping bits length.
  *         This parameter can be one of the following values:
@@ -631,9 +632,9 @@ void hal_nvic_get_priority(IRQn_Type IRQn, uint32_t priority_group, uint32_t *p_
 
 /**
  ****************************************************************************************
- * @brief  Sets Pending bit of an external interrupt.
+ * @brief  Set Pending bit of an external interrupt.
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  ****************************************************************************************
@@ -642,10 +643,10 @@ void hal_nvic_set_pending_irq(IRQn_Type IRQn);
 
 /**
  ****************************************************************************************
- * @brief  Gets Pending Interrupt (reads the pending register in the NVIC
+ * @brief  Get Pending Interrupt (reads the pending register in the NVIC
  *         and returns the pending bit for the specified interrupt).
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  *
@@ -658,9 +659,9 @@ uint32_t hal_nvic_get_pending_irq(IRQn_Type IRQn);
 
 /**
  ****************************************************************************************
- * @brief  Clears the pending bit of an external interrupt.
+ * @brief  Clear the pending bit of an external interrupt.
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  ****************************************************************************************
@@ -669,9 +670,9 @@ void hal_nvic_clear_pending_irq(IRQn_Type IRQn);
 
 /**
  ****************************************************************************************
- * @brief  Gets active interrupt (reads the active register in NVIC and returns the active bit).
+ * @brief  Get active interrupt (reads the active register in NVIC and returns the active bit).
  *
- * @param[in]  IRQn: External interrupt number
+ * @param[in]  IRQn: External interrupt number.
  *         This parameter can be an enumerator of IRQn_Type enumeration
  *         (For the complete GR55xx Devices IRQ Channels list, please refer to the appropriate CMSIS device file (gr55xxxx.h))
  *
@@ -684,7 +685,7 @@ uint32_t hal_nvic_get_active(IRQn_Type IRQn);
 
 /**
  ****************************************************************************************
- * @brief  Configures the SysTick clock source.
+ * @brief  Configure the SysTick clock source.
  *
  * @param[in]  clk_source: specifies the SysTick clock source.
  *         This parameter can be one of the following values:
@@ -697,7 +698,7 @@ void hal_systick_clk_source_config(uint32_t clk_source);
 /** @} */
 
 /** @addtogroup CORTEX_IRQ_Handler_and_Callbacks IRQ Handler and Callbacks
-  * @brief    IRQ Handler and Callbacks functions
+  * @brief    IRQ Handler and Callbacks functions.
  * @{
  */
 
@@ -737,7 +738,7 @@ void hal_mpu_disable(void);
 
 /**
  ****************************************************************************************
- * @brief  Enables the MPU
+ * @brief  Enable the MPU
  *
  * @param[in]  mpu_control: Specifies the control mode of the MPU during hard fault,
  *         NMI, FAULTMASK and privileged access to the default memory.

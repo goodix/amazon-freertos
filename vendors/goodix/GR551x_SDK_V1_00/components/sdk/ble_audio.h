@@ -23,6 +23,8 @@
  * @brief Definitions and prototypes for the Audio Application interface.
  */
  
+#if (CFG_SNIFFER)
+
 #ifndef __BLE_AUDIO_H__
 #define __BLE_AUDIO_H__
 
@@ -221,6 +223,7 @@ uint16_t ble_audio_sync_info_send (audio_sync_info_type_t sync_info_type, uint8_
 uint16_t ble_audio_event_count_read(uint8_t connidx);
 /** @} */
 
+#endif
 #endif
 /** @} */
 /** @} */

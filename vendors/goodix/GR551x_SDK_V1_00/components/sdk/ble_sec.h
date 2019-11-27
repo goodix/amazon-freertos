@@ -34,11 +34,12 @@
 /**@defgroup SEC_AUTH_FLAG  SEC Auth Flag
 * @{ 
 */
-#define AUTH_NONE               0         /**< No auth requirement. */
-#define AUTH_BOND              (1 << 0)   /**< Bond flag. */
-#define AUTH_MITM              (1 << 2)   /**< MITM flag. */
-#define AUTH_SEC_CON           (1 << 3)   /**< Security connection flag. By default, it is set to True by BLE Stack, and user configuration is invalid.*/
-#define AUTH_KEY_PRESS_NOTIFY  (1 << 4)   /**< Key press notify flag. */
+#define AUTH_NONE               0                 /**< No auth requirement. */
+#define AUTH_BOND              (1 << 0)           /**< Bond flag. */
+#define AUTH_MITM              (1 << 2)           /**< MITM flag. */
+#define AUTH_SEC_CON           (1 << 3)           /**< Security connection flag. */
+#define AUTH_KEY_PRESS_NOTIFY  (1 << 4)           /**< Key press notify flag. */
+#define AUTH_ALL               (AUTH_BOND | AUTH_MITM | AUTH_SEC_CON | AUTH_KEY_PRESS_NOTIFY)
 /**@} */
 
 /**@defgroup SEC_KEY_DIST_FLAG  SEC Key Distribution Flag
@@ -48,7 +49,9 @@
 #define KDIST_ENCKEY   (1 << 0)      /**< Distribute encryption and master identification info. */
 #define KDIST_IDKEY    (1 << 1)      /**< Distribute identity and address info. */
 #define KDIST_SIGNKEY  (1 << 2)      /**< Distribute signing info. */
-#define KDIST_ENCCODE  (1 << 4)      /**< Distribute encryption code. */
+#define KDIST_ENCCODE  (1 << 4)      /**< Distribute encryption code, only used for ISO BIS. */
+#define KDIST_ALL      (KDIST_ENCKEY | KDIST_IDKEY | KDIST_SIGNKEY)
+
 /**@} */
 /**@} */
 
@@ -65,7 +68,7 @@ typedef enum
 } sec_io_cap_t;
 
 /**@brief SEC Encryption Request Type.
-  *@note These types indicate some operation need to interact with app during pair process.
+  *@note These types indicate some operations need to interact with app during pair process.
  */
 typedef enum
 {
@@ -102,14 +105,14 @@ typedef enum
                                                  since last pairing request or security request. */
     ENC_FAIL_INVALID_PARAM          = 0x0A, /**< The Invalid Parameters error code indicates that the command length is invalid 
                                                  or that a parameter is outside of the specified range. */
-    ENC_FAIL_DHKEY_CHECK_FAIL       = 0x0B, /**< Indicates to the remote device that the DHKey Check value received doesn't  match the one calculated 
+    ENC_FAIL_DHKEY_CHECK_FAIL       = 0x0B, /**< Indicate to the remote device that the DHKey Check value received doesn't  match the one calculated 
                                                  by the local device. */
-    ENC_FAIL_NUM_CMP_FAIL           = 0x0C, /**< Indicates that the confirm values in the numeric comparison protocol do not match. */
-    ENC_FAIL_BR_EDR_IN_PROGRESS     = 0x0D, /**< Indicates that the pairing over the LE transport failed due to 
+    ENC_FAIL_NUM_CMP_FAIL           = 0x0C, /**< Indicate that the confirm values in the numeric comparison protocol do not match. */
+    ENC_FAIL_BR_EDR_IN_PROGRESS     = 0x0D, /**< Indicate that the pairing over the LE transport failed due to 
                                                  a Pairing Request sent over the BR/EDR transport in process. */
-    ENC_FAIL_KEY_DRIV_GEN_NOT_ALLOW = 0x0E, /**< Indicates that the BR/EDR Link Key generated on the BR/EDR transport 
+    ENC_FAIL_KEY_DRIV_GEN_NOT_ALLOW = 0x0E, /**< Indicate that the BR/EDR Link Key generated on the BR/EDR transport 
                                                  cannot be used to derive and distribute keys for the LE transport. */
-    ENC_FAIL_LTK_MISSING = 0x0F,            /**< Indicates the ltk of peer devices missing. */
+    ENC_FAIL_LTK_MISSING = 0x0F,            /**< Indicate the LTK of peer devices missing. */
 } sec_enc_ind_t;
 
 /**@brief SEC mode and level.  */
@@ -130,10 +133,10 @@ typedef enum
 typedef struct
 {
     sec_mode_level_t level;         /**< Set the minimum security level of the device, see @ref sec_mode_level_t. */
-    sec_io_cap_t     io_cap;        /**< Set the io capability, see @ref sec_io_cap_t. */
-    bool             oob;           /**< Indicates whether oob is supported. */
+    sec_io_cap_t     io_cap;        /**< Set the IO capability, see @ref sec_io_cap_t. */
+    bool             oob;           /**< Indicate whether OOB is supported. */
     uint8_t          auth;          /**< Set the auth, see @ref SEC_AUTH_FLAG. */
-    uint8_t          key_size;      /**< Indicates the supported maximum LTK size (range: 7-16). */
+    uint8_t          key_size;      /**< Indicate the supported maximum LTK size (range: 7-16). */
     uint8_t          ikey_dist;     /**< Set the initial key distribution, see @ref SEC_KEY_DIST_FLAG. */
     uint8_t          rkey_dist;     /**< Set the response key distribution, see @ref SEC_KEY_DIST_FLAG. */
 } sec_param_t;
@@ -144,7 +147,7 @@ typedef struct
     uint8_t key[16];          /**< TK value. */
 } sec_tk_t;
 
-/**@brief SEC oob value. */
+/**@brief SEC OOB value. */
 typedef struct
 {
     uint8_t conf[16];        /**< Confirm value. */
@@ -162,8 +165,8 @@ typedef union
 typedef struct
 {
     sec_enc_req_type_t req_type;         /**< Request type, see @ref sec_enc_req_type_t. */
-    bool               accept;           /**< Indicates whether to accept the request. */
-    sec_cfm_enc_data_t data;             /**< Sec Confirm encryption data, see @ref sec_cfm_enc_data_t. */
+    bool               accept;           /**< Indicate whether to accept the request. */
+    sec_cfm_enc_data_t data;             /**< SEC Confirm encryption data, see @ref sec_cfm_enc_data_t. */
 } sec_cfm_enc_t;
 
 /**@brief SEC number comparison value. */
@@ -175,7 +178,7 @@ typedef struct
 /**@brief SEC TK type. */
 typedef enum
 {
-    SEC_TK_OOB = 0x00,        /**<TK got from out of band method. */
+    SEC_TK_OOB = 0x00,        /**<TK got from OOB (out of band) method. */
     SEC_TK_DISPLAY,           /**<TK generated and shall be displayed by local device. */
     SEC_TK_KEY_ENTRY          /**<TK shall be entered by user using device keyboard. */
 } sec_tk_type_t;
@@ -191,15 +194,15 @@ typedef union
 /**@brief SEC encryption request. */
 typedef struct
 {
-    sec_enc_req_type_t req_type;        /**< Indicates the request type, @ref sec_enc_req_type_t. */
-    sec_enc_req_data_t data;            /**< Sec encryption request data, @ref sec_enc_req_data_t. */
+    sec_enc_req_type_t req_type;        /**< Indicate the request type, @ref sec_enc_req_type_t. */
+    sec_enc_req_data_t data;            /**< SEC encryption request data, @ref sec_enc_req_data_t. */
 } sec_enc_req_t;
 
 /**@brief SEC register call back. */
 typedef struct
 {
     void (*app_sec_enc_req_cb)(uint8_t conn_idx, sec_enc_req_t *p_enc_req);                   /**< Security manager module receives encryption request callback. */
-    void (*app_sec_enc_ind_cb)(uint8_t conn_idx, sec_enc_ind_t enc_ind, uint8_t auth);        /**< Security manager module receives encryption indication callback, auth see @ref SEC_AUTH_FLAG. */
+    void (*app_sec_enc_ind_cb)(uint8_t conn_idx, sec_enc_ind_t enc_ind, uint8_t auth);        /**< Security manager module receives encryption indication callback, see @ref SEC_AUTH_FLAG. */
     void (*app_sec_keypress_notify_cb)(uint8_t conn_idx, sec_keypress_notify_t notify_type);  /**< Security manager module receives key press notify callback. */
 } sec_cb_fun_t;
 /** @} */

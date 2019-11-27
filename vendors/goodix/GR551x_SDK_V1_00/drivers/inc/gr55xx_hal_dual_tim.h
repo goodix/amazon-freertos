@@ -3,7 +3,7 @@
  *
  * @file    gr55xx_hal_dual_tim.h
  * @author  BLE Driver Team
- * @brief   Header file containing functions prototypes of DUAL TIM HAL library. 
+ * @brief   Header file containing functions prototypes of DUAL TIMER HAL library. 
  *
  ****************************************************************************************
  * @attention
@@ -43,14 +43,14 @@
   * @{
   */
 
-/** @defgroup HAL_DUAL_TIM DUAL TIM
+/** @defgroup HAL_DUAL_TIMER DUAL TIMER
   * @brief DUAL TIM HAL module driver.
   * @{
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GR55xx_HAL_DUAL_TIM_H__
-#define __GR55xx_HAL_DUAL_TIM_H__
+#ifndef __GR55xx_HAL_DUAL_TIMER_H__
+#define __GR55xx_HAL_DUAL_TIMER_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,199 +61,202 @@ extern "C" {
 #include "gr55xx_ll_dual_tim.h"
 
 /* Exported types ------------------------------------------------------------*/
-/** @addtogroup HAL_DUAL_TIM_ENUMERATIONS Enumerations
+/** @addtogroup HAL_DUAL_TIMER_ENUMERATIONS Enumerations
   * @{
   */
 
-/** @defgroup HAL_DUAL_TIM_state HAL DUAL TIM state
+/** @defgroup HAL_DUAL_TIMER_state HAL DUAL TIM state
   * @{
   */
 
 /**
-  * @brief  HAL DUAL TIM State Enumerations definition
+  * @brief  HAL DUAL TIMER State Enumerations definition
   */
 typedef enum
 {
-    HAL_DUAL_TIM_STATE_RESET             = 0x00,    /**< Peripheral not yet initialized or disabled  */
-    HAL_DUAL_TIM_STATE_READY             = 0x01,    /**< Peripheral Initialized and ready for use    */
-    HAL_DUAL_TIM_STATE_BUSY              = 0x02,    /**< An internal process is ongoing              */
-    HAL_DUAL_TIM_STATE_ERROR             = 0x04     /**< Reception process is ongoing                */
-} hal_dual_tim_state_t;
+    HAL_DUAL_TIMER_STATE_RESET             = 0x00,    /**< Peripheral not yet initialized or disabled  */
+    HAL_DUAL_TIMER_STATE_READY             = 0x01,    /**< Peripheral Initialized and ready for use    */
+    HAL_DUAL_TIMER_STATE_BUSY              = 0x02,    /**< An internal process is ongoing              */
+    HAL_DUAL_TIMER_STATE_ERROR             = 0x04     /**< Reception process is ongoing                */
+} hal_dual_timer_state_t;
 /** @} */
 
 /** @} */
 
-/** @addtogroup HAL_DUAL_TIM_STRUCTURES Structures
+/** @addtogroup HAL_DUAL_TIMER_STRUCTURES Structures
   * @{
   */
 
-/** @defgroup DUAL_TIM_Configuration DUAL TIM Configuration
+/** @defgroup DUAL_TIMER_Configuration DUAL TIMER Configuration
   * @{
   */
 
 /**
-  * @brief DUAL TIM init Structure definition
+  * @brief DUAL TIMER init Structure definition
   */
-typedef struct _dual_tim_init
+typedef struct _dual_timer_init
 {
-    uint32_t prescaler;     /**< Specifies the prescaler value used to divide the DUAL_TIM clock.
-                                 This parameter can be a value of @ref DUAL_TIM_Prescaler_Div */
+    uint32_t prescaler;     /**< Specifies the prescaler value used to divide the DUAL_TIMER clock.
+                                 This parameter can be a value of @ref DUAL_TIMER_Prescaler_Div */
 
     uint32_t counter_mode;  /**< Specifies the counter mode.
-                                 This parameter can be a value of @ref DUAL_TIM_Counter_Mode */
+                                 This parameter can be a value of @ref DUAL_TIMER_Counter_Mode */
 
     uint32_t auto_reload;   /**< Specifies the auto-reload value. */
 
-} dual_tim_init_t;
+} dual_timer_init_t;
 
 /** @} */
 
-/** @defgroup DUAL_TIM_handle DUAL TIM handle
+/** @defgroup DUAL_TIMER_handle DUAL TIMER handle
   * @{
   */
 
 /**
-  * @brief DUAL_TIM handle Structure definition
+  * @brief DUAL_TIMER handle Structure definition
   */
-typedef struct _dual_tim_handle
+typedef struct _dual_timer_handle
 {
-    dual_tim_regs_t                *p_instance;     /**< Register base address               */
+    dual_timer_regs_t              *p_instance;     /**< Register base address               */
 
-    dual_tim_init_t                init;          /**< DUAL_TIM Base required parameters   */
+    dual_timer_init_t              init;          /**< DUAL_TIMER Base required parameters   */
 
     __IO hal_lock_t                lock;          /**< Locking object                      */
 
-    __IO hal_dual_tim_state_t      state;         /**< DUAL_TIM operation state            */
+    __IO hal_dual_timer_state_t    state;         /**< DUAL_TIMER operation state            */
 
-} dual_tim_handle_t;
+} dual_timer_handle_t;
 /** @} */
 
 /** @} */
 
-/** @addtogroup HAL_DUAL_TIM_STRUCTURES Callback Structures
+/** @addtogroup HAL_DUAL_TIMER_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
-/** @defgroup HAL_DUAL_TIM_Callback Callback
+/** @defgroup HAL_DUAL_TIMER_Callback Callback
   * @{
   */
 
 /**
-  * @brief HAL_DUAL_TIM Callback function definition
+  * @brief HAL_DUAL_TIMER Callback function definition
   */
 
-typedef struct _hal_dual_tim_callback
+typedef struct _hal_dual_timer_callback
 {
-    void (*dual_tim_msp_init)(dual_tim_handle_t *p_dual_timer);
-    void (*dual_tim_msp_deinit)(dual_tim_handle_t *p_dual_timer);
-    void (*dual_tim_period_elapsed_callback)(dual_tim_handle_t *p_dual_timer);
-} hal_dual_tim_callback_t;
+    void (*dual_timer_msp_init)(dual_timer_handle_t *p_dual_timer);
+    void (*dual_timer_msp_deinit)(dual_timer_handle_t *p_dual_timer);
+    void (*dual_timer_period_elapsed_callback)(dual_timer_handle_t *p_dual_timer);
+} hal_dual_timer_callback_t;
+/** @} */
+
+/** @} */
 
 /**
-  * @defgroup  HAL_DUAL_TIM_MACRO Defines
+  * @defgroup  HAL_DUAL_TIMER_MACRO Defines
   * @{
   */
 
 /* Exported constants --------------------------------------------------------*/
-/** @defgroup DUAL_TIM_Exported_Constants DUAL TIM Exported Constants
+/** @defgroup DUAL_TIMER_Exported_Constants DUAL TIMER Exported Constants
   * @{
   */
 
-/** @defgroup DUAL_TIM_Prescaler_Div DUAL TIM Prescaler Division
+/** @defgroup DUAL_TIMER_Prescaler_Div DUAL TIMER Prescaler Division
   * @{
   */
-#define DUAL_TIM_PRESCALER_DIV0         LL_DUAL_TIM_PRESCALER_DIV0      /**< 0 stages of prescale, clock is divided by 1.   */
-#define DUAL_TIM_PRESCALER_DIV16        LL_DUAL_TIM_PRESCALER_DIV16     /**< 4 stages of prescale, clock is divided by 16.  */
-#define DUAL_TIM_PRESCALER_DIV256       LL_DUAL_TIM_PRESCALER_DIV256    /**< 8 stages of prescale, clock is divided by 256. */
+#define DUAL_TIMER_PRESCALER_DIV0         LL_DUAL_TIMER_PRESCALER_DIV0      /**< 0 stage of prescale, clock is divided by 1.   */
+#define DUAL_TIMER_PRESCALER_DIV16        LL_DUAL_TIMER_PRESCALER_DIV16     /**< 4 stages of prescale, clock is divided by 16.  */
+#define DUAL_TIMER_PRESCALER_DIV256       LL_DUAL_TIMER_PRESCALER_DIV256    /**< 8 stages of prescale, clock is divided by 256. */
 /** @} */
 
-/** @defgroup DUAL_TIM_Counter_Mode DUAL TIM Counter Mode
+/** @defgroup DUAL_TIMER_Counter_Mode DUAL TIMER Counter Mode
   * @{
   */
-#define DUAL_TIM_COUNTERMODE_LOOP       0x00000000U                     /**< DUAL TIM Loop mode.*/
-#define DUAL_TIM_COUNTERMODE_ONESHOT    DUAL_TIM_CTRL_ONESHOT           /**< DUAL TIM One-shot mode. */
+#define DUAL_TIMER_COUNTERMODE_LOOP       0x00000000U                     /**< DUAL TIMER Loop mode.*/
+#define DUAL_TIMER_COUNTERMODE_ONESHOT    DUAL_TIMER_CTRL_ONESHOT           /**< DUAL TIMER One-shot mode. */
 /** @} */
 
 /** @} */
 
 /* Exported macro ------------------------------------------------------------*/
-/** @defgroup DUAL_TIM_Exported_Macros DUAL TIM Exported Macros
+/** @defgroup DUAL_TIMER_Exported_Macros DUAL TIMER Exported Macros
   * @{
   */
 
-/** @brief  Reset DUAL TIM handle states.
-  * @param  __HANDLE__ DUAL TIM handle.
+/** @brief  Reset DUAL TIMER handle states.
+  * @param  __HANDLE__ DUAL TIMER handle.
   * @retval None
   */
-#define __HAL_DUAL_TIM_RESET_HANDLE_STATE(__HANDLE__)               ((__HANDLE__)->state = HAL_DUAL_TIM_STATE_RESET)
+#define __HAL_DUAL_TIMER_RESET_HANDLE_STATE(__HANDLE__)               ((__HANDLE__)->state = HAL_DUAL_TIMER_STATE_RESET)
 
-/** @brief  Enable the specified DUAL TIM peripheral.
-  * @param  __HANDLE__ Specifies the DUAL TIM Handle.
+/** @brief  Enable the specified DUAL TIMER peripheral.
+  * @param  __HANDLE__ Specifies the DUAL TIMER Handle.
   * @retval None
   */
-#define __HAL_DUAL_TIM_ENABLE(__HANDLE__)                           SET_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIM_CTRL_EN)
+#define __HAL_DUAL_TIMER_ENABLE(__HANDLE__)                           SET_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIMER_CTRL_EN)
 
-/** @brief  Disable the specified DUAL TIM peripheral.
-  * @param  __HANDLE__ Specifies the DUAL TIM Handle.
+/** @brief  Disable the specified DUAL TIMER peripheral.
+  * @param  __HANDLE__ Specifies the DUAL TIMER Handle.
   * @retval None
   */
-#define __HAL_DUAL_TIM_DISABLE(__HANDLE__)                          CLEAR_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIM_CTRL_EN)
+#define __HAL_DUAL_TIMER_DISABLE(__HANDLE__)                          CLEAR_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIMER_CTRL_EN)
 
-/** @brief  Enable the DUAL TIM interrupt.
-  * @param  __HANDLE__ Specifies the DUAL TIM Handle.
-  * @retval None
-  */
-#define __HAL_DUAL_TIM_ENABLE_IT(__HANDLE__)                        SET_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIM_CTRL_INTEN)
-
-/** @brief  Disable the DUAL TIM interrupt.
+/** @brief  Enable the DUAL TIMER interrupt.
   * @param  __HANDLE__ Specifies the DUAL TIM Handle.
   * @retval None
   */
-#define __HAL_DUAL_TIM_DISABLE_IT(__HANDLE__)                       CLEAR_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIM_CTRL_INTEN)
+#define __HAL_DUAL_TIMER_ENABLE_IT(__HANDLE__)                        SET_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIMER_CTRL_INTEN)
 
-/** @brief  Check whether the DUAL TIM interrupt has occurred or not.
+/** @brief  Disable the DUAL TIMER interrupt.
   * @param  __HANDLE__ Specifies the DUAL TIM Handle.
-  * @retval The new state of DUAL TIM interrupt (SET or RESET).
+  * @retval None
   */
-#define __HAL_DUAL_TIM_GET_FLAG_IT(__HANDLE__)                      ll_dual_tim_is_active_flag_it(__HANDLE__->p_instance)
+#define __HAL_DUAL_TIMER_DISABLE_IT(__HANDLE__)                       CLEAR_BITS((__HANDLE__)->p_instance->CTRL, DUAL_TIMER_CTRL_INTEN)
 
-/** @brief  Clear the DUAL TIM interrupt flag.
-  * @param  __HANDLE__ Specifies the DUAL TIM Handle.
+/** @brief  Check whether the DUAL TIMER interrupt has occurred or not.
+  * @param  __HANDLE__ Specifies the DUAL TIMER Handle.
+  * @retval The new state of DUAL TIMER interrupt (SET or RESET).
+  */
+#define __HAL_DUAL_TIMER_GET_FLAG_IT(__HANDLE__)                      ll_dual_timer_is_active_flag_it(__HANDLE__->p_instance)
+
+/** @brief  Clear the DUAL TIMER interrupt flag.
+  * @param  __HANDLE__ Specifies the DUAL TIMER Handle.
   * @retval None.
   */
-#define __HAL_DUAL_TIM_CLEAR_FLAG_IT(__HANDLE__)                    ll_dual_tim_clear_flag_it(__HANDLE__->p_instance)
+#define __HAL_DUAL_TIMER_CLEAR_FLAG_IT(__HANDLE__)                    ll_dual_timer_clear_flag_it(__HANDLE__->p_instance)
 
 /** @} */
 
 /* Private macros ------------------------------------------------------------*/
-/** @defgroup DUAL_TIM_Private_Macros DUAL TIM Private Macros
+/** @defgroup DUAL_TIMER_Private_Macros DUAL TIMER Private Macros
   * @{
   */
 
-/** @brief  Check if DUAL TIM prescaler is valid.
-  * @param  __PRESCALER__ DUAL TIM prescaler.
+/** @brief  Check if DUAL TIMER prescaler is valid.
+  * @param  __PRESCALER__ DUAL TIMER prescaler.
   * @retval SET (__PRESCALER__ is valid) or RESET (__PRESCALER__ is invalid)
   */
-#define IS_DUAL_TIM_PRESCALER(__PRESCALER__)                        (((__PRESCALER__) == DUAL_TIM_PRESCALER_DIV0)  || \
-                                                                     ((__PRESCALER__) == DUAL_TIM_PRESCALER_DIV16) || \
-                                                                     ((__PRESCALER__) == DUAL_TIM_PRESCALER_DIV256))
+#define IS_DUAL_TIMER_PRESCALER(__PRESCALER__)                        (((__PRESCALER__) == DUAL_TIMER_PRESCALER_DIV0)  || \
+                                                                     ((__PRESCALER__) == DUAL_TIMER_PRESCALER_DIV16) || \
+                                                                     ((__PRESCALER__) == DUAL_TIMER_PRESCALER_DIV256))
 
-/** @brief  Check if DUAL TIM counter mode is valid.
-  * @param  __MODE__ DUAL TIM counter mode.
+/** @brief  Check if DUAL TIMER counter mode is valid.
+  * @param  __MODE__ DUAL TIMER counter mode.
   * @retval SET (__MODE__ is valid) or RESET (__MODE__ is invalid)
   */
-#define IS_DUAL_TIM_COUNTERMODE(__MODE__)                           (((__MODE__) == DUAL_TIM_COUNTERMODE_LOOP)  || \
-                                                                     ((__MODE__) == DUAL_TIM_COUNTERMODE_ONESHOT))
+#define IS_DUAL_TIMER_COUNTERMODE(__MODE__)                           (((__MODE__) == DUAL_TIMER_COUNTERMODE_LOOP)  || \
+                                                                     ((__MODE__) == DUAL_TIMER_COUNTERMODE_ONESHOT))
 /** @} */
 
 /** @} */
 
 /* Exported functions --------------------------------------------------------*/
-/** @addtogroup HAL_DUAL_TIM_DRIVER_FUNCTIONS Functions
+/** @addtogroup HAL_DUAL_TIMER_DRIVER_FUNCTIONS Functions
   * @{
   */
 
-/** @addtogroup DUAL_TIM_Exported_Functions_Group1 Initialization and de-initialization functions
+/** @addtogroup DUAL_TIMER_Exported_Functions_Group1 Initialization and de-initialization functions
   * @brief    Initialization and de-initialization functions
   *
   * @verbatim
@@ -262,8 +265,8 @@ typedef struct _hal_dual_tim_callback
  ===============================================================================
     [..]
         This section provides functions allowing to:
-        (+) Initialize and configure the DUAL TIM.
-        (+) De-initialize the DUAL TIM.
+        (+) Initialize and configure the DUAL TIMER.
+        (+) De-initialize the DUAL TIMER.
         (+) Start the Timer.
         (+) Stop the Timer.
         (+) Start the Timer and enable interrupt.
@@ -275,24 +278,10 @@ typedef struct _hal_dual_tim_callback
 
 /**
  ****************************************************************************************
- * @brief  Initialize the DUAL TIM according to the specified parameters
- *         in the dual_tim_init_t and initialize the associated handle.
+ * @brief  Initialize the DUAL TIMER according to the specified parameters
+ *         in the dual_timer_init_t and initialize the associated handle.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
- *
- * @retval ::HAL_OK: Operation is OK.
- * @retval ::HAL_ERROR: Parameter error or operation not supported.
- * @retval ::HAL_BUSY: Driver is busy.
- * @retval ::HAL_TIMEOUT: Timeout occurred.
- ****************************************************************************************
- */
-hal_status_t hal_dual_tim_init(dual_tim_handle_t *p_dual_timer);
-
-/**
- ****************************************************************************************
- * @brief  De-initialize the DUAL TIM peripheral.
- *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -300,37 +289,51 @@ hal_status_t hal_dual_tim_init(dual_tim_handle_t *p_dual_timer);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_dual_tim_deinit(dual_tim_handle_t *p_dual_timer);
+hal_status_t hal_dual_timer_base_init(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief Initialize the DUAL TIM MSP.
+ * @brief  De-initialize the DUAL TIMER peripheral.
+ *
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIMER.
+ *
+ * @retval ::HAL_OK: Operation is OK.
+ * @retval ::HAL_ERROR: Parameter error or operation not supported.
+ * @retval ::HAL_BUSY: Driver is busy.
+ * @retval ::HAL_TIMEOUT: Timeout occurred.
+ ****************************************************************************************
+ */
+hal_status_t hal_dual_timer_base_deinit(dual_timer_handle_t *p_dual_timer);
+
+/**
+ ****************************************************************************************
+ * @brief Initialize the DUAL TIMER MSP.
  *
  * @note  This function should not be modified. When the callback is needed,
- *         the hal_dual_tim_msp_init could be implemented in the user file
+ *         the hal_dual_timer_base_msp_init could be implemented in the user file
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  ****************************************************************************************
  */
-void hal_dual_tim_msp_init(dual_tim_handle_t *p_dual_timer);
+void hal_dual_timer_base_msp_init(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief De-initialize the DUAL TIM MSP.
+ * @brief De-initialize the DUAL TIMER MSP.
  *
  * @note  This function should not be modified. When the callback is needed,
- *         the hal_dual_tim_msp_deinit could be implemented in the user file
+ *         the hal_dual_timer_base_msp_deinit could be implemented in the user file
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIMER.
  ****************************************************************************************
  */
-void hal_dual_tim_msp_deinit(dual_tim_handle_t *p_dual_timer);
+void hal_dual_timer_base_msp_deinit(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief  Starts the DUAL TIM counter.
+ * @brief  Starts the DUAL TIMER counter.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -338,13 +341,13 @@ void hal_dual_tim_msp_deinit(dual_tim_handle_t *p_dual_timer);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_dual_tim_start(dual_tim_handle_t *p_dual_timer);
+hal_status_t hal_dual_timer_base_start(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief  Stops the DUAL TIM counter.
+ * @brief  Stops the DUAL TIMER counter.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIMER.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -352,13 +355,13 @@ hal_status_t hal_dual_tim_start(dual_tim_handle_t *p_dual_timer);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_dual_tim_stop(dual_tim_handle_t *p_dual_timer);
+hal_status_t hal_dual_timer_base_stop(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief  Starts the DUAL TIM counter in interrupt mode.
+ * @brief  Starts the DUAL TIMER counter in interrupt mode.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIMER.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -366,13 +369,13 @@ hal_status_t hal_dual_tim_stop(dual_tim_handle_t *p_dual_timer);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_dual_tim_start_it(dual_tim_handle_t *p_dual_timer);
+hal_status_t hal_dual_timer_base_start_it(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief  Stops the DUAL TIM counter in interrupt mode.
+ * @brief  Stops the DUAL TIMER counter in interrupt mode.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -380,40 +383,40 @@ hal_status_t hal_dual_tim_start_it(dual_tim_handle_t *p_dual_timer);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_dual_tim_stop_it(dual_tim_handle_t *p_dual_timer);
+hal_status_t hal_dual_timer_base_stop_it(dual_timer_handle_t *p_dual_timer);
 
 /** @} */
 
-/** @addtogroup DUAL_TIM_IRQ_Handler_and_Callbacks IRQ Handler and Callbacks
+/** @addtogroup DUAL_TIMER_IRQ_Handler_and_Callbacks IRQ Handler and Callbacks
   * @brief    IRQ Handler and Callbacks functions
  * @{
  */
 
 /**
  ****************************************************************************************
- * @brief Handle DUAL TIM interrupt request.
+ * @brief Handle DUAL TIMER interrupt request.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  ****************************************************************************************
  */
-void hal_dual_tim_irq_handler(dual_tim_handle_t *p_dual_timer);
+void hal_dual_timer_irq_handler(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
  * @brief  Period elapsed callback in non-blocking mode.
  *
  * @note   This function should not be modified. When the callback is needed,
- *          the hal_dual_tim_period_elapsed_callback can be implemented in the user file.
+ *          the hal_dual_timer_period_elapsed_callback can be implemented in the user file.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  ****************************************************************************************
  */
-void hal_dual_tim_period_elapsed_callback(dual_tim_handle_t *p_dual_timer);
+void hal_dual_timer_period_elapsed_callback(dual_timer_handle_t *p_dual_timer);
 
 /** @} */
 
-/** @addtogroup DUAL_TIM_Exported_Functions_Group2 Peripheral Control and State functions
- *  @brief   DUAL TIM Peripheral State functions
+/** @addtogroup DUAL_TIMER_Exported_Functions_Group2 Peripheral Control and State functions
+ *  @brief   DUAL TIMER Peripheral State functions
  *
 @verbatim
   ==============================================================================
@@ -421,8 +424,8 @@ void hal_dual_tim_period_elapsed_callback(dual_tim_handle_t *p_dual_timer);
   ==============================================================================
     [..]
     This subsection provides functions allowing to :
-      (+) Return the DUAL TIM handle state.
-      (+) Configure the DUAL TIM.
+      (+) Return the DUAL TIMER handle state.
+      (+) Configure the DUAL TIMER.
 
 @endverbatim
   * @{
@@ -430,24 +433,24 @@ void hal_dual_tim_period_elapsed_callback(dual_tim_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief  Return the DUAL TIM handle state.
+ * @brief  Return the DUAL TIMER handle state.
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
  *
- * @retval ::HAL_DUAL_TIM_STATE_RESET: Peripheral not yet initialized or disabled.
- * @retval ::HAL_DUAL_TIM_STATE_READY: Peripheral Initialized and ready for use.
- * @retval ::HAL_DUAL_TIM_STATE_BUSY: An internal process is ongoing.
- * @retval ::HAL_DUAL_TIM_STATE_ERROR: Reception process is ongoing.
+ * @retval ::HAL_DUAL_TIMER_STATE_RESET: Peripheral not yet initialized or disabled.
+ * @retval ::HAL_DUAL_TIMER_STATE_READY: Peripheral Initialized and ready for use.
+ * @retval ::HAL_DUAL_TIMER_STATE_BUSY: An internal process is ongoing.
+ * @retval ::HAL_DUAL_TIMER_STATE_ERROR: Reception process is ongoing.
  ****************************************************************************************
  */
-hal_dual_tim_state_t hal_dual_tim_get_state(dual_tim_handle_t *p_dual_timer);
+hal_dual_timer_state_t hal_dual_timer_get_state(dual_timer_handle_t *p_dual_timer);
 
 /**
  ****************************************************************************************
- * @brief  DUAL TIM configuration
+ * @brief  DUAL TIMER configuration
  *
- * @param[in]  p_dual_timer: Pointer to a DUAL_TIM handle which contains the configuration information for the specified DUAL TIM.
- * @param[in]  p_structure: The DUAL TIM configuration structure
+ * @param[in]  p_dual_timer: Pointer to a DUAL_TIMER handle which contains the configuration information for the specified DUAL TIMER.
+ * @param[in]  p_structure: The DUAL TIMER configuration structure
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -455,7 +458,7 @@ hal_dual_tim_state_t hal_dual_tim_get_state(dual_tim_handle_t *p_dual_timer);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_dual_tim_set_config(dual_tim_handle_t *p_dual_timer, dual_tim_init_t *p_structure);
+hal_status_t hal_dual_timer_set_config(dual_timer_handle_t *p_dual_timer, dual_timer_init_t *p_structure);
 
 /** @} */
 
@@ -465,7 +468,7 @@ hal_status_t hal_dual_tim_set_config(dual_tim_handle_t *p_dual_timer, dual_tim_i
 }
 #endif
 
-#endif /* __GR55xx_HAL_DUAL_TIM_H__ */
+#endif /* __GR55xx_HAL_DUAL_TIMER_H__ */
 
 /** @} */
 

@@ -226,7 +226,7 @@ typedef struct _i2c_handle
 
 /** @} */
 
-/** @addtogroup HAL_I2C_STRUCTURES Callback Structures
+/** @addtogroup HAL_I2C_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -290,7 +290,7 @@ typedef struct _hal_i2c_callback
   * @{
   */
 #define I2C_ADDRESSINGMODE_7BIT         (0x00000001U)       /**< 7-bit addressing mode. */
-#define I2C_ADDRESSINGMODE_10BIT        (0x00000002U)       /**< 10-bit addressing mod. */
+#define I2C_ADDRESSINGMODE_10BIT        (0x00000002U)       /**< 10-bit addressing mode. */
 /** @} */
 
 /** @defgroup I2C_General_Call_Addressing_Mode I2C General Call Addressing Mode
@@ -311,9 +311,9 @@ typedef struct _hal_i2c_callback
   * @{
   */
 #define I2C_FIRST_FRAME                 (0x00000000U)     /**< First transfer frame. */
-#define I2C_FIRST_AND_NEXT_FRAME        (0x00000001U)     /**< First and next transfer frame. */
+#define I2C_FIRST_AND_NEXT_FRAME        (0x00000001U)     /**< First and next transfer frames. */
 #define I2C_NEXT_FRAME                  (0x00000002U)     /**< Next transfer frame. */
-#define I2C_FIRST_AND_LAST_FRAME        (0x00000003U)     /**< First and last transfer frame. */
+#define I2C_FIRST_AND_LAST_FRAME        (0x00000003U)     /**< First and last transfer frames. */
 #define I2C_LAST_FRAME                  (0x00000004U)     /**< Last transfer frame. */
 /** @} */
 
@@ -527,10 +527,10 @@ void hal_i2c_msp_deinit(i2c_handle_t *p_i2c);
     transfers.
 
     (#) There are two modes of transfer:
-       (++) Blocking mode : The communication is performed in the polling mode.
+       (++) Blocking mode: The communication is performed in the polling mode.
             The status of all data processing is returned by the same function
             after finishing transfer.
-       (++) No-Blocking mode : The communication is performed using Interrupts
+       (++) No-Blocking mode: The communication is performed using Interrupts
             or DMA. These functions return the status of the transfer startup.
             The end of the data processing will be indicated through the
             dedicated I2C IRQ when using Interrupt mode or the DMA IRQ when
@@ -580,7 +580,7 @@ void hal_i2c_msp_deinit(i2c_handle_t *p_i2c);
  ****************************************************************************************
  * @brief  Transmits in master mode an amount of data in blocking mode.
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent
  * @param[in]  timeout: Timeout duration
@@ -596,7 +596,7 @@ hal_status_t hal_i2c_master_transmit(i2c_handle_t *p_i2c, uint16_t dev_address, 
  ****************************************************************************************
  * @brief  Receives in master mode an amount of data in blocking mode.
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent
  * @param[in]  timeout: Timeout duration
@@ -604,7 +604,7 @@ hal_status_t hal_i2c_master_transmit(i2c_handle_t *p_i2c, uint16_t dev_address, 
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
- * @note   This function will return HAL_OK even the length of data sent by slave
+ * @note   This function will return HAL_OK even if the length of data sent by slave is
  *         less than the expected Size.
  ****************************************************************************************
  */
@@ -644,7 +644,7 @@ hal_status_t hal_i2c_slave_receive(i2c_handle_t *p_i2c, uint8_t *p_data, uint16_
  ****************************************************************************************
  * @brief  Write an amount of data in blocking mode to a specific memory address
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  mem_address: Internal memory address
  * @param[in]  mem_addr_size: Size of internal memory address
  * @param[in]  p_data: Pointer to data buffer
@@ -662,7 +662,7 @@ hal_status_t hal_i2c_mem_write(i2c_handle_t *p_i2c, uint16_t dev_address, uint16
  ****************************************************************************************
  * @brief  Read an amount of data in blocking mode from a specific memory address
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  mem_address: Internal memory address
  * @param[in]  mem_addr_size: Size of internal memory address
  * @param[in]  p_data: Pointer to data buffer
@@ -682,7 +682,7 @@ hal_status_t hal_i2c_mem_read(i2c_handle_t *p_i2c, uint16_t dev_address, uint16_
  ****************************************************************************************
  * @brief  Transmit in master mode an amount of data in non-blocking mode with Interrupt
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent
  * @retval ::HAL_OK: Operation is OK.
@@ -697,7 +697,7 @@ hal_status_t hal_i2c_master_transmit_it(i2c_handle_t *p_i2c, uint16_t dev_addres
  ****************************************************************************************
  * @brief  Receive in master mode an amount of data in non-blocking mode with Interrupt
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent
  * @retval ::HAL_OK: Operation is OK.
@@ -740,7 +740,7 @@ hal_status_t hal_i2c_slave_receive_it(i2c_handle_t *p_i2c, uint8_t *p_data, uint
  ****************************************************************************************
  * @brief  Write an amount of data in non-blocking mode with Interrupt to a specific memory address
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  mem_address: Internal memory address
  * @param[in]  mem_addr_size: Size of internal memory address
  * @param[in]  p_data: Pointer to data buffer
@@ -757,7 +757,7 @@ hal_status_t hal_i2c_mem_write_it(i2c_handle_t *p_i2c, uint16_t dev_address, uin
  ****************************************************************************************
  * @brief  Read an amount of data in non-blocking mode with Interrupt from a specific memory address
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  mem_address: Internal memory address
  * @param[in]  mem_addr_size: Size of internal memory address
  * @param[in]  p_data: Pointer to data buffer
@@ -772,10 +772,10 @@ hal_status_t hal_i2c_mem_read_it(i2c_handle_t *p_i2c, uint16_t dev_address, uint
 
 /**
  ****************************************************************************************
- * @brief  Sequential transmit in master I2C mode an amount of data in non-blocking mode with Interrupt.
- * @note   This interface allow to manage repeated start condition when a direction change during transfer
+ * @brief  Sequentially transmit in master I2C mode an amount of data in non-blocking mode with Interrupt.
+ * @note   This interface allows to manage repeated start condition when a direction changes during transfer
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent
  * @param[in]  xfer_options: Options of Transfer, value of @ref I2C_XferOptions
@@ -789,10 +789,10 @@ hal_status_t hal_i2c_master_sequential_transmit_it(i2c_handle_t *p_i2c, uint16_t
 
 /**
  ****************************************************************************************
- * @brief  Sequential receive in master I2C mode an amount of data in non-blocking mode with Interrupt
- * @note   This interface allow to manage repeated start condition when a direction change during transfer
+ * @brief  Sequentially receive in master I2C mode an amount of data in non-blocking mode with Interrupt
+ * @note   This interface allows to manage repeated start condition when a direction changes during transfer
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent
  * @param[in]  xfer_options: Options of Transfer, value of @ref I2C_XferOptions
@@ -878,7 +878,7 @@ hal_status_t hal_i2c_master_abort_it(i2c_handle_t *p_i2c);
  ****************************************************************************************
  * @brief  Transmit in master mode an amount of data in non-blocking mode with DMA
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface.
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface.
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent,  ranging between 0 and 4095.
  * @retval ::HAL_OK: Operation is OK.
@@ -893,7 +893,7 @@ hal_status_t hal_i2c_master_transmit_dma(i2c_handle_t *p_i2c, uint16_t dev_addre
  ****************************************************************************************
  * @brief  Receive in master mode an amount of data in non-blocking mode with DMA
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface.
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface.
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Amount of data to be sent,  ranging between 0 and 4095.
  * @retval ::HAL_OK: Operation is OK.
@@ -936,7 +936,7 @@ hal_status_t hal_i2c_slave_receive_dma(i2c_handle_t *p_i2c, uint8_t *p_data, uin
  ****************************************************************************************
  * @brief  Write an amount of data in non-blocking mode with DMA to a specific memory address
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  mem_address: Internal memory address
  * @param[in]  mem_addr_size: Size of internal memory address
  * @param[in]  p_data: Pointer to data buffer
@@ -953,7 +953,7 @@ hal_status_t hal_i2c_mem_write_dma(i2c_handle_t *p_i2c, uint16_t dev_address, ui
  ****************************************************************************************
  * @brief  Reads an amount of data in non-blocking mode with DMA from a specific memory address.
  * @param[in]  p_i2c: Pointer to an I2C handle which contains the configuration information for the specified I2C.
- * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shift at right before call interface
+ * @param[in]  dev_address: Target device address: The device 7 bits address value in datasheet must be shifted at right before call interface
  * @param[in]  mem_address: Internal memory address
  * @param[in]  mem_addr_size: Size of internal memory address
  * @param[in]  p_data: Pointer to data buffer
@@ -1102,7 +1102,7 @@ void hal_i2c_abort_cplt_callback(i2c_handle_t *p_i2c);
  * @retval ::HAL_I2C_STATE_BUSY_RX_LISTEN: Address Listen Mode and Data Reception process is ongoing.
  * @retval ::HAL_I2C_STATE_ABORT: Abort user request ongoing.
  * @retval ::HAL_I2C_STATE_TIMEOUT: Timeout state.
- * @retval ::HAL_I2C_STATE_ERROR: Timeout state.
+ * @retval ::HAL_I2C_STATE_ERROR: Error.
  ****************************************************************************************
  */
 hal_i2c_state_t hal_i2c_get_state(i2c_handle_t *p_i2c);

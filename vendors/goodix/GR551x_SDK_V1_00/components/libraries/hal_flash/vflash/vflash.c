@@ -6,6 +6,8 @@
 #define VFLASH_SECTOR_SIZE 0x1000
 #define VFLASH_SIZE (VFLASH_SECTOR_SIZE * NVDS_NUM_SECTOR)
 
+extern uint32_t nvds_get_start_addr(void);
+
 /* *****************************************************************************
  * Local variables
  */
@@ -60,6 +62,6 @@ bool vflash_erase(uint32_t addr, uint32_t size)
 
 uint32_t addr_translate(uint32_t addr)
 {
-    return ((uint32_t)(addr - NVDS_START_ADDR + vflash_ram));
+    return ((uint32_t)(addr - nvds_get_start_addr() + vflash_ram));
 }
 

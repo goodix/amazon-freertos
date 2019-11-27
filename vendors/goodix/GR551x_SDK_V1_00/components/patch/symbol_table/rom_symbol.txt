@@ -32,6 +32,8 @@
 0x300003cc D lld_sync_env
 0x300003f4 D sch_slice_params
 0x0003d73d T lld_scan_evt_canceled_cbk
+0x0003d2c1 T lld_rpa_renew
+0x0003d1fd T lld_res_list_priv_mode_update
 
 ;sch_prog_patch.c
 0x0002c3e5 T lld_adv_aux_evt_start_cbk
@@ -68,8 +70,11 @@
 0x300003f0 D conflict_elt 
 0x3000198c D sch_plan_env   
 0x00045a71 T sch_plan_clock_wrap_offset_update                                      
-0x00045b25 T sch_plan_offset_max_calc                  
-      
+0x00045b25 T sch_plan_offset_max_calc    
+0x000353b5 T lld_con_activity_offset_compute	
+0x00036d7d T lld_con_offset_get	
+0x00044f99 T sch_plan_chk              
+
 ;lld_ci.c
 0x300011e8 D lld_env
 0x0004d127 D rwip_priority
@@ -107,6 +112,10 @@
 
 ;smpc_patch.c
 0x30000d40 D gapc_env
+0x0000f2d5 T gapc_link_encrypted
+0x0000ff4d T gapc_update_state
+0x0004b945 T smpc_tkdp_rcp_start
+0x0004bb19 T smpc_tkdp_send_start
 
 ;prf_patch.c
 0x30000388 D ble_nb_profiles_max
@@ -148,6 +157,9 @@
 0x0000a861 T ble_util_buf_rx_alloc
 0x0003d0a1 T lld_res_list_clear
 0x300003b4 D lld_exp_sync_pos_tab
+0x0000b859 T co_nb_good_le_channels
+0x00030fed T lld_ch_assess_data_get
+0x0003b2b9 T lld_per_adv_ch_map_update
 
 0x300002a4 D TASK_DESC_GAPM
 0x000077bb T attm_att_set_value
@@ -279,6 +291,17 @@
 0x0003d4e1 T lld_rxdesc_check 
 0x0003d515 T lld_rxdesc_free 
 0x00046c11 T sch_slice_fg_add 
+0x000262ad T ll_length_req_handler
+0x00026303 T ll_length_rsp_handler
+0x000281c9 T llc_hci_dl_upd_info_send
+0x000288c1 T llc_ll_length_req_pdu_send
+0x000288e5 T llc_ll_length_rsp_pdu_send
+0x0002a999 T llc_proc_get
+0x0002aa81 T llc_proc_state_get
+0x0002ab51 T llc_proc_timer_set
+0x0002ac05 T llc_proc_unreg
+0x000218c9 T ke_msg_send_basic
+0x0003872d T lld_con_tx_len_update
 
 ;gapm_task
 0x0000e8f5 T gapc_create 
@@ -302,6 +325,13 @@
 0x0001043d T gapm_actv_retrieve_cmd_cmp_evt
 0x00010521 T gapm_actv_started
 0x00019e11 T hci_le_cmd_cmp_evt_stopping_handler
+0x00010259 T gapm_actv_created
+0x00010d67 T gapm_adv_send_hci_le_rmv_adv_set_cmd
+0x00019aed T hci_le_cmd_cmp_evt_deleting_handler
+0x00019c31 T hci_le_cmd_cmp_evt_set_data_handler
+
+;Belong to gapm_adv.o - Notice there is 4 handler with the same name
+0x00019ca1 T hci_le_cmd_cmp_evt_starting_handler
 
 ;rwip_driver
 0x30000ae8 D rwip_env
@@ -332,6 +362,168 @@
 0x0003ac65 T lld_instant_proc_end      
 0x30001328 D sniffer_data_info 
 0x0000c645 T dbg_trc_req_acl_rx_pdu
+0x0003d5e1 T lld_scan_end
+0x0003e88d T lld_scan_sched
+0x0003f441 T lld_scan_trunc_ind
+
+
+;smpc
+0x0000ef95 T gapc_get_operation
+0x0000f00d T gapc_get_operation_ptr
+0x0000fc01 T gapc_sig_pdu_recv_handler
+0x000117c5 T gapm_get_local_public_key
+0x00011e15 T gapm_is_legacy_pairing_supp
+0x00011e35 T gapm_is_sec_con_pairing_supp
+0x00023cad T l2cc_pdu_alloc
+0x00024839 T l2cc_pdu_send
+0x00047a15 T smpc_check_key_distrib
+0x00047aad T smpc_check_max_key_size
+0x00047b01 T smpc_check_pairing_feat
+0x00047b55 T smpc_check_param
+0x00048ae5 T smpc_generate_rand
+0x00048b61 T smpc_get_key_sec_prop
+0x0004942d T smpc_pairing_csrk_exch
+0x000494c5 T smpc_pairing_enc_code_exch
+0x00049571 T smpc_pairing_end
+0x00049645 T smpc_pairing_irk_exch
+0x000496d1 T smpc_pairing_ltk_exch
+0x000497c5 T smpc_pairing_nc_exch
+0x0004981d T smpc_pairing_oob_exch
+0x00049ce1 T smpc_pairing_tk_exch
+0x00049ec9 T smpc_pdu_send
+0x0004ae99 T smpc_secure_connections_enabled
+0x0004b0bd T smpc_send_pairing_req_ind
+
+;gapm_cfg
+0x000122c9 T gapm_op_reset_continue
+0x000117e5 T gapm_get_operation
+0x0000ff89 T gapm_actv_check_create_param    
+0x0000ff99 T gapm_adv_delete        
+0x0000ffdd T gapm_actv_get_free_idx       
+0x000109ed T gapm_adv_check_param      
+0x00010eaf T gapm_adv_send_hci_le_set_ext_adv_param_cmd 
+0x000111a5 T gapm_adv_start         
+0x000111e1 T gapm_adv_stop       
+0x0000ffad T gapm_actv_alloc        
+0x00011bd5 T gapm_init_create       
+0x00012675 T gapm_per_sync_create      
+0x00012c05 T gapm_scan_create   
+
+;lld_con
+0x0004bcfd T sync_pulse_output_enable
+0x0000c951 T dbg_trc_req_evt_cnt
+0x0004c294 D co_sca2ppm
+0x0000b42d T co_list_extract_sublist
+0x0000b4c5 T co_list_insert_after
+0x0000cf9d T dbg_trc_req_sch_arb_insert
+0x000451c1 T sch_arb_conflict_check
+0x000452b5 T sch_arb_elt_cancel
+0x000356f5 T lld_con_clear_ccmcnt_rx
+0x00035711 T lld_con_clear_ccmcnt_tx
+0x00036c95 T lld_con_max_lat_calc
+0x0003f481 T lld_supervision_to_cb
+
+;lld_sync
+0x0003f519 T lld_sync_cleanup
+0x0003fd89 T lld_sync_trunc_ind
+0x3000145c D lld_sync_env_patch
+
+;lld_init
+0x000390bd T lld_init_compute_winoffset
+0x300003c4 D lld_init_env
+0x000397cd T lld_init_frm_cbk
+
+;lld_per
+0x00031a69 T lld_big_update_info
+0x0003bdb1 T lld_per_adv_frm_cbk
+
+;lld_test
+0x300003d4 D lld_test_env
+0x00043355 T llm_rx_path_comp_get
+0x00040885 T lld_test_frm_isr
+
+;llc_encrypt
+0x00025df1 T ll_enc_req_handler
+0x00027c91 T llc_disconnect
+0x000281fd T llc_hci_enc_evt_send
+0x00028379 T llc_hci_ltk_request_evt_send
+0x000284c9 T llc_iv_skd_rand_gen
+0x00028599 T llc_le_ping_restart
+0x00028939 T llc_ll_pause_enc_rsp_pdu_send
+0x0002899d T llc_ll_reject_ind_ack_handler
+0x000289bd T llc_ll_reject_ind_pdu_send
+0x00028ae5 T llc_ll_start_enc_req_pdu_send
+0x00028af5 T llc_ll_start_enc_rsp_ack_handler
+0x00028b15 T llc_ll_start_enc_rsp_pdu_send
+0x00028c09 T llc_llcp_send
+0x0002aa9d T llc_proc_timer_pause_set
+0x0002b93d T llc_sk_gen
+0x000357cd T lld_con_data_flow_set
+0x00035bbd T lld_con_enc_key_load
+0x00037925 T lld_con_rx_enc
+0x00038639 T lld_con_tx_enc
+0x300002d4 D TASK_DESC_LLC
+
+;attc
+0x00006c87 T attc_exc_mtu_rsp_handler
+0x00006d15 T attc_find_by_type_rsp_handler
+0x00006dd7 T attc_find_info_rsp_handler
+0x00006ec1 T attc_hdl_val_ntf_ind_handler
+0x00006f75 T attc_prep_wr_rsp_handler
+0x00006fdb T attc_rd_by_grp_type_rsp_handler
+0x000070e9 T attc_rd_by_type_rsp_handler
+0x000073c1 T attc_rd_mult_rsp_handler
+0x0000747d T attc_rd_rsp_handler
+0x000075d9 T attc_send_execute
+0x00007625 T attc_send_read_ind
+0x0000771d T attc_wr_rsp_handler
+0x00014205 T gattc_get_operation
+0x0001427d T gattc_get_operation_ptr
+0x00014b25 T gattc_send_complete_evt
+0x300002b0 D TASK_DESC_GATTC
+0x000075a9 T attc_send_att_req
+0x0000f205 T gapc_is_sec_set
+0x0000f2f5 T gapc_lk_sec_lvl_get
+0x00051764 D gattc_msg_handler_tab
+0x00014425 T gattc_process_op
+0x00009165 T atts_l2cc_pdu_recv_handler
+0x00006f1d T attc_l2cc_pdu_recv_handler
+
+
+;attm_db
+0x00007dcf T attm_uuid16_comp
+0x000432bd T llm_plan_elt_get
+
+;lld
+0x0004dd10 D lld_scan_map_legacy_pdu_to_evt_type
+0x0004dcf8 D byte_tx_time
+0x0004dd00 D fixed_tx_time
+0x00044b21 T rwip_timer_hus_set
+0x0000a611 T ble_util_buf_adv_tx_alloc
+0x0000a621 T ble_util_buf_adv_tx_free
+0x0002c0dd T lld_adv_adv_data_update
+0x0002e4d1 T lld_adv_rand_addr_update
+0x0002ece9 T lld_adv_scan_rsp_data_update
+0x30000ecc D ble_util_buf_env
+0x0003c239 T lld_per_adv_list_rem
+
+;l2cc
+0x0000cc7d T dbg_trc_req_l2cap
+0x0000ec8d T gapc_get_conhdl
+0x00023129 T l2cc_dbg_pdu_unpack
+0x00023759 T l2cc_lecb_init_disconnect
+0x00023839 T l2cc_lecb_pdu_unpack
+0x00023cd5 T l2cc_pdu_header_check
+0x000248a9 T l2cc_pdu_unpack
+
+;ke_mem
+0x30000918 D ke_env
+
+;gapm_smp
+0x000134bd T gapm_smp_encrypt_req
+
+;boot
+0x30001cd8 D boot_info
 
 #<SYMDEFS># ARM Linker, 5060061: Last Updated: Thu Jul 24 20:52:03 2018
 ;sdk rom symbol
@@ -497,3 +689,4 @@
 0x00043c71 T register_config_coded_tx_gain_value
 
 0x0000beb1 T dbg_log_printf
+0x00001b39 T get_efuse_info

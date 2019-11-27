@@ -149,7 +149,7 @@ typedef struct _hmac_handle
 
 /** @} */
 
-/** @addtogroup HAL_HMAC_STRUCTURES Callback Structures
+/** @addtogroup HAL_HMAC_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 

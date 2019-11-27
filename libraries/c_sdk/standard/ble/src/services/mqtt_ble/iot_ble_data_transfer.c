@@ -36,8 +36,6 @@
 #include "iot_ble_data_transfer.h"
 #include "platform/iot_threads.h"
 
-#include "gr55xx_sys.h"
-
 /* Configure logs for the functions in this file. */
 #ifdef IOT_LOG_LEVEL_GLOBAL
     #define LIBRARY_LOG_LEVEL    IOT_LOG_LEVEL_GLOBAL
@@ -540,7 +538,6 @@ static void _ControlCharCallback( IotBleAttributeEvent_t * pEventParam )
 
             if( pService->channel.callback != NULL )
             {
-							IotLogError("set channel isOpen 1 : %d \r\n", pService->isReady);
                 pService->channel.isOpen = pService->isReady;
                 channelEvent = ( pService->isReady == true ) ? IOT_BLE_DATA_TRANSFER_CHANNEL_OPENED : IOT_BLE_DATA_TRANSFER_CHANNEL_CLOSED;
                 pService->channel.callback( channelEvent,
@@ -597,8 +594,6 @@ static void _TXLargeMesgCharCallback( IotBleAttributeEvent_t * pEventParam )
     IotBleDataTransferService_t * pService;
     size_t length;
     BTStatus_t status;
-		
-		IotLogError(">>> _TXLargeMesgCharCallback \r\n");
 
     if( pEventParam->xEventType == eBLERead )
     {
@@ -665,23 +660,18 @@ static void _RXLargeMesgCharCallback( IotBleAttributeEvent_t * pEventParam )
     };
     IotBleDataTransferService_t * pService;
     bool status = false;
-		
-		IotLogError(">>> _RXLargeMesgCharCallback %d \r\n", pEventParam->pParamWrite->attrHandle);
 
     if( ( pEventParam->xEventType == eBLEWrite ) || ( pEventParam->xEventType == eBLEWriteNoResponse ) )
     {
         pService = _getServiceFromHandle( pEventParam->pParamWrite->attrHandle );
-			
-				IotLogError(">>> _RXLargeMesgCharCallback cp 1 \r\n");
 
         if( ( pService != NULL ) &&
             ( pService->channel.isOpen ) )
         {
             status = _resizeChannelBuffer( &pService->channel.lotBuffer, IOT_BLE_DATA_TRANSFER_RX_BUFFER_SIZE, pEventParam->pParamWrite->length );
-						IotLogError(">>> _RXLargeMesgCharCallback cp 2 \r\n");
+
             if( status == true )
             {
-								IotLogError(">>> _RXLargeMesgCharCallback cp 2.1 \r\n");
                 /* Copy the received data into the buffer. */
                 memcpy( ( pService->channel.lotBuffer.pBuffer + pService->channel.lotBuffer.head ),
                         pEventParam->pParamWrite->pValue,
@@ -706,15 +696,12 @@ static void _RXLargeMesgCharCallback( IotBleAttributeEvent_t * pEventParam )
             }
             else
             {
-							IotLogError(">>> _RXLargeMesgCharCallback cp 3 \r\n");
-                IotLogError( ">>> RX failed, unable to allocate buffer to read data" );
+                IotLogError( "RX failed, unable to allocate buffer to read data" );
             }
         }
 
-				IotLogError(">>> _RXLargeMesgCharCallback cp 4 \r\n");
         if( pEventParam->xEventType == eBLEWrite )
         {
-					IotLogError(">>> _RXLargeMesgCharCallback cp 5 \r\n");
             resp.pAttrData->handle = pEventParam->pParamWrite->attrHandle;
             resp.pAttrData->pData = ( uint8_t * ) &status;
             resp.pAttrData->size = 1;
@@ -998,7 +985,6 @@ IotBleDataTransferChannel_t * IotBleDataTransfer_Open( uint8_t serviceIdentifier
 
                 if( _services[ index ].isReady == true )
                 {
-									IotLogError("set channel isOpen 3 : true \r\n" );
                     pChannel->isOpen = true;
                 }
             }
@@ -1039,7 +1025,6 @@ bool IotBleDataTransfer_SetCallback( IotBleDataTransferChannel_t * pChannel,
 
 void IotBleDataTransfer_Close( IotBleDataTransferChannel_t * pChannel )
 {
-	IotLogError("set channel isOpen 2 : false \r\n" );
     pChannel->isOpen = false;
 
     /* Nobody writes/reads from send buffer after timeout value. */

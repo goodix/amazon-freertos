@@ -107,7 +107,7 @@ typedef struct _aon_wdt_handle
 
 /** @} */
 
-/** @addtogroup HAL_AON_WDT_STRUCTURES Callback Structures
+/** @addtogroup HAL_AON_WDT_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -225,7 +225,7 @@ hal_status_t hal_aon_wdt_refresh(aon_wdt_handle_t *p_aon_wdt);
  ****************************************************************************************
  * @brief  Handle AON_WDT interrupt request.
  *
- * @note   The count complete can be used if specific safety operations
+ * @note   The count completed can be used if specific safety operations
  *         or data logging must be performed before the actual reset is generated.
  *         When RESET Mode is enabled, AON_WDT will generate an interrupt on first timeout.
  *         If interrupt has not been cleared before the second timeout, AON_WDT will then
@@ -241,7 +241,7 @@ void hal_aon_wdt_irq_handler(aon_wdt_handle_t *p_aon_wdt);
  ****************************************************************************************
  * @brief  AON_WDT count complete (counter reaches to 0) callback.
  *
- * @note   This function should not be modified. when the callback is needed,
+ * @note   This function should not be modified. When the callback is needed,
  *         the hal_wdt_count_cplt_callback can be implemented in the user file.
  *
  * @param[in]  p_aon_wdt: Pointer to a AON_WDT handle which contains the configuration

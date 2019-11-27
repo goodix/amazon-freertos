@@ -53,7 +53,7 @@
  *****************************************************************************************
  */
 #define APP_ERROR_INFO_LEN          1024
-#define APP_ERROR_CODE_NB           30
+#define APP_ERROR_CODE_NB           43
 
 /*
  * STRUCTURES
@@ -104,7 +104,21 @@ static struct error_code_info_t s_error_code_info[APP_ERROR_CODE_NB] =
     {SDK_ERR_IND_DISABLED,                     "Indication Not Enabled."},
     {SDK_ERR_DISCONNECTED,                     "Disconnected occur."},
     {SDK_ERR_APP_ERROR,                        "Application error."},
+    {SDK_ERR_INVALID_ADDRESS,                  "Invalid address supplied."},
+    {SDK_ERR_INVALID_ADV_INTERVAL,             "Invalid advertising interval supplied."},
+    {SDK_ERR_INVALID_DISVCOVERY_MODE,          "Invalid discovery mode supplied."},
+    {SDK_ERR_INVALID_ADV_PARAM,                "Invalid advertising parameters supplied."},
+    {SDK_ERR_INVALID_ADV_PEER_ADDR,            "Invalid peer address supplied."},
+    {SDK_ERR_ADV_DATA_NOT_SET,                 "Legacy advertising data not set."},
+    {SDK_ERR_PER_ADV_DATA_NOT_SET,             "Periodic advertising data not set."},
+    {SDK_ERR_EXT_SCAN_RSP_DATA_NOT_SET,        "Extended scan response data not set."},
+    {SDK_ERR_INVALID_DURATION_PARAM,           "Invalid duration parameter_supplied."},
+    {SDK_ERR_INVALID_PER_SYNC_IDX,             "Invalid periodic synchronization index supplied."},
+    {SDK_ERR_INVALID_CID,                      "Invalid CID supplied."},
+    {SDK_ERR_INVALID_CHL_NUM,                  "Invalid channel number supplied."},
+    {SDK_ERR_NOT_ENOUGH_CREDITS,               "Not enough credits."},
 };
+
 
 /*
  * GLOBAL FUNCTION DEFINITIONS
@@ -117,7 +131,7 @@ __WEAK void app_error_fault_handler(app_error_info_t *p_error_info)
 
     if (APP_ERROR_API_RET == p_error_info->error_type)
     {
-        for (uint8_t i = 0; i < APP_ERROR_CODE_NB; i++)
+        for (uint8_t i = 0; ; i++)
         {
             if (p_error_info->value.error_code == s_error_code_info[i].error_code)
             {
@@ -125,10 +139,12 @@ __WEAK void app_error_fault_handler(app_error_info_t *p_error_info)
                         "Error code 0X%04X: %s",
                         p_error_info->value.error_code,
                         s_error_code_info[i].error_info);
+                break;
             }
             else if (APP_ERROR_CODE_NB == i)
             {
                 sprintf(s_error_print_info, "Error code 0X%04X: No found information.", p_error_info->value.error_code);
+                break;
             }
         }
     }
@@ -148,6 +164,5 @@ __WEAK void app_error_fault_handler(app_error_info_t *p_error_info)
                    s_error_print_info);
 
     app_log_flush();
-    while(1);
 #endif
 }

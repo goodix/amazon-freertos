@@ -40,7 +40,6 @@
  *****************************************************************************************
  */
 #include "app_log.h"
-#include "gr55xx_hal.h"
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -107,7 +106,10 @@
 /**@brief App log environment variable. */
 struct app_log_env_t
 {
-    app_log_init_t    app_log_init;           /**< App log initialization variables. */
+    app_log_init_t       app_log_init;  /**< App log initialization variables. */
+    bool                 is_filter_set; /**< App log filter is set or not. */
+    app_log_trans_func_t trans_func;    /**< App log transmit function. */
+    app_log_flush_func_t flush_func;    /**< App log flush function. */
 };
 
 /*
@@ -203,35 +205,43 @@ static bool app_log_is_fmt_set(uint8_t level, uint8_t fmt)
  * GLOBAL FUNCTION DEFINITIONS
  *****************************************************************************************
  */
-bool app_log_init(app_log_init_t *p_log_init)
+bool app_log_init(app_log_init_t *p_log_init, app_log_trans_func_t trans_func, app_log_flush_func_t flush_func)
 {
-    if (NULL == p_log_init || p_log_init->filter.level > APP_LOG_LVL_DEBUG)
+    if ( NULL == trans_func)
     {
         return false;
     }
 
-    app_log_port_init();
+    if (NULL == p_log_init)
+    {
+        s_app_log_env.is_filter_set = false;
+        memset(&s_app_log_env.app_log_init, 0, sizeof(app_log_init_t));
+    }
+    else if ( p_log_init->filter.level <= APP_LOG_LVL_DEBUG)
+    {
+        s_app_log_env.is_filter_set = true;
+        memcpy(&s_app_log_env.app_log_init, p_log_init, sizeof(app_log_init_t));
+    }
+    else
+    {
+        return false;
+    }
 
-    memcpy(&s_app_log_env.app_log_init, p_log_init, sizeof(app_log_init_t));
-    
+    s_app_log_env.trans_func    = trans_func;
+    s_app_log_env.flush_func    = flush_func;
+
     return true;
-}
-
-void app_log_flush(void)
-{
-    app_log_port_flush();
 }
 
 void app_log_output(uint8_t level, const char *tag, const char *file, const char *func, const long line, const char *format, ...)
 {
     uint16_t log_length     = 0;
-    uint8_t  tag_length     = strlen(tag);
     uint8_t  newline_length = strlen(APP_LOG_NEWLINE_SIGN);
     int      fmt_result     = 0;
     char     line_num[APP_LOG_LINE_NB_LEN_MAX + 1]  = { 0 };
     va_list  ap;
 
-    if (level > s_app_log_env.app_log_init.filter.level)
+    if (level > s_app_log_env.app_log_init.filter.level && s_app_log_env.is_filter_set)
     {
         return;
     }
@@ -343,7 +353,7 @@ void app_log_output(uint8_t level, const char *tag, const char *file, const char
     // Encode newline sign.
     log_length += app_log_strcpy(log_length, s_log_encode_buf, APP_LOG_NEWLINE_SIGN);
 
-    app_log_port_output(s_log_encode_buf, log_length);
+    s_app_log_env.trans_func(s_log_encode_buf, log_length);
 
     APP_LOG_UNLOCK();
 }
@@ -369,9 +379,10 @@ void app_log_raw_info(const char *format, ...)
         log_length = APP_LOG_LINE_BUF_SIZE;
     }
 
-    app_log_port_output(s_log_encode_buf, log_length);
+    s_app_log_env.trans_func(s_log_encode_buf, log_length);
 
     APP_LOG_UNLOCK();
+		app_log_flush();
 }
 
 void app_log_hex_dump(uint8_t *p_data, uint16_t length)
@@ -402,8 +413,67 @@ void app_log_hex_dump(uint8_t *p_data, uint16_t length)
         }
     }
 
-    app_log_port_output(s_log_encode_buf, log_length);
+    s_app_log_env.trans_func(s_log_encode_buf, log_length);
 
     APP_LOG_UNLOCK();
 }
+
+void app_log_flush(void)
+{
+    if (s_app_log_env.flush_func)
+    {
+        s_app_log_env.flush_func();
+    }
+}
+
+#if IO_REDIRECT == 0
+#if defined(__CC_ARM)
+
+struct __FILE
+{
+    int handle;
+};
+
+FILE __stdout;
+FILE __stdin;
+
+int fputc(int ch, FILE *file)
+{
+    s_app_log_env.trans_func((uint8_t *)&ch, 1);
+
+    return 1;
+}
+
+#elif defined(__GNUC__)
+
+int _write(int file, const char *buf, int len)
+{
+    int tx_len = 0;
+
+    while (tx_len < len)
+    {
+        s_app_log_env.trans_func((uint8_t *)buf, 1);
+        buf++;
+        tx_len++;
+    }
+    return tx_len;
+}
+
+#elif defined(__ICCARM__)
+
+size_t __write(int handle, const unsigned char *buf, size_t size)
+{
+    size_t len = 0;
+
+    while (len < size)
+    {
+        s_app_log_env.trans_func((uint8_t *)buf, 1);
+        buf++;
+        len++;
+    }
+    return len;
+}
+
+#endif /* defined(__CC_ARM) */
+#endif
 

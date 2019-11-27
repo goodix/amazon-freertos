@@ -3,7 +3,7 @@
  *
  * @file    gr55xx_ll_tim.h
  * @author  BLE Driver Team
- * @brief   Header file containing functions prototypes of TIM LL library.
+ * @brief   Header file containing functions prototypes of TIMER LL library.
  *
  ****************************************************************************************
  * @attention
@@ -43,14 +43,14 @@
   * @{
   */
 
-/** @defgroup LL_TIM TIM
-  * @brief TIM LL module driver.
+/** @defgroup LL_TIMER TIMER
+  * @brief TIMER LL module driver.
   * @{
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GR55XX_LL_TIM_H__
-#define __GR55XX_LL_TIM_H__
+#ifndef __GR55XX_LL_TIMER_H__
+#define __GR55XX_LL_TIMER_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -59,50 +59,50 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "gr55xx.h"
 
-#if defined (TIM0) || defined (TIM1)
+#if defined (TIMER0) || defined (TIMER1)
 
-/** @defgroup TIM_LL_STRUCTURES Structures
+/** @defgroup TIMER_LL_STRUCTURES Structures
   * @{
   */
 
 /* Exported types ------------------------------------------------------------*/
-/** @defgroup TIM_LL_ES_INIT TIM Exported init structures
+/** @defgroup TIMER_LL_ES_INIT TIMER Exported init structures
   * @{
   */
 
 /**
-  * @brief LL TIM init Structure definition
+  * @brief LL TIMER init Structure definition
   */
-typedef struct _ll_tim_init_t
+typedef struct _ll_timer_init_t
 {
     uint32_t auto_reload;        /**< Specifies the auto reload value to be loaded into the active
                                      Auto-Reload Register at the next update event.
                                      This parameter must be a number between Min_Data=0x00000000 and Max_Data=0xFFFFFFFF.
                                      Some timer instances may support 32 bits counters. In that case this parameter must be a number between 0x0000 and 0xFFFFFFFF.
 
-                                     This feature can be modified afterwards using unitary function @ref ll_tim_set_auto_reload().*/
-} ll_tim_init_t;
+                                     This feature can be modified afterwards using unitary function @ref ll_timer_set_auto_reload().*/
+} ll_timer_init_t;
 /** @} */
 
 /** @} */
 
 /**
-  * @defgroup  TIM_LL_TIM_MACRO Defines
+  * @defgroup  TIMER_LL_TIMER_MACRO Defines
   * @{
   */
 
 /* Exported constants --------------------------------------------------------*/
-/** @defgroup TIM_LL_Exported_Constants TIM Exported Constants
+/** @defgroup TIMER_LL_Exported_Constants TIMER Exported Constants
   * @{
   */
 
-/** @defgroup TIM_LL_EC_DEFAULT_CONFIG InitStrcut default configuartion
+/** @defgroup TIMER_LL_EC_DEFAULT_CONFIG InitStrcut default configuartion
   * @{
   */
 /**
-  * @brief LL TIM InitStrcut default configuartion
+  * @brief LL TIMER InitStrcut default configuartion
   */
-#define TIM_DEFAULT_CONFIG                \
+#define TIMER_DEFAULT_CONFIG                \
 {                                         \
     .auto_reload = SystemCoreClock - 1,    \
 }
@@ -111,11 +111,11 @@ typedef struct _ll_tim_init_t
 /** @} */
 
 /* Exported macro ------------------------------------------------------------*/
-/** @defgroup TIM_LL_Exported_Macros TIM Exported Macros
+/** @defgroup TIMER_LL_Exported_Macros TIMER Exported Macros
   * @{
   */
 
-/** @defgroup TIM_LL_EM_WRITE_READ Common Write and read registers Macros
+/** @defgroup TIMER_LL_EM_WRITE_READ Common Write and read registers Macros
   * @{
   */
 
@@ -126,7 +126,7 @@ typedef struct _ll_tim_init_t
   * @param  __VALUE__ Value to be written in the register
   * @retval None
   */
-#define LL_TIM_WriteReg(__instance__, __REG__, __VALUE__)   WRITE_REG(__instance__->__REG__, (__VALUE__))
+#define LL_TIMER_WriteReg(__instance__, __REG__, __VALUE__)   WRITE_REG(__instance__->__REG__, (__VALUE__))
 
 /**
   * @brief  Read a value in TIMER register
@@ -134,7 +134,7 @@ typedef struct _ll_tim_init_t
   * @param  __REG__ Register to be read
   * @retval Register value
   */
-#define LL_TIM_ReadReg(__instance__, __REG__)               READ_REG(__instance__->__REG__)
+#define LL_TIMER_ReadReg(__instance__, __REG__)               READ_REG(__instance__->__REG__)
 
 /** @} */
 
@@ -143,11 +143,11 @@ typedef struct _ll_tim_init_t
 /** @} */
 
 /* Exported functions --------------------------------------------------------*/
-/** @defgroup TIM_LL_DRIVER_FUNCTIONS Functions
+/** @defgroup TIMER_LL_DRIVER_FUNCTIONS Functions
   * @{
   */
 
-/** @defgroup TIM_LL_EF_Configuration Configuration functions
+/** @defgroup TIMER_LL_EF_Configuration Configuration functions
   * @{
   */
 
@@ -158,12 +158,12 @@ typedef struct _ll_tim_init_t
   *  --------|--------
   *  CTRL | EN
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval None
   */
-__STATIC_INLINE void ll_tim_enable_counter(tim_regs_t *TIMx)
+__STATIC_INLINE void ll_timer_enable_counter(timer_regs_t *TIMERx)
 {
-    SET_BITS(TIMx->CTRL, TIM_CTRL_EN);
+    SET_BITS(TIMERx->CTRL, TIMER_CTRL_EN);
 }
 
 /**
@@ -173,27 +173,27 @@ __STATIC_INLINE void ll_tim_enable_counter(tim_regs_t *TIMx)
   *  --------|--------
   *  CTRL | EN
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval None
   */
-__STATIC_INLINE void ll_tim_disable_counter(tim_regs_t *TIMx)
+__STATIC_INLINE void ll_timer_disable_counter(timer_regs_t *TIMERx)
 {
-    CLEAR_BITS(TIMx->CTRL, TIM_CTRL_EN);
+    CLEAR_BITS(TIMERx->CTRL, TIMER_CTRL_EN);
 }
 
 /**
-  * @brief  Indicates whether the timer counter is enabled.
+  * @brief  Indicate whether the timer counter is enabled.
   *
   *  Register|BitsName
   *  --------|--------
   *  CTRL | EN
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_tim_is_enabled_counter(tim_regs_t *TIMx)
+__STATIC_INLINE uint32_t ll_timer_is_enabled_counter(timer_regs_t *TIMERx)
 {
-    return (READ_BITS(TIMx->CTRL, TIM_CTRL_EN) == (TIM_CTRL_EN));
+    return (READ_BITS(TIMERx->CTRL, TIMER_CTRL_EN) == (TIMER_CTRL_EN));
 }
 
 /**
@@ -203,13 +203,13 @@ __STATIC_INLINE uint32_t ll_tim_is_enabled_counter(tim_regs_t *TIMx)
   *  --------|--------
   *  VALUE | VALUE
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @param  counter Counter value (between Min_Data=0 and Max_Data=0xFFFFFFFF)
   * @retval None
   */
-__STATIC_INLINE void ll_tim_set_counter(tim_regs_t *TIMx, uint32_t counter)
+__STATIC_INLINE void ll_timer_set_counter(timer_regs_t *TIMERx, uint32_t counter)
 {
-    WRITE_REG(TIMx->VALUE, counter);
+    WRITE_REG(TIMERx->VALUE, counter);
 }
 
 /**
@@ -219,12 +219,12 @@ __STATIC_INLINE void ll_tim_set_counter(tim_regs_t *TIMx, uint32_t counter)
   *  --------|--------
   *  VALUE | VALUE
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval Counter value (between Min_Data=0 and Max_Data=0xFFFFFFFF)
   */
-__STATIC_INLINE uint32_t ll_tim_get_counter(tim_regs_t *TIMx)
+__STATIC_INLINE uint32_t ll_timer_get_counter(timer_regs_t *TIMERx)
 {
-    return (uint32_t)(READ_REG(TIMx->VALUE));
+    return (uint32_t)(READ_REG(TIMERx->VALUE));
 }
 
 /**
@@ -235,13 +235,13 @@ __STATIC_INLINE uint32_t ll_tim_get_counter(tim_regs_t *TIMx)
   *  --------|--------
   *  RELOAD | RELOAD
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @param  auto_reload between Min_Data=0 and Max_Data=0xFFFFFFFF
   * @retval None
   */
-__STATIC_INLINE void ll_tim_set_auto_reload(tim_regs_t *TIMx, uint32_t auto_reload)
+__STATIC_INLINE void ll_timer_set_auto_reload(timer_regs_t *TIMERx, uint32_t auto_reload)
 {
-    WRITE_REG(TIMx->RELOAD, auto_reload);
+    WRITE_REG(TIMERx->RELOAD, auto_reload);
 }
 
 /**
@@ -254,9 +254,9 @@ __STATIC_INLINE void ll_tim_set_auto_reload(tim_regs_t *TIMx, uint32_t auto_relo
   * @param  TIMx Timer instance
   * @retval Auto-reload value
   */
-__STATIC_INLINE uint32_t ll_tim_get_auto_reload(tim_regs_t *TIMx)
+__STATIC_INLINE uint32_t ll_timer_get_auto_reload(timer_regs_t *TIMERx)
 {
-    return (uint32_t)(READ_REG(TIMx->RELOAD));
+    return (uint32_t)(READ_REG(TIMERx->RELOAD));
 }
 
 /** @} */
@@ -272,12 +272,12 @@ __STATIC_INLINE uint32_t ll_tim_get_auto_reload(tim_regs_t *TIMx)
   *  --------|--------
   *  CTRL | INTEN
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval None
   */
-__STATIC_INLINE void ll_tim_enable_it(tim_regs_t *TIMx)
+__STATIC_INLINE void ll_timer_enable_it(timer_regs_t *TIMERx)
 {
-    SET_BITS(TIMx->CTRL, TIM_CTRL_INTEN);
+    SET_BITS(TIMERx->CTRL, TIMER_CTRL_INTEN);
 }
 
 /**
@@ -287,27 +287,27 @@ __STATIC_INLINE void ll_tim_enable_it(tim_regs_t *TIMx)
   *  --------|--------
   *  CTRL | INTEN
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval None
   */
-__STATIC_INLINE void ll_tim_disable_it(tim_regs_t *TIMx)
+__STATIC_INLINE void ll_timer_disable_it(timer_regs_t *TIMERx)
 {
-    CLEAR_BITS(TIMx->CTRL, TIM_CTRL_INTEN);
+    CLEAR_BITS(TIMERx->CTRL, TIMER_CTRL_INTEN);
 }
 
 /**
-  * @brief  Indicates whether the timer interrput is enabled.
+  * @brief  Indicate whether the timer interrput is enabled.
   *
   *  Register|BitsName
   *  --------|--------
   *  CTRL | INTEN
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_tim_is_enabled_it(tim_regs_t *TIMx)
+__STATIC_INLINE uint32_t ll_timer_is_enabled_it(timer_regs_t *TIMERx)
 {
-    return (READ_BITS(TIMx->CTRL, TIM_CTRL_INTEN) == (TIM_CTRL_INTEN));
+    return (READ_BITS(TIMERx->CTRL, TIMER_CTRL_INTEN) == (TIMER_CTRL_INTEN));
 }
 
 /** @} */
@@ -323,12 +323,12 @@ __STATIC_INLINE uint32_t ll_tim_is_enabled_it(tim_regs_t *TIMx)
   *  --------|--------
   *  INTSTAT | INTSTAT
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval None
   */
-__STATIC_INLINE void ll_tim_clear_flag_it(tim_regs_t *TIMx)
+__STATIC_INLINE void ll_timer_clear_flag_it(timer_regs_t *TIMERx)
 {
-    WRITE_REG(TIMx->INTSTAT, TIM_INT_STAT);
+    WRITE_REG(TIMERx->INTSTAT, TIMER_INT_STAT);
 }
 
 /**
@@ -338,12 +338,12 @@ __STATIC_INLINE void ll_tim_clear_flag_it(tim_regs_t *TIMx)
   *  --------|--------
   *  INTSTAT | INTSTAT
   *
-  * @param  TIMx Timer instance
+  * @param  TIMERx Timer instance
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_tim_is_active_flag_it(tim_regs_t *TIMx)
+__STATIC_INLINE uint32_t ll_timer_is_active_flag_it(timer_regs_t *TIMERx)
 {
-    return (READ_BITS(TIMx->INTSTAT, TIM_INT_STAT) == (TIM_INT_STAT));
+    return (READ_BITS(TIMERx->INTSTAT, TIMER_INT_STAT) == (TIMER_INT_STAT));
 }
 
 /** @} */
@@ -353,45 +353,45 @@ __STATIC_INLINE uint32_t ll_tim_is_active_flag_it(tim_regs_t *TIMx)
   */
 
 /**
-  * @brief  De-initialize TIM registers (Registers restored to their default values).
-  * @param  TIMx TIM instance
+  * @brief  De-initialize TIMER registers (Registers restored to their default values).
+  * @param  TIMERx TIMER instance
   * @retval An error_status_t enumeration value:
-  *          - SUCCESS: TIM registers are de-initialized
-  *          - ERROR: TIM registers are not de-initialized
+  *          - SUCCESS: TIMER registers are de-initialized
+  *          - ERROR: TIMER registers are not de-initialized
   */
-error_status_t ll_tim_deinit(tim_regs_t *TIMx);
+error_status_t ll_timer_deinit(timer_regs_t *TIMERx);
 
 /**
-  * @brief  Initialize TIM registers according to the specified
-  *         parameters in TIM_InitStruct.
-  * @param  TIMx TIM instance
-  * @param  p_tim_init Pointer to a ll_tim_init_t structure that contains the configuration
+  * @brief  Initialize TIMER registers according to the specified
+  *         parameters in TIMER_InitStruct.
+  * @param  TIMERx TIMER instance
+  * @param  p_tim_init Pointer to a ll_timer_init_t structure that contains the configuration
   *                        information for the specified TIM peripheral.
   * @retval An error_status_t enumeration value:
-  *          - SUCCESS: TIM registers are initialized according to p_tim_init content
-  *          - ERROR: Problem occurred during TIM Registers initialization
+  *          - SUCCESS: TIMER registers are initialized according to p_tim_init content
+  *          - ERROR: Problem occurred during TIMER Registers initialization
   */
-error_status_t ll_tim_init(tim_regs_t *TIMx, ll_tim_init_t *p_tim_init);
+error_status_t ll_timer_init(timer_regs_t *TIMERx, ll_timer_init_t *p_timer_init);
 
 /**
-  * @brief Set each field of a @ref ll_tim_init_t type structure to default value.
-  * @param p_tim_init  Pointer to a @ref ll_tim_init_t structure
+  * @brief Set each field of a @ref ll_timer_init_t type structure to default value.
+  * @param p_tim_init  Pointer to a @ref ll_timer_init_t structure
   *                        whose fields will be set to default values.
   * @retval None
   */
-void ll_tim_struct_init(ll_tim_init_t *p_tim_init);
+void ll_timer_struct_init(ll_timer_init_t *p_timer_init);
 
 /** @} */
 
 /** @} */
 
-#endif /* TIM0 || TIM1 */
+#endif /* TIMER0 || TIMER1 */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __GR55XX_LL_TIM_H__ */
+#endif /* __GR55XX_LL_TIMER_H__ */
 
 /** @} */
 

@@ -78,7 +78,8 @@ void app_timer_stop(app_timer_id_t p_timer_id);
  *****************************************************************************************
  * @brief To start a existed timer in node list with old parameters
  * @param[in] app_timer_id_t: the id of timer node
- * @param[in] delay : the delay value of timer node,note this value should not exceed 4000 seconds
+ * @param[in] delay : the delay value of timer node, note this value should not
+ *                       exceed 4000 seconds. Unit (ms).
  * @param[in] p_ctx : the pointer of context
  *****************************************************************************************
  */

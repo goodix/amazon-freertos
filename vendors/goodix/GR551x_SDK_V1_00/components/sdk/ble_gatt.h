@@ -75,6 +75,21 @@ typedef struct
 
 /**
  ****************************************************************************************
+ * @brief Set ATT_MTU size.
+ * 
+ * @param[in]  mtu:        ATT_MTU size.
+ * 
+ * @note This function should be called before exchange MTU operation. This MTU size is used to all connections.
+ *       If not set these parameters, the stack will config the default value as (max_mtu = 512).
+ *
+ * @retval ::SDK_SUCCESS: Successfully get ATT_MTU.
+ * @retval ::SDK_ERR_DISALLOWED: Operation is disallowed.
+ ****************************************************************************************
+ */
+uint16_t ble_gatt_mtu_set(uint16_t mtu);
+
+/**
+ ****************************************************************************************
  * @brief Get the current ATT_MTU size for a given connection.
  *
  * @param[in]    conn_idx:     Current connection index.

@@ -44,7 +44,7 @@
 #define SDK_ERR_TIMER_INSUFFICIENT                  0x0007      /**< Timer is insufficient. */
 #define SDK_ERR_NVDS_NOT_INIT                       0x0008      /**< NVDS is not initiated. */
 #define SDK_ERR_LIST_ITEM_NOT_FOUND                 0x0009      /**< Item not found in list. */
-#define SDK_ERR_LIST_ITEM_ALREADY_EXISTED           0x000a      /**< Item already existed in list. */
+#define SDK_ERR_LIST_ITEM_ALREADY_EXISTED           0x000a      /**< Item already exists in list. */
 #define SDK_ERR_LIST_FULL                           0x000b      /**< List is full. */
 #define SDK_ERR_SDK_INTERNAL                        0x000c      /**< Internal SDK error. */
 #define SDK_ERR_INVALID_BUFF_LENGTH                 0x000d      /**< The buffer's length is not enough. */
@@ -74,9 +74,11 @@
 #define SDK_ERR_ADV_DATA_NOT_SET                    0x0023      /**< Legacy advertising data not set. */
 #define SDK_ERR_PER_ADV_DATA_NOT_SET                0x0024      /**< Periodic advertising data not set. */
 #define SDK_ERR_EXT_SCAN_RSP_DATA_NOT_SET           0x0025      /**< Extended scan response data not set. */
-#define SDK_ERR_INVALID_DURATION_PARAM              0x0026      /**< Invalid duration parameter_supplied. */
+#define SDK_ERR_INVALID_DURATION_PARAM              0x0026      /**< Invalid duration parameter supplied. */
 #define SDK_ERR_INVALID_PER_SYNC_IDX                0x0027      /**< Invalid periodic synchronization index supplied. */
 #define SDK_ERR_INVALID_CID                         0x0028      /**< Invalid CID supplied. */
+#define SDK_ERR_INVALID_CHL_NUM                     0x0029      /**< Invalid channel number supplied. */
+#define SDK_ERR_NOT_ENOUGH_CREDITS                  0x002A      /**< Not enough credits. */
 
 #define SDK_ERR_APP_ERROR                           0x0080      /**< Application error. */
 /**@} */
@@ -115,7 +117,7 @@
 #define BLE_L2C_ERR_INVALID_MPS_EXCEED              0x32        /**< Invalid PDU length exceeds MPS. */
 #define BLE_L2C_ERR_INVALID_CID                     0x33        /**< Invalid Channel ID. */
 #define BLE_L2C_ERR_INVALID_PDU                     0x34        /**< Invalid PDU. */
-#define BLE_L2C_ERR_NO_RES_AVAIL                    0x35        /**< Connection refused because no resources available. */
+#define BLE_L2C_ERR_NO_RES_AVAIL                    0x35        /**< Connection refused because no resources are available. */
 #define BLE_L2C_ERR_INSUFF_AUTHEN                   0x36        /**< Connection refused because of insufficient authentication. */
 #define BLE_L2C_ERR_INSUFF_AUTHOR                   0x37        /**< Connection refused because of insufficient authorization. */
 #define BLE_L2C_ERR_INSUFF_ENC_KEY_SIZE             0x38        /**< Connection refused because of insufficient encryption key size. */
@@ -150,6 +152,8 @@
 #define BLE_GATT_ERR_ATTRIBUTE_CLIENT_MISSING       0x54        /**< No attribute client defined. */
 #define BLE_GATT_ERR_ATTRIBUTE_SERVER_MISSING       0x55        /**< No attribute server defined. */
 #define BLE_GATT_ERR_INVALID_PERM                   0x56        /**< Permission set in service/attribute is invalid. */
+#define BLE_GATT_ERR_BROWSE_NO_ANY_MORE             0x57        /**< GATT browses no any more contents. */
+
 
 /**@brief LL Specific Error. */
 #define BLE_LL_ERR_UNKNOWN_HCI_COMMAND              0x91        /**< Unknown HCI Command. */
@@ -158,10 +162,10 @@
 #define BLE_LL_ERR_PAGE_TIMEOUT                     0x94        /**< BT Page Timeout. */
 #define BLE_LL_ERR_AUTH_FAILURE                     0x95        /**< Authentication failure. */
 #define BLE_LL_ERR_PIN_MISSING                      0x96        /**< Pin code missing. */
-#define BLE_LL_ERR_MEMORY_CAPA_EXCEED               0x97        /**< Memory capacity exceed. */
+#define BLE_LL_ERR_MEMORY_CAPA_EXCEED               0x97        /**< Memory capacity exceeded. */
 #define BLE_LL_ERR_CON_TIMEOUT                      0x98        /**< Connection Timeout. */
 #define BLE_LL_ERR_CON_LIMIT_EXCEED                 0x99        /**< Connection limit Exceed. */
-#define BLE_LL_ERR_SYNC_CON_LIMIT_DEV_EXCEED        0x9A        /**< Synchronous Connection limit exceed. */
+#define BLE_LL_ERR_SYNC_CON_LIMIT_DEV_EXCEED        0x9A        /**< Synchronous Connection limit exceeded. */
 #define BLE_LL_ERR_ACL_CON_EXISTS                   0x9B        /**< ACL Connection exits. */
 #define BLE_LL_ERR_COMMAND_DISALLOWED               0x9C        /**< Command Disallowed. */
 #define BLE_LL_ERR_CONN_REJ_LIMITED_RESOURCES       0x9D        /**< Connection rejected due to limited resources. */
@@ -170,12 +174,12 @@
 #define BLE_LL_ERR_CONN_ACCEPT_TIMEOUT_EXCEED       0xA0        /**< Connection rejected due to Accept connection timeout. */
 #define BLE_LL_ERR_UNSUPPORTED                      0xA1        /**< Not Supported. */
 #define BLE_LL_ERR_INVALID_HCI_PARAM                0xA2        /**< Invalid parameters. */
-#define BLE_LL_ERR_REMOTE_USER_TERM_CON             0xA3        /**< Remote user terminate connection. */
-#define BLE_LL_ERR_REMOTE_DEV_TERM_LOW_RESOURCES    0xA4        /**< Remote device lost connection due to low resources. */
-#define BLE_LL_ERR_REMOTE_DEV_POWER_OFF             0xA5        /**< Remote device lost  connection due to power failure. */
+#define BLE_LL_ERR_REMOTE_USER_TERM_CON             0xA3        /**< Remote user terminates connection. */
+#define BLE_LL_ERR_REMOTE_DEV_TERM_LOW_RESOURCES    0xA4        /**< Remote device loses connection due to low resources. */
+#define BLE_LL_ERR_REMOTE_DEV_POWER_OFF             0xA5        /**< Remote device loses connection due to power failure. */
 #define BLE_LL_ERR_CON_TERM_BY_LOCAL_HOST           0xA6        /**< Connection terminated by local host. */
 #define BLE_LL_ERR_REPEATED_ATTEMPTS                0xA7        /**< Repeated attempts. */
-#define BLE_LL_ERR_PAIRING_NOT_ALLOWED              0xA8        /**< Pairing not Allowed. */
+#define BLE_LL_ERR_PAIRING_NOT_ALLOWED              0xA8        /**< Pairing not allowed. */
 #define BLE_LL_ERR_UNKNOWN_LMP_PDU                  0xA9        /**< Unknown PDU Error. */
 #define BLE_LL_ERR_UNSUPPORTED_REMOTE_FEATURE       0xAA        /**< Unsupported remote feature. */
 #define BLE_LL_ERR_SCO_OFFSET_REJECTED              0xAB        /**< SCO Offset rejected. */
@@ -184,7 +188,7 @@
 #define BLE_LL_ERR_INVALID_LMP_PARAM                0xAE        /**< Invalid LMP parameters. */
 #define BLE_LL_ERR_UNSPECIFIED_ERROR                0xAF        /**< Unspecified error. */
 #define BLE_LL_ERR_UNSUPPORTED_LMP_PARAM_VALUE      0xB0        /**< Unsupported LMP Parameter value. */
-#define BLE_LL_ERR_ROLE_CHANGE_NOT_ALLOWED          0xB1        /**< Role Change Not allowed. */
+#define BLE_LL_ERR_ROLE_CHANGE_NOT_ALLOWED          0xB1        /**< Role Change not allowed. */
 #define BLE_LL_ERR_LMP_RSP_TIMEOUT                  0xB2        /**< LMP Response timeout. */
 #define BLE_LL_ERR_LMP_COLLISION                    0xB3        /**< LMP Collision. */
 #define BLE_LL_ERR_LMP_PDU_NOT_ALLOWED              0xB4        /**< LMP PDU not allowed. */

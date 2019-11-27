@@ -303,7 +303,7 @@ typedef struct _dma_handle
 #define DMA_PRIORITY_LOW             LL_DMA_PRIORITY_0    /**< Priority level : Low       */
 #define DMA_PRIORITY_MEDIUM          LL_DMA_PRIORITY_2    /**< Priority level : Medium    */
 #define DMA_PRIORITY_HIGH            LL_DMA_PRIORITY_5    /**< Priority level : High      */
-#define DMA_PRIORITY_VERY_HIGH       LL_DMA_PRIORITY_7    /**< Priority level : Very_High */
+#define DMA_PRIORITY_VERY_HIGH       LL_DMA_PRIORITY_7    /**< Priority level : Very High */
 /** @} */
 
 /** @} */
@@ -591,7 +591,7 @@ void hal_dma_irq_handler(dma_handle_t *p_dma);
  * @brief  Register callbacks
  *
  * @param[in]  p_dma: Pointer to a DMA handle which contains the configuration information for the specified DMA Channel.
- * @param[in]  id: User Callback identifer. This parameter can be a one of the following values:
+ * @param[in]  id: User Callback identifer. This parameter can be one of the following values:
  *         @arg @ref HAL_DMA_XFER_TFR_CB_ID
  *         @arg @ref HAL_DMA_XFER_BLK_CB_ID
  *         @arg @ref HAL_DMA_XFER_ERROR_CB_ID
@@ -651,7 +651,7 @@ hal_status_t hal_dma_unregister_callback(dma_handle_t *p_dma, hal_dma_callback_i
  * @param[in]  p_dma: Pointer to a DMA handle which contains the configuration information for the specified DMA Channel.
  *
  * @retval ::HAL_DMA_STATE_RESET: DMA not yet initialized or disabled.
- * @retval ::HAL_DMA_STATE_READY: DMA process success and ready for use.
+ * @retval ::HAL_DMA_STATE_READY: DMA process succeeded and ready for use.
  * @retval ::HAL_DMA_STATE_BUSY: DMA process is ongoing.
  * @retval ::HAL_DMA_STATE_TIMEOUT: DMA timeout state.
  * @retval ::HAL_DMA_STATE_ERROR: DMA error state.

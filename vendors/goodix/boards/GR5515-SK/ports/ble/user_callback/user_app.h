@@ -38,7 +38,7 @@
 #define __USER_APP_H__
 
 #include "gr55xx_sys.h"
-#include "ble_prf_types.h"
+//#include "ble_prf_types.h"
 #include "custom_config.h"
 
 /*

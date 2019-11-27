@@ -61,7 +61,7 @@ extern "C" {
 #include "gr55xx_hal_def.h"
 
 /* Exported types ------------------------------------------------------------*/
-/** @addtogroup HAL_GPIO_STRUCTURES Callback Structures
+/** @addtogroup HAL_GPIO_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -328,7 +328,7 @@ void hal_gpio_deinit(gpio_regs_t *GPIOx, uint32_t gpio_pin);
  * @brief  Read the specified input port pin.
  *
  * @param[in]  GPIOx: Where x can be (0, 1) to select the GPIO peripheral port
- * @param[in]  gpio_pin: Specifies the port bit to read.
+ * @param[in]  gpio_pin: Specifies the port bit to be read.
  *         This parameter can be a one of the following values:
  *         @arg @ref GPIO_PIN_0
  *         @arg @ref GPIO_PIN_1
@@ -427,17 +427,17 @@ void hal_gpio_toggle_pin(gpio_regs_t *GPIOx, uint16_t gpio_pin);
  * @param[in]  GPIOx: Where x can be (0, 1) to select the GPIO peripheral port
  ****************************************************************************************
  */
-void hal_gpio_irq_handler(gpio_regs_t *GPIOx);
+void hal_gpio_exti_irq_handler(gpio_regs_t *GPIOx);
 
 /**
  ****************************************************************************************
  * @brief  GPIO pin detection callback.
  *
  * @note  This function should not be modified. When the callback is needed,
- *          the hal_gpio_callback can be implemented in the user file.
+ *          the hal_gpio_exti_callback can be implemented in the user file.
  *
  * @param[in]  GPIOx: Where x can be (0, 1) to select the GPIO peripheral port
- * @param[in]  gpio_pin: Indicates the port pin whose interrupt was triggered.
+ * @param[in]  gpio_pin: Indicate the port pin whose interrupt was triggered.
  *         This parameter can be a combiantion of the following values:
  *         @arg @ref GPIO_PIN_0
  *         @arg @ref GPIO_PIN_1
@@ -458,7 +458,7 @@ void hal_gpio_irq_handler(gpio_regs_t *GPIOx);
  *         @arg @ref GPIO_PIN_ALL
  ****************************************************************************************
  */
-void hal_gpio_callback(gpio_regs_t *GPIOx, uint16_t gpio_pin);
+void hal_gpio_exti_callback(gpio_regs_t *GPIOx, uint16_t gpio_pin);
 
 /** @} */
 

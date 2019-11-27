@@ -74,6 +74,7 @@ __heap_limit
                 EXPORT  __Vectors
                 EXPORT  __Vectors_End
                 EXPORT  __Vectors_Size
+                IMPORT  SysTick_Handler
                 IMPORT  SVC_Handler
                 IMPORT  BLE_IRQHandler
                 IMPORT  BLESLP_IRQHandler
@@ -134,7 +135,7 @@ __Vectors       DCD     |Image$$ARM_LIB_STACKHEAP$$ZI$$Limit| ; Top of Stack
                 DCD     PWR_CMD_IRQHandler
                 DCD     BLESLP_IRQHandler
                 DCD     SLPTIMER_IRQHandler
-                DCD     EXTWKUP_IRQHandler
+                DCD     COMP_IRQHandler
                 DCD     AON_WDT_IRQHandler
                 DCD     I2S_M_IRQHandler
                 DCD     I2S_S_IRQHandler
@@ -172,13 +173,8 @@ NMI_Handler     PROC
                 ENDP
 HardFault_Handler\
                 PROC
-                ;EXPORT  HardFault_Handler         [WEAK]
-                IMPORT  HardFault_Handler_C
-                TST     LR,#4
-                ITE     EQ
-                MRSEQ   R0,MSP
-                MRSNE   R0,PSP
-                B       HardFault_Handler_C
+                EXPORT  HardFault_Handler         [WEAK]
+                B       .
                 ENDP
 MemManage_Handler\
                 PROC
@@ -202,10 +198,6 @@ DebugMon_Handler\
                 ENDP
 PendSV_Handler  PROC
                 EXPORT  PendSV_Handler            [WEAK]
-                B       .
-                ENDP
-SysTick_Handler PROC
-                EXPORT  SysTick_Handler           [WEAK]
                 B       .
                 ENDP
 
@@ -235,7 +227,7 @@ Default_Handler PROC
                 EXPORT  QSPI1_IRQHandler          [WEAK]
                 EXPORT  PWR_CMD_IRQHandler        [WEAK]
                 EXPORT  SLPTIMER_IRQHandler       [WEAK]
-                EXPORT  EXTWKUP_IRQHandler        [WEAK]
+                EXPORT  COMP_IRQHandler           [WEAK]
                 EXPORT  AON_WDT_IRQHandler        [WEAK]
                 EXPORT  I2S_M_IRQHandler          [WEAK]
                 EXPORT  I2S_S_IRQHandler          [WEAK]
@@ -268,7 +260,7 @@ XQSPI_IRQHandler
 QSPI1_IRQHandler
 PWR_CMD_IRQHandler
 SLPTIMER_IRQHandler
-EXTWKUP_IRQHandler
+COMP_IRQHandler
 AON_WDT_IRQHandler
 I2S_M_IRQHandler
 I2S_S_IRQHandler

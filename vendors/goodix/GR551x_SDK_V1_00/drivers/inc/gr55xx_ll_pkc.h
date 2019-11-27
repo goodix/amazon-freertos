@@ -278,7 +278,7 @@ __STATIC_INLINE void ll_pkc_disable(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the pkc is enabled.
+  * @brief  Indicate whether the pkc is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -323,7 +323,7 @@ __STATIC_INLINE void ll_pkc_disable_hardware_start(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the pkc start in hardware mode is enabled.
+  * @brief  Indicate whether the pkc start in hardware mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -368,7 +368,7 @@ __STATIC_INLINE void ll_pkc_disable_software(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the pkc software mode is enabled.
+  * @brief  Indicate whether the pkc software mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -413,7 +413,7 @@ __STATIC_INLINE void ll_pkc_disable_reset(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the pkc reset is enabled.
+  * @brief  Indicate whether the pkc reset is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -1295,7 +1295,7 @@ __STATIC_INLINE void ll_pkc_disable_software_start(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the pkc start in software mode is enabled.
+  * @brief  Indicate whether the pkc start in software mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -1387,7 +1387,7 @@ __STATIC_INLINE void ll_pkc_disable_dummy_multi(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the Dummy Multi in software mode is enabled.
+  * @brief  Indicate whether the Dummy Multi in software mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -1432,7 +1432,7 @@ __STATIC_INLINE void ll_pkc_disable_random_clock_gating(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the Random Clock Gating in software mode is enabled.
+  * @brief  Indicate whether the Random Clock Gating in software mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2240,7 +2240,7 @@ __STATIC_INLINE void ll_pkc_disable_it_big_add_overflow(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the operation done interrupt is enable.
+  * @brief  Indicate whether the operation done interrupt is enable.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2255,7 +2255,7 @@ __STATIC_INLINE uint32_t ll_pkc_is_enable_it_done(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the operation error interrupt is enable.
+  * @brief  Indicate whether the operation error interrupt is enable.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2270,7 +2270,7 @@ __STATIC_INLINE uint32_t ll_pkc_is_enable_it_err(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the big integer overflow interrupt is enable.
+  * @brief  Indicate whether the big integer overflow interrupt is enable.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2291,7 +2291,7 @@ __STATIC_INLINE uint32_t ll_pkc_is_enable_it_big_add_overflow(pkc_regs_t *PKCx)
   */
 
 /**
-  * @brief  Indicates whether the operation done interrupt is pending.
+  * @brief  Indicate whether the operation done interrupt is pending.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2306,7 +2306,7 @@ __STATIC_INLINE uint32_t ll_pkc_is_action_flag_it_done(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the operation error interrupt is pending.
+  * @brief  Indicate whether the operation error interrupt is pending.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2321,7 +2321,7 @@ __STATIC_INLINE uint32_t ll_pkc_is_action_flag_it_err(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the big integer overflow interrupt is pending.
+  * @brief  Indicate whether the big integer overflow interrupt is pending.
   *
   *  Register|BitsName
   *  --------|--------
@@ -2381,7 +2381,7 @@ __STATIC_INLINE void ll_pkc_clear_flag_it_big_add_overflow(pkc_regs_t *PKCx)
 }
 
 /**
-  * @brief  Indicates whether the busy flag is set.
+  * @brief  Indicate whether the busy flag is set.
   *
   *  Register|BitsName
   *  --------|--------

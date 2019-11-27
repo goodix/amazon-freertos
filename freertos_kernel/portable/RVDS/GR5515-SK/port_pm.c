@@ -9,78 +9,144 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "gr55xx_hal.h"
-#include "gr55xx_pwr.h"
+#include "gr55xx_sys.h"
 #include "app_timer.h"
 #include "semphr.h"
 
-/*
- * Some kernel aware debuggers require data to be viewed to be global, rather
- * than file scope.
- */
-//#define TRACE_IO_TOGGLE
+static app_timer_id_t s_rtos_timer_hdl = 0;
 
-#ifndef configSYSTICK_CLOCK_HZ
-    #define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ
-    /* Ensure the SysTick is clocked at the same frequency as the core. */
-    #define portNVIC_SYSTICK_CLK_BIT  ( 1UL << 2UL )
-#else
-    /* The way the SysTick is clocked is not modified in case it is not the same
-    as the core. */
-    #define portNVIC_SYSTICK_CLK_BIT  ( 0 )
-#endif
+typedef enum
+{
+   AON_TIMER_READY = 0,
+   AON_TIMER_RUN_FINISH,    
+}RTOS_TIMER_RUN_STATE_t;
 
+static volatile RTOS_TIMER_RUN_STATE_t s_aon_timer_build_finish = AON_TIMER_READY;
 
-///* Constants required to manipulate the core.  Registers first... */
-#define portNVIC_SYSTICK_CTRL_REG           ( * ( ( volatile uint32_t * ) 0xe000e010 ) )
-#define portNVIC_SYSTICK_LOAD_REG           ( * ( ( volatile uint32_t * ) 0xe000e014 ) )
-#define portNVIC_SYSTICK_CURRENT_VALUE_REG  ( * ( ( volatile uint32_t * ) 0xe000e018 ) )
-#define portNVIC_SYSPRI2_REG                ( * ( ( volatile uint32_t * ) 0xe000ed20 ) )
-///* ...then bits in the registers. */
-#define portNVIC_SYSTICK_INT_BIT            ( 1UL << 1UL )
-#define portNVIC_SYSTICK_ENABLE_BIT         ( 1UL << 0UL )
-#define portNVIC_SYSTICK_COUNT_FLAG_BIT     ( 1UL << 16UL )
-
-static app_timer_id_t aon_timer_handle = 0;
-static uint32_t aon_timer_flag = 0x0;
-static uint32_t save_curr_count = 0;
-static uint8_t  timer_init_flag = 0;
-static int trans_ticks;
-
-
-/**
- *****************************************************************************************
- * @brief vPortExitDeepSleep 
- *
- * @return void
- *****************************************************************************************
- */
-void vPortExitDeepSleep(void)
-{ 
-    /* Restart from whatever is left in the count register to complete
-    this tick period. */
-    portNVIC_SYSTICK_LOAD_REG = save_curr_count;//portNVIC_SYSTICK_CURRENT_VALUE_REG;
-
-    /* Restart SysTick. */
-    portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
-    portNVIC_SYSTICK_CTRL_REG |= ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT );
-    /* Reset the reload register to the value required for normal tick
-    periods. */
-    unsigned int CountsForOneTick = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ );
-    portNVIC_SYSTICK_LOAD_REG = CountsForOneTick - 1UL;
+uint32_t vPortLocker(void)
+{
+   uint32_t ret_pri = __get_PRIMASK();
+   __set_PRIMASK(1); 
+   return ret_pri;
 }
 
-/**
- *****************************************************************************************
- * @brief aon_timer_build_handler
- *
- * @param[in] arg: pointer of args
- *
- * @return void
- *****************************************************************************************
- */
+void vPortUnLocker(uint32_t set_pri)
+{
+   __set_PRIMASK(set_pri); 
+}
+
+static inline void SysTickStop(void)
+{
+    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+}
+
+static inline void SysTickStart(void)
+{
+    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+}
+
+void SysTickReload(uint32_t CyclesPerTick)
+{
+    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+    SysTick->LOAD  = (uint32_t)(CyclesPerTick - 1UL);                 /* set reload register */
+    SysTick->VAL   = 0UL;                                             /* Load the SysTick Counter Value */
+    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk \
+                  | SysTick_CTRL_CLKSOURCE_Msk \
+                  | SysTick_CTRL_TICKINT_Msk;
+}
+
 static void aon_timer_build_handler(void* p_ctx)
 {
-    aon_timer_flag = 0x1;
+    s_aon_timer_build_finish = AON_TIMER_RUN_FINISH;
+}
+
+
+
+extern pwr_mgmt_mode_t __attribute__((section("RAM_CODE"))) pwr_mgmt_check_timer(void);
+static void pwr_mgmt_enter_sleep_with_cond(int pwr_mgmt_expected_time)
+{  
+      static int s_total_sleep_ticks = 0;
+      
+      /* Save the context of RTOS. */
+      pwr_mgmt_save_context();
+      
+      /* Judge the current startup mode mark. */
+      if (pwr_mgmt_get_wakeup_flag() == COLD_BOOT)
+      {  
+            s_total_sleep_ticks = pwr_mgmt_expected_time;
+          
+            /* Open app timer only when there is a specific next task to execute. */
+            if (s_total_sleep_ticks > 0)
+            {
+                /* Only create the timer once. */
+                static uint8_t timer_init_flag = 0;
+                if ( !timer_init_flag )
+                {
+                    app_timer_create( &s_rtos_timer_hdl, ATIMER_ONE_SHOT, aon_timer_build_handler);
+                    timer_init_flag = 0x1;
+                }
+                
+                /* Set this flag to ready. */
+                s_aon_timer_build_finish = AON_TIMER_READY;
+               
+                /* To start the app timer. */
+                app_timer_start(s_rtos_timer_hdl, s_total_sleep_ticks-1, NULL);
+            }
+
+            /* To disbale global IRQ. */
+            uint32_t _local_lock = vPortLocker();
+            
+            /* To stop the systick. */
+            SysTickStop();
+            
+            /* Shutdown all system power and wait some event to wake up. */
+            pwr_mgmt_shutdown();
+            
+            /* To stop the app timer. */
+            app_timer_stop(s_rtos_timer_hdl);
+           
+            /* To start the systick. */
+            SysTickStart();
+            
+            /* To enable global IRQ. */
+            vPortUnLocker(_local_lock);
+
+      }
+      else //wekeup from deep sleep mode
+      {
+          /* clear wakeup mark ,parpare next time enter-sleep action. */
+          pwr_mgmt_set_wakeup_flag(COLD_BOOT);
+          
+          /* To disbale global IRQ. */
+          uint32_t _local_lock = vPortLocker();
+          
+          /* Restart SysTick module. */
+          SysTickReload( configCPU_CLOCK_HZ / configTICK_RATE_HZ);
+          
+          /* Check whether it is another wake-up source. */
+          if ( AON_TIMER_RUN_FINISH == s_aon_timer_build_finish )
+          {
+              /* Compensation for system counter of RTOS. */
+              vTaskStepTick( s_total_sleep_ticks );
+          }
+          else
+          {
+              
+              /* To get the elapsed time from app-timer. */
+              int ticks =  app_timer_stop_and_ret(s_rtos_timer_hdl);
+              if (ticks>1000)  
+                  ticks /= 1000;
+              else
+                  ticks = 1;
+              
+              /* Compensation for system counter of RTOS. */
+              vTaskStepTick( ticks );
+          }
+          
+          /* To enable global IRQ. */
+          vPortUnLocker(_local_lock);
+      }
+      return ;
 }
 
 /**
@@ -92,89 +158,34 @@ static void aon_timer_build_handler(void* p_ctx)
  * @return void
  *****************************************************************************************
  */
-int pwr_mgmt_enter_sleep_with_cond(int ticks_to_up)
-{  
-      if (0<ticks_to_up && ticks_to_up<10)
-      {
-          return 0;
-      }
-
-      pwr_mgmt_save_context();
-
-      if (pwr_mgmt_get_wakeup_flag() == COLD_BOOT)
-      {
-            trans_ticks = (int)ticks_to_up;
-          
-            if (trans_ticks>0)
-            {
-                aon_timer_flag = 0x0;
-                if (timer_init_flag == 0)
-                {
-                    app_timer_create( &aon_timer_handle, ATIMER_ONE_SHOT, aon_timer_build_handler);
-                    timer_init_flag = 0x1;
-                }
-                app_timer_start(aon_timer_handle, trans_ticks, NULL);
-            }
-            
-            __disable_irq();
-            #ifdef TRACE_IO_TOGGLE
-            point_at(4);
-            #endif
-            pwr_mgmt_shutdown();
-      }
-      else //wekeup from deep sleep mode
-      {
-          //clear wakeup mark ,parpare next time enter-sleep action
-          pwr_mgmt_set_wakeup_flag(COLD_BOOT);
-          if (aon_timer_flag)
-          {
-              #ifdef TRACE_IO_TOGGLE
-              point_at(6);
-              #endif
-              return trans_ticks - 1;
-          }
-          else
-          {
-              #ifdef TRACE_IO_TOGGLE             
-              point_at(7);
-              #endif
-              int ticks = app_timer_stop_and_ret(aon_timer_handle);
-              if (ticks>1000)
-              {   
-                  ticks /= 1000;
-                  return ticks;                  
-              }
-          }
-      }
-      return -1;
-}
-
 void vPortEnterDeepSleep( TickType_t xExpectedIdleTime )
 {
-    static int rest_ticks;
-    NVIC_SetPendingIRQ(BLE_SDK_IRQn);
-    NVIC_EnableIRQ(BLE_SDK_IRQn);
-    __disable_irq();
-    int ret = pwr_mgmt_get_sleep_mode();
-    if (ret == PMR_MGMT_SLEEP_MODE)
+
+    if (!sys_ke_sleep_check())
     {
-       portNVIC_SYSTICK_CTRL_REG &= ~portNVIC_SYSTICK_ENABLE_BIT;
-       save_curr_count = portNVIC_SYSTICK_CURRENT_VALUE_REG;
-       rest_ticks = pwr_mgmt_enter_sleep_with_cond(xExpectedIdleTime);
-       if (rest_ticks > 0)
-       {
-#if( configUSE_TICKLESS_IDLE == 1 )           
-           vTaskStepTick( rest_ticks );
-#endif           
-       }
-       /* Restart from whatever is left in the count register to complete this tick period. */
-       portNVIC_SYSTICK_LOAD_REG = save_curr_count;//portNVIC_SYSTICK_CURRENT_VALUE_REG;
-       /* Restart SysTick. */
-       portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
-       portNVIC_SYSTICK_CTRL_REG |= ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT );
-       /* Reset the reload register to the value required for normal tick periods. */
-       uint32_t CountsForOneTick = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ );
-       portNVIC_SYSTICK_LOAD_REG = CountsForOneTick - 1UL;
+       NVIC_SetPendingIRQ(BLE_SDK_IRQn);
+       NVIC_EnableIRQ(BLE_SDK_IRQn);
+    }
+    
+    if ( 0 < xExpectedIdleTime && xExpectedIdleTime < 5 )
+    {
+       pwr_mgmt_wfe_sleep();
+       return ;        
+    }
+    
+    uint32_t _local_lock = vPortLocker();
+    pwr_mgmt_mode_t ret = pwr_mgmt_get_sleep_mode();
+    vPortUnLocker(_local_lock);
+    
+    if (!pwr_mgmt_check_pend_irq())
+    {
+        if (ret == PMR_MGMT_SLEEP_MODE)
+        {
+            pwr_mgmt_enter_sleep_with_cond(xExpectedIdleTime);
+        } 
+        else
+        {
+            pwr_mgmt_wfe_sleep();
+        }
     } 
-    __enable_irq();
 }

@@ -261,8 +261,7 @@ void  gui_line_width(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint8_t
             if(wx>=wy) break;
             wx++;
          }
-         
-           return;
+         return;
       }
    }
    
@@ -280,12 +279,13 @@ void  gui_line_width(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint8_t
          wy = y0+wy;
          
          while(1)
-         {  y0 = wx;
+         {  
+            y0 = wx;
             gui_line_hor(x0, y0, x1, color);
             if(wx>=wy) break;
             wx++;
          }
-           return;
+         return;
       }
    }
     

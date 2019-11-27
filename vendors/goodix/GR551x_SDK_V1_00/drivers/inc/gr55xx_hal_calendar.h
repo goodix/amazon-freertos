@@ -70,7 +70,7 @@ extern "C" {
   */
 
 /**
-  * @brief  CALENDAR_Time clendar time structure definition
+  * @brief  CALENDAR_Time calendar time structure definition
   */
 typedef struct _calendar_time
 {
@@ -100,7 +100,7 @@ typedef struct _calendar_time
 } calendar_time_t;
 
 /**
-  * @brief  CALENDAR_Alarm clendar alarm structure definition
+  * @brief  CALENDAR_Alarm calendar alarm structure definition
   */
 typedef struct _calendar_alarm
 {
@@ -142,7 +142,7 @@ typedef struct _calendar_handle
 
 /** @} */
 
-/** @addtogroup HAL_CALENDAR_STRUCTURES Callback Structures
+/** @addtogroup HAL_CALENDAR_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 

@@ -51,10 +51,13 @@ typedef enum
 
 typedef enum
 {
-    RNG_OSC_CLK = 0,
-    RTC_OSC_CLK,
-    RNG_OSC_CLK2,
-} ble_clock_type_t;
+    QSPI_64M_CLK  = 0,
+    QSPI_48M_CLK  = 1,
+    QSPI_32M_CLK  = 2,
+    QSPI_24M_CLK  = 3,
+    QSPI_16M_CLK  = 4,    
+    QSPI_CLK_TYPE_NUM  = 5,
+} qspi_clock_type_t;
 
 extern uint32_t SystemCoreClock;     /*!< System Clock Frequency (Core Clock) */
 
@@ -81,9 +84,6 @@ extern void SystemCoreGetClock(mcu_clock_type_t *clock);
 
 extern void SystemCoreUpdateClock(void);
 
-/** \brief  Update communication timer clock.
- */
-extern void SystemBleSetClock(ble_clock_type_t clock);
 
 #ifdef __cplusplus
 }

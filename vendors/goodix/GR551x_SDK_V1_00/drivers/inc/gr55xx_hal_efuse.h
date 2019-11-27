@@ -3,7 +3,7 @@
  *
  * @file    gr55xx_hal_efuse.h
  * @author  BLE Driver Team
- * @brief   Header file containing functions prototypes of EFUSE HAL library.
+ * @brief   Header file containing functions prototypes of eFuse HAL library.
  *
  ****************************************************************************************
  * @attention
@@ -44,7 +44,7 @@
   */
 
 /** @defgroup HAL_EFUSE EFUSE
-  * @brief EFUSE HAL module driver.
+  * @brief eFuse HAL module driver.
   * @{
   */
 
@@ -70,7 +70,7 @@ extern "C" {
   */
 
 /**
-  * @brief  HAL EFUSE State Enumerations definition
+  * @brief  HAL eFuse State Enumerations definition
   */
 typedef enum
 {
@@ -92,7 +92,7 @@ typedef enum
   */
 
 /**
-  * @brief EFUSE init Structure definition
+  * @brief eFuse init Structure definition
   */
 typedef struct _efuse_init
 {
@@ -107,26 +107,52 @@ typedef struct _efuse_init
   */
 
 /**
-  * @brief EFUSE handle Structure definition
+  * @brief eFuse handle Structure definition
   */
 typedef struct _efuse_handle
 {
-    efuse_regs_t            *p_instance;      /**< Register base address          */
+    efuse_regs_t            *p_instance;    /**< Register base address          */
 
-    efuse_init_t            init;           /**< EFUSE base required parameters */
+    efuse_init_t            init;           /**< eFuse base required parameters */
 
     __IO hal_lock_t         lock;           /**< Locking object                 */
 
-    __IO hal_efuse_state_t  state;          /**< EFUSE operation state          */
+    __IO hal_efuse_state_t  state;          /**< eFuse operation state          */
 
-    __IO uint32_t           error_code;     /**< EFUSE Error code               */
+    __IO uint32_t           error_code;     /**< eFuse Error code               */
 
 } efuse_handle_t;
 /** @} */
 
+/** @defgroup EFUSE_Keyram Keyram configuration
+  * @{
+  */
+
+/**
+  * @brief eFuse Keyram Structure definition
+  */
+typedef struct _keyram_mask
+{
+    uint32_t                aes_mask;         /**< AES port mask.                 */
+
+    uint32_t                hmac_mask;        /**< HMAC port mask.                */
+
+    uint32_t                present_mcu_mask; /**< Present of MCU port mask.      */
+
+    uint32_t                present_xip_mask; /**< Present of XIP port mask.      */
+
+    uint32_t                efuse_mask;       /**< eFuse port mask.               */
+
+    uint32_t                enc_key_low;      /**< encrypt key low 32bit mask.    */
+
+    uint32_t                enc_key_high;     /**< encrypt key high 32bit mask.   */
+} keyram_mask_t;
+
 /** @} */
 
-/** @addtogroup HAL_EFUSE_STRUCTURES Callback Structures
+/** @} */
+
+/** @addtogroup HAL_EFUSE_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -169,14 +195,14 @@ typedef struct _hal_efuse_callback
 /** @defgroup EFUSE_Flags EFUSE Flags
   * @{
   */
-#define EFUSE_FLAG_WRITE_KEYRAM_BUSY                 LL_EFUSE_WRITE_KEYRAM_BUSY          /**< Write keyram operation is in processing  */
-#define EFUSE_FLAG_READ_TRIM_DONE                    LL_EFUSE_READ_TRIM_DONE             /**< Read trim from efuse has done            */
-#define EFUSE_FLAG_CRC_CHECK_DONE                    LL_EFUSE_CRC_CHECK_DONE             /**< Efuse CRC check done                     */
-#define EFUSE_FLAG_CRC_CHECK_SUCCESS                 LL_EFUSE_CRC_CHECK_SUCCESS          /**< CRC check success                        */
-#define EFUSE_FLAG_INIT_CHECK_DONE                   LL_EFUSE_INIT_CHECK_DONE            /**< Efuse initial value check done           */
-#define EFUSE_FLAG_INIT_CHECK_SUCCESS                LL_EFUSE_INIT_CHECK_SUCCESS         /**< Efuse initial value check success        */
-#define EFUSE_FLAG_WRITE_DONE                        LL_EFUSE_WRITE_DONE                 /**< Efuse one word write done                */
-#define EFUSE_FLAG_TEST_DONE                         LL_EFUSE_TEST_DONE                  /**< Read from efuse has done in test mode    */
+#define EFUSE_FLAG_WRITE_KEYRAM_BUSY                 LL_EFUSE_WRITE_KEYRAM_BUSY          /**< Write keyram operation is in process  */
+#define EFUSE_FLAG_READ_TRIM_DONE                    LL_EFUSE_READ_TRIM_DONE             /**< Read trim from eFuse has done            */
+#define EFUSE_FLAG_CRC_CHECK_DONE                    LL_EFUSE_CRC_CHECK_DONE             /**< eFuse CRC check done                     */
+#define EFUSE_FLAG_CRC_CHECK_SUCCESS                 LL_EFUSE_CRC_CHECK_SUCCESS          /**< CRC check succeeded                        */
+#define EFUSE_FLAG_INIT_CHECK_DONE                   LL_EFUSE_INIT_CHECK_DONE            /**< eFuse initial value check done           */
+#define EFUSE_FLAG_INIT_CHECK_SUCCESS                LL_EFUSE_INIT_CHECK_SUCCESS         /**< eFuse initial value check succeeded        */
+#define EFUSE_FLAG_WRITE_DONE                        LL_EFUSE_WRITE_DONE                 /**< eFuse one word write done                */
+#define EFUSE_FLAG_TEST_DONE                         LL_EFUSE_TEST_DONE                  /**< Read from eFuse has done in test mode    */
 /** @} */
 
 /** @defgroup EFUSE_Loyout_Map EFUSE Loyout Map
@@ -190,8 +216,8 @@ typedef struct _hal_efuse_callback
 #define EFUSE_OFFSET_BBLK_CRC32                      (0x0064UL)                          /**< CRC32 offset in backup info block                */
 #define EFUSE_OFFSET_BBLK_CHIP_ID                    (0x0068UL)                          /**< Chip ID offset in backup info block              */
 #define EFUSE_OFFSET_BBLK_PRODUCT_ID                 (0x006EUL)                          /**< Product ID offset in backup info block           */
-#define EFUSE_OFFSET_BBLK_FW_PUBLICKEY               (0x0070UL)                          /**< Firmware publick key offset in backup info block */
-#define EFUSE_OFFSET_BBLK_ROOT_PUBLICKEY             (0x0080UL)                          /**< Root publick key offset in backup info block     */
+#define EFUSE_OFFSET_BBLK_FW_PUBLICKEY               (0x0070UL)                          /**< Firmware public key offset in backup info block */
+#define EFUSE_OFFSET_BBLK_ROOT_PUBLICKEY             (0x0080UL)                          /**< Root public key offset in backup info block     */
 #define EFUSE_OFFSET_BBLK_ECC_KEY                    (0x0090UL)                          /**< ECC key offset in backup info block              */
 #define EFUSE_OFFSET_BBLK_FW_KEY                     (0x00B0UL)                          /**< Firmware key offset in backup info block         */
 #define EFUSE_OFFSET_BBLK_HMAC_KEY                   (0x00D0UL)                          /**< HMAC key offset in backup info block             */
@@ -203,13 +229,13 @@ typedef struct _hal_efuse_callback
 #define EFUSE_OFFSET_MBLK_CRC32                      (0x0154UL)                          /**< CRC32 offset in main info block                  */
 #define EFUSE_OFFSET_MBLK_CHIP_ID                    (0x0158UL)                          /**< Chip ID offset in main info block                */
 #define EFUSE_OFFSET_MBLK_PRODUCT_ID                 (0x015EUL)                          /**< Product ID offset in main info block             */
-#define EFUSE_OFFSET_MBLK_FW_PUBLICKEY               (0x0160UL)                          /**< Firmware publick key offset in main info block   */
-#define EFUSE_OFFSET_MBLK_ROOT_PUBLICKEY             (0x0170UL)                          /**< Root publick key offset in main info block       */
+#define EFUSE_OFFSET_MBLK_FW_PUBLICKEY               (0x0160UL)                          /**< Firmware public key offset in main info block   */
+#define EFUSE_OFFSET_MBLK_ROOT_PUBLICKEY             (0x0170UL)                          /**< Root public key offset in main info block       */
 #define EFUSE_OFFSET_MBLK_ECC_KEY                    (0x0180UL)                          /**< ECC key offset in main info block                */
 #define EFUSE_OFFSET_MBLK_FW_KEY                     (0x01A0UL)                          /**< Firmware key offset in main info block           */
 #define EFUSE_OFFSET_MBLK_HMAC_KEY                   (0x01C0UL)                          /**< HMAC key offset in main info block               */
 #define EFUSE_OFFSET_MBLK_DATA_KEY                   (0x01E0UL)                          /**< Data key offset in main info block               */
-#define EFUSE_OFFSET_END                             (0x0200UL)                          /**< Efuse Offset end                                 */
+#define EFUSE_OFFSET_END                             (0x0200UL)                          /**< eFuse Offset end                                 */
 /** @} */
 
 /** @} */
@@ -219,42 +245,42 @@ typedef struct _hal_efuse_callback
   * @{
   */
 
-/** @brief  Enable the EFUSE main or backup.
-  * @param  __HANDLE__ Specifies the EFUSE Handle.
+/** @brief  Enable the eFuse main or backup.
+  * @param  __HANDLE__ Specifies the eFuse Handle.
   * @retval None.
   */
 #define __HAL_EFUSE_ENABLE_MAIN_BACKUP(__HANDLE__)              ll_efuse_enable_main_backup((__HANDLE__)->p_instance)
 
-/** @brief  Disable the EFUSE main or backup.
-  * @param  __HANDLE__ Specifies the EFUSE Handle.
+/** @brief  Disable the eFuse main or backup.
+  * @param  __HANDLE__ Specifies the eFuse Handle.
   * @retval None.
   */
 #define __HAL_EFUSE_DISABLE_MAIN_BACKUP(__HANDLE__)             ll_efuse_disable_main_backup((__HANDLE__)->p_instance)
 
-/** @brief  Enable the EFUSE pgenb.
-  * @param  __HANDLE__ Specifies the EFUSE Handle.
+/** @brief  Enable the eFuse PGENB.
+  * @param  __HANDLE__ Specifies the eFuse Handle.
   * @retval None.
   */
 #define __HAL_EFUSE_ENABLE_PGENB(__HANDLE__)                    ll_efuse_enable_pgenb((__HANDLE__)->p_instance)
 
-/** @brief  Disable the EFUSE pgenb.
-  * @param  __HANDLE__ Specifies the EFUSE Handle.
+/** @brief  Disable the eFuse PGENB.
+  * @param  __HANDLE__ Specifies the eFuse Handle.
   * @retval None.
   */
 #define __HAL_EFUSE_DISABLE_PGENB(__HANDLE__)                   ll_efuse_disable_pgenb((__HANDLE__)->p_instance)
 
-/** @brief  Check whether the specified EFUSE flag is set or not.
-  * @param  __HANDLE__ specifies the EFUSE Handle.
+/** @brief  Check whether the specified eFuse flag is set or not.
+  * @param  __HANDLE__ specifies the eFuse Handle.
   * @param  __FLAG__ specifies the flag to check.
   *         This parameter can be one of the following values:
-  *            @arg @ref EFUSE_FLAG_WRITE_KEYRAM_BUSY  Write keyram operation is in processing
-  *            @arg @ref EFUSE_FLAG_READ_TRIM_DONE     Read trim from efuse has done
-  *            @arg @ref EFUSE_FLAG_CRC_CHECK_DONE     Efuse CRC check done
-  *            @arg @ref EFUSE_FLAG_CRC_CHECK_SUCCESS  CRC check success
-  *            @arg @ref EFUSE_FLAG_INIT_CHECK_DONE    Efuse initial value check done
-  *            @arg @ref EFUSE_FLAG_INIT_CHECK_SUCCESS Efuse initial value check success
-  *            @arg @ref EFUSE_FLAG_WRITE_DONE         Efuse one word write done
-  *            @arg @ref EFUSE_FLAG_TEST_DONE          Read from efuse has done in test mode
+  *            @arg @ref EFUSE_FLAG_WRITE_KEYRAM_BUSY  Write keyram operation is in process
+  *            @arg @ref EFUSE_FLAG_READ_TRIM_DONE     Read trim from eFuse has done
+  *            @arg @ref EFUSE_FLAG_CRC_CHECK_DONE     eFuse CRC check done
+  *            @arg @ref EFUSE_FLAG_CRC_CHECK_SUCCESS  CRC check succeeded
+  *            @arg @ref EFUSE_FLAG_INIT_CHECK_DONE    eFuse initial value check done
+  *            @arg @ref EFUSE_FLAG_INIT_CHECK_SUCCESS eFuse initial value check succeeded
+  *            @arg @ref EFUSE_FLAG_WRITE_DONE         eFuse one word write done
+  *            @arg @ref EFUSE_FLAG_TEST_DONE          Read from eFuse has done in test mode
   * @retval The new state of __FLAG__ (TRUE or FALSE).
   */
 #define __HAL_EFUSE_GET_FLAG(__HANDLE__, __FLAG__)              ((READ_BITS((__HANDLE__)->p_instance->STAT, (__FLAG__)) != 0) ? SET : RESET)
@@ -293,10 +319,10 @@ typedef struct _hal_efuse_callback
 
 /**
  ****************************************************************************************
- * @brief  Initialize the EFUSE according to the specified parameters
+ * @brief  Initialize the eFuse according to the specified parameters
  *         in the efuse_init_t and initialize the associated handle.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -308,9 +334,9 @@ hal_status_t hal_efuse_init(efuse_handle_t *p_efuse);
 
 /**
  ****************************************************************************************
- * @brief  De-initialize the EFUSE peripheral.
+ * @brief  De-initialize the eFuse peripheral.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -322,24 +348,24 @@ hal_status_t hal_efuse_deinit(efuse_handle_t *p_efuse);
 
 /**
  ****************************************************************************************
- * @brief  Initialize the EFUSE MSP.
+ * @brief  Initialize the eFuse MSP.
  *
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_efuse_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
  ****************************************************************************************
  */
 void hal_efuse_msp_init(efuse_handle_t *p_efuse);
 
 /**
  ****************************************************************************************
- * @brief  De-initialize the EFUSE MSP.
+ * @brief  De-initialize the eFuse MSP.
  *
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_efuse_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
  ****************************************************************************************
  */
 void hal_efuse_msp_deinit(efuse_handle_t *p_efuse);
@@ -347,20 +373,20 @@ void hal_efuse_msp_deinit(efuse_handle_t *p_efuse);
 /** @} */
 
 /** @defgroup EFUSE_Exported_Functions_Group2 IO operation functions
- *  @brief    EFUSE Data manage functions
+ *  @brief    eFuse Data manage functions
  *
  *  @{
  */
 
 /**
  ****************************************************************************************
- * @brief  Write the EFUSE memory data.
+ * @brief  Write the eFuse memory data.
  *
- * @note   Address should be efuse memory address.
+ * @note   Address should be eFuse memory address.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
- * @param[in]  word_offset: EFUSE memory offset, unit word, this parament can be a value between: 0x00 ~ 0x80.
- * @param[in]  p_data: Pointer to data buffer for storage efuse data.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
+ * @param[in]  word_offset: eFuse memory offset, unit word, this parament can be a value between: 0x00 ~ 0x80.
+ * @param[in]  p_data: Pointer to data buffer for storage eFuse data.
  * @param[in]  nword: Size of data to be write, unit word.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -373,13 +399,13 @@ hal_status_t hal_efuse_write(efuse_handle_t *p_efuse, uint32_t word_offset, uint
 
 /**
  ****************************************************************************************
- * @brief  Read the EFUSE memory data.
+ * @brief  Read the eFuse memory data.
  *
- * @note   Address should be efuse memory address.
+ * @note   Address should be eFuse memory address.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
- * @param[in]  word_offset: EFUSE memory offset, unit word, this parament can be a value between: 0x000 ~ 0x80.
- * @param[in]  p_data: Pointer to data buffer for storage efuse data.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
+ * @param[in]  word_offset: eFuse memory offset, unit word, this parament can be a value between: 0x000 ~ 0x80.
+ * @param[in]  p_data: Pointer to data buffer for storage eFuse data.
  * @param[in]  nword: Size of data to be read, unit word.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -392,9 +418,10 @@ hal_status_t hal_efuse_read(efuse_handle_t *p_efuse, uint32_t word_offset, uint3
 
 /**
  ****************************************************************************************
- * @brief  Read the key from EFUSE memory and write to keyram.
+ * @brief  Read the key from eFuse memory and write to keyram.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
+ * @param[in]  p_mask: Pointer to a KEYRAM handle which contains the configuration information for the specified KEYRAM MASK.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -402,13 +429,13 @@ hal_status_t hal_efuse_read(efuse_handle_t *p_efuse, uint32_t word_offset, uint3
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_efuse_write_keyram(efuse_handle_t *p_efuse);
+hal_status_t hal_efuse_write_keyram(efuse_handle_t *p_efuse, keyram_mask_t *p_mask);
 
 /**
  ****************************************************************************************
- * @brief  Check the EFUSE memory with 0, if memory are all 0, return HAL_OK, then return HAL_ERROR.
+ * @brief  Check the eFuse memory with 0, if memory are all 0, return HAL_OK, then return HAL_ERROR.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -420,12 +447,12 @@ hal_status_t hal_efuse_initial_value_check(efuse_handle_t *p_efuse);
 
 /**
  ****************************************************************************************
- * @brief  Calculate CRC of the EFUSE memory data.
+ * @brief  Calculate CRC of the eFuse memory data.
  *
- * @note   Address must be main info efuse memory address.
+ * @note   Address must be main info eFuse memory address.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
- * @param[in]  word_offset: EFUSE memory offset, unit word, this parament can be a value between: 0x00 ~ 0x80.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
+ * @param[in]  word_offset: eFuse memory offset, unit word, this parament can be a value between: 0x00 ~ 0x80.
  * @param[in]  nword: Size of data to be read, unit word, this parament can be a value between: 1 ~ 60.
  * @param[in]  p_result: Pointer to result.
  *
@@ -439,13 +466,13 @@ hal_status_t hal_efuse_crc_calculate(efuse_handle_t *p_efuse, uint32_t word_offs
 
 /**
  ****************************************************************************************
- * @brief  Read trim from EFUSE memory data.
+ * @brief  Read trim from eFuse memory data.
  *
- * @note   Address must be main info efuse memory address.
+ * @note   Address must be main info eFuse memory address.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
- * @param[in]  word_offset: EFUSE memory offset, unit word, this parament can be a value between: 0x00 ~ 0x80.
- * @param[in]  p_data: Pointer to data buffer for storage efuse data.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
+ * @param[in]  word_offset: eFuse memory offset, unit word, this parament can be a value between: 0x00 ~ 0x80.
+ * @param[in]  p_data: Pointer to data buffer for storage eFuse data.
  * @param[in]  nword: Size of data to be read, unit word, this parament can be a value between: 1 ~ 20.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -458,9 +485,9 @@ hal_status_t hal_efuse_read_trim(efuse_handle_t *p_efuse, uint32_t word_offset, 
 
 /**
  ****************************************************************************************
- * @brief  Set the main or backup info of the EFUSE memory.
+ * @brief  Set the main or backup info of the eFuse memory.
  *
- * @param[in]  p_efuse: Pointer to a EFUSE handle which contains the configuration information for the specified EFUSE module.
+ * @param[in]  p_efuse: Pointer to a eFuse handle which contains the configuration information for the specified eFuse module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.

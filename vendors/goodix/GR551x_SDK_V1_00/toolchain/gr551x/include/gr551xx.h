@@ -94,7 +94,7 @@ typedef enum IRQn
     PWR_CMD_IRQn              =  24,  /**< POWER CMD ACK Interrupt                                                   */
     BLESLP_IRQn               =  25,  /**< BLE Sleep Interrupt                                                       */
     SLPTIMER_IRQn             =  26,  /**< Sleep Timer Interrupt                                                     */
-    EXTWKUP_IRQn              =  27,  /**< External Wakeup Interrupt                                                 */
+    COMP_EXT_IRQn             =  27,  /**< Comparator and External Wakeup Interrupt                                  */
     AON_WDT_IRQn              =  28,  /**< Always on Watchdog Interrupt                                              */
     I2S_M_IRQn                =  29,  /**< I2S_M Interrupt                                                           */
     I2S_S_IRQn                =  30,  /**< I2S_S Interrupt                                                           */
@@ -198,8 +198,8 @@ typedef struct _aon_regs
     __IOM uint32_t RF_REG_7;                /**< AON_REG_RF_REG_7,              Address offset: 0x30 */
     __IOM uint32_t RF_REG_8;                /**< AON_REG_RF_REG_8,              Address offset: 0x34 */
     __IOM uint32_t RF_REG_9;                /**< AON_REG_RF_REG_9,              Address offset: 0x38 */
-    __IOM uint32_t MISO_PAD_CFG_0;          /**< AON_REG_MISO_PAD_CFG_0,        Address offset: 0x3C */
-    __IOM uint32_t MISO_PAD_CFG_1;          /**< AON_REG_MISO_PAD_CFG_1,        Address offset: 0x40 */
+    __IOM uint32_t MSIO_PAD_CFG_0;          /**< AON_REG_MSIO_PAD_CFG_0,        Address offset: 0x3C */
+    __IOM uint32_t MSIO_PAD_CFG_1;          /**< AON_REG_MSIO_PAD_CFG_1,        Address offset: 0x40 */
     __IOM uint32_t SLP_EVENT;               /**< AON_REG_SLP_EVENT,             Address offset: 0x44 */
     __IOM uint32_t WARM_BOOT_TIME;          /**< AON_REG_WARM_BOOT_TIME,        Address offset: 0x48 */
     __IOM uint32_t RF_REG_10;               /**< AON_REG_RF_REG_10,             Address offset: 0x4C */
@@ -299,16 +299,16 @@ typedef struct _dma_regs
 /**
   * @brief DUAL_TIM
   */
-typedef struct _dual_tim_regs
+typedef struct _dual_timer_regs
 {
-    __IOM uint32_t RELOAD;          /**< DUAL_TIM auto-reload register,            Address offset: 0x00 */
-    __IM  uint32_t VALUE;           /**< DUAL_TIM counter value register,          Address offset: 0x04 */
-    __IOM uint32_t CTRL;            /**< DUAL_TIM control register,                Address offset: 0x08 */
-    __OM  uint32_t INTCLR;          /**< DUAL_TIM interrupt status clear register, Address offset: 0x0C */
-    __IM  uint32_t RAW_INTSTAT;     /**< DUAL_TIM raw interrupt status register,   Address offset: 0x10 */
-    __IM  uint32_t INTSTAT;         /**< DUAL_TIM interrupt status register,       Address offset: 0x14 */
-    __IOM uint32_t BG_LOAD;         /**< DUAL_TIM background-reload register,      Address offset: 0x18 */
-} dual_tim_regs_t;
+    __IOM uint32_t RELOAD;          /**< DUAL_TIMER auto-reload register,            Address offset: 0x00 */
+    __IM  uint32_t VALUE;           /**< DUAL_TIMER counter value register,          Address offset: 0x04 */
+    __IOM uint32_t CTRL;            /**< DUAL_TIMER control register,                Address offset: 0x08 */
+    __OM  uint32_t INTCLR;          /**< DUAL_TIMER interrupt status clear register, Address offset: 0x0C */
+    __IM  uint32_t RAW_INTSTAT;     /**< DUAL_TIMER raw interrupt status register,   Address offset: 0x10 */
+    __IM  uint32_t INTSTAT;         /**< DUAL_TIMER interrupt status register,       Address offset: 0x14 */
+    __IOM uint32_t BG_LOAD;         /**< DUAL_TIMER background-reload register,      Address offset: 0x18 */
+} dual_timer_regs_t;
 
 /**
   * @brief GPIO
@@ -502,7 +502,7 @@ typedef struct _mcu_sub_regs
     __IM  uint32_t RESERVED4;               /**< RESERVED,                          Address offset: 0x214 */
     __IOM uint32_t DPAD_IE_N_BUS;           /**< MCU_SUB_REG_DPAD_IE_N_BUS,         Address offset: 0x218 */
     __IM  uint32_t RESERVED5;               /**< RESERVED,                          Address offset: 0x21C */
-    __IM  uint32_t MSIO_REG0;               /**< MCU_SUB_REG_MSIO_REG,              Address offset: 0x220 */
+    __IOM uint32_t MSIO_REG0;               /**< MCU_SUB_REG_MSIO_REG,              Address offset: 0x220 */
     __IOM uint32_t BLE_FERP_CTL;            /**< MCU_SUB_REG_BLE_FERP_CTL,          Address offset: 0x224 */
     __IOM uint32_t DMA_ACC_SEL;             /**< MCU_SUB_REG_DMA_ACC_SEL,           Address offset: 0x228 */
     __IOM uint32_t SECURITY_RESET;          /**< MCU_SUB_REG_SECURITY_RESET,        Address offset: 0x22C */
@@ -635,13 +635,13 @@ typedef struct _ssi_regs
 /**
   * @brief TIM
   */
-typedef struct _tim_regs
+typedef struct _timer_regs
 {
-    __IOM uint32_t CTRL;            /**< TIM control register,          Address offset: 0x00 */
-    __IOM uint32_t VALUE;           /**< TIM counter value register,    Address offset: 0x04 */
-    __IOM uint32_t RELOAD;          /**< TIM auto-reload register,      Address offset: 0x08 */
-    __IOM uint32_t INTSTAT;         /**< TIM interrupt status register, Address offset: 0x0C */
-} tim_regs_t;
+    __IOM uint32_t CTRL;            /**< TIMER control register,          Address offset: 0x00 */
+    __IOM uint32_t VALUE;           /**< TIMER counter value register,    Address offset: 0x04 */
+    __IOM uint32_t RELOAD;          /**< TIMER auto-reload register,      Address offset: 0x08 */
+    __IOM uint32_t INTSTAT;         /**< TIMER interrupt status register, Address offset: 0x0C */
+} timer_regs_t;
 
 /**
   * @brief UART
@@ -866,10 +866,10 @@ typedef struct _rng_regs
 #define SRAM_BASE               ((uint32_t)0x30000000UL)
 #define PERIPH_BASE             ((uint32_t)0xA0000000UL)
 
-#define TIM0_BASE               (PERIPH_BASE + 0x00000000UL)
-#define TIM1_BASE               (PERIPH_BASE + 0x00001000UL)
-#define DUAL_TIM0_BASE          (PERIPH_BASE + 0x00002000UL)
-#define DUAL_TIM1_BASE          (PERIPH_BASE + 0x00002020UL)
+#define TIMER0_BASE             (PERIPH_BASE + 0x00000000UL)
+#define TIMER1_BASE             (PERIPH_BASE + 0x00001000UL)
+#define DUAL_TIMER0_BASE        (PERIPH_BASE + 0x00002000UL)
+#define DUAL_TIMER1_BASE        (PERIPH_BASE + 0x00002020UL)
 #define WDT_BASE                (PERIPH_BASE + 0x00008000UL)
 #define SPIM_BASE               (PERIPH_BASE + 0x0000C000UL)
 #define SPIS_BASE               (PERIPH_BASE + 0x0000C100UL)
@@ -912,10 +912,10 @@ typedef struct _rng_regs
   * @{
   */
 
-#define TIM0                    ((tim_regs_t *)TIM0_BASE)
-#define TIM1                    ((tim_regs_t *)TIM1_BASE)
-#define DUAL_TIM0               ((dual_tim_regs_t *)DUAL_TIM0_BASE)
-#define DUAL_TIM1               ((dual_tim_regs_t *)DUAL_TIM1_BASE)
+#define TIMER0                  ((timer_regs_t *)TIMER0_BASE)
+#define TIMER1                  ((timer_regs_t *)TIMER1_BASE)
+#define DUAL_TIMER0             ((dual_timer_regs_t *)DUAL_TIMER0_BASE)
+#define DUAL_TIMER1             ((dual_timer_regs_t *)DUAL_TIMER1_BASE)
 #define WDT                     ((wdt_regs_t *)WDT_BASE)
 #define SPIM                    ((ssi_regs_t *)SPIM_BASE)
 #define SPIS                    ((ssi_regs_t *)SPIS_BASE)
@@ -1133,7 +1133,7 @@ typedef struct _rng_regs
 #define AON_PWR_REG01_WAKE_UP_SEL_BLE                       (0x4U << AON_PWR_REG01_WAKE_UP_SEL_Pos)
 #define AON_PWR_REG01_WAKE_UP_SEL_CALENDAR                  (0x8U << AON_PWR_REG01_WAKE_UP_SEL_Pos)
 #define AON_PWR_REG01_WAKE_UP_SEL_PMU_BOD_FEDGE             (0x10U << AON_PWR_REG01_WAKE_UP_SEL_Pos)
-#define AON_PWR_REG01_WAKE_UP_SEL_MISO_COMP                 (0x20U << AON_PWR_REG01_WAKE_UP_SEL_Pos)
+#define AON_PWR_REG01_WAKE_UP_SEL_MSIO_COMP                 (0x20U << AON_PWR_REG01_WAKE_UP_SEL_Pos)
 
 #define AON_PWR_REG01_SMC_WAKEUP_REQ_Pos                    (22U)
 #define AON_PWR_REG01_SMC_WAKEUP_REQ_Len                    (1U)
@@ -1287,6 +1287,11 @@ typedef struct _rng_regs
 #define AON_RF_REG_0_BGAP_STATIC_EN_LV_EN                   (0x1U <<  AON_RF_REG_0_BGAP_STATIC_EN_LV_Pos)
 #define AON_RF_REG_0_BGAP_STATIC_EN_LV_DIS                  (0x0U <<  AON_RF_REG_0_BGAP_STATIC_EN_LV_Pos)
 
+#define AON_RF_REG_0_RCOSC_BIAS_CNTRL_Pos                   (22)
+#define AON_RF_REG_0_RCOSC_BIAS_CNTRL_Len                   (2U)
+#define AON_RF_REG_0_RCOSC_BIAS_CNTRL_Msk                   (0x03 << AON_RF_REG_0_BGAP_STATIC_EN_LV_Pos)
+
+
 #define AON_RF_REG_0_CTRL_TEMPCO_Pos                        (13U)
 #define AON_RF_REG_0_CTRL_TEMPCO_Len                        (3U)
 #define AON_RF_REG_0_CTRL_TEMPCO_Msk                        (0x7U << AON_RF_REG_0_CTRL_TEMPCO_Pos)
@@ -1333,6 +1338,11 @@ typedef struct _rng_regs
 #define AON_RF_REG_1_EN_INJ_ON                              (0x1 << AON_RF_REG_1_EN_INJ_Pos)
 #define AON_RF_REG_1_EN_INJ_OFF                             (0x0 << AON_RF_REG_1_EN_INJ_Pos)
 
+#define AON_RF_REG_1_TON_Pos                                (11U)
+#define AON_RF_REG_1_TON_Len                                (3U)
+#define AON_RF_REG_1_TON_Msk                                (0x7U << AON_RF_REG_1_TON_Pos)
+#define AON_RF_REG_1_TON                                    AON_RF_REG_1_TON_Msk
+
 #define AON_RF_REG_1_DCDC_REG2_Pos                          (8U)
 #define AON_RF_REG_1_DCDC_REG2_Len                          (8U)
 #define AON_RF_REG_1_DCDC_REG2_Msk                          (0xFFU << AON_RF_REG_1_DCDC_REG2_Pos)
@@ -1344,6 +1354,11 @@ typedef struct _rng_regs
 #define AON_RF_REG_1_DCDC_REG1                              AON_RF_REG_1_DCDC_REG1_Msk
 
 /*******************  Bit definition for AON_REG_RF_REG_2 register  **********/
+#define AON_RF_REG_2_TON_EN_Pos                             (17U)
+#define AON_RF_REG_2_TON_EN_Msk                             (0x1U << AON_RF_REG_2_TON_EN_Pos)
+#define AON_RF_REG_2_TON_EN_ON                              (0x1  << AON_RF_REG_2_TON_EN_Pos)
+#define AON_RF_REG_2_TON_EN_OFF                             (0x0  << AON_RF_REG_2_TON_EN_Pos)
+
 #define AON_RF_REG_2_GP_REG2_Pos                            (16U)
 #define AON_RF_REG_2_GP_REG2_Len                            (8U)
 #define AON_RF_REG_2_GP_REG2_Msk                            (0xFFU << AON_RF_REG_2_GP_REG2_Pos)
@@ -1527,6 +1542,26 @@ typedef struct _rng_regs
 #define AON_RF_REG_5_LPD_REG3_Msk                           (0xFFU << AON_RF_REG_5_LPD_REG3_Pos)
 #define AON_RF_REG_5_LPD_REG3                               AON_RF_REG_5_LPD_REG3_Msk
 
+#define AON_RF_REG_5_RCOSC_EN_Pos                           (7)
+#define AON_RF_REG_5_RCOSC_EN_Len                           (1U)
+#define AON_RF_REG_5_RCOSC_EN_Msk                           (0x01 << AON_RF_REG_5_RCOSC_EN_Pos)
+#define AON_RF_REG_5_RCOSC_EN                               (AON_RF_REG_5_RCOSC_EN_Msk)
+
+#define AON_RF_REG_5_RCOSC_DELAY_EN_Pos                     (6)
+#define AON_RF_REG_5_RCOSC_DELAY_EN_Len                     (1U)
+#define AON_RF_REG_5_RCOSC_DELAY_EN_Msk                     (0x01 << AON_RF_REG_5_RCOSC_DELAY_EN_Pos)
+#define AON_RF_REG_5_RCOSC_DELAY_EN                         (0x01 << AON_RF_REG_5_RCOSC_DELAY_EN_Pos)
+
+#define AON_RF_REG_5_RCOSC_RDIV_DELAY_Pos                   (3)
+#define AON_RF_REG_5_RCOSC_RDIV_DELAY_Len                   (3U)
+#define AON_RF_REG_5_RCOSC_RDIV_DELAY_Msk                   (0x07 << AON_RF_REG_5_RCOSC_RDIV_DELAY_Pos)
+#define AON_RF_REG_5_RCOSC_RDIV_DELAY                       (AON_RF_REG_5_RCOSC_RDIV_DELAY_Msk)
+
+#define AON_RF_REG_5_RCOSC_RESN_CNTRL_Pos                   (0)
+#define AON_RF_REG_5_RCOSC_RESN_CNTRL_Len                   (3U)
+#define AON_RF_REG_5_RCOSC_RESN_CNTRL_Msk                   (0x07 << AON_RF_REG_5_RCOSC_RESN_CNTRL_Pos)
+#define AON_RF_REG_5_RCOSC_RESN_CNTRL                       (AON_RF_REG_5_RCOSC_RESN_CNTRL_Msk)
+
 /*******************  Bit definition for AON_REG_RF_REG_6 register  **********/
 #define AON_RF_REG_6_CPLL_REG1_Pos                          (0U)
 #define AON_RF_REG_6_CPLL_REG1_Len                          (32U)
@@ -1551,42 +1586,42 @@ typedef struct _rng_regs
 #define AON_RF_REG_9_XO_REG2_Msk                            (0xFFFFFFFFU)
 #define AON_RF_REG_9_XO_REG2                                AON_RF_REG_9_XO_REG2_Msk
 
-/*******************  Bit definition for AON_REG_MISO_PAD_CFG_0 register  **********/
-#define AON_MISO_PAD_CFG_0_OE_N_Pos                         (24U)
-#define AON_MISO_PAD_CFG_0_OE_N_Len                         (5U)
-#define AON_MISO_PAD_CFG_0_OE_N_Msk                         (0x1FU << AON_MISO_PAD_CFG_0_OE_N_Pos)
-#define AON_MISO_PAD_CFG_0_OE_N                             AON_MISO_PAD_CFG_0_OE_N_Msk
+/*******************  Bit definition for AON_REG_MSIO_PAD_CFG_0 register  **********/
+#define AON_MSIO_PAD_CFG_0_OE_N_Pos                         (24U)
+#define AON_MSIO_PAD_CFG_0_OE_N_Len                         (5U)
+#define AON_MSIO_PAD_CFG_0_OE_N_Msk                         (0x1FU << AON_MSIO_PAD_CFG_0_OE_N_Pos)
+#define AON_MSIO_PAD_CFG_0_OE_N                             AON_MSIO_PAD_CFG_0_OE_N_Msk
 
-#define AON_MISO_PAD_CFG_0_IE_N_Pos                         (16U)
-#define AON_MISO_PAD_CFG_0_IE_N_Len                         (5U)
-#define AON_MISO_PAD_CFG_0_IE_N_Msk                         (0x1FU << AON_MISO_PAD_CFG_0_IE_N_Pos)
-#define AON_MISO_PAD_CFG_0_IE_N                             AON_MISO_PAD_CFG_0_IE_N_Msk
+#define AON_MSIO_PAD_CFG_0_IE_N_Pos                         (16U)
+#define AON_MSIO_PAD_CFG_0_IE_N_Len                         (5U)
+#define AON_MSIO_PAD_CFG_0_IE_N_Msk                         (0x1FU << AON_MSIO_PAD_CFG_0_IE_N_Pos)
+#define AON_MSIO_PAD_CFG_0_IE_N                             AON_MSIO_PAD_CFG_0_IE_N_Msk
 
-#define AON_MISO_PAD_CFG_0_IN_Pos                           (8U)
-#define AON_MISO_PAD_CFG_0_IN_Len                           (5U)
-#define AON_MISO_PAD_CFG_0_IN_Msk                           (0x1FU << AON_MISO_PAD_CFG_0_IN_Pos)
-#define AON_MISO_PAD_CFG_0_IN                               AON_MISO_PAD_CFG_0_IN_Msk
+#define AON_MSIO_PAD_CFG_0_IN_Pos                           (8U)
+#define AON_MSIO_PAD_CFG_0_IN_Len                           (5U)
+#define AON_MSIO_PAD_CFG_0_IN_Msk                           (0x1FU << AON_MSIO_PAD_CFG_0_IN_Pos)
+#define AON_MSIO_PAD_CFG_0_IN                               AON_MSIO_PAD_CFG_0_IN_Msk
 
-#define AON_MISO_PAD_CFG_0_RE_N_Pos                         (0U)
-#define AON_MISO_PAD_CFG_0_RE_N_Len                         (5U)
-#define AON_MISO_PAD_CFG_0_RE_N_Msk                         (0x1FU << AON_MISO_PAD_CFG_0_RE_N_Pos)
-#define AON_MISO_PAD_CFG_0_RE_N                             AON_MISO_PAD_CFG_0_RE_N_Msk
+#define AON_MSIO_PAD_CFG_0_RE_N_Pos                         (0U)
+#define AON_MSIO_PAD_CFG_0_RE_N_Len                         (5U)
+#define AON_MSIO_PAD_CFG_0_RE_N_Msk                         (0x1FU << AON_MSIO_PAD_CFG_0_RE_N_Pos)
+#define AON_MSIO_PAD_CFG_0_RE_N                             AON_MSIO_PAD_CFG_0_RE_N_Msk
 
-/*******************  Bit definition for AON_REG_MISO_PAD_CFG_1 register  **********/
-#define AON_MISO_PAD_CFG_1_ADC_CLK_EN_Pos                   (31U)
-#define AON_MISO_PAD_CFG_1_ADC_CLK_EN_Len                   (1U)
-#define AON_MISO_PAD_CFG_1_ADC_CLK_EN_Msk                   (0x1U << AON_MISO_PAD_CFG_1_ADC_CLK_EN_Pos)
-#define AON_MISO_PAD_CFG_1_ADC_CLK_EN                       AON_MISO_PAD_CFG_1_ADC_CLK_EN_Msk
+/*******************  Bit definition for AON_REG_MSIO_PAD_CFG_1 register  **********/
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_EN_Pos                   (31U)
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_EN_Len                   (1U)
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_EN_Msk                   (0x1U << AON_MSIO_PAD_CFG_1_ADC_CLK_EN_Pos)
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_EN                       AON_MSIO_PAD_CFG_1_ADC_CLK_EN_Msk
 
-#define AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos                  (28U)
-#define AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Len                  (3U)
-#define AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Msk                  (0x7U << AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos)
-#define AON_MISO_PAD_CFG_1_ADC_CLK_SEL                      AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Msk
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos                  (28U)
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Len                  (3U)
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Msk                  (0x7U << AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos)
+#define AON_MSIO_PAD_CFG_1_ADC_CLK_SEL                      AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Msk
 
-#define AON_MISO_PAD_CFG_1_MCU_OVR_Pos                      (22U)
-#define AON_MISO_PAD_CFG_1_MCU_OVR_Len                      (5U)
-#define AON_MISO_PAD_CFG_1_MCU_OVR_Msk                      (0x1FU << AON_MISO_PAD_CFG_1_MCU_OVR_Pos)
-#define AON_MISO_PAD_CFG_1_MCU_OVR                          AON_MISO_PAD_CFG_1_MCU_OVR_Msk
+#define AON_MSIO_PAD_CFG_1_MCU_OVR_Pos                      (22U)
+#define AON_MSIO_PAD_CFG_1_MCU_OVR_Len                      (5U)
+#define AON_MSIO_PAD_CFG_1_MCU_OVR_Msk                      (0x1FU << AON_MSIO_PAD_CFG_1_MCU_OVR_Pos)
+#define AON_MSIO_PAD_CFG_1_MCU_OVR                          AON_MSIO_PAD_CFG_1_MCU_OVR_Msk
 
 #define AON_COMM_DEEPSLCNTL_EXTWKUPDSB_Pos                  (21U)
 #define AON_COMM_DEEPSLCNTL_EXTWKUPDSB_Len                  (1U)
@@ -1618,15 +1653,15 @@ typedef struct _rng_regs
 #define AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT_Msk             (0x1U << AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT_Pos)
 #define AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT                 AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT_Msk
 
-#define AON_MISO_PAD_CFG_1_RTYPE_Pos                        (8U)
-#define AON_MISO_PAD_CFG_1_RTYPE_Len                        (5U)
-#define AON_MISO_PAD_CFG_1_RTYPE_Msk                        (0x1FU << AON_MISO_PAD_CFG_1_RTYPE_Pos)
-#define AON_MISO_PAD_CFG_1_RTYPE                            AON_MISO_PAD_CFG_1_RTYPE_Msk
+#define AON_MSIO_PAD_CFG_1_RTYPE_Pos                        (8U)
+#define AON_MSIO_PAD_CFG_1_RTYPE_Len                        (5U)
+#define AON_MSIO_PAD_CFG_1_RTYPE_Msk                        (0x1FU << AON_MSIO_PAD_CFG_1_RTYPE_Pos)
+#define AON_MSIO_PAD_CFG_1_RTYPE                            AON_MSIO_PAD_CFG_1_RTYPE_Msk
 
-#define AON_MISO_PAD_CFG_1_AE_N_Pos                         (0U)
-#define AON_MISO_PAD_CFG_1_AE_N_Len                         (5U)
-#define AON_MISO_PAD_CFG_1_AE_N_Msk                         (0x1FU << AON_MISO_PAD_CFG_1_AE_N_Pos)
-#define AON_MISO_PAD_CFG_1_AE_N                             AON_MISO_PAD_CFG_1_AE_N_Msk
+#define AON_MSIO_PAD_CFG_1_AE_N_Pos                         (0U)
+#define AON_MSIO_PAD_CFG_1_AE_N_Len                         (5U)
+#define AON_MSIO_PAD_CFG_1_AE_N_Msk                         (0x1FU << AON_MSIO_PAD_CFG_1_AE_N_Pos)
+#define AON_MSIO_PAD_CFG_1_AE_N                             AON_MSIO_PAD_CFG_1_AE_N_Msk
 
 /*******************  Bit definition for AON_REG_SLP_EVENT register  **********/
 #define AON_SLP_EVENT_SLP_TIMER_MODE_Pos                    (30U)
@@ -1736,7 +1771,7 @@ typedef struct _rng_regs
 
 #define AON_RF_REG_10_ICOMP_CTRL_LV_Pos                     (8U)
 #define AON_RF_REG_10_ICOMP_CTRL_LV_Len                     (4U)
-#define AON_RF_REG_10_ICOMP_CTRL_LV_Msk                     (0x1U << AON_RF_REG_10_ICOMP_CTRL_LV_Pos)
+#define AON_RF_REG_10_ICOMP_CTRL_LV_Msk                     (0xFU << AON_RF_REG_10_ICOMP_CTRL_LV_Pos)
 #define AON_RF_REG_10_ICOMP_CTRL_LV                         AON_RF_REG_10_ICOMP_CTRL_LV_Msk
 
 #define AON_RF_REG_10_LPD_REG5_Pos                          (8U)
@@ -2604,75 +2639,75 @@ typedef struct _rng_regs
 
 
 /* ================================================================================================================= */
-/* ================                                     DUAL_TIM                                    ================ */
+/* ================                                    DUAL_TIMER                                   ================ */
 /* ================================================================================================================= */
 
-/*******************  Bit definition for DUAL_TIM_RELOAD register  ************/
-#define DUAL_TIM_RELOAD_RELOAD_Pos                          (0U)
-#define DUAL_TIM_RELOAD_RELOAD_Len                          (32U)
-#define DUAL_TIM_RELOAD_RELOAD_Msk                          (0xFFFFFFFFU)
-#define DUAL_TIM_RELOAD_RELOAD                              DUAL_TIM_RELOAD_RELOAD_Msk
+/*******************  Bit definition for DUAL_TIMER_RELOAD register  ************/
+#define DUAL_TIMER_RELOAD_RELOAD_Pos                          (0U)
+#define DUAL_TIMER_RELOAD_RELOAD_Len                          (32U)
+#define DUAL_TIMER_RELOAD_RELOAD_Msk                          (0xFFFFFFFFU)
+#define DUAL_TIMER_RELOAD_RELOAD                              DUAL_TIMER_RELOAD_RELOAD_Msk
 
-/*******************  Bit definition for DUAL_TIM_VALUE register  *************/
-#define DUAL_TIM_VALUE_VALUE_Pos                            (0U)
-#define DUAL_TIM_VALUE_VALUE_Len                            (32U)
-#define DUAL_TIM_VALUE_VALUE_Msk                            (0xFFFFFFFFU)
-#define DUAL_TIM_VALUE_VALUE                                DUAL_TIM_VALUE_VALUE_Msk
+/*******************  Bit definition for DUAL_TIMER_VALUE register  *************/
+#define DUAL_TIMER_VALUE_VALUE_Pos                            (0U)
+#define DUAL_TIMER_VALUE_VALUE_Len                            (32U)
+#define DUAL_TIMER_VALUE_VALUE_Msk                            (0xFFFFFFFFU)
+#define DUAL_TIMER_VALUE_VALUE                                DUAL_TIMER_VALUE_VALUE_Msk
 
-/*******************  Bit definition for DUAL_TIM_CTRL register  **************/
-#define DUAL_TIM_CTRL_EN_Pos                                (7U)
-#define DUAL_TIM_CTRL_EN_Len                                (1U)
-#define DUAL_TIM_CTRL_EN_Msk                                (0x1U << DUAL_TIM_CTRL_EN_Pos)
-#define DUAL_TIM_CTRL_EN                                    DUAL_TIM_CTRL_EN_Msk
+/*******************  Bit definition for DUAL_TIMER_CTRL register  **************/
+#define DUAL_TIMER_CTRL_EN_Pos                                (7U)
+#define DUAL_TIMER_CTRL_EN_Len                                (1U)
+#define DUAL_TIMER_CTRL_EN_Msk                                (0x1U << DUAL_TIMER_CTRL_EN_Pos)
+#define DUAL_TIMER_CTRL_EN                                    DUAL_TIMER_CTRL_EN_Msk
 
-#define DUAL_TIM_CTRL_MODE_Pos                              (6U)
-#define DUAL_TIM_CTRL_MODE_Len                              (1U)
-#define DUAL_TIM_CTRL_MODE_Msk                              (0x1U << DUAL_TIM_CTRL_MODE_Pos)
-#define DUAL_TIM_CTRL_MODE                                  DUAL_TIM_CTRL_MODE_Msk
+#define DUAL_TIMER_CTRL_MODE_Pos                              (6U)
+#define DUAL_TIMER_CTRL_MODE_Len                              (1U)
+#define DUAL_TIMER_CTRL_MODE_Msk                              (0x1U << DUAL_TIMER_CTRL_MODE_Pos)
+#define DUAL_TIMER_CTRL_MODE                                  DUAL_TIMER_CTRL_MODE_Msk
 
-#define DUAL_TIM_CTRL_INTEN_Pos                             (5U)
-#define DUAL_TIM_CTRL_INTEN_Len                             (1U)
-#define DUAL_TIM_CTRL_INTEN_Msk                             (0x1U << DUAL_TIM_CTRL_INTEN_Pos)
-#define DUAL_TIM_CTRL_INTEN                                 DUAL_TIM_CTRL_INTEN_Msk
+#define DUAL_TIMER_CTRL_INTEN_Pos                             (5U)
+#define DUAL_TIMER_CTRL_INTEN_Len                             (1U)
+#define DUAL_TIMER_CTRL_INTEN_Msk                             (0x1U << DUAL_TIMER_CTRL_INTEN_Pos)
+#define DUAL_TIMER_CTRL_INTEN                                 DUAL_TIMER_CTRL_INTEN_Msk
 
-#define DUAL_TIM_CTRL_PRE_Pos                               (2U)
-#define DUAL_TIM_CTRL_PRE_Len                               (2U)
-#define DUAL_TIM_CTRL_PRE_Msk                               (0x3U << DUAL_TIM_CTRL_PRE_Pos)
-#define DUAL_TIM_CTRL_PRE                                   DUAL_TIM_CTRL_PRE_Msk
+#define DUAL_TIMER_CTRL_PRE_Pos                               (2U)
+#define DUAL_TIMER_CTRL_PRE_Len                               (2U)
+#define DUAL_TIMER_CTRL_PRE_Msk                               (0x3U << DUAL_TIMER_CTRL_PRE_Pos)
+#define DUAL_TIMER_CTRL_PRE                                   DUAL_TIMER_CTRL_PRE_Msk
 
-#define DUAL_TIM_CTRL_SIZE_Pos                              (1U)
-#define DUAL_TIM_CTRL_SIZE_Len                              (1U)
-#define DUAL_TIM_CTRL_SIZE_Msk                              (0x1U << DUAL_TIM_CTRL_SIZE_Pos)
-#define DUAL_TIM_CTRL_SIZE                                  DUAL_TIM_CTRL_SIZE_Msk
+#define DUAL_TIMER_CTRL_SIZE_Pos                              (1U)
+#define DUAL_TIMER_CTRL_SIZE_Len                              (1U)
+#define DUAL_TIMER_CTRL_SIZE_Msk                              (0x1U << DUAL_TIMER_CTRL_SIZE_Pos)
+#define DUAL_TIMER_CTRL_SIZE                                  DUAL_TIMER_CTRL_SIZE_Msk
 
-#define DUAL_TIM_CTRL_ONESHOT_Pos                           (0U)
-#define DUAL_TIM_CTRL_ONESHOT_Len                           (1U)
-#define DUAL_TIM_CTRL_ONESHOT_Msk                           (0x1U << DUAL_TIM_CTRL_ONESHOT_Pos)
-#define DUAL_TIM_CTRL_ONESHOT                               DUAL_TIM_CTRL_ONESHOT_Msk
+#define DUAL_TIMER_CTRL_ONESHOT_Pos                           (0U)
+#define DUAL_TIMER_CTRL_ONESHOT_Len                           (1U)
+#define DUAL_TIMER_CTRL_ONESHOT_Msk                           (0x1U << DUAL_TIMER_CTRL_ONESHOT_Pos)
+#define DUAL_TIMER_CTRL_ONESHOT                               DUAL_TIMER_CTRL_ONESHOT_Msk
 
-/*******************  Bit definition for DUAL_TIM_INT_CLR register  ***********/
-#define DUAL_TIM_INT_CLR_Pos                                (0U)
-#define DUAL_TIM_INT_CLR_Len                                (32U)
-#define DUAL_TIM_INT_CLR_Msk                                (0xFFFFFFFFU)
-#define DUAL_TIM_INT_CLR                                    DUAL_TIM_INT_CLR_Msk
+/*******************  Bit definition for DUAL_TIMER_INT_CLR register  ***********/
+#define DUAL_TIMER_INT_CLR_Pos                                (0U)
+#define DUAL_TIMER_INT_CLR_Len                                (32U)
+#define DUAL_TIMER_INT_CLR_Msk                                (0xFFFFFFFFU)
+#define DUAL_TIMER_INT_CLR                                    DUAL_TIMER_INT_CLR_Msk
 
-/*******************  Bit definition for DUAL_TIM_RAW_INT_STAT register  ******/
-#define DUAL_TIM_RIS_RTI_Pos                                (0U)
-#define DUAL_TIM_RIS_RTI_Len                                (1U)
-#define DUAL_TIM_RIS_RTI_Msk                                (0x1U << DUAL_TIM_RIS_RTI_Pos)
-#define DUAL_TIM_RIS_RTI                                    DUAL_TIM_RIS_RTI_Msk
+/*******************  Bit definition for DUAL_TIMER_RAW_INT_STAT register  ******/
+#define DUAL_TIMER_RIS_RTI_Pos                                (0U)
+#define DUAL_TIMER_RIS_RTI_Len                                (1U)
+#define DUAL_TIMER_RIS_RTI_Msk                                (0x1U << DUAL_TIMER_RIS_RTI_Pos)
+#define DUAL_TIMER_RIS_RTI                                    DUAL_TIMER_RIS_RTI_Msk
 
-/*******************  Bit definition for DUAL_TIM_INT_STAT register  **********/
-#define DUAL_TIM_ISR_TI_Pos                                 (0U)
-#define DUAL_TIM_ISR_TI_Len                                 (1U)
-#define DUAL_TIM_ISR_TI_Msk                                 (0x1U << DUAL_TIM_ISR_TI_Pos)
-#define DUAL_TIM_ISR_TI                                     DUAL_TIM_ISR_TI_Msk
+/*******************  Bit definition for DUAL_TIMER_INT_STAT register  **********/
+#define DUAL_TIMER_ISR_TI_Pos                                 (0U)
+#define DUAL_TIMER_ISR_TI_Len                                 (1U)
+#define DUAL_TIMER_ISR_TI_Msk                                 (0x1U << DUAL_TIMER_ISR_TI_Pos)
+#define DUAL_TIMER_ISR_TI                                     DUAL_TIMER_ISR_TI_Msk
 
-/*******************  Bit definition for DUAL_TIM_BGLOAD register  ************/
-#define DUAL_TIM_BLR_BL_Pos                                 (0U)
-#define DUAL_TIM_BLR_BL_Len                                 (32U)
-#define DUAL_TIM_BLR_BL_Msk                                 (0xFFFFFFFFU)
-#define DUAL_TIM_BLR_BL                                     DUAL_TIM_BLR_BL_Msk
+/*******************  Bit definition for DUAL_TIMER_BGLOAD register  ************/
+#define DUAL_TIMER_BLR_BL_Pos                                 (0U)
+#define DUAL_TIMER_BLR_BL_Len                                 (32U)
+#define DUAL_TIMER_BLR_BL_Msk                                 (0xFFFFFFFFU)
+#define DUAL_TIMER_BLR_BL                                     DUAL_TIMER_BLR_BL_Msk
 
 
 /* ================================================================================================================= */
@@ -3874,7 +3909,7 @@ typedef struct _rng_regs
 /**********  Bit definition for MCU_SUB_REG_MSIO_REG register  ******************/
 #define MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Pos                 (8U)
 #define MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Len                 (4U)
-#define MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Msk                 (0xFU << MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Len)
+#define MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Msk                 (0xFU << MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Pos)
 #define MCU_SUB_MSIO_REG0_PFAST_CS_CTRL                     MCU_SUB_MSIO_REG0_PFAST_CS_CTRL_Msk
 
 #define MCU_SUB_MSIO_REG0_MSIO_C_Pos                        (0U)
@@ -5342,36 +5377,36 @@ typedef struct _rng_regs
 
 
 /* ================================================================================================================= */
-/* ================                                        TIM                                      ================ */
+/* ================                                       TIMER                                     ================ */
 /* ================================================================================================================= */
-/*******************  Bit definition for TIM_CTRL register  *******************/
-#define TIM_CTRL_INTEN_Pos                                  (3U)
-#define TIM_CTRL_INTEN_Len                                  (1U)
-#define TIM_CTRL_INTEN_Msk                                  (0x1U << TIM_CTRL_INTEN_Pos)
-#define TIM_CTRL_INTEN                                      TIM_CTRL_INTEN_Msk
+/*******************  Bit definition for TIMER_CTRL register  *******************/
+#define TIMER_CTRL_INTEN_Pos                                (3U)
+#define TIMER_CTRL_INTEN_Len                                (1U)
+#define TIMER_CTRL_INTEN_Msk                                (0x1U << TIMER_CTRL_INTEN_Pos)
+#define TIMER_CTRL_INTEN                                    TIMER_CTRL_INTEN_Msk
 
-#define TIM_CTRL_EN_Pos                                     (0U)
-#define TIM_CTRL_EN_Len                                     (1U)
-#define TIM_CTRL_EN_Msk                                     (0x1U << TIM_CTRL_EN_Pos)
-#define TIM_CTRL_EN                                         TIM_CTRL_EN_Msk
+#define TIMER_CTRL_EN_Pos                                   (0U)
+#define TIMER_CTRL_EN_Len                                   (1U)
+#define TIMER_CTRL_EN_Msk                                   (0x1U << TIMER_CTRL_EN_Pos)
+#define TIMER_CTRL_EN                                       TIMER_CTRL_EN_Msk
 
-/*******************  Bit definition for TIM_VALUE register  ******************/
-#define TIM_VALUE_VALUE_Pos                                 (0U)
-#define TIM_VALUE_VALUE_Len                                 (32U)
-#define TIM_VALUE_VALUE_Msk                                 (0xFFFFFFFFU)
-#define TIM_VALUE_VALUE                                     TIM_VALUE_VALUE_Msk
+/*******************  Bit definition for TIMER_VALUE register  ******************/
+#define TIMER_VALUE_VALUE_Pos                               (0U)
+#define TIMER_VALUE_VALUE_Len                               (32U)
+#define TIMER_VALUE_VALUE_Msk                               (0xFFFFFFFFU)
+#define TIMER_VALUE_VALUE                                   TIMER_VALUE_VALUE_Msk
 
-/*******************  Bit definition for TIM_RELOAD register  *****************/
-#define TIM_RELOAD_RELOAD_Pos                               (0U)
-#define TIM_RELOAD_RELOAD_Len                               (32U)
-#define TIM_RELOAD_RELOAD_Msk                               (0xFFFFFFFFU)
-#define TIM_RELOAD_RELOAD                                   TIM_RELOAD_RELOAD_Msk
+/*******************  Bit definition for TIMER_RELOAD register  *****************/
+#define TIMER_RELOAD_RELOAD_Pos                             (0U)
+#define TIMER_RELOAD_RELOAD_Len                             (32U)
+#define TIMER_RELOAD_RELOAD_Msk                             (0xFFFFFFFFU)
+#define TIMER_RELOAD_RELOAD                                 TIMER_RELOAD_RELOAD_Msk
 
-/*******************  Bit definition for TIM_RELOAD register  *****************/
-#define TIM_INT_STAT_Pos                                    (0U)
-#define TIM_INT_STAT_Len                                    (1U)
-#define TIM_INT_STAT_Msk                                    (0x1U << TIM_INT_STAT_Pos)
-#define TIM_INT_STAT                                        TIM_INT_STAT_Msk
+/*******************  Bit definition for TIMER_RELOAD register  *****************/
+#define TIMER_INT_STAT_Pos                                  (0U)
+#define TIMER_INT_STAT_Len                                  (1U)
+#define TIMER_INT_STAT_Msk                                  (0x1U << TIMER_INT_STAT_Pos)
+#define TIMER_INT_STAT                                       TIMER_INT_STAT_Msk
 
 
 /* ================================================================================================================= */
@@ -6409,12 +6444,12 @@ typedef struct _rng_regs
 #define IS_UART_DMA_INSTANCE(__INSTANCE__)      (((__INSTANCE__) == UART0))
 
 /****************************** TIM instances *********************************/
-#define IS_TIM_ALL_INSTANCE(__INSTANCE__)       (((__INSTANCE__) == TIM0) || \
-                                                 ((__INSTANCE__) == TIM1))
+#define IS_TIMER_ALL_INSTANCE(__INSTANCE__)     (((__INSTANCE__) == TIMER0) || \
+                                                 ((__INSTANCE__) == TIMER1))
 
 /****************************** DUAL TIM instances ****************************/
-#define IS_DUAL_TIM_ALL_INSTANCE(__INSTANCE__)  (((__INSTANCE__) == DUAL_TIM0) || \
-                                                 ((__INSTANCE__) == DUAL_TIM1))
+#define IS_DUAL_TIM_ALL_INSTANCE(__INSTANCE__)  (((__INSTANCE__) == DUAL_TIMER0) || \
+                                                 ((__INSTANCE__) == DUAL_TIMER1))
 
 /****************************** PWM instances *********************************/
 #define IS_PWM_ALL_INSTANCE(__INSTANCE__)       (((__INSTANCE__) == PWM0) || \

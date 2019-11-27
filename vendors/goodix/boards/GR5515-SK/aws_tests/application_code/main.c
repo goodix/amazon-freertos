@@ -32,8 +32,10 @@
 #include "aws_test_runner.h"
 #include "iot_config.h"
 /* AWS library includes. */
-#include "aws_system_init.h"
 #include "aws_logging_task.h"
+#include "aws_system_init.h"
+
+
 #include "aws_clientcredential.h"
 //#include "aws_dev_mode_key_provisioning.h"
 #include "user_periph_setup.h"

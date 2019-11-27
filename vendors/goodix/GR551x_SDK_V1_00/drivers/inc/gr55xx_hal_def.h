@@ -3,7 +3,7 @@
  *
  * @file    gr55xx_hal_def.h
  * @author  BLE Driver Team
- * @brief   This file contains HAL common defines, enumeration, macros and structures definitions.
+ * @brief   This file contains HAL common definitions, enumeration, macros and structures definitions.
  *
  ****************************************************************************************
  * @attention
@@ -44,7 +44,7 @@
   */
 
 /** @defgroup HAL_DEF HAL DEFINE
-  * @brief HAL common defines.
+  * @brief HAL common definitions.
   * @{
   */
 
@@ -96,16 +96,16 @@ typedef enum
 #define HAL_MAX_DELAY                       (0xFFFFFFFFU)
 
 /**
-  * @brief  Check whether the bits of register is set.
+  * @brief  Check whether the bits of register are set.
   * @param  REG specifies the register.
-  * @param  BIT specifies the bits will be check.
+  * @param  BIT specifies the bits will be checked.
   * @retval SET (BIT is set) or RESET (BIT is not set)
   */
 #define HAL_IS_BIT_SET(REG, BIT)            (((REG) & (BIT)) != RESET)
 /**
-  * @brief  Check whether the bits of register is clear.
+  * @brief  Check whether the bits of register are clear.
   * @param  REG specifies the register.
-  * @param  BIT specifies the bits will be check.
+  * @param  BIT specifies the bits will be checked.
   * @retval SET (BIT is clear) or RESET (BIT is not clear)
   */
 #define HAL_IS_BIT_CLR(REG, BIT)            (((REG) & (BIT)) == RESET)
@@ -125,10 +125,10 @@ typedef enum
 
 /** @brief Reset the Handle's State field.
   * @param __HANDLE__ specifies the Peripheral Handle.
-  * @note  This macro can be used for the following purpose:
+  * @note  This macro can be used for the following purposes:
   *          - When the Handle is declared as local variable; before passing it as parameter
   *            to hal_ppp_init() for the first time, it is mandatory to use this macro
-  *            to set to 0 the Handle's "State" field.
+  *            to set the Handle's "State" field to 0.
   *            Otherwise, "State" field may have any random value and the first time the function
   *            hal_ppp_init() is called, the low level hardware initialization will be missed
   *            (i.e. hal_ppp_msp_init() will not be executed).

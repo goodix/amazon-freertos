@@ -177,7 +177,7 @@
 
 /** @defgroup BLE_GATTS_ATTR_EXT_PERM Attribute Extend Permission
  * @{ */
-#define ATT_VAL_LOC_USER                   (1 << 15)            /**< Value location, means value saved in user space, the profile's read/write callback will be called. */
+#define ATT_VAL_LOC_USER                   (1 << 15)            /**< Value location which means value saved in user space, the profile's read/write callback will be called. */
 #define ATT_VAL_LOC_STACK                  (0 << 15)            /**< Value location which means value saved in BLE Stack. */
 #define ATT_UUID_TYPE_SET(uuid_len)        ((uuid_len) << 13)   /**< Attribute UUID length set. See @ref BLE_GATTS_UUID_TYPE */
 #define ATT_ENC_KEY_SIZE_16                (0x1000)             /**< 16 bytes attribute encryption key size . */
@@ -219,16 +219,17 @@ typedef struct
                                   - For Characteristic Aggregate Format, must be @ref READ_PERM_UNSEC. */   
                                   
     uint16_t ext_perm;       /**< Attribute extended permissions, see @ref BLE_GATTS_ATTR_EXT_PERM. \n
-                                  - For Primary/Secondary/Included Services, this field is not used and should be set 0. \n
-                                  - For Characteristic Declaration, this field is not used and should be set 0. \n
-                                  - For Characteristic Extended Properties, this field is not used and should be set 0. \n
-                                  - For Client Characteristic Configuration and Server Characteristic Configuration, value must be saved in user space. There is no need for users to set this value location bit. */
+                                  - For Primary/Secondary/Included Services, this field is not used and should be set to 0. \n
+                                  - For Characteristic Declaration, this field is not used and should be set to 0. \n
+                                  - For Characteristic Extended Properties, this field is not used and should be set to 0. \n
+                                  - For Client Characteristic Configuration and Server Characteristic Configuration, value must be saved in user space,
+                                    user needn't to set this value location bit. The UUID length type must be set to 0.*/
                                   
     uint16_t max_size;       /**< Attribute max size. \n
-                                  - For Primary/Secondary/Included Services, this field is not used, set 0. \n
-                                  - For Characteristic Declaration, this field is not used, set 0. \n
-                                  - For Characteristic Extended Properties, this field contains 2 bytes value. \n
-                                  - For Client Characteristic Configuration and Server Characteristic Configuration, this field is not used, set 0. \n
+                                  - For Primary/Secondary/Included Services, this field is not used, set to 0. \n
+                                  - For Characteristic Declaration, this field is not used, set to 0. \n
+                                  - For Characteristic Extended Properties, this field contains 2-byte value. \n
+                                  - For Client Characteristic Configuration and Server Characteristic Configuration, this field is not used, set to 0. \n
                                   - For others, this field is attribute max size. */
 } attm_desc_t;
 
@@ -246,16 +247,17 @@ typedef struct
                                   - For Characteristic Aggregate Format, must be @ref READ_PERM_UNSEC. */   
                                   
     uint16_t ext_perm;       /**< Attribute extended permissions, see @ref BLE_GATTS_ATTR_EXT_PERM. \n
-                                  - For Primary/Secondary/Included Services, this field is not used, set 0. \n
-                                  - For Characteristic Declaration, this field is not used, set 0. \n
-                                  - For Characteristic Extended Properties, this field is not used, set 0. \n
-                                  - For Client Characteristic Configuration and Server Characteristic Configuration, value must be saved in user space, user needn't to set this value location bit. */
+                                  - For Primary/Secondary/Included Services, this field is not used, set to 0. \n
+                                  - For Characteristic Declaration, this field is not used, set to 0. \n
+                                  - For Characteristic Extended Properties, this field is not used, set to 0. \n
+                                  - For Client Characteristic Configuration and Server Characteristic Configuration, value must be saved in user space,
+                                    user needn't to set this value location bit. The UUID length type must be set to 0.*/
                                   
     uint16_t max_size;       /**< Attribute max size. \n
-                                  - For Primary/Secondary/Included Services, this field is not used, set 0. \n
-                                  - For Characteristic Declaration, this field is not used, set 0. \n
-                                  - For Characteristic Extended Properties, this field contains 2 bytes value. \n
-                                  - For Client Characteristic Configuration and Server Characteristic Configuration, this field is not used, set 0. \n
+                                  - For Primary/Secondary/Included Services, this field is not used, set to 0. \n
+                                  - For Characteristic Declaration, this field is not used, set to 0. \n
+                                  - For Characteristic Extended Properties, this field contains 2-byte value. \n
+                                  - For Client Characteristic Configuration and Server Characteristic Configuration, this field is not used, set to 0. \n
                                   - For others, this field is attribute max size. */
 } attm_desc_128_t;
 
@@ -317,13 +319,13 @@ typedef struct
 
 
 /**
- * @brief GATT send Notification or Indication event param description.
+ * @brief GATT sending Notification or Indication event param description.
  */
 typedef struct
 {
     gatt_evt_type_t        type;       /**< Request type (Notification/Indication). see @ref gatt_evt_type_t. */
     uint16_t               handle;     /**< Characteristic Value handle to be notified or indicated. */
-    uint16_t               length;     /**< Length of Characteristic Value to be send. */
+    uint16_t               length;     /**< Length of Characteristic Value to be sent. */
     uint8_t               *value;      /**< Characteristic Value pointer. */
 } gatts_noti_ind_t;
 
@@ -357,7 +359,7 @@ uint16_t ble_gatts_srvc_db_create(gatts_create_db_t *p_param);
  * @param[in] offset:     Data offset of the value in attribute value.
  * @param[in] p_value:    The value to set. If offset = 0, the value is the new attribute value; otherwise, the value is part of the new attribute value.
  *
- * @retval ::SDK_SUCCESS: Successfully updated the attribute value.
+ * @retval ::SDK_SUCCESS: Successfully update the attribute value.
  * @retval ::SDK_ERR_POINTER_NULL: Value is NULL.
  * @retval ::SDK_ERR_INVALID_HANDLE: Handle not exist in database.
  * @retval ::SDK_ERR_REQ_NOT_SUPPORTED: Attribute data is not present in database or cannot be modified.                       
@@ -496,9 +498,9 @@ uint16_t ble_gatts_noti_ind(uint8_t conn_idx, const gatts_noti_ind_t *p_param);
 
 /**
  ****************************************************************************************
- * @brief When service on local device upgrade finish, call this API to send service upgrade to stack.
- *        If the bonded device connect again, the stack will send service change to the bonded device until the bonded
- *        device has send back indication confirm.
+ * @brief When service on local device finishes upgrade, call this API to send service upgrade to stack.
+ *        If the bonded device connects again, the stack will send service change to the bonded device until the bonded
+ *        device has sent back indication confirmation.
  ****************************************************************************************
  */
 void ble_gatts_service_changed(void);

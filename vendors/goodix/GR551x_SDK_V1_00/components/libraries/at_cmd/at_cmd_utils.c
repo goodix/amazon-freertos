@@ -88,14 +88,17 @@ bool at_cmd_decimal_num_check(uint8_t *p_data, uint16_t length, uint32_t *p_num)
 
 bool at_cmd_hex_num_check(uint8_t *p_data, uint16_t length, uint32_t *p_num)
 {
-    if (0 == length)
+    if (2 >= length)
     {
         return false;
     }
 
     *p_num = 0;
-
-    for (uint8_t i = 0; i < length; i++)
+    if ('0' != p_data[0]||('X' != p_data[1]&&'x' != p_data[1]))
+    {
+        return false;
+    }
+    for (uint8_t i = 2; i < length; i++)
     {
         if ('0' <= p_data[i] && '9' >= p_data[i])
         {

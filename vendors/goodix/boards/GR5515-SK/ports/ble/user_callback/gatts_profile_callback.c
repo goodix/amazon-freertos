@@ -8,7 +8,7 @@
 #include "iot_ble_hal_internals.h"
 #include "FreeRTOSConfig.h"
 #include "bt_hal_manager_types.h"
-#include "ble_prf_utils.h"
+//#include "ble_prf_utils.h"
 #include "gr_config.h"
 #include "gr_utils.h"
 #include "gr_message.h"
@@ -63,16 +63,22 @@ static uint8_t  s_attr_mask[GR_BLE_ATTR_MASK_LEN];
 
 static ble_err_t gatt_prf_db_init(void)
 {
-    uint16_t           start_hdl  = PRF_INVALID_HANDLE;
+    uint16_t           start_hdl  = GR_PRF_INVALID_HANDLE;
     sdk_err_t          error_code = SDK_SUCCESS;
     gatts_create_db_t  gatts_db;
     BTGattServiceList_t * psrv;
 
     memset(&gatts_db, 0, sizeof(gatts_db));
     
-    if(s_gattsp_instance.cur_start_srv_index >= s_gattsp_instance.register_srv_num){
+    if(s_gattsp_instance.cur_start_srv_index >= s_gattsp_instance.register_srv_num) {
+#if 0 	//v0.96
         GRC_LOG(ERROR, ("gatt_prf_db_init, index exception... "));
-        return BLE_ATT_ERR_INVALID_HANDLE;
+				return BLE_ATT_ERR_INVALID_HANDLE;
+#else
+        GRC_LOG(WARNING, ("gatt_prf_db_init, index exception... "));
+				s_gattsp_instance.cur_start_srv_index = 0;
+				is_first_srv = true;
+#endif
     }
     
     uint16_t new_idx = s_gattsp_instance.cur_start_srv_index % GR_BLE_MAX_SERVICES;

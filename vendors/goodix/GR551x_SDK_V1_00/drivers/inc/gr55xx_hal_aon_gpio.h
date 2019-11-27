@@ -86,13 +86,13 @@ typedef enum
 typedef struct _aon_gpio_init
 {
     uint32_t pin;       /**< Specifies the AON_GPIO pins to be configured.
-                            This parameter can be any value of @ref AON_GPIO_pins */
+                            This parameter can be any value of @ref AON_GPIO_Pins */
 
     uint32_t mode;      /**< Specifies the operating mode for the selected pins.
-                             This parameter can be a value of @ref AON_GPIO_mode */
+                             This parameter can be a value of @ref AON_GPIO_Mode */
 
     uint32_t pull;      /**< Specifies the Pull-up or Pull-Down activation for the selected pins.
-                             This parameter can be a value of @ref AON_GPIO_pull */
+                             This parameter can be a value of @ref AON_GPIO_Pull */
 
     uint32_t mux;       /**< Specifies the Peripheral to be connected to the selected pins.
                              This parameter can be a value of @ref GPIOEx_Mux_Function_Selection. */
@@ -100,7 +100,7 @@ typedef struct _aon_gpio_init
 
 /** @} */
 
-/** @addtogroup HAL_AON_GPIO_STRUCTURES Callback Structures
+/** @addtogroup HAL_AON_GPIO_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -130,7 +130,7 @@ typedef struct _aon_gpio_callback
   * @{
   */
 
-/** @defgroup AON_GPIO_pins AON_GPIO pins
+/** @defgroup AON_GPIO_Pins AON_GPIO pins
   * @{
   */
 #define AON_GPIO_PIN_0                 ((uint16_t)0x0001U)  /**< Pin 0 selected    */
@@ -147,7 +147,7 @@ typedef struct _aon_gpio_callback
 #define AON_GPIO_PIN_MASK              (0x000000FFU)        /**< PIN mask for assert test */
 /** @} */
 
-/** @defgroup AON_GPIO_mode AON_GPIO mode
+/** @defgroup AON_GPIO_Mode AON_GPIO mode
   * @brief AON_GPIO Configuration Mode
   *        Elements values convention: 0x000000YX
   *           - X  : IO Direction mode (Input, Output, Mux)
@@ -164,8 +164,8 @@ typedef struct _aon_gpio_callback
 /** @} */
 
 
-/** @defgroup AON_GPIO_pull AON_GPIO pull
-  * @brief AON_GPIO Pull-Up or Pull-Down Activation
+/** @defgroup AON_GPIO_Pull AON_GPIO pull
+  * @brief AON_GPIO Pull-Up or Pull-Down activation
   * @{
   */
 #define  AON_GPIO_NOPULL            LL_AON_GPIO_PULL_NO     /**< No Pull-up or Pull-down activation  */
@@ -192,7 +192,7 @@ typedef struct _aon_gpio_callback
 
 /**
   * @brief  Check whether the specified AON_GPIO pin is asserted or not.
-  * @param  __AON_GPIO_PIN__ specifies the AON_GPIO pin to check.
+  * @param  __AON_GPIO_PIN__ specifies the AON_GPIO pin to be checked.
   *          This parameter can be AON_GPIO_PIN_x where x can be (0..15).
   * @retval The new state of __AON_GPIO_PIN__ (SET or RESET).
   */
@@ -200,7 +200,7 @@ typedef struct _aon_gpio_callback
 
 /**
   * @brief  Clear the AON_GPIO pin pending bits.
-  * @param  __AON_GPIO_PIN__ specifies the AON_GPIO pins to clear.
+  * @param  __AON_GPIO_PIN__ specifies the AON_GPIO pins to be cleared.
   *          This parameter can be any combination of AON_GPIO_PIN_x where x can be (0..15).
   * @retval None
   */
@@ -305,7 +305,7 @@ void hal_aon_gpio_deinit(uint32_t aon_gpio_pin);
  ****************************************************************************************
  * @brief  Read the specified input port pin.
  *
- * @param[in]  aon_gpio_pin: Specifies the port bit to read.
+ * @param[in]  aon_gpio_pin: Specifies the port bit to be read.
  *         This parameter can be one of the following values:
  *         @arg @ref AON_GPIO_PIN_0
  *         @arg @ref AON_GPIO_PIN_1
@@ -378,7 +378,7 @@ void hal_aon_gpio_irq_handler(void);
  * @note  This function should not be modified. When the callback is needed,
  *        the hal_aon_gpio_callback can be implemented in the user file.
  *
- * @param[in]  aon_gpio_pin: Indicates the port pin whose interrupt was triggered.
+ * @param[in]  aon_gpio_pin: Indicate the port pin whose interrupt was triggered.
  *         This parameter can be a combination of the following values:
  *         @arg @ref AON_GPIO_PIN_0
  *         @arg @ref AON_GPIO_PIN_1

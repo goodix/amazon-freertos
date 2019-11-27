@@ -1,19 +1,119 @@
+/**
+ ****************************************************************************************
+ *
+ * @file GR5515_SK.h
+ *
+ * @brief GR5515 Start Kit Macro.
+ *
+ ****************************************************************************************
+ * @attention
+  #####Copyright (c) 2019 GOODIX
+  All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+  * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+  * Neither the name of GOODIX nor the names of its contributors may be used
+    to endorse or promote products derived from this software without
+    specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  POSSIBILITY OF SUCH DAMAGE.
+ *****************************************************************************************
+ */
 #ifndef __GR5515_SK_H__
 #define __GR5515_SK_H__
 
-#define GR5515SK 
-
-#define SK_GUI 
-
-/*******DBG_PRINTF UART IO CONFIG*****************/
-#define LOG_UART_GRP                    UART0
-#define LOG_UART_PORT                   GPIO0
-#define LOG_UART_TX_PIN                 GPIO_PIN_10
-#define LOG_UART_RX_PIN                 GPIO_PIN_11
-#define LOG_UART_TX_PINMUX              GPIO_MUX_2
-#define LOG_UART_RX_PINMUX              GPIO_MUX_2
+#if APP_DRIVER_USE_ENABLE
 
 /*******HCI UART IO CONFIG***********************/
+#define HCI_UART_ID                     APP_UART_ID_0
+#define HCI_UART_FLOW_ON                0
+#define HCI_UART_BAUDRATE               115200
+#define HCI_UART_TRN_PORT               APP_IO_TYPE_NORMAL
+#define HCI_UART_FLOW_PORT              APP_IO_TYPE_NORMAL
+#define HCI_UART_TX_PIN                 APP_IO_PIN_10
+#define HCI_UART_RX_PIN                 APP_IO_PIN_11
+#define HCI_UART_CTS_PIN                APP_IO_PIN_2
+#define HCI_UART_RTS_PIN                APP_IO_PIN_5
+#define HCI_UART_TX_PINMUX              APP_IO_MUX_2
+#define HCI_UART_RX_PINMUX              APP_IO_MUX_2
+#define HCI_UART_CTS_PINMUX             APP_IO_MUX_0
+#define HCI_UART_RTS_PINMUX             APP_IO_MUX_0
+#define HCI_UART_TRIGGER_PIN            AON_GPIO_PIN_1
+
+/*******UART DRIVER IO CONFIG*******************/
+#define APP_UART_ID                     APP_UART_ID_0
+#define APP_UART_BAUDRATE               115200
+#define APP_UART_TX_IO_TYPE             APP_IO_TYPE_NORMAL
+#define APP_UART_RX_IO_TYPE             APP_IO_TYPE_NORMAL
+#define APP_UART_TX_PIN                 APP_IO_PIN_10
+#define APP_UART_RX_PIN                 APP_IO_PIN_11
+#define APP_UART_TX_PINMUX              APP_IO_MUX_2
+#define APP_UART_RX_PINMUX              APP_IO_MUX_2
+
+/*******KEY DRIVER IO CONFIG********************/
+#define KEY_OK_IO_TYPE                  APP_IO_TYPE_AON
+#define KEY_UP_IO_TYPE                  APP_IO_TYPE_NORMAL
+#define KEY_DOWN_IO_TYPE                APP_IO_TYPE_NORMAL
+#define KEY_LEFT_IO_TYPE                APP_IO_TYPE_NORMAL
+#define KEY_RIGHT_IO_TYPE               APP_IO_TYPE_NORMAL
+#define KEY_OK_PIN                      AON_GPIO_PIN_1
+#define KEY_UP_PIN                      APP_IO_PIN_12
+#define KEY_DOWN_PIN                    APP_IO_PIN_13
+#define KEY_LEFT_PIN                    APP_IO_PIN_14
+#define KEY_RIGHT_PIN                   APP_IO_PIN_15
+
+/*******KEY TRIGGER MODE CONFIG*******************/
+#define KEY_TRIGGER_MODE                APP_IO_MODE_IT_FALLING
+
+/*******LED IO CONFIG FOR SK*********************/
+#define LED_NUM_0_IO                    APP_IO_PIN_4
+#define LED_NUM_1_IO                    MSIO_PIN_4
+
+/*******ADC IO CONFIG***************************/
+#define ADC_P_INPUT_PIN                 MSIO_PIN_0
+#define ADC_N_INPUT_PIN                 MSIO_PIN_1
+
+/*******UC1701 DRIVER IO CONFIG*****************/
+#define DISPLAY_DRIVER_TYPE_HW_SPI
+//#define DISPLAY_DRIVER_TYPE_SW_IO
+#define DISPLAY_SPIM_CS0_PIN            APP_IO_PIN_3
+#define DISPLAY_CMD_AND_DATA_PIN        APP_IO_PIN_5
+#define DISPLAY_SPIM_CLK_PIN            APP_IO_PIN_7
+#define DISPLAY_SPIM_MOSI_PIN           APP_IO_PIN_6
+#define DISPLAY_BACK_LIGHT_PIN          APP_IO_PIN_2
+#define DISPLAY_SPIM_GPIO_TYPE          APP_IO_TYPE_NORMAL
+
+/*******PWM IO CONFIG***************************/
+#define PWM0_MODULE                     PWM0
+#define PWM0_GPIO_MUX                   APP_IO_MUX_5
+#define PWM0_CHANNEL_C                  APP_IO_PIN_4
+#define PWM0_PORT                       APP_IO_TYPE_NORMAL
+
+#define PWM1_MODULE                     PWM1
+#define PWM1_GPIO_MUX                   APP_IO_MUX_0
+#define PWM1_CHANNEL_B                  APP_IO_PIN_4
+#define PWM1_PORT                       APP_IO_TYPE_MSIO
+
+/*******VS1005 MP3 CODEC DRIVER IO CONFIG*******/
+#else
+
+/*******HCI UART IO CONFIG***********************/
+#define HCI_UART_ID                     0
 #define HCI_UART_FLOW_ON                0
 #define HCI_UART_BAUDRATE               115200
 #define HCI_UART_TRN_PORT               GPIO0
@@ -26,10 +126,12 @@
 #define HCI_UART_RX_PINMUX              GPIO_MUX_2
 #define HCI_UART_CTS_PINMUX             GPIO_MUX_0
 #define HCI_UART_RTS_PINMUX             GPIO_MUX_0
+#define HCI_UART_TRIGGER_PIN            AON_GPIO_PIN_1
 
 /*******UART DRIVER IO CONFIG*******************/
 #define SERIAL_PORT_GRP                 UART0
 #define SERIAL_PORT_PORT                GPIO0
+#define SERIAL_PORT_BAUDRATE            115200
 #define SERIAL_PORT_TX_PIN              GPIO_PIN_10
 #define SERIAL_PORT_RX_PIN              GPIO_PIN_11
 #define SERIAL_PORT_TX_PINMUX           GPIO_MUX_2
@@ -37,19 +139,19 @@
 
 /*******KEY DRIVER IO CONFIG********************/
 #define KEY_OK_PIN                      AON_GPIO_PIN_1
-#define KEY_UP_PIN                      LL_GPIO_PIN_12
-#define KEY_DOWN_PIN                    LL_GPIO_PIN_13
-#define KEY_LEFT_PIN                    LL_GPIO_PIN_14
-#define KEY_RIGHT_PIN                   LL_GPIO_PIN_15
+#define KEY_UP_PIN                      GPIO_PIN_12
+#define KEY_DOWN_PIN                    GPIO_PIN_13
+#define KEY_LEFT_PIN                    GPIO_PIN_14
+#define KEY_RIGHT_PIN                   GPIO_PIN_15
 
 /*******KEY TRIGGER MODE CONFIG*******************/
 #define KEY_ANO_TRIGGER_MODE            AON_GPIO_MODE_IT_FALLING
 #define KEY_TRIGGER_MODE                GPIO_MODE_IT_FALLING
 
 /*******LED IO CONFIG FOR SK*********************/
-#define LED_NUM_0_IO   GPIO_PIN_4
-#define LED_NUM_0_GRP  GPIO0 
-#define LED_NUM_1_IO   MSIO_PIN_4
+#define LED_NUM_0_IO                    GPIO_PIN_4
+#define LED_NUM_0_GRP                   GPIO0 
+#define LED_NUM_1_IO                    MSIO_PIN_4
 
 /*******ADC IO CONFIG***************************/
 #define ADC_P_INPUT_PIN                 MSIO_PIN_0
@@ -104,6 +206,13 @@
 #define PWM1_CHANNEL_B                  MSIO_PIN_4
 #define PWM1_PORT                       MSIO
 
+/*******COMP IO CONFIG***************************/
+#define COMP_INPUT_PIN                  MSIO_PIN_0
+#define COMP_INPUT_PORT                 MSIO
+
+#define COMP_VREF_PIN                   MSIO_PIN_1
+#define COMP_VREF_PORT                  MSIO
+
 /*******QSPI IO CONFIG**************************/
 #define QSPI_MODULE                     QSPI1
 #define QSPI_GPIO_MUX                   GPIO_MUX_2
@@ -114,10 +223,6 @@
 #define QSPI_IO1_PIN                    GPIO_PIN_14  //GPIO14
 #define QSPI_IO2_PIN                    GPIO_PIN_13  //GPIO13
 #define QSPI_IO3_PIN                    GPIO_PIN_12  //GPIO12
-
-#define QSPI_POLLING                    0x0
-#define QSPI_DMA                        0x1
-#define QSPI_USE_OPERATION              QSPI_DMA
 
 /*******SPIM IO CONFIG**************************/
 #define SPIM_GPIO_MUX                   GPIO_MUX_0
@@ -134,38 +239,5 @@
 #define SPIS_CLK_PIN                    GPIO_PIN_8  //GPIO24
 #define SPIS_MOSI_PIN                   GPIO_PIN_0  //GPIO16
 #define SPIS_MISO_PIN                   GPIO_PIN_9  //GPIO25
-
-/*******UC1701 DRIVER IO CONFIG*****************/
-#define DISPLAY_DRIVER_TYPE_HW_SPI
-//#define DISPLAY_DRIVER_TYPE_SW_IO
-#define DISPLAY_SPIM_CS0_PIN            GPIO_PIN_3
-#define DISPLAY_CMD_AND_DATA_PIN        GPIO_PIN_5
-#define DISPLAY_SPIM_CLK_PIN            GPIO_PIN_7
-#define DISPLAY_SPIM_MOSI_PIN           GPIO_PIN_6
-#define DISPLAY_SPIM_GPIO_MUX           GPIO_MUX_3
-#define DISPLAY_SPIM_GPIO_PORT          GPIO0
-
-/*******VS1005 MP3 CODEC DRIVER IO CONFIG*******/
-#define VS1005_GROUP_0                  GPIO0
-#define VS1005_GROUP_1                  GPIO1
-/* GPIO 24 -> XCS FOR SK QFN */
-#define VS_XCS_PIN                      GPIO_PIN_1
-#define VS_XCS_PIN_GRP                  VS1005_GROUP_1
-/* GPIO 25 -> XDCS FOR SK QFN */
-#define VS_XDCS_PIN                     GPIO_PIN_15
-#define VS_XDCS_PIN_GRP                 VS1005_GROUP_1
-/* GPIO 2 -> RESET FOR SK QFN */
-#define VS_RST_PIN                      GPIO_PIN_11
-#define VS_RST_PIN_GRP                  VS1005_GROUP_1
-/* GPIO 4 -> DEQ FOR SK QFN */
-#define VS_DQ_PIN                       GPIO_PIN_10
-#define VS_DQ_PIN_GRP                   VS1005_GROUP_1
-
-/* GPIO 6 -> SPIM_MOSI  GPIO 7 -> SPIM_CLK  FOR SK QFN */
-#define VS_SPI_GPIO_MUX_0               GPIO_MUX_0
-#define VS_SPI_GPIO_GRP_0               VS1005_GROUP_1
-#define VS_CLK_PIN                      GPIO_PIN_8
-#define VS_MOSI_PIN                     GPIO_PIN_9
-#define VS_MISO_PIN                     GPIO_PIN_0
-
+#endif
 #endif

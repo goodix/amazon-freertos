@@ -62,46 +62,33 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 
-/** @addtogroup HAL_PWR_STRUCTURES Callback Structures
+/** @addtogroup HAL_PWR_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
-/** @defgroup HAL PWR sleep elapsed handler define
+/** @defgroup HAL_PWR_SLEEP_ELAPSED_HANDLER HAL PWR sleep elapsed handler define
   * @{
   */
   
 /**
-  * @brief   PWR Sleep Timer Elaspsed callback
+  * @brief   PWR Sleep Timer Elapsed callback
   */
 
 typedef void (*pwr_slp_elapsed_handler_t)(void);
 
 /** @} */
 
-/** @defgroup HAL PWR External Wakeup handler define
-  * @{
-  */
-  
-/**
-  * @brief   PWR External Wakeup callback
-  */
 
-typedef void (*pwr_ext_wakeup_hander_t)(uint32_t ext_wakeup_pinx);
-
-/** @} */
-
-
-/** @defgroup pwr callback handle
+/** @defgroup HAL_PWR_CALLBACK_HANDLER PWR callback handle
   * @{
   */
 
 /**
-  * @brief pwr callback handle Structure definition
+  * @brief PWR callback handle Structure definition
   */
 typedef struct _hal_pwr_handler
 {
-    pwr_slp_elapsed_handler_t       pwr_slp_elapsed_hander;     /* PWR Sleep Timer Elaspsed callback */
-    pwr_ext_wakeup_hander_t         pwr_ext_wakeup_hander;      /* PWR External Wakeup callback.  */
+    pwr_slp_elapsed_handler_t       pwr_slp_elapsed_hander;     /* PWR Sleep Timer Elapsed callback */
 } hal_pwr_handler_t;
 
 /** @} */
@@ -140,7 +127,7 @@ typedef struct _hal_pwr_handler
 #define PWR_WKUP_COND_BLE               LL_PWR_WKUP_COND_BLE             /**< BLE wakeup                  */
 #define PWR_WKUP_COND_CALENDAR          LL_PWR_WKUP_COND_CALENDAR        /**< Calendar wakeup             */
 #define PWR_WKUP_COND_BOD_FEDGE         LL_PWR_WKUP_COND_BOD_FEDGE       /**< PMU Bod falling edge wakeup */
-#define PWR_WKUP_COND_MISO_COMP         LL_PWR_WKUP_COND_MISO_COMP       /**< Msio comparator wakeup      */
+#define PWR_WKUP_COND_MSIO_COMP         LL_PWR_WKUP_COND_MSIO_COMP       /**< Msio comparator wakeup      */
 #define PWR_WKUP_COND_ALL               LL_PWR_WKUP_COND_ALL             /**< All wakeup sources mask     */
 
 /** @} */
@@ -164,7 +151,7 @@ typedef struct _hal_pwr_handler
 /** @} */
 
 /** @defgroup PWR_Timer_Type  PWR Timer Type
- *  @note     Only available on GR551xx_B2 and later version.
+ *  @note     Only available on GR551xx_B2 and later versions.
  *  @{
  */
 #define PWR_TIMER_TYPE_CAL_TIMER        LL_PWR_TIMER_READ_SEL_CAL_TIMER  /**< Calendar timer     */
@@ -352,7 +339,7 @@ typedef struct _hal_pwr_handler
  *         @arg @ref PWR_WKUP_COND_BLE
  *         @arg @ref PWR_WKUP_COND_CALENDAR
  *         @arg @ref PWR_WKUP_COND_BOD_FEDGE
- *         @arg @ref PWR_WKUP_COND_MISO_COMP
+ *         @arg @ref PWR_WKUP_COND_MSIO_COMP
  *         @arg @ref PWR_WKUP_COND_ALL
  * @note   When @ref PWR_WKUP_COND_EXT is set, use @ref hal_pwr_config_ext_wakeup() to configure wakeup pins and pin trigger type.
  *         When @ref PWR_WKUP_COND_TIMER is set, use @ref hal_pwr_config_timer_wakeup() to configure the time count to wakeup.
@@ -562,7 +549,7 @@ void hal_pwr_enter_chip_deepsleep(void);
  ****************************************************************************************
  * @brief Enters DeepSleep mode.
  * @note  In DeepSleep mode, all I/O pins keep the same state as in Run mode.
- * @param[in] deep_sleep_retention_mem: Specifies the memory blocks which need to be keeped in POWER_RETENTION
+ * @param[in] deep_sleep_retention_mem: Specifies the memory blocks which need to be kept in POWER_RETENTION
  *        state in DeepSleep mode. This parameter can be one of the following values:
  *         @arg @ref PWR_MEM_SRAM_8K_0
  *         @arg @ref PWR_MEM_SRAM_8K_1
@@ -580,7 +567,7 @@ void hal_pwr_enter_chip_deepsleep(void);
  *         @arg @ref PWR_MEM_PACKET_MEM
  *         @arg @ref PWR_MEM_KEYRAM
  *         @arg @ref PWR_MEM_ALL
- * @param[in] wakeup_power_full_mem: Specifies the memory blocks which need to be keeped in POWER_FULL
+ * @param[in] wakeup_power_full_mem: Specifies the memory blocks which need to be kept in POWER_FULL
  *        state when waked up from DeepSleep mode. This parameter can be one of the following values:
  *        @arg @ref PWR_MEM_SRAM_8K_0
  *        @arg @ref PWR_MEM_SRAM_8K_1
@@ -637,7 +624,7 @@ void hal_pwr_set_comm_mode(uint32_t timer_mode, uint32_t core_mode);
 /**
  ****************************************************************************************
  * @brief  Get the current value of specified timer.
- * @note   Only available on GR551xx_B2 and later version.
+ * @note   Only available on GR551xx_B2 and later versions.
  * @param[in]  timer_type: This parameter can be one of the following values:
  *         @arg @ref PWR_TIMER_TYPE_CAL_TIMER
  *         @arg @ref PWR_TIMER_TYPE_AON_WDT
@@ -662,39 +649,23 @@ hal_status_t hal_pwr_get_timer_current_value(uint32_t timer_type, uint32_t *p_va
 /**
  ****************************************************************************************
  * @brief  Handle PWR Sleep Timer interrupt request.
- * @note   Only available on GR551xx_B2 and later version.
+ * @note   Only available on GR551xx_B2 and later versions.
  ****************************************************************************************
  */
 void hal_pwr_sleep_timer_irq_handler(void);
 
-/**
- ****************************************************************************************
- * @brief  Handle PWR External Wakeup interrupt request.
- * @note   Only available on GR551xx_B2 and later version.
- ****************************************************************************************
- */
-void hal_pwr_ext_wakeup_irq_handler(void);
 
 /**
  ****************************************************************************************
- * @brief  PWR Sleep Timer Elaspsed callback.
- * @note   Only available on GR551xx_B2 and later version.
+ * @brief  PWR Sleep Timer Elapsed callback.
+ * @note   Only available on GR551xx_B2 and later versions.
  *         This function should not be modified. When the callback is needed,
  *         the hal_pwr_sleep_timer_elapsed_callback can be implemented in the user file.
  ****************************************************************************************
  */
 void hal_pwr_sleep_timer_elapsed_callback(void);
 
-/**
- ****************************************************************************************
- * @brief  PWR External Wakeup callback.
- * @note   Only available on GR551xx_B2 and later version.
- *         This function should not be modified. When the callback is needed,
- *         the hal_pwr_ext_wakeup_callback can be implemented in the user file.
- * @param[in]  ext_wakeup_pinx: Indicates the External Wakeup pin which wakes up MCU.
- ****************************************************************************************
- */
-void hal_pwr_ext_wakeup_callback(uint32_t ext_wakeup_pinx);
+
 
 /** @} */
 

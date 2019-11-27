@@ -34,7 +34,7 @@
 #define APP_TIMER_FAIL                 -1
 #define APP_TIMER_LOCK()               _LOCAL_APP_TIMER_LOCK() 
 #define APP_TIMER_UNLOCK()             _LOCAL_APP_TIMER_UNLOCK()
-#define APP_TIMER_US_TO_MS(x)          ((x) * 1000UL)
+#define APP_TIMER_MS_TO_US(x)          ((x) * 1000UL)
 #define APP_TIMER_TICKS_TO_US(x)       ((x) / 32.768 * 1000UL)   
 #define APP_TIMER_GET_CURRENT_TICKS(x) hal_pwr_get_timer_current_value(PWR_TIMER_TYPE_SLP_TIMER, (x))
 
@@ -138,7 +138,7 @@ __STATIC_INLINE void app_timer_set_var(uint8_t handle, uint8_t atimer_mode, app_
     s_timer_node[handle].timer_node_status = APP_TIMER_NODE_START;
 }
 
-inline void hal_pwr_sleep_timer_elapsed_callback(void)
+__INLINE void hal_pwr_sleep_timer_elapsed_callback(void)
 { 
     APP_TIMER_LOCK();
 
@@ -293,14 +293,15 @@ void app_timer_stop(app_timer_id_t p_timer_id)
  *****************************************************************************************
  * @brief To start a existed timer in node list with old parameters
  * @param[in] app_timer_id_t: the id of timer node
- * @param[in] delay : the delay value of timer node,note this value should not exceed 4000 seconds
+ * @param[in] delay : the delay value of timer node, note this value should not
+ *                       exceed 4000 seconds. Unit (ms).
  * @param[in] p_ctx : the pointer of context
  *****************************************************************************************
  */
 sdk_err_t app_timer_start(app_timer_id_t p_timer_id, uint32_t delay, void *p_ctx)
 {
    app_timer_t *p_timer_node = p_timer_id;
-   uint32_t delay_time = APP_TIMER_US_TO_MS(delay);
+   uint32_t delay_time = APP_TIMER_MS_TO_US(delay);
    uint32_t atimer_curr_ticks = 0, atimer_curr_us = 0;
    
    if (NULL == p_timer_node)
@@ -404,22 +405,4 @@ sdk_err_t app_timer_create(app_timer_id_t *p_timer_id, app_timer_type_t mode, ap
    *p_timer_id = &s_timer_node[handle];
    APP_TIMER_UNLOCK();
    return SDK_SUCCESS;
-}
-
-
-void SLPTIMER_IRQHandler(void)
-{
-    hal_pwr_sleep_timer_irq_handler();
-}
-/**
- ****************************************************************************************
- * @brief   AON GPIO Interrupt Handler
- *
- * @retvar  void
- ****************************************************************************************
- */
-
-void EXTWKUP_IRQHandler(void)
-{
-    hal_pwr_ext_wakeup_irq_handler();
 }

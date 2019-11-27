@@ -61,7 +61,7 @@ extern "C" {
 #include "gr55xx.h"
 #include "gr55xx_hal_conf.h"
 
-/** @addtogroup HAL_HAL_STRUCTURES Callback Structures
+/** @addtogroup HAL_HAL_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -121,7 +121,7 @@ do {                                                       \
 
 /** @brief Disable external interrupts(Exception Type: 16~255) in the system.
  * This macro must be used in conjunction with the @ref GLOBAL_INT_RESTORE macro 
- * since this last one will close the brace that the current macro opens. This 
+ * since the latter one will close the brace that the former one opens. This 
  * means that both macros must be located at the same scope level.
  */
 #define GLOBAL_INT_DISABLE()                               \
@@ -177,7 +177,7 @@ do {                                                         \
   * @{
   */
 
-/** @addtogroup HAL_Exported_Functions_Group1 Initialization and de-initialization Functions
+/** @addtogroup HAL_Exported_Functions_Group1 Initialization and De-initialization Functions
  *  @brief    Initialization and de-initialization functions
  *
 @verbatim
@@ -185,13 +185,13 @@ do {                                                         \
               ##### Initialization and de-initialization functions #####
  ===============================================================================
     [..]  This section provides functions allowing to:
-      (+) Initializes the Flash interface, the NVIC allocation and initial clock
+      (+) Initialize the Flash interface, the NVIC allocation and initial clock
           configuration. It also initializes the source of time base when timeout
           is needed.
-      (+) De-initializes common part of the HAL.
+      (+) De-initialize common part of the HAL.
       (+) Configure The time base source to have 1ms time base with a dedicated
           Tick interrupt priority.
-        (++) Systick timer is used by default as source of time base, but user can
+        (++) SysTick timer is used by default as source of time base, but user can
              eventually implement his or her proper time base source (a general purpose
              timer for example or other time source), keeping in mind that Time base
              duration should be kept as 1ms since PPP_TIMEOUT_VALUEs are defined and
@@ -216,10 +216,10 @@ do {                                                         \
  *
  * @note   This function is called at the beginning of program after reset and before
  *         the clock configuration.
- *         The Systick configuration is based on AHB clock and the NVIC configuration
+ *         The SysTick configuration is based on AHB clock and the NVIC configuration
  *         is set to Priority group 4.
- *         The time base configuration is done, time base tick starts incrementing.
- *         In the default implementation, Systick is used as source of time base.
+ *         When the time base configuration is done, time base tick starts incrementing.
+ *         In the default implementation, SysTick is used as source of time base.
  *         The tick variable is incremented each 1ms in its ISR.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -232,7 +232,7 @@ hal_status_t hal_init(void);
 
 /**
  ****************************************************************************************
- * @brief  This function de-Initializes common part of the HAL and stops the source
+ * @brief  This function de-initializes common part of the HAL and stops the source
  *         of time base.
  *
  * @note   This function is optional.
@@ -247,7 +247,7 @@ hal_status_t hal_deinit(void);
 
 /**
  ****************************************************************************************
- * @brief  Initializes the MSP.
+ * @brief  Initialize the MSP.
  *
  * @note   This function should not be modified. When the callback is needed,
  *         the hal_msp_init could be implemented in the user file.
@@ -316,8 +316,8 @@ hal_status_t hal_init_tick (uint32_t tick_priority);
  * @brief  This function is called to increment  a global variable "g_tick"
  *         used as application time base.
  *
- * @note   In the default implementation, this variable is incremented by 1 each 1ms
- *         in Systick ISR.
+ * @note   In the default implementation, this variable is incremented by each ms
+ *         in SysTick ISR.
  *         This function is declared as __WEAK to be overwritten in case of other
  *         implementations  in user file.
  ****************************************************************************************
@@ -326,7 +326,7 @@ void hal_increment_tick(void);
 
 /**
  ****************************************************************************************
- * @brief  Povides a tick value in millisecond.
+ * @brief  Provide a tick value in millisecond.
  *
  * @note   The function is declared as __WEAK to be overwritten  in case of other
  *         implementations  in user file.
@@ -358,7 +358,7 @@ void hal_delay(__IO uint32_t delay);
  *
  * @note   In the default implementation , SysTick timer is the source of time base. It is
  *         used to generate interrupts at regular time intervals. Once hal_suspend_tick()
- *         is called, the SysTick interrupt will be disabled and so Tick increment
+ *         is called, the SysTick interrupt will be disabled so Tick increment
  *         is suspended.
  *         This function is declared as __WEAK to be overwritten in case of other
  *         implementations  in user file.
@@ -372,7 +372,7 @@ void hal_suspend_tick(void);
  *
  * @note   In the default implementation , SysTick timer is the source of time base. It is
  *         used to generate interrupts at regular time intervals. Once hal_resume_tick()
- *         is called, the SysTick interrupt will be enabled and so Tick increment
+ *         is called, the SysTick interrupt will be enabled so Tick increment
  *         is resumed.
  *         The function is declared as __WEAK to be overwritten in case of other
  *         implementations  in user file.

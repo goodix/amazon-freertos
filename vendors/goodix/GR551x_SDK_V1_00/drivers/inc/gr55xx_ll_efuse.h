@@ -3,7 +3,7 @@
  *
  * @file    gr55xx_ll_efuse.h
  * @author  BLE Driver Team
- * @brief   Header file containing functions prototypes of EFUSE LL library.
+ * @brief   Header file containing functions prototypes of eFuse LL library.
  *
  ****************************************************************************************
  * @attention
@@ -44,7 +44,7 @@
   */
 
 /** @defgroup LL_EFUSE EFUSE
-  * @brief EFUSE LL module driver.
+  * @brief eFuse LL module driver.
   * @{
   */
 
@@ -71,15 +71,15 @@ extern "C" {
   * @{
   */
 
-/** @defgroup EFUSE_LL_EC_OPERATION Efuse Operation Defines
+/** @defgroup EFUSE_LL_EC_OPERATION EFUSE Operation Defines
   * @brief    Operation defines which can be used with LL_EFUSE_WriteReg function
   * @{
   */
-#define LL_EFUSE_WRITE_KEYRAM               EFUSE_OPER_WRITE_KEYRAM         /**< Read fwkay and rootkey from efuse, and write to keyram  */
-#define LL_EFUSE_READ_TRIM                  EFUSE_OPER_READ_TRIM            /**< Read analog trim from efuse                             */
-#define LL_EFUSE_CRC_CHECK                  EFUSE_OPER_CRC_CHECK            /**< Read the special efuse addr, and calculate CRC value    */
-#define LL_EFUSE_INIT_CHECK                 EFUSE_OPER_INIT_CHECK           /**< Read the whole efuse value, and check this value with 0 */
-#define LL_EFUSE_TEST_READ                  EFUSE_OPER_RD_TEST_MODE         /**< Read efuse test mode from efuse                         */
+#define LL_EFUSE_WRITE_KEYRAM               EFUSE_OPER_WRITE_KEYRAM         /**< Read fwkay and rootkey from eFuse, and write to keyram  */
+#define LL_EFUSE_READ_TRIM                  EFUSE_OPER_READ_TRIM            /**< Read analog trim from eFuse                             */
+#define LL_EFUSE_CRC_CHECK                  EFUSE_OPER_CRC_CHECK            /**< Read the special eFuse addr, and calculate CRC value    */
+#define LL_EFUSE_INIT_CHECK                 EFUSE_OPER_INIT_CHECK           /**< Read the whole eFuse value, and check this value with 0 */
+#define LL_EFUSE_TEST_READ                  EFUSE_OPER_RD_TEST_MODE         /**< Read eFuse test mode from eFuse                         */
 /** @} */
 
 /** @defgroup EFUSE_LL_EC_GET_FLAG Get Flags Defines
@@ -87,21 +87,21 @@ extern "C" {
   * @{
   */
 #define LL_EFUSE_WRITE_KEYRAM_BUSY          EFUSE_STATUS_WRITE_KEYRAM_BUSY      /**< Write keyram operation is in processing  */
-#define LL_EFUSE_READ_TRIM_DONE             EFUSE_STATUS_READ_TRIM_DONE         /**< Read trim from efuse has done            */
-#define LL_EFUSE_CRC_CHECK_DONE             EFUSE_STATUS_CRC_CHECK_DONE         /**< Efuse CRC check done                     */
+#define LL_EFUSE_READ_TRIM_DONE             EFUSE_STATUS_READ_TRIM_DONE         /**< Read trim from eFuse has done            */
+#define LL_EFUSE_CRC_CHECK_DONE             EFUSE_STATUS_CRC_CHECK_DONE         /**< eFuse CRC check done                     */
 #define LL_EFUSE_CRC_CHECK_SUCCESS          EFUSE_STATUS_TRIM_CRC_SUCCESS       /**< CRC check success                        */
-#define LL_EFUSE_INIT_CHECK_DONE            EFUSE_STATUS_INIT_DONE              /**< Efuse initial value check done           */
-#define LL_EFUSE_INIT_CHECK_SUCCESS         EFUSE_STATUS_INIT_SUCCESS           /**< Efuse initial value check success        */
-#define LL_EFUSE_WRITE_DONE                 EFUSE_STATUS_WRITE_DONE             /**< Efuse one word write done                */
-#define LL_EFUSE_TEST_DONE                  EFUSE_STATUS_TEST_MODE_DONE         /**< Read from efuse has done in test mode    */
+#define LL_EFUSE_INIT_CHECK_DONE            EFUSE_STATUS_INIT_DONE              /**< eFuse initial value check done           */
+#define LL_EFUSE_INIT_CHECK_SUCCESS         EFUSE_STATUS_INIT_SUCCESS           /**< eFuse initial value check success        */
+#define LL_EFUSE_WRITE_DONE                 EFUSE_STATUS_WRITE_DONE             /**< eFuse one word write done                */
+#define LL_EFUSE_TEST_DONE                  EFUSE_STATUS_TEST_MODE_DONE         /**< Read from eFuse has done in test mode    */
 /** @} */
 
 /** @defgroup EFUSE_LL_EC_GET_CTL_FLAG Get Power Controller Flags Defines
   * @brief    Flags defines which can be used with LL_EFUSE_ReadReg function
   * @{
   */
-#define LL_EFUSE_PWR_CTL_EN_DONE          MCU_SUB_EFUSE_PWR_CTL0_EN_DONE        /**< Efuse power enable done  */
-#define LL_EFUSE_PWR_CTL_DIS_DONE         MCU_SUB_EFUSE_PWR_CTL0_DIS_DONE       /**< Efuse power disable done            */
+#define LL_EFUSE_PWR_CTL_EN_DONE          MCU_SUB_EFUSE_PWR_CTL0_EN_DONE        /**< eFuse power enable done  */
+#define LL_EFUSE_PWR_CTL_DIS_DONE         MCU_SUB_EFUSE_PWR_CTL0_DIS_DONE       /**< eFuse power disable done            */
 /** @} */
 
 /** @} */
@@ -116,8 +116,8 @@ extern "C" {
   */
 
 /**
-  * @brief  Write a value in EFUSE register
-  * @param  __instance__ EFUSE instance
+  * @brief  Write a value in eFuse register
+  * @param  __instance__ eFuse instance
   * @param  __REG__ Register to be written
   * @param  __VALUE__ Value to be written in the register
   * @retval None
@@ -125,8 +125,8 @@ extern "C" {
 #define LL_EFUSE_WriteReg(__instance__, __REG__, __VALUE__)     WRITE_REG(__instance__->__REG__, (__VALUE__))
 
 /**
-  * @brief  Read a value in EFUSE register
-  * @param  __instance__ EFUSE instance
+  * @brief  Read a value in eFuse register
+  * @param  __instance__ eFuse instance
   * @param  __REG__ Register to be read
   * @retval Register value
   */
@@ -148,13 +148,13 @@ extern "C" {
   */
 
 /**
-  * @brief  Set efuse program time
+  * @brief  Set eFuse program time
   *
   *  Register|BitsName
   *  --------|--------
   *  TPGM    | TIME
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  time   This parameter can be one of the following values: 0 ~ 0xFFF
   * @retval None
   */
@@ -164,13 +164,13 @@ __STATIC_INLINE void ll_efuse_set_tpro(efuse_regs_t *EFUSEx, uint32_t time)
 }
 
 /**
-  * @brief  Get efuse program time
+  * @brief  Get eFuse program time
   *
   *  Register|BitsName
   *  --------|--------
   *  TPGM    | TIME
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 0 ~ 0xFFF
   */
 __STATIC_INLINE uint32_t ll_efuse_get_tpro(efuse_regs_t *EFUSEx)
@@ -185,7 +185,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_tpro(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TPGM    | MAIN_OR_BACKUP
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval None
   */
 __STATIC_INLINE void ll_efuse_enable_main_backup(efuse_regs_t *EFUSEx)
@@ -200,7 +200,7 @@ __STATIC_INLINE void ll_efuse_enable_main_backup(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TPGM    | MAIN_OR_BACKUP
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval None
   */
 __STATIC_INLINE void ll_efuse_disable_main_backup(efuse_regs_t *EFUSEx)
@@ -215,7 +215,7 @@ __STATIC_INLINE void ll_efuse_disable_main_backup(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TPGM    | MAIN_OR_BACKUP
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval State of bit (1 or 0).
   */
 __STATIC_INLINE uint32_t ll_efuse_is_enabled_main_backup(efuse_regs_t *EFUSEx)
@@ -230,7 +230,7 @@ __STATIC_INLINE uint32_t ll_efuse_is_enabled_main_backup(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TPGM    | CRC_CHECK_LEN
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  length This parameter can be one of the following values: 1 ~ 60
   * @retval None
   */
@@ -246,7 +246,7 @@ __STATIC_INLINE void ll_efuse_set_crc_check_len(efuse_regs_t *EFUSEx, uint32_t l
   *  --------|--------
   *  TPGM    | CRC_CHECK_LEN
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 1 ~ 60
   */
 __STATIC_INLINE uint32_t ll_efuse_get_crc_check_len(efuse_regs_t *EFUSEx)
@@ -261,7 +261,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_crc_check_len(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TPGM    | WRITE_INTERVAL
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  interval This parameter can be one of the following values: 0 ~ 0xFF
   * @retval None
   */
@@ -277,7 +277,7 @@ __STATIC_INLINE void ll_efuse_set_interval(efuse_regs_t *EFUSEx, uint32_t interv
   *  --------|--------
   *  TPGM    | WRITE_INTERVAL
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 0 ~ 0xFF
   */
 __STATIC_INLINE uint32_t ll_efuse_get_interval(efuse_regs_t *EFUSEx)
@@ -286,13 +286,13 @@ __STATIC_INLINE uint32_t ll_efuse_get_interval(efuse_regs_t *EFUSEx)
 }
 
 /**
-  * @brief  Enable EFUSE pgenb sigal
+  * @brief  Enable eFuse PGENB sigal
   *
   *  Register|BitsName
   *  --------|--------
   *  PGENB   | PGENB_SIG
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval None
   */
 __STATIC_INLINE void ll_efuse_enable_pgenb(efuse_regs_t *EFUSEx)
@@ -301,13 +301,13 @@ __STATIC_INLINE void ll_efuse_enable_pgenb(efuse_regs_t *EFUSEx)
 }
 
 /**
-  * @brief  Disable EFUSE pgenb sigal
+  * @brief  Disable eFuse PGENB sigal
   *
   *  Register|BitsName
   *  --------|--------
   *  PGENB   | PGENB_SIG
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval None
   */
 __STATIC_INLINE void ll_efuse_disable_pgenb(efuse_regs_t *EFUSEx)
@@ -316,13 +316,13 @@ __STATIC_INLINE void ll_efuse_disable_pgenb(efuse_regs_t *EFUSEx)
 }
 
 /**
-  * @brief  Check if EFUSE pgenb sigal is enabled
+  * @brief  Check if eFuse PGENB sigal is enabled
   *
   *  Register|BitsName
   *  --------|--------
   *  PGENB   | PGENB_SIG
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval State of bit (1 or 0).
   */
 __STATIC_INLINE uint32_t ll_efuse_is_enabled_pgenb(efuse_regs_t *EFUSEx)
@@ -338,7 +338,7 @@ __STATIC_INLINE uint32_t ll_efuse_is_enabled_pgenb(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TEST_MODE | TEST_MODE
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 0xFFFF
   */
 __STATIC_INLINE uint32_t ll_efuse_get_test_mode(efuse_regs_t *EFUSEx)
@@ -347,7 +347,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_test_mode(efuse_regs_t *EFUSEx)
 }
 
 /**
-  * @brief  Set efuse operation mode
+  * @brief  Set eFuse operation mode
   *
   *  Register|BitsName
   *  --------|--------
@@ -357,7 +357,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_test_mode(efuse_regs_t *EFUSEx)
   *  OPERATION | READ_TRIM
   *  OPERATION | RD_TEST_MODE
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  mode This parameter can be one of the following values:
   *         @arg @ref LL_EFUSE_WRITE_KEYRAM
   *         @arg @ref LL_EFUSE_READ_TRIM
@@ -385,7 +385,7 @@ __STATIC_INLINE void ll_efuse_set_operation(efuse_regs_t *EFUSEx, uint32_t mode)
   *  STAT    | WRITE_DONE
   *  STAT    | TEST_MODE_DONE
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  flag This parameter can be one of the following values:
   *         @arg @ref LL_EFUSE_WRITE_KEYRAM_BUSY
   *         @arg @ref LL_EFUSE_READ_TRIM_DONE
@@ -409,7 +409,7 @@ __STATIC_INLINE uint32_t ll_efuse_is_active_flag(efuse_regs_t *EFUSEx, uint32_t 
   *  --------|--------
   *  KEY_MASK | KEY_MASK
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  mask   Key mask
   * @retval None
   */
@@ -425,7 +425,7 @@ __STATIC_INLINE void ll_efuse_set_key_mask(efuse_regs_t *EFUSEx, uint32_t mask)
   *  --------|--------
   *  KEY_MASK | KEY_MASK
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval None
   */
 __STATIC_INLINE uint32_t ll_efuse_get_key_mask(efuse_regs_t *EFUSEx)
@@ -441,7 +441,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_key_mask(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  CRC_ADDR | START_CHECK_ADDR
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  address This parameter can be one of the following values: 0 ~ 0xFFFFFFFF
   * @retval None
   */
@@ -457,7 +457,7 @@ __STATIC_INLINE void ll_efuse_set_crc_check_addr(efuse_regs_t *EFUSEx, uint32_t 
   *  --------|--------
   *  CRC_ADDR | START_CHECK_ADDR
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 0 ~ 0xFFFFFFFF
   */
 __STATIC_INLINE uint32_t ll_efuse_get_crc_check_addr(efuse_regs_t *EFUSEx)
@@ -472,7 +472,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_crc_check_addr(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  CRC_OUTPUT | OUTPUT_VALUE
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 0 ~ 0xFFFFFFFF
   */
 __STATIC_INLINE uint32_t ll_efuse_get_crc_check_result(efuse_regs_t *EFUSEx)
@@ -488,7 +488,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_crc_check_result(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TRIM_ADDR | START_ADDR
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  address This parameter can be one of the following values: 0 ~ 0xFFFFFFFF
   * @retval None
   */
@@ -504,7 +504,7 @@ __STATIC_INLINE void ll_efuse_set_trim_addr(efuse_regs_t *EFUSEx, uint32_t addre
   *  --------|--------
   *  TRIM_ADDR | START_ADDR
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 0 ~ 0xFFFFFFFF
   */
 __STATIC_INLINE uint32_t ll_efuse_get_trim_addr(efuse_regs_t *EFUSEx)
@@ -519,7 +519,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_trim_addr(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TRIM_LEN | LENGTH
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  length This parameter can be one of the following values: 1 ~ 14
   * @retval None
   */
@@ -535,7 +535,7 @@ __STATIC_INLINE void ll_efuse_set_trim_length(efuse_regs_t *EFUSEx, uint32_t len
   *  --------|--------
   *  TRIM_LEN | LENGTH
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @retval Returned value can be one of the following values: 1 ~ 14
   */
 __STATIC_INLINE uint32_t ll_efuse_get_trim_length(efuse_regs_t *EFUSEx)
@@ -550,7 +550,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_trim_length(efuse_regs_t *EFUSEx)
   *  --------|--------
   *  TRIM[n] | TRIM
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  indx   index of trim value registers: 0 ~ 13
   * @retval Returned value can be one of the following values: 0 ~ 0xFFFFFFFF
   */
@@ -560,7 +560,7 @@ __STATIC_INLINE uint32_t ll_efuse_get_trim_value(efuse_regs_t *EFUSEx, uint32_t 
 }
 
 /**
-  * @brief  Efuse v1.1 power on.
+  * @brief  eFuse v1.1 power on.
   *
   *  Register|BitsName
   *  --------|--------
@@ -574,7 +574,7 @@ __STATIC_INLINE void ll_efuse_enable_power(efuse_regs_t *EFUSEx)
 }
 
 /**
-  * @brief  Efuse v1.1 power off.
+  * @brief  eFuse v1.1 power off.
   *
   *  Register|BitsName
   *  --------|--------
@@ -658,7 +658,7 @@ __STATIC_INLINE void ll_efuse_disable_controller_power(efuse_regs_t *EFUSEx)
   *  PWR_CTRL1    | EN_DONE
   *  PWR_CTRL1    | DIS_DONE
   *
-  * @param  EFUSEx EFUSE instance
+  * @param  EFUSEx eFuse instance
   * @param  flag This parameter can be one of the following values:
   *         @arg @ref LL_EFUSE_PWR_CTL_EN_DONE
   *         @arg @ref LL_EFUSE_PWR_CTL_DIS_DONE

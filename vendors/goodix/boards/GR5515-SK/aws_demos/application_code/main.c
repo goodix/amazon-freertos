@@ -45,7 +45,6 @@
 #include "user_periph_setup.h"
 #include "app_log.h"
 #include "aws_logging_task.h"
-#include "aws_system_init.h"
 
 #include "aws_demo.h"
 #include "iot_mqtt.h"

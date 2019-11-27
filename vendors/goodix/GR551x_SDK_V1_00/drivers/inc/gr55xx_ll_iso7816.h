@@ -159,7 +159,7 @@ typedef struct _ll_iso7816_init
   * @{
   */
 #define LL_ISO7816_CLKSTOP_LOW              (0x00000000UL)     /**< Stop the clock at low level.  */
-#define LL_ISO7816_CLKSTOP_HIGH             (0x00000001UL)     /**< Stop the clock at high level. */
+#define LL_ISO7816_CLKSTOP_HIGH             (0x80000000UL)     /**< Stop the clock at high level. */
 /** @} */
 
 /** @defgroup ISO7816_LL_EC_VCCSEL VCC Select Defines
@@ -391,7 +391,24 @@ __STATIC_INLINE uint32_t ll_iso7816_get_power_states(iso7816_regs_t *ISO7816x)
   */
 __STATIC_INLINE void ll_iso7816_set_clkstop_level(iso7816_regs_t *ISO7816x, uint32_t level)
 {
-    MODIFY_REG(ISO7816x->CLK_CFG, ISO7816_CLK_CFG_CLK_STOP_SEL, level << ISO7816_CLK_CFG_CLK_STOP_SEL_Pos);
+    MODIFY_REG(ISO7816x->CLK_CFG, ISO7816_CLK_CFG_CLK_STOP_SEL, level);
+}
+
+/**
+  * @brief  Get value of the clock output during stopped Clock.
+  *
+  *  Register|BitsName
+  *  --------|--------
+  *  CLK_CFG | CLK_STOP_SEL
+  *
+  * @param  ISO7816x ISO7816 instance.
+  * @retval Returned value can be one of the following values:
+  *         @arg @ref LL_ISO7816_CLKSTOP_LOW
+  *         @arg @ref LL_ISO7816_CLKSTOP_HIGH
+  */
+__STATIC_INLINE uint32_t ll_iso7816_get_clkstop_level(iso7816_regs_t *ISO7816x)
+{
+    return (uint32_t)(READ_BITS(ISO7816x->CLK_CFG, ISO7816_CLK_CFG_CLK_STOP_SEL));
 }
 
 /**
@@ -995,7 +1012,7 @@ __STATIC_INLINE uint32_t ll_iso7816_is_active_flag_done(iso7816_regs_t *ISO7816x
   * @param  ISO7816x ISO7816 instance.
   * @retval None.
   */
-__STATIC_INLINE void ll_i2c_clear_flag_intr(iso7816_regs_t *ISO7816x)
+__STATIC_INLINE void ll_iso7816_clear_flag_intr(iso7816_regs_t *ISO7816x)
 {
     WRITE_REG(ISO7816x->CTRL, ISO7816_INTR_ALL);
 }

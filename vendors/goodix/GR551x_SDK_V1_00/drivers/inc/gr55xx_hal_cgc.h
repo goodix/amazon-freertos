@@ -165,7 +165,7 @@ typedef struct _cgc_init
 
 
 /**
-  * @brief CGC_default_config initStruct default configuartion
+  * @brief CGC_default_config init Struct default configuartion
   */
 #define CGC_DEFAULT_CONFIG                       \
 {                                                \
@@ -190,7 +190,7 @@ typedef struct _cgc_init
 /**
  ****************************************************************************************
  * @brief  Initialize the CGC registers according to the specified parameters in the @ref cgc_init_t.
- * @param[in]  p_cgc_init: Pointer to an @ref cgc_init_t structure that contains
+ * @param[in]  p_cgc_init: Pointer to a @ref cgc_init_t structure that contains
  *                         the configuration information for the specified CGC registers.
  ****************************************************************************************
  */

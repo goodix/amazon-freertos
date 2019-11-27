@@ -19,7 +19,7 @@
 LR_FLASH APP_CODE_RUN_ADDR FLASH_SIZE {
 
     ; Flash layout
-    ER_FLASH APP_CODE_RUN_ADDR APP_MAX_CODE_SIZE {  ; load address = execution address
+    FLASH_CODE APP_CODE_RUN_ADDR APP_MAX_CODE_SIZE {  ; load address = execution address
         *.o (RESET, +First)
         *(InRoot$$Sections)
         .ANY (+RO)
@@ -31,23 +31,23 @@ LR_FLASH APP_CODE_RUN_ADDR FLASH_SIZE {
     ;RW_RAM_RESERVED_FOR_ROM RAM_START_ADDR EMPTY ROM_RTN_RAM_SIZE {}  
 
     ; RAM for Application code
-    RW_RAM_FLASH_RW (RAM_START_ADDR + ROM_RTN_RAM_SIZE) APP_RAM_SIZE {
+    RAM_RW (RAM_START_ADDR + ROM_RTN_RAM_SIZE) APP_RAM_SIZE {
         .ANY(+RW)
     }
-    RW_RAM_FLASH_ZI +0 APP_RAM_SIZE {
+    RAM_ZI +0 APP_RAM_SIZE {
         .ANY(+ZI)
     }
 
     #if defined(XIP_MODE)
     ; retention RAM for exflash driver code
-    RW_RAM_CRITICAL_CODE AlignExpr(+0, ALIGN_WORD) CRITICAL_CODE_MAX_SIZE {
+    RAM_CODE AlignExpr(+0, ALIGN_WORD) CRITICAL_CODE_MAX_SIZE {
         gr55xx_hal_exflash.o(+RO)
         gr55xx_hal_xqspi.o(+RO)
         gr55xx_ll_xqspi.o(+RO)
         gr55xx_hal_pwr.o(+RO)
         rf_*.o(+RO)
         rwip_sleep.o(+RO)
-		gr_ota_pal.o(+RO)
+        gr_ota_pal.o(+RO)
         .ANY(RAM_CODE)
     }
     #endif

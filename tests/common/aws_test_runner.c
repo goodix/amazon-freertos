@@ -101,10 +101,10 @@ static void RunTests( void )
     #endif /* if ( testrunnerFULL_SHADOWv4_ENABLED == 1 ) */
 
     #if ( testrunnerFULL_MQTTv4_ENABLED == 1 )
-        //RUN_TEST_GROUP( MQTT_Unit_Validate );
-        //RUN_TEST_GROUP( MQTT_Unit_Subscription );
-        //RUN_TEST_GROUP( MQTT_Unit_Receive );
-        //RUN_TEST_GROUP( MQTT_Unit_API );
+        RUN_TEST_GROUP( MQTT_Unit_Validate );
+        RUN_TEST_GROUP( MQTT_Unit_Subscription );
+        RUN_TEST_GROUP( MQTT_Unit_Receive );
+        RUN_TEST_GROUP( MQTT_Unit_API );
         RUN_TEST_GROUP( MQTT_System );
     #endif /* if ( testrunnerFULL_MQTTv4_ENABLED == 1 ) */
 

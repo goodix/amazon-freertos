@@ -414,7 +414,7 @@ BTStatus_t prvBTSetAdvData( uint8_t ucAdapterIf,
     if( ( pxParams->bIncludeTxPower == true ) && ( xStatus == eBTStatusSuccess ) )
     {
         int8_t txpwr_dbm = 0;
-        ble_gap_tx_power_get(GAP_TX_POWER_ROLE_ADV, 0, &txpwr_dbm);
+        ble_gap_tx_power_get(GAP_ACTIVITY_ROLE_ADV, 0, &txpwr_dbm);
         xStatus = gr_util_adv_data_encode( ucMessageRaw, &ucMessageIndex, BLE_GAP_AD_TYPE_TRANSMIT_POWER, (uint8_t*)&txpwr_dbm, 1 ,advType);
     }
 

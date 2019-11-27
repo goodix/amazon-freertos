@@ -44,7 +44,7 @@
   */
 
 /** @defgroup HAL_EXFLASH EXFLASH
-  * @brief EXFLASH HAL module driver.
+  * @brief exFlash HAL module driver.
   * @{
   */
 
@@ -58,6 +58,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "gr55xx_ll_xqspi.h"
+#include "gr55xx_hal_xqspi.h"
 #include "gr55xx_hal_def.h"
 
 /* Exported types ------------------------------------------------------------*/
@@ -65,12 +66,12 @@ extern "C" {
   * @{
   */
 
-/** @defgroup HAL_EXFLASH_STATE HAL EXFLASH state
+/** @defgroup HAL_EXFLASH_STATE HAL EXFLASH State
   * @{
   */
 
 /**
-  * @brief HAL EXFLASH State Enumerations definition
+  * @brief HAL exFlash State Enumerations definition
   */
 typedef enum
 {
@@ -86,11 +87,11 @@ typedef enum
 } hal_exflash_state_t;
 
 /**
-  * @brief HAL EXFLASH SECURITY Enumerations definition
+  * @brief HAL exFlash Security Enumerations definition
   */
 typedef enum
 {
-    HAL_EXFLASH_UNENCRYPTED             = 0x00,    /**< Data will not encrypted and decrypted in write-read operations  */
+    HAL_EXFLASH_UNENCRYPTED             = 0x00,    /**< Data will not be encrypted and decrypted in write-read operations  */
     HAL_EXFLASH_ENCRYPTED               = 0x01,    /**< Data will be encrypted and decrypted in write-read operations   */
 } hal_eflash_security;
 
@@ -107,36 +108,36 @@ typedef enum
   */
 
 /**
-  * @brief EXFLASH handle Structure definition
+  * @brief exFlash handle Structure definition
   */
 typedef struct _exflash_handle
 {
-    xqspi_handle_t       *p_xqspi;          /**< EXFLASH XQSPI Handle parameters       */
+    xqspi_handle_t       *p_xqspi;          /**< exFlash XQSPI Handle parameters       */
 
-    __IO uint32_t         fw_mode;          /**< EXFLASH firmware mode                 */
+    __IO uint32_t         fw_mode;          /**< exFlash firmware mode                 */
 
     __IO hal_lock_t       lock;             /**< Locking object                        */
 
-    __IO hal_exflash_state_t state;         /**< EXFLASH communication state           */
+    __IO hal_exflash_state_t state;         /**< exFlash communication state           */
 
-    __IO hal_eflash_security security;      /**< EXFLASH data security                 */
+    __IO hal_eflash_security security;      /**< exFlash data security                 */
 
-    __IO uint32_t         flash_id;         /**< EXFLASH ID                            */
+    __IO uint32_t         flash_id;         /**< exFlash ID                            */
 
-    __IO uint32_t         flash_size;       /**< EXFLASH Size                          */
+    __IO uint32_t         flash_size;       /**< exFlash Size                          */
 
-    __IO uint32_t         count;            /**< EXFLASH count for suspend and resume  */
+    __IO uint32_t         count;            /**< exFlash count for suspend and resume  */
 
-    __IO uint32_t         error_code;       /**< EXFLASH Error code                    */
+    __IO uint32_t         error_code;       /**< exFlash Error code                    */
 
-    uint32_t              retry;            /**< Repeat times for the EXFLASH memory access */
+    uint32_t              retry;            /**< Repeat times for the exFlash memory access */
 
 } exflash_handle_t;
 /** @} */
 
 /** @} */
 
-/** @addtogroup HAL_EXFLASH_STRUCTURES Callback Structures
+/** @addtogroup HAL_EXFLASH_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -245,18 +246,18 @@ typedef struct _hal_exflash_callback
   * @{
   */
 
-/** @brief  Reset EXFLASH handle states.
-  * @param  __HANDLE__ EXFLASH handle.
+/** @brief  Reset exFlash handle states.
+  * @param  __HANDLE__ exFlash handle.
   * @retval None
   */
 #define __HAL_EXFLASH_RESET_HANDLE_STATE(__HANDLE__)                ((__HANDLE__)->state = HAL_EXFLASH_STATE_RESET)
 
-/** @brief  Enable the specified EXFLASH power.
+/** @brief  Enable the specified exFlash power.
   * @retval None
   */
 #define __HAL_EXFLASH_POWER_ON()                                    ll_xqspi_enable_exflash_power()
 
-/** @brief  Disable the specified EXFLASH power.
+/** @brief  Disable the specified exFlash power.
   * @retval None
   */
 #define __HAL_EXFLASH_POWER_OFF()                                   ll_xqspi_disable_exflash_power()
@@ -269,16 +270,16 @@ typedef struct _hal_exflash_callback
   */
 
 /**
-  * @brief Check if EXFLASH erase type is valid.
-  * @param __TYPE__ EXFLASH erase type.
+  * @brief Check if exFlash erase type is valid.
+  * @param __TYPE__ exFlash erase type.
   * @retval SET (__TYPE__ is valid) or RESET (__TYPE__ is invalid)
   */
 #define IS_EXFLASH_ERASE_TYPE(__TYPE__)            (((__TYPE__) == EXFLASH_ERASE_SECTOR) || \
                                                     ((__TYPE__) == EXFLASH_ERASE_CHIP))
 
 /**
-  * @brief Check if EXFLASH lock area type is valid.
-  * @param __AREA__ EXFLASH lock area type.
+  * @brief Check if exFlash lock area type is valid.
+  * @param __AREA__ exFlash lock area type.
   * @retval SET (__AREA__ is valid) or RESET (__AREA__ is invalid)
   */
 #define IS_EXFLASH_LOCK_AREA(__AREA__)             (((__AREA__) == EXFLASH_LOCK_AREA_NONE)          || \
@@ -327,13 +328,13 @@ typedef struct _hal_exflash_callback
               ##### Initialization and de-initialization functions #####
  ===============================================================================
     [..]  This subsection provides a set of functions allowing to initialize and
-          de-initialize the EXFLASH peripheral:
+          de-initialize the exFlash peripheral:
 
       (+) User must implement hal_exflash_msp_init() function in which he configures
           all related peripherals resources (GPIO, DMA, IT and NVIC ).
 
       (+) Call the function hal_exflash_deinit() to restore the default configuration
-          of the selected EXFLASH peripheral.
+          of the selected exFlash peripheral.
 
 @endverbatim
   * @{
@@ -341,10 +342,10 @@ typedef struct _hal_exflash_callback
 
 /**
  ****************************************************************************************
- * @brief  Initialize the EXFLASH according to the specified parameters
+ * @brief  Initialize the exFlash according to the specified parameters
  *         in the exflash_init_t and initialize the associated handle.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -356,9 +357,9 @@ hal_status_t hal_exflash_init(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  De-initialize the EXFLASH peripheral.
+ * @brief  De-initialize the exFlash peripheral.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -370,24 +371,24 @@ hal_status_t hal_exflash_deinit(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  Initialize the EXFLASH MSP.
+ * @brief  Initialize the exFlash MSP.
  *
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_exflash_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  ****************************************************************************************
  */
 void hal_exflash_msp_init(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  De-initialize the EXFLASH MSP.
+ * @brief  De-initialize the exFlash MSP.
  *
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_exflash_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  ****************************************************************************************
  */
 void hal_exflash_msp_deinit(exflash_handle_t *p_exflash);
@@ -402,10 +403,10 @@ void hal_exflash_msp_deinit(exflash_handle_t *p_exflash);
                       ##### IO operation functions #####
  ===============================================================================
  [..]
-    This subsection provides a set of functions allowing to manage the EXFLASH
+    This subsection provides a set of functions allowing to manage the exFlash
     data transfers.
 
-    [..] The EXFLASH supports XIP and QSPI mode :
+    [..] The exFlash supports XIP and QSPI mode:
 
     (#) There are only one modes of transfer:
        (++) Blocking mode: The communication is performed in polling mode.
@@ -422,7 +423,7 @@ void hal_exflash_msp_deinit(exflash_handle_t *p_exflash);
  *
  * @note   This function is used only in Indirect Write Mode. In secure mode, address alignment requires 4 bytes.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  * @param[in]  addr: Address to write data in flash, start at @ref EXFLASH_START_ADDR.
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  size: Size of buffer bytes
@@ -441,7 +442,7 @@ hal_status_t hal_exflash_write(exflash_handle_t *p_exflash, uint32_t addr, uint8
  *
  * @note   This function is used only in non-encrypted Indirect Read Mode.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  * @param[in]  addr: Address to read data in flash, start at @ref EXFLASH_START_ADDR.
  * @param[out] p_data: Pointer to data buffer
  * @param[in]  size: Size of buffer bytes
@@ -463,7 +464,7 @@ hal_status_t hal_exflash_read(exflash_handle_t *p_exflash, uint32_t addr, uint8_
  *         aligned, the whole sector will also be erased. If erase_type is @ref EXFLASH_ERASE_CHIP , all data in flash
  *         will be erased ignored addr and size.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  * @param[in]  erase_type: Erase flash with page/sector/chip.
  *                    @arg @ref EXFLASH_ERASE_SECTOR
  *                    @arg @ref EXFLASH_ERASE_CHIP
@@ -487,7 +488,7 @@ hal_status_t hal_exflash_erase(exflash_handle_t *p_exflash, uint32_t erase_type,
  *         array can be read except for the page being programmed or the sector or block being erased. This function
  *         is only used in XIP mode.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -505,7 +506,7 @@ hal_status_t hal_exflash_suspend(exflash_handle_t *p_exflash);
  *         Before issuing the Resume instruction to restart a suspended erase operation, make sure that there is no
  *         Page Program operation in progress. This function is only used in XIP mode.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -521,7 +522,7 @@ hal_status_t hal_exflash_resume(exflash_handle_t *p_exflash);
  *
  * @note   Locked area only to be read.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  * @param[in]  lock_type Area need to lock
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -538,7 +539,7 @@ hal_status_t hal_exflash_lock(exflash_handle_t *p_exflash, uint32_t lock_type);
  *
  * @note   This function will unlock all chip.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -550,11 +551,11 @@ hal_status_t hal_exflash_unlock(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  the exflash will go to the Deep Power-Down Mode.
+ * @brief  the exFlash will go to the Deep Power-Down Mode.
  *
  * @note   This function is used only in Indirect Write Mode.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -566,11 +567,11 @@ hal_status_t hal_exflash_deepsleep(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  exflash will be released from Deep Power-Down Mode.
+ * @brief  exFlash will be released from Deep Power-Down Mode.
  *
  * @note   This function is used only in Indirect Write Mode.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -582,12 +583,12 @@ hal_status_t hal_exflash_wakeup(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  Reset exflash. exflash will return to its default power-on state and lose all 
+ * @brief  Reset exFlash. exFlash will return to its default power-on state and lose all 
  *         the current volatile settings.
  *
  * @note   This function is used only in Indirect Write Mode.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -600,15 +601,15 @@ hal_status_t hal_exflash_reset(exflash_handle_t *p_exflash);
 /** @} */
 
 /** @defgroup EXFLASH_Exported_Functions_Group3 Peripheral State and Errors functions
-  * @brief   EXFLASH control functions
+  * @brief   exFlash control functions
   *
 @verbatim
  ===============================================================================
                       ##### Peripheral State and Errors functions #####
  ===============================================================================
     [..]
-    This subsection provides a set of functions allowing to control the EXFLASH.
-     (+) hal_exflash_get_state()API can be helpful to check in run-time the state of the EXFLASH peripheral.
+    This subsection provides a set of functions allowing to control the exFlash.
+     (+) hal_exflash_get_state()API can be helpful to check in run-time the state of the exFlash peripheral.
      (+) hal_exflash_get_error() check in run-time Errors occurring during communication.
      (+) hal_exflash_set_timeout() set the timeout during internal process.
 @endverbatim
@@ -617,9 +618,9 @@ hal_status_t hal_exflash_reset(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  Return the EXFLASH handle state.
+ * @brief  Return the exFlash handle state.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
  * @retval ::HAL_EXFLASH_STATE_RESET: Peripheral not initialized.
  * @retval ::HAL_EXFLASH_STATE_READY: Peripheral initialized and ready for use.
@@ -634,20 +635,20 @@ hal_exflash_state_t hal_exflash_get_state(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  Return the EXFLASH error code.
+ * @brief  Return the exFlash error code.
  *
- * @param[in]  p_exflash: Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash: Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  *
- * @return EXFLASH error code in bitmap format
+ * @return exFlash error code in bitmap format
  ****************************************************************************************
  */
 uint32_t hal_exflash_get_error(exflash_handle_t *p_exflash);
 
 /**
  ****************************************************************************************
- * @brief  Set the EXFLASH internal process timeout value.
+ * @brief  Set the exFlash internal process timeout value.
  *
- * @param[in]  p_exflash  Pointer to an EXFLASH handle which contains the configuration information for the specified EXFLASH module.
+ * @param[in]  p_exflash  Pointer to an exFlash handle which contains the configuration information for the specified exFlash module.
  * @param[in]  retry     Internal process repeat times value.
  ****************************************************************************************
  */

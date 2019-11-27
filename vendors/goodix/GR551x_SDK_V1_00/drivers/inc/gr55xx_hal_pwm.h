@@ -172,7 +172,7 @@ typedef struct
 
 /** @} */
 
-/** @addtogroup HAL_PWM_STRUCTURES Callback Structures
+/** @addtogroup HAL_PWM_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 

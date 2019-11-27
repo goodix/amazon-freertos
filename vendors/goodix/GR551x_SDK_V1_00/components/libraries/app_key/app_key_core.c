@@ -79,7 +79,7 @@ static void app_key_core_key_polling_cplt(uint8_t key_idx)
  */
 static void app_key_core_click_event_handler(uint8_t key_idx, app_key_state_t key_state)
 {
-    app_key_click_type_t  key_click_type;
+    app_key_click_type_t  key_click_type = APP_KEY_NO_CLICK;
 
     switch (key_state)
     {
@@ -104,7 +104,8 @@ static void app_key_core_click_event_handler(uint8_t key_idx, app_key_state_t ke
 
         case APP_KEY_STA_CONTINUE_CLICK:
             key_click_type = APP_KEY_CONTINUE_CLICK;
-
+             break;
+        
         default:
             break;
     }

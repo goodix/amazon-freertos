@@ -108,7 +108,7 @@ typedef struct _xqspi_init_t
                                      This parameter can be a value of @ref XQSPI_Cache_Mode */
 
     uint32_t read_cmd;          /**< Specifies the read command for transmit in XIP mode.
-                                     This parameter can be a value of @ref XQSPI_Read_Cmd */
+                                     This parameter can be a value of @ref XQSPI_Read_CMD */
 
     uint32_t baud_rate;         /**< Specifies the serial clock speed for transmit in both XIP and QSPI mode.
                                      This parameter can be a value of @ref XQSPI_Baud_Rate */
@@ -164,28 +164,28 @@ typedef struct _xqspi_handle_t
   */
 typedef struct _xqspi_command_t
 {
-    uint32_t inst;                      /**< Specifies the Instruction to be sent
+    uint32_t inst;                      /**< Specifies the Instruction to be sent.
                                              This parameter can be a value (8-bit) between 0x00 and 0xFF */
 
-    uint32_t addr;                      /**< Specifies the Address to be sent (Size from 1 to 4 bytes according AddressSize)
+    uint32_t addr;                      /**< Specifies the Address to be sent (Size from 1 to 4 bytes according to AddressSize).
                                              This parameter can be a value (32-bits) between 0x0 and 0xFFFFFFFF */
 
-    uint32_t inst_size;                 /**< Specifies the Instruction Size
+    uint32_t inst_size;                 /**< Specifies the Instruction Size.
                                              This parameter can be a value of @ref XQSPI_Instruction_Size */
 
-    uint32_t addr_size;                 /**< Specifies the Address Size
+    uint32_t addr_size;                 /**< Specifies the Address Size.
                                              This parameter can be a value of @ref XQSPI_Address_Size */
 
     uint32_t dummy_cycles;              /**< Specifies the Number of Dummy Cycles.
                                              This parameter can be a number between 0 and 31 */
 
-    uint32_t inst_addr_mode;            /**< Specifies the Instruction and Address Mode
+    uint32_t inst_addr_mode;            /**< Specifies the Instruction and Address Mode.
                                              This parameter can be a value of @ref XQSPI_Inst_Addr_Mode */
 
-    uint32_t data_mode;                 /**< Specifies the Data Mode (used for dummy cycles and data phases)
+    uint32_t data_mode;                 /**< Specifies the Data Mode (used for dummy cycles and data phases).
                                              This parameter can be a value of @ref XQSPI_Data_Mode */
 
-    uint32_t length;                    /**< Specifies the number of data to transfer. (This is the number of bytes)
+    uint32_t length;                    /**< Specifies the number of data to transfer. (This is the number of bytes).
                                              This parameter can be any value between 0 and 0xFFFFFFFF (0 means undefined length
                                              until end of memory)  */
 
@@ -194,7 +194,7 @@ typedef struct _xqspi_command_t
 
 /** @} */
 
-/** @addtogroup HAL_XQSPI_STRUCTURES Callback Structures
+/** @addtogroup HAL_XQSPI_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -232,7 +232,7 @@ typedef struct _hal_xqspi_callback
 #define HAL_XQSPI_ERROR_NONE             ((uint32_t)0x00000000) /**< No error                 */
 #define HAL_XQSPI_ERROR_TIMEOUT          ((uint32_t)0x00000001) /**< Timeout error            */
 #define HAL_XQSPI_ERROR_TRANSFER         ((uint32_t)0x00000002) /**< Transfer error           */
-#define HAL_XQSPI_ERROR_INVALID_PARAM    ((uint32_t)0x00000008) /**< Invalid parameters error */
+#define HAL_XQSPI_ERROR_INVALID_PARAM    ((uint32_t)0x00000008) /**< Invalid parameter error */
 /** @} */
 
 /** @defgroup XQSPI_Work_Mode XQSPI Work Mode
@@ -249,46 +249,46 @@ typedef struct _hal_xqspi_callback
 #define XQSPI_CACHE_MODE_EN              LL_XQSPI_CACHE_EN      /**< Cache on  in XIP mode */
 /** @} */
 
-/** @defgroup XQSPI_Read_Cmd XQSPI Read Command in XIP mode
+/** @defgroup XQSPI_Read_CMD XQSPI Read Command in XIP mode
   * @{
   */
 #define XQSPI_READ_CMD_READ              LL_XQSPI_XIP_CMD_READ           /**< Read mode                  */
 #define XQSPI_READ_CMD_FAST_READ         LL_XQSPI_XIP_CMD_FAST_READ      /**< Fast Read mode             */
-#define XQSPI_READ_CMD_DUAL_OUT_READ     LL_XQSPI_XIP_CMD_DUAL_OUT_READ  /**< DualOut Fast Read mode     */
-#define XQSPI_READ_CMD_DUAL_IO_READ      LL_XQSPI_XIP_CMD_DUAL_IO_READ   /**< DualIO Fast Read mode      */
-#define XQSPI_READ_CMD_QUAD_OUT_READ     LL_XQSPI_XIP_CMD_QUAD_OUT_READ  /**< QuadOut Fast Read mode     */
-#define XQSPI_READ_CMD_QUAD_IO_READ      LL_XQSPI_XIP_CMD_QUAD_IO_READ   /**< QuadIO Fast Read mode      */
+#define XQSPI_READ_CMD_DUAL_OUT_READ     LL_XQSPI_XIP_CMD_DUAL_OUT_READ  /**< Dual-Out Fast Read mode     */
+#define XQSPI_READ_CMD_DUAL_IO_READ      LL_XQSPI_XIP_CMD_DUAL_IO_READ   /**< Dual-IO Fast Read mode      */
+#define XQSPI_READ_CMD_QUAD_OUT_READ     LL_XQSPI_XIP_CMD_QUAD_OUT_READ  /**< Quad-Out Fast Read mode     */
+#define XQSPI_READ_CMD_QUAD_IO_READ      LL_XQSPI_XIP_CMD_QUAD_IO_READ   /**< Quad-IO Fast Read mode      */
 /** @} */
 
 /** @defgroup XQSPI_Clock_Mode XQSPI Clock Mode
   * @{
   */
 #define XQSPI_CLOCK_MODE_0               ((LL_XQSPI_SCPOL_LOW << 1) | LL_XQSPI_SCPHA_1EDGE)   /**< Inactive state of CLK is low,
-                                                                                                   CLK toggles at start of first data bit   */
+                                                                                                   CLK toggles at the start of first data bit   */
 #define XQSPI_CLOCK_MODE_1               ((LL_XQSPI_SCPOL_LOW << 1) | LL_XQSPI_SCPHA_2EDGE)   /**< Inactive state of CLK is low,
-                                                                                                   CLK toggles in middle of first data bit  */
+                                                                                                   CLK toggles in the middle of first data bit  */
 #define XQSPI_CLOCK_MODE_2               ((LL_XQSPI_SCPOL_HIGH << 1) | LL_XQSPI_SCPHA_1EDGE)  /**< Inactive state of CLK is high,
-                                                                                                   CLK toggles at start of first data bit   */
+                                                                                                   CLK toggles at the start of first data bit   */
 #define XQSPI_CLOCK_MODE_3               ((LL_XQSPI_SCPOL_HIGH << 1) | LL_XQSPI_SCPHA_2EDGE)  /**< Inactive state of CLK is high,
-                                                                                                   CLK toggles in middle of first data bit  */
+                                                                                                   CLK toggles in the middle of first data bit  */
 /** @} */
 
 /** @defgroup XQSPI_Baud_Rate XQSPI Clock Speed
   * @{
   */
-#define XQSPI_BAUD_RATE_64M              LL_XQSPI_BAUD_RATE_64M         /**< Serial clock speed is 64MHz  */
-#define XQSPI_BAUD_RATE_48M              LL_XQSPI_BAUD_RATE_48M         /**< Serial clock speed is 48MHz  */
-#define XQSPI_BAUD_RATE_32M              LL_XQSPI_BAUD_RATE_32M         /**< Serial clock speed is 32MHz  */
-#define XQSPI_BAUD_RATE_24M              LL_XQSPI_BAUD_RATE_24M         /**< Serial clock speed is 24MHz  */
-#define XQSPI_BAUD_RATE_16M              LL_XQSPI_BAUD_RATE_16M         /**< Serial clock speed is 16MHz  */
+#define XQSPI_BAUD_RATE_64M              LL_XQSPI_BAUD_RATE_64M         /**< Serial clock speed is 64 MHz  */
+#define XQSPI_BAUD_RATE_48M              LL_XQSPI_BAUD_RATE_48M         /**< Serial clock speed is 48 MHz  */
+#define XQSPI_BAUD_RATE_32M              LL_XQSPI_BAUD_RATE_32M         /**< Serial clock speed is 32 MHz  */
+#define XQSPI_BAUD_RATE_24M              LL_XQSPI_BAUD_RATE_24M         /**< Serial clock speed is 24 MHz  */
+#define XQSPI_BAUD_RATE_16M              LL_XQSPI_BAUD_RATE_16M         /**< Serial clock speed is 16 MHz  */
 /** @} */
 
 /** @defgroup XQSPI_Data_Mode XQSPI Data Mode, only in QSPI mode
   * @{
   */
 #define XQSPI_DATA_MODE_SPI              LL_XQSPI_QSPI_FRF_SPI          /**< Standard SPI Frame Format  */
-#define XQSPI_DATA_MODE_DUALSPI          LL_XQSPI_QSPI_FRF_DUALSPI      /**< Dual SPI Frame Format      */
-#define XQSPI_DATA_MODE_QUADSPI          LL_XQSPI_QSPI_FRF_QUADSPI      /**< Quad SPI Frame Format      */
+#define XQSPI_DATA_MODE_DUALSPI          LL_XQSPI_QSPI_FRF_DUALSPI      /**< Dual-SPI Frame Format      */
+#define XQSPI_DATA_MODE_QUADSPI          LL_XQSPI_QSPI_FRF_QUADSPI      /**< Quad-SPI Frame Format      */
 /** @} */
 
 /** @defgroup XQSPI_FIFO_Threshold XQSPI FIFO Threshold, FIFO depth is 64*4bytes, only in QSPI mode
@@ -323,7 +323,7 @@ typedef struct _hal_xqspi_callback
   * @{
   */
 #define XQSPI_INST_ADDR_ALL_IN_SPI       (0)   /**< Instruction and address are sent in SPI mode */
-#define XQSPI_INST_IN_SPI_ADDR_IN_SPIFRF (1)   /**< Instruction is in sent in SPI mode and address is sent in Daul/Quad SPI mode */
+#define XQSPI_INST_IN_SPI_ADDR_IN_SPIFRF (1)   /**< Instruction is sent in SPI mode, and address is sent in Daul/Quad SPI mode */
 #define XQSPI_INST_ADDR_ALL_IN_SPIFRF    (2)   /**< Instruction and address are sent in Daul/Quad SPI mode */
 /** @} */
 
@@ -340,7 +340,6 @@ typedef struct _hal_xqspi_callback
 /** @} */
 
 /** @defgroup XQSPI_Ctrl_Present Control Present Status, only in XIP mode
-    @note 
   * @{
   */
 #define XQSPI_DISABLE_PRESENT           LL_XQSPI_DISABLE_PRESENT        /**< Disable Present */
@@ -439,7 +438,7 @@ typedef struct _hal_xqspi_callback
 #define IS_XQSPI_CACHE_MODE(__MODE__)            (((__MODE__) == XQSPI_CACHE_MODE_DIS) || \
                                                   ((__MODE__) == XQSPI_CACHE_MODE_EN))
 
-/** @brief  Check if XQSPI Read Cmd is valid.
+/** @brief  Check if XQSPI Read CMD is valid.
   * @param  __CMD__ XQSPI Cache Mode.
   * @retval SET (__CMD__ is valid) or RESET (__CMD__ is invalid)
   */
@@ -554,7 +553,7 @@ typedef struct _hal_xqspi_callback
  ****************************************************************************************
  * @brief  Initialize the XQSPI according to the specified parameters
  *         in the xqspi_init_t and initialize the associated handle.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
@@ -566,7 +565,7 @@ hal_status_t hal_xqspi_init(xqspi_handle_t *p_xqspi);
 /**
  ****************************************************************************************
  * @brief  De-initialize the XQSPI peripheral.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
@@ -580,7 +579,7 @@ hal_status_t hal_xqspi_deinit(xqspi_handle_t *p_xqspi);
  * @brief  Initialize the XQSPI MSP.
  * @note   This function should not be modified. When the callback is needed,
             the hal_xqspi_msp_deinit can be implemented in the user file.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  ****************************************************************************************
  */
 void hal_xqspi_msp_init(xqspi_handle_t *p_xqspi);
@@ -590,7 +589,7 @@ void hal_xqspi_msp_init(xqspi_handle_t *p_xqspi);
  * @brief  De-initialize the XQSPI MSP.
  * @note   This function should not be modified. When the callback is needed,
             the hal_xqspi_msp_deinit can be implemented in the user file.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  ****************************************************************************************
  */
 void hal_xqspi_msp_deinit(xqspi_handle_t *p_xqspi);
@@ -608,7 +607,7 @@ void hal_xqspi_msp_deinit(xqspi_handle_t *p_xqspi);
     This subsection provides a set of functions allowing to manage the XQSPI
     data transfers.
 
-    [..] The XQSPI supports master and slave mode :
+    [..] The XQSPI supports master and slave mode:
 
     (#) There are one modes of transfer:
        (++) Blocking mode: The communication is performed in polling mode.
@@ -626,7 +625,7 @@ void hal_xqspi_msp_deinit(xqspi_handle_t *p_xqspi);
  ****************************************************************************************
  * @brief  Transmit an amount of data with specified instruction and address in blocking mode.
  * @note   This function is used only in Indirect Write Mode.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  p_cmd: Pointer to a xqspi_command_t structure that contains the instruction and address for data transfer.
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  retry: Repeat times
@@ -642,7 +641,7 @@ hal_status_t hal_xqspi_command_transmit(xqspi_handle_t *p_xqspi, xqspi_command_t
  ****************************************************************************************
  * @brief  Receive an amount of data with specified instruction and address in blocking mode.
  * @note   This function is used only in Indirect Write Mode.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  p_cmd: Pointer to a xqspi_command_t structure that contains the instruction and address for data transfer.
  * @param[out] p_data: Pointer to data buffer
  * @param[in]  retry: Repeat times
@@ -663,7 +662,7 @@ hal_status_t hal_xqspi_command_receive_rtl(xqspi_handle_t *p_xqspi, xqspi_comman
  ****************************************************************************************
  * @brief  Transmit an amount of data in blocking mode.
  * @note   This function is used only in Indirect Write Mode, only in standard SPI mode.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  p_data: Pointer to data buffer
  * @param[in]  length: Amount of data to be sent in bytes
  * @param[in]  retry: Repeat times
@@ -679,7 +678,7 @@ hal_status_t hal_xqspi_transmit(xqspi_handle_t *p_xqspi, uint8_t *p_data, uint32
  ****************************************************************************************
  * @brief  Receive an amount of data in blocking mode.
  * @note   This function is used only in Indirect Read Mode, only in standard SPI mode.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[out] p_data: Pointer to data buffer
  * @param[in]  length: Amount of data to be received in bytes
  * @param[in]  retry: Repeat times
@@ -716,7 +715,7 @@ hal_status_t hal_xqspi_receive(xqspi_handle_t *p_xqspi, uint8_t *p_data, uint32_
 /**
  ****************************************************************************************
  * @brief  Return the XQSPI handle state.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @retval ::HAL_XQSPI_STATE_RESET: Peripheral not initialized.
  * @retval ::HAL_XQSPI_STATE_READY: Peripheral initialized and ready for use.
  * @retval ::HAL_XQSPI_STATE_BUSY: Peripheral in indirect mode and busy.
@@ -731,7 +730,7 @@ hal_xqspi_state_t hal_xqspi_get_state(xqspi_handle_t *p_xqspi);
 /**
  ****************************************************************************************
  * @brief  Return the XQSPI error code.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @return XQSPI error code in bitmap format
  ****************************************************************************************
  */
@@ -740,7 +739,7 @@ uint32_t hal_xqspi_get_error(xqspi_handle_t *p_xqspi);
 /**
  ****************************************************************************************
  * @brief  Set the XQSPI internal process repeat times value.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  retry: Internal process repeat times value.
  ****************************************************************************************
  */
@@ -749,7 +748,7 @@ void hal_xqspi_set_retry(xqspi_handle_t *p_xqspi, uint32_t retry);
 /**
  ****************************************************************************************
  * @brief  Set the TXFIFO threshold.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  threshold: TX FIFO threshold can be one of the following values:
  *         @arg @ref XQSPI_FIFO_THRESHOLD_1_8      threshold is 8 bytes
  *         @arg @ref XQSPI_FIFO_THRESHOLD_1_4      threshold is 16 bytes
@@ -766,7 +765,7 @@ hal_status_t hal_xqspi_set_tx_fifo_threshold(xqspi_handle_t *p_xqspi, uint32_t t
 /**
  ****************************************************************************************
  * @brief  Set the RXFIFO threshold.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  threshold: RX FIFO threshold can be one of the following values:
  *         @arg @ref XQSPI_FIFO_THRESHOLD_1_8      threshold is 8 bytes
  *         @arg @ref XQSPI_FIFO_THRESHOLD_1_4      threshold is 16 bytes
@@ -783,7 +782,7 @@ hal_status_t hal_xqspi_set_rx_fifo_threshold(xqspi_handle_t *p_xqspi, uint32_t t
 /**
  ****************************************************************************************
  * @brief  Get the TXFIFO threshold.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @return TX FIFO threshold
  ****************************************************************************************
  */
@@ -792,7 +791,7 @@ uint32_t hal_xqspi_get_tx_fifo_threshold(xqspi_handle_t *p_xqspi);
 /**
  ****************************************************************************************
  * @brief  Get the RXFIFO threshold.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @return RX FIFO threshold
  ****************************************************************************************
  */
@@ -801,7 +800,7 @@ uint32_t hal_xqspi_get_rx_fifo_threshold(xqspi_handle_t *p_xqspi);
 /**
  ****************************************************************************************
  * @brief  Turn on/off present module, only in XIP mode.
- * @param[in]  p_xqspi: Pointer to a XQSPI handle which contains the configuration information for the specified XQSPI module.
+ * @param[in]  p_xqspi: Pointer to an XQSPI handle which contains the configuration information for the specified XQSPI module.
  * @param[in]  status: Presen status can be one of the following values:
  *         @arg @ref XQSPI_DISABLE_PRESENT      Disable Present
  *         @arg @ref XQSPI_ENABLE_PRESENT       Enable Present

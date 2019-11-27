@@ -182,7 +182,7 @@ __STATIC_INLINE uint32_t ll_aon_wdt_get_alarm_counter(void)
   */
 
 /**
-  * @brief  Indicates if the AON Watchdog Running Flag is set or not.
+  * @brief  Indicate if the AON Watchdog Running Flag is set or not.
   * @note   This bit can be used to check if AON Watchdog is in running state.
   *
   *  Register|BitsName
@@ -197,7 +197,7 @@ __STATIC_INLINE uint32_t ll_aon_wdt_is_active_flag_running(void)
 }
 
 /**
-  * @brief  Indicates if the AON WDT Reboot Event Flag is set or not.
+  * @brief  Indicate if the AON WDT Reboot Event Flag is set or not.
   * @note   This bit is set by hardware when the counter has reached alarm value.
   *         It can be cleared by writing 0 to this bit.
   *

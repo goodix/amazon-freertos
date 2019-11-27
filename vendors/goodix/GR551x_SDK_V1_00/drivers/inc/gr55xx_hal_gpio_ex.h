@@ -75,15 +75,15 @@ extern "C" {
 /** @defgroup GPIOEx_Mux_Mode GPIOEx Mux Mode definition
   * @{
   */
-#define GPIO_MUX_0                          LL_GPIO_MUX_0   /**< GPIO mux mode 0 */
-#define GPIO_MUX_1                          LL_GPIO_MUX_1   /**< GPIO mux mode 1 */
-#define GPIO_MUX_2                          LL_GPIO_MUX_2   /**< GPIO mux mode 2 */
-#define GPIO_MUX_3                          LL_GPIO_MUX_3   /**< GPIO mux mode 3 */
-#define GPIO_MUX_4                          LL_GPIO_MUX_4   /**< GPIO mux mode 4 */
-#define GPIO_MUX_5                          LL_GPIO_MUX_5   /**< GPIO mux mode 5 */
-#define GPIO_MUX_6                          LL_GPIO_MUX_6   /**< GPIO mux mode 6 */
-#define GPIO_MUX_7                          LL_GPIO_MUX_7   /**< GPIO mux mode 7 */
-#define GPIO_MUX_8                          LL_GPIO_MUX_8   /**< GPIO mux mode 8 */
+#define GPIO_MUX_0                          LL_GPIO_MUX_0   /**< GPIO Mux mode 0 */
+#define GPIO_MUX_1                          LL_GPIO_MUX_1   /**< GPIO Mux mode 1 */
+#define GPIO_MUX_2                          LL_GPIO_MUX_2   /**< GPIO Mux mode 2 */
+#define GPIO_MUX_3                          LL_GPIO_MUX_3   /**< GPIO Mux mode 3 */
+#define GPIO_MUX_4                          LL_GPIO_MUX_4   /**< GPIO Mux mode 4 */
+#define GPIO_MUX_5                          LL_GPIO_MUX_5   /**< GPIO Mux mode 5 */
+#define GPIO_MUX_6                          LL_GPIO_MUX_6   /**< GPIO Mux mode 6 */
+#define GPIO_MUX_7                          LL_GPIO_MUX_7   /**< GPIO Mux mode 7 */
+#define GPIO_MUX_8                          LL_GPIO_MUX_8   /**< GPIO Mux mode 8 */
 /** @} */
 
 /** @defgroup GPIOEx_Mux_Function_Selection GPIOEx Mux function selection
@@ -431,7 +431,7 @@ extern "C" {
 /** @} */
 
 /**
-  * @brief Check if GPIO mux mode is valid.
+  * @brief Check if GPIO Mux mode is valid.
   * @param __MUX__ GPIO mux mode.
   * @retval SET (__ACTION__ is valid) or RESET (__ACTION__ is invalid)
   */

@@ -43,11 +43,33 @@
  */
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * GLOBAL FUNCTION DEFINITIONS
  *****************************************************************************************
  */
+/**
+ ****************************************************************************************
+ * @brief  Initialize ADC temperature detection.
+ *
+ ****************************************************************************************
+ */
 void hal_gr551x_temp_init(void);
+
+/**
+ ****************************************************************************************
+ * @brief  Get the chip internal temperature.
+ *
+ * @return The value of temperature. Unit (Centigrade).
+ ****************************************************************************************
+ */
 double hal_gr551x_temp_read(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __GR551X_TEMP_API_H__

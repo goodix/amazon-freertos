@@ -36,40 +36,157 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gr55xx_hal.h"
 
-#if defined(HAL_AON_WDT_MODULE_ENABLED) && defined(GR551xx_C2)
+/** @addtogroup HAL_DRIVER
+  * @{
+  */
 
-/* extern function -----------------------------------------------------------*/
+#ifdef HAL_AON_WDT_MODULE_ENABLED
+/** @addtogroup AON_WDT AON_WDT
+  * @{
+  */
 
-extern hal_status_t hal_aon_wdt_init_ext(aon_wdt_handle_t *p_aon_wdt);
-extern hal_status_t hal_aon_wdt_deinit_ext(aon_wdt_handle_t *p_aon_wdt);
-extern void hal_aon_wdt_register_callback(hal_aon_wdt_callback_t *aon_wdt_callback);
-
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-
-static hal_aon_wdt_callback_t aon_wdt_callback = 
-{
-    .aon_wdt_alarm_callback = hal_aon_wdt_alarm_callback,
-};
-
 /* Private function prototypes -----------------------------------------------*/
+/* Exported functions --------------------------------------------------------*/
 
-hal_status_t hal_aon_wdt_init(aon_wdt_handle_t *p_aon_wdt)
+/** @defgroup AON_WDT_Exported_Functions AON_WDT Exported Functions
+  * @{
+  */
+
+/** @defgroup AON_WDT_Exported_Functions_Group1 Initialization and Configuration functions
+ *  @brief    Initialization and Configuration functions.
+  * @{
+  */
+
+__WEAK hal_status_t hal_aon_wdt_init(aon_wdt_handle_t *p_aon_wdt)
 {
-    hal_aon_wdt_register_callback(&aon_wdt_callback);
+    uint32_t wait_count = 1000;
 
-    return hal_aon_wdt_init_ext(p_aon_wdt);
+    /* Check the AON_WDT handle allocation */
+    if (NULL == p_aon_wdt)
+    {
+        return HAL_ERROR;
+    }
+
+    /* Allocate lock resource and initialize it */
+    p_aon_wdt->lock = HAL_UNLOCKED;
+
+    /* Disable AON_WDT */
+    ll_aon_wdt_disable();
+
+    /* Set WDT reload counter value */
+    ll_aon_wdt_set_reload_counter(p_aon_wdt->init.counter);
+
+    /* Load reload counter value into AON_WDT */
+    ll_aon_wdt_reload_counter();
+
+    /* Clear reboot flag */
+    ll_aon_wdt_clear_flag_reboot();
+
+    /* Set alarm counter value */
+    ll_aon_wdt_set_alarm_counter(p_aon_wdt->init.alarm_counter);
+
+    if (0 != p_aon_wdt->init.alarm_counter)
+    {
+        /* Clear pending IRQ and eable NVIC interrupt */
+        NVIC_ClearPendingIRQ(AON_WDT_IRQn);
+        NVIC_EnableIRQ(AON_WDT_IRQn);
+    }
+
+    while(wait_count--);
+
+    /* Enable AON_WDT */
+    ll_aon_wdt_enable();
+
+    return HAL_OK;
 }
 
-hal_status_t hal_aon_wdt_deinit(aon_wdt_handle_t *p_aon_wdt)
+__WEAK hal_status_t hal_aon_wdt_deinit(aon_wdt_handle_t *p_aon_wdt)
 {
-    hal_aon_wdt_register_callback(&aon_wdt_callback);
+    /* Check the AON_WDT handle allocation */
+    if (NULL == p_aon_wdt)
+    {
+        return HAL_ERROR;
+    }
 
-    return hal_aon_wdt_deinit_ext(p_aon_wdt);
+    /* Disable AON_WDT */
+    ll_aon_wdt_disable();
+
+    /* Diseable NVIC interrupt and Clear pending IRQ */
+    NVIC_DisableIRQ(AON_WDT_IRQn);
+    NVIC_ClearPendingIRQ(AON_WDT_IRQn);
+
+    /* Set alarm counter value to default value */
+    ll_aon_wdt_set_alarm_counter(20);
+
+    /* Clear reboot flag */
+    ll_aon_wdt_clear_flag_reboot();
+
+    /* Process Unlock */
+    __HAL_UNLOCK(p_aon_wdt);
+
+    return HAL_OK;
+}
+
+/** @} */
+
+/** @defgroup AON_WDT_Exported_Functions_Group2 IO operation functions
+ *  @brief    IO operation functions
+  * @{
+  */
+
+__WEAK hal_status_t hal_aon_wdt_refresh(aon_wdt_handle_t *p_aon_wdt)
+{
+    /* Process Locked */
+    __HAL_LOCK(p_aon_wdt);
+
+    /* Set WDT reload counter value */
+    ll_aon_wdt_set_reload_counter(p_aon_wdt->init.counter);
+
+    /* Load reload counter value into AON_WDT */
+    ll_aon_wdt_reload_counter();
+
+    /* Process Unlock */
+    __HAL_UNLOCK(p_aon_wdt);
+
+    return HAL_OK;
+}
+
+__WEAK void hal_aon_wdt_irq_handler(aon_wdt_handle_t *p_aon_wdt)
+{
+    /* Alarm callback  */
+    hal_aon_wdt_alarm_callback(p_aon_wdt);
+
+    /* Set reload counter to 0 to RESET system immediately */
+    ll_aon_wdt_set_reload_counter(0);
+    ll_aon_wdt_reload_counter();
+
+    /* Enable AON_WDT to RESET system */
+    ll_aon_wdt_enable();
+    
+    /* Wait for more than 32us */
+    for (uint32_t count = 0; count < 300; count++)
+        __asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
 }
 
 __WEAK void hal_aon_wdt_alarm_callback(aon_wdt_handle_t *p_aon_wdt)
 {
+    /* Prevent unused argument(s) compilation warning */
+    UNUSED(p_aon_wdt);
 
+    /* NOTE: This function should not be modified, when the callback is needed,
+             the hal_aon_wdt_alarm_callback could be implemented in the user file
+    */
 }
 
+/** @} */
+
+/** @} */
+
 #endif /* HAL_AON_WDT_MODULE_ENABLED */
+/** @} */
+
+/** @} */

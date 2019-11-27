@@ -25,29 +25,20 @@
 
 #include <stdint.h>
 #include "gr55xx.h"
-#include "custom_config.h"
-#ifndef DRIVER_TEST
 #include "gr55xx_sys.h"
-#endif
+#include "platform_sdk.h"
+#include "custom_config.h"
+#include "patch.h"
 
 /*----------------------------------------------------------------------------
   WEAK Functions
  *----------------------------------------------------------------------------*/
-__WEAK void system_pmu_init(void){}
-__WEAK void system_pmu_deinit(void){}
 __WEAK void sdk_init(void){}
-#ifndef CFG_PATCH_BY_FPB
-__WEAK void SVC_Handler(void){while(1);}
-#endif
-__WEAK void platform_init(void){}
-__WEAK void warm_boot(void){}
-__WEAK void system_lp_mem_ctl(void){}
 
 /*----------------------------------------------------------------------------
   Define clocks
  *----------------------------------------------------------------------------*/
 #define SOFTWARE_REG_WAKEUP_FLAG_POS   (8)
-#define COLD_BOOT 0
 #define REG_PL_WR(addr, value)       (*(volatile uint32_t *)(addr)) = (value)
 #define REG_PL_RD(addr)              (*(volatile uint32_t *)(addr))
 
@@ -57,8 +48,7 @@ __WEAK void system_lp_mem_ctl(void){}
 #define READ_VERSION_ADDR()          REG_PL_RD(0x45004)
 #endif
 
-
-
+#define CALIB_LP_CYCLE_COUNT 20
 
 static const uint32_t systemClock[CLK_TYPE_NUM] = {
                                         CLK_64M, /*CPLL_S64M_CLK*/
@@ -68,12 +58,22 @@ static const uint32_t systemClock[CLK_TYPE_NUM] = {
                                         CLK_16M, /*CPLL_S16M_CLK*/
                                         CLK_32M, /*CPLL_T32M_CLK*/
                                         };
-                                                                 
 
+// xqspi clock table by sys_clk_type
+const uint32_t mcu_clk_2_qspi_clk[CLK_TYPE_NUM] = {
+                                        [CPLL_S64M_CLK] = QSPI_64M_CLK, 
+                                        [CPLL_F48M_CLK] = QSPI_48M_CLK,  
+                                        [CPLL_T32M_CLK] = QSPI_32M_CLK,  
+                                        [CPLL_T24M_CLK] = QSPI_24M_CLK,  
+                                        [CPLL_S16M_CLK] = QSPI_16M_CLK,  
+                                        [XO_S16M_CLK] = QSPI_16M_CLK, 
+                                        }; 
 /*----------------------------------------------------------------------------
   System Core Clock Variable
- *----------------------------------------------------------------------------*/                                       
+ *----------------------------------------------------------------------------*/
 uint32_t SystemCoreClock = CLK_64M;  /* System Core Clock Frequency as 64Mhz     */
+                                        
+                                        
 
 void SystemCoreSetClock(mcu_clock_type_t clock_type)
 {
@@ -85,13 +85,17 @@ void SystemCoreSetClock(mcu_clock_type_t clock_type)
     {
         uint32_t temp = AON->PWR_RET01 & (~AON_PWR_REG01_SYS_CLK_SEL);
         //When a 16M or 64M clock is switched to another clock, it needs to be switched to 32M first.
-        AON->PWR_RET01 = (temp | CPLL_T32M_CLK);
+        AON->PWR_RET01 = (temp | (CPLL_T32M_CLK<<AON_PWR_REG01_SYS_CLK_SEL_Pos));
         __asm ("nop;nop;nop;nop;");
-        AON->PWR_RET01 = (temp | clock_type);
+        AON->PWR_RET01 = (temp | (clock_type<<AON_PWR_REG01_SYS_CLK_SEL_Pos));
+        
+        //Sync qspi clock with system frequency
+        temp = AON->PWR_RET01 & (~AON_PWR_REG01_XF_SCK_CLK_SEL_Msk);
+        AON->PWR_RET01 = (temp | (mcu_clk_2_qspi_clk[clock_type]<<AON_PWR_REG01_XF_SCK_CLK_SEL_Pos));
     }
 
-    SystemCoreClock = systemClock[clock_type];
-    system_pmu_init();
+	SystemCoreClock = systemClock[clock_type];   
+	system_pmu_init(clock_type);
 
     return;
 }
@@ -104,39 +108,6 @@ void SystemCoreGetClock(mcu_clock_type_t *clock_type)
 void SystemCoreUpdateClock(void)
 {
     SystemCoreClock  = systemClock[AON->PWR_RET01 & AON_PWR_REG01_SYS_CLK_SEL];
-}
-
-#ifndef DRIVER_TEST
-static void update_low_power_clock(void)
-{
-    return;
-}
-#endif
-
-void SystemBleSetClock(ble_clock_type_t clock)
-{
-    uint32_t temp_AON_PAD_CTL0 = (AON->AON_PAD_CTL0 & (~AON_PAD_CTL0_COMM_TIMER_CLK_SEL_Msk));
-    
-    switch(clock)
-    {
-        case RTC_OSC_CLK:        
-            AON->RF_REG_3 |= AON_RF_REG_3_RTC_EN;
-            AON->AON_PAD_CTL0 = (temp_AON_PAD_CTL0 | AON_PAD_CTL0_COMM_TIMER_CLK_SEL_RTC);
-            break;
-        
-        case RNG_OSC_CLK2:            
-            AON->AON_PAD_CTL0 |= (temp_AON_PAD_CTL0 | AON_PAD_CTL0_COMM_TIMER_CLK_SEL_RNG2);
-            #ifndef DRIVER_TEST
-            register_lpclk_update(update_low_power_clock);
-            #endif
-            break;
-        
-        default:
-            AON->AON_PAD_CTL0 |= (temp_AON_PAD_CTL0 | AON_PAD_CTL0_COMM_TIMER_CLK_SEL_RNG);
-            break;
-    }
-    
-    return;
 }
 
 static inline uint32_t get_wakeup_flag(void)
@@ -170,7 +141,7 @@ void system_priority_init(void)
         {
             NVIC_SetPriority((IRQn_Type)i, NVIC_EncodePriority(group, 8, 0));
         }
-        
+
         NVIC_SetPriority(SVCall_IRQn, NVIC_EncodePriority(group, 0, 0));
         NVIC_SetPriority(BLE_IRQn, NVIC_EncodePriority(group, 2, 0));
         NVIC_SetPriority(BLESLP_IRQn, NVIC_EncodePriority(group, 2, 0));
@@ -200,40 +171,44 @@ void SystemInit(void)
     SCB->CCR |= SCB_CCR_UNALIGN_TRP_Msk;
     #endif
 
-    if (get_wakeup_flag() == COLD_BOOT)
+    if(WARM_BOOT == get_wakeup_flag())
+    {
+        platform_rc_calibration();
+    }
+    else
     {
         sdk_init();
     }
     return;
 }
 
-#ifdef ROM_RUN_IN_FLASH
-extern void rom_init(void);
-#endif
-
 void system_platform_init(void)
 {
-    SystemCoreUpdateClock();
 #ifdef ROM_RUN_IN_FLASH
+    extern void rom_init(void);
     rom_init();
 #endif
-    system_pmu_init();
+	
+		set_patch_flag(MANDATORY_PATCH);
+
     platform_init();
-    SystemBleSetClock(RTC_OSC_CLK);
+ 
     return;
 }
 
 void main_init(void)
 {
     uint32_t boot_flag = get_wakeup_flag();
-    if( COLD_BOOT == boot_flag )
+    if(COLD_BOOT == boot_flag)
     {
         extern void __main(void);
         __main();
     }
     else
     {
-        warm_boot();  
+        warm_boot();
+        while (1);
     }
-    return;
-}     
+    // Never execute here
+}
+

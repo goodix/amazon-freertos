@@ -3,6 +3,9 @@
 
 #include "custom_config.h"
 
+#define GR_PRF_INVALID_HANDLE																(0x0000)
+#define	GR_BLE_ADV_DATA_LEN_MAX															(28)
+#define GR_BLE_SCAN_RSP_DATA_LEN_MAX												(31)
 #define GR_BLE_GATT_MAX_ENTITIES                            (40)
 #define GR_BLE_ATTR_MASK_LEN                                (GR_BLE_GATT_MAX_ENTITIES/8+1)
 #define GR_BLE_GATTS_VAR_ATTR_LEN_DEFAULT                   (64)

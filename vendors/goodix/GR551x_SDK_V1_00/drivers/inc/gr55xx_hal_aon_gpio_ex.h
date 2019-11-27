@@ -75,14 +75,14 @@ extern "C" {
 /** @defgroup AON_GPIOEx_Mux_Mode AON_GPIOEx Mux Mode definition
   * @{
   */
-#define AON_GPIO_MUX_0                      LL_AON_GPIO_MUX_0   /**< AON GPIO mux mode 0 */
-#define AON_GPIO_MUX_1                      LL_AON_GPIO_MUX_1   /**< AON GPIO mux mode 1 */
-#define AON_GPIO_MUX_2                      LL_AON_GPIO_MUX_2   /**< AON GPIO mux mode 2 */
-#define AON_GPIO_MUX_3                      LL_AON_GPIO_MUX_3   /**< AON GPIO mux mode 3 */
-#define AON_GPIO_MUX_4                      LL_AON_GPIO_MUX_4   /**< AON GPIO mux mode 4 */
-#define AON_GPIO_MUX_5                      LL_AON_GPIO_MUX_5   /**< AON GPIO mux mode 5 */
-#define AON_GPIO_MUX_6                      LL_AON_GPIO_MUX_6   /**< AON GPIO mux mode 6 */
-#define AON_GPIO_MUX_7                      LL_AON_GPIO_MUX_7   /**< AON GPIO mux mode 7 */
+#define AON_GPIO_MUX_0                      LL_AON_GPIO_MUX_0   /**< AON GPIO Mux mode 0 */
+#define AON_GPIO_MUX_1                      LL_AON_GPIO_MUX_1   /**< AON GPIO Mux mode 1 */
+#define AON_GPIO_MUX_2                      LL_AON_GPIO_MUX_2   /**< AON GPIO Mux mode 2 */
+#define AON_GPIO_MUX_3                      LL_AON_GPIO_MUX_3   /**< AON GPIO Mux mode 3 */
+#define AON_GPIO_MUX_4                      LL_AON_GPIO_MUX_4   /**< AON GPIO Mux mode 4 */
+#define AON_GPIO_MUX_5                      LL_AON_GPIO_MUX_5   /**< AON GPIO Mux mode 5 */
+#define AON_GPIO_MUX_6                      LL_AON_GPIO_MUX_6   /**< AON GPIO Mux mode 6 */
+#define AON_GPIO_MUX_7                      LL_AON_GPIO_MUX_7   /**< AON GPIO Mux mode 7 */
 /** @} */
 
 /** @defgroup AON_GPIOEx_Mux_Function_Selection AON_GPIOEx Mux function selection
@@ -152,8 +152,8 @@ extern "C" {
 /** @} */
 
 /**
-  * @brief Check if AON GPIO mux mode is valid.
-  * @param __MUX__ AON GPIO mux mode.
+  * @brief Check if AON GPIO Mux mode is valid.
+  * @param __MUX__ AON GPIO Mux mode.
   * @retval SET (__ACTION__ is valid) or RESET (__ACTION__ is invalid)
   */
 #define IS_AON_GPIO_MUX(__MUX__)        (((__MUX__) <= AON_GPIO_MUX_7))

@@ -213,7 +213,7 @@ __STATIC_INLINE void ll_aes_disable(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the AES is enabled.
+  * @brief  Indicate whether the AES is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -258,7 +258,7 @@ __STATIC_INLINE void ll_aes_disable_start(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the AES start in MCU mode is enabled.
+  * @brief  Indicate whether the AES start in MCU mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -303,7 +303,7 @@ __STATIC_INLINE void ll_aes_disable_dma_start(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the AES DMA mode is enabled.
+  * @brief  Indicate whether the AES DMA mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -400,7 +400,7 @@ __STATIC_INLINE void ll_aes_disable_full_mask(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the AES full mask is enabled.
+  * @brief  Indicate whether the AES full mask is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -445,7 +445,7 @@ __STATIC_INLINE void ll_aes_disable_encryption(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the AES encryption mode is enabled.
+  * @brief  Indicate whether the AES encryption mode is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -520,7 +520,7 @@ __STATIC_INLINE void ll_aes_disable_little_endian(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the AES is in little endian.
+  * @brief  Indicate whether the AES is in little endian.
   *
   *  Register|BitsName
   *  --------|--------
@@ -643,7 +643,7 @@ __STATIC_INLINE void ll_aes_disable_it_done(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the done interrupt is enabled.
+  * @brief  Indicate whether the done interrupt is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -664,7 +664,7 @@ __STATIC_INLINE uint32_t ll_aes_is_enabled_it_done(aes_regs_t *AESx)
   */
 
 /**
-  * @brief  Indicates whether the ready flag is set.
+  * @brief  Indicate whether the ready flag is set.
   *
   *  Register|BitsName
   *  --------|--------
@@ -679,7 +679,7 @@ __STATIC_INLINE uint32_t ll_aes_is_action_flag_ready(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the DMA transfer done flag is set.
+  * @brief  Indicate whether the DMA transfer done flag is set.
   *
   *  Register|BitsName
   *  --------|--------
@@ -694,7 +694,7 @@ __STATIC_INLINE uint32_t ll_aes_is_action_flag_dma_done(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the DMA transfer error flag is set.
+  * @brief  Indicate whether the DMA transfer error flag is set.
   *
   *  Register|BitsName
   *  --------|--------
@@ -709,7 +709,7 @@ __STATIC_INLINE uint32_t ll_aes_is_action_flag_dma_error(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the key valid flag is set.
+  * @brief  Indicate whether the key valid flag is set.
   *
   *  Register|BitsName
   *  --------|--------
@@ -724,7 +724,7 @@ __STATIC_INLINE uint32_t ll_aes_is_action_flag_key_valid(aes_regs_t *AESx)
 }
 
 /**
-  * @brief  Indicates whether the done interrupt flag is set.
+  * @brief  Indicate whether the done interrupt flag is set.
   *
   *  Register|BitsName
   *  --------|--------

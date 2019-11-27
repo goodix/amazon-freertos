@@ -62,7 +62,7 @@ static double adc_slope = 0;
  */
 void hal_gr551x_temp_init(void)
 {
-	adc_trim_info_t adc_trim = {0};
+    adc_trim_info_t adc_trim = {0};
 
     gr551x_temp_handle.init.channel_n  = ADC_INPUT_SRC_TMP;
     gr551x_temp_handle.init.channel_p  = ADC_INPUT_SRC_TMP;
@@ -75,11 +75,11 @@ void hal_gr551x_temp_init(void)
     if(SDK_SUCCESS == sys_adc_trim_get(&adc_trim))
     {
         adc_temp = (double)adc_trim.adc_temp;
-		adc_slope = (-1) * (double)adc_trim.adc_slope;
+        adc_slope = (-1) * (double)adc_trim.adc_slope;
     }
     else
     {
-    	adc_temp = 4979;
+        adc_temp = 4979;
         adc_slope = -4932;
     }
     return;
@@ -91,7 +91,7 @@ double hal_gr551x_temp_read(void)
     uint16_t average = 0;
 
     /* Got the average of Temp */
-    hal_adc_conversion(&gr551x_temp_handle, conver_buff, 16);
+    hal_adc_poll_for_conversion(&gr551x_temp_handle, conver_buff, 16);
     for(uint8_t i = 0; i < 8; i++)
     {
         average += conver_buff[8 + i];

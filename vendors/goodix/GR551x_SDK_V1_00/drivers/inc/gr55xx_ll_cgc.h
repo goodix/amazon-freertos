@@ -638,7 +638,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_secu_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the security blocks(including AES, PKC, Present, HMAC) automatic turn off clock is enabled.
+  * @brief  Indicate whether the security blocks(including AES, PKC, Present, HMAC) automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -680,7 +680,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_sim_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the SIM automatic turn off clock is enabled.
+  * @brief  Indicate whether the SIM automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -722,7 +722,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_htb_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the Hopping Table automatic turn off clock is enabled.
+  * @brief  Indicate whether the Hopping Table automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -764,7 +764,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_pwm_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the PWM automatic turn off clock is enabled.
+  * @brief  Indicate whether the PWM automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -806,7 +806,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_rom_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the ROM automatic turn off clock is enabled.
+  * @brief  Indicate whether the ROM automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -848,7 +848,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_snsadc_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the SNSADC automatic turn off clock is enabled.
+  * @brief  Indicate whether the SNSADC automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -890,7 +890,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_gpio_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the GPIO automatic turn off clock is enabled.
+  * @brief  Indicate whether the GPIO automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -932,7 +932,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_dma_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the DMA automatic turn off clock is enabled.
+  * @brief  Indicate whether the DMA automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -974,7 +974,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_ble_brg_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the BLE Bridge automatic turn off clock is enabled.
+  * @brief  Indicate whether the BLE Bridge automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1016,7 +1016,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_apb_sub_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the APB Subsystem automatic turn off clock is enabled.
+  * @brief  Indicate whether the APB Subsystem automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1058,7 +1058,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_serial_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the serial blocks(including I2C, UART, QSPI, I2S, SPI) automatic turn off 
+  * @brief  Indicate whether the serial blocks(including I2C, UART, QSPI, I2S, SPI) automatic turn off 
   *         clock is enabled.
   *
   *  Register  | BitsName
@@ -1101,7 +1101,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_i2s_s_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the I2S slave automatic turn off clock is enabled.
+  * @brief  Indicate whether the I2S slave automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1143,7 +1143,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_aon_mcusub_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the AON_MUCSUB automatic turn off clock is enabled.
+  * @brief  Indicate whether the AON_MUCSUB automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1185,7 +1185,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_xqspi_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the XQSPI automatic turn off clock is enabled.
+  * @brief  Indicate whether the XQSPI automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1227,7 +1227,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_sram_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the SRAM automatic turn off clock is enabled.
+  * @brief  Indicate whether the SRAM automatic turn off clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1269,7 +1269,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_secu_div4_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the security blocks automatic turn off div4
+  * @brief  Indicate whether the security blocks automatic turn off div4
   *         clock is enabled.
   *
   *  Register  | BitsName
@@ -1312,7 +1312,7 @@ __STATIC_INLINE void ll_cgc_disable_wfi_off_xqspi_div4_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the XQSPI automatic turn off div4 clock is enabled.
+  * @brief  Indicate whether the XQSPI automatic turn off div4 clock is enabled.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1354,7 +1354,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_secu_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for security blocks(including AES, PKC, Present, HMAC) is forced to close.
+  * @brief  Indicate whether the clock for security blocks(including AES, PKC, Present, HMAC) is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1396,7 +1396,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_sim_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for SIM is forced to close.
+  * @brief  Indicate whether the clock for SIM is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1438,7 +1438,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_htb_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for Hopping Table is forced to close.
+  * @brief  Indicate whether the clock for Hopping Table is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1480,7 +1480,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_pwm_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for PWM is forced to close.
+  * @brief  Indicate whether the clock for PWM is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1522,7 +1522,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_rom_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for ROM is forced to close.
+  * @brief  Indicate whether the clock for ROM is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1564,7 +1564,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_snsadc_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for SNSADC is forced to close.
+  * @brief  Indicate whether the clock for SNSADC is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1606,7 +1606,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_gpio_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for GPIO is forced to close.
+  * @brief  Indicate whether the clock for GPIO is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1648,7 +1648,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_dma_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for DMA is forced to close.
+  * @brief  Indicate whether the clock for DMA is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1690,7 +1690,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_ble_brg_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for BLE Bridge is forced to close.
+  * @brief  Indicate whether the clock for BLE Bridge is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1732,7 +1732,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_apb_sub_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for APB Subsystem is forced to close.
+  * @brief  Indicate whether the clock for APB Subsystem is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1774,7 +1774,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_serial_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for serial blocks(including I2C, UART, QSPI, I2S, SPI) is forced to close.
+  * @brief  Indicate whether the clock for serial blocks(including I2C, UART, QSPI, I2S, SPI) is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1816,7 +1816,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_i2s_s_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for I2S slave is forced to close.
+  * @brief  Indicate whether the clock for I2S slave is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1858,7 +1858,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_aon_mcusub_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for AON_MUCSUB is forced to close.
+  * @brief  Indicate whether the clock for AON_MUCSUB is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1900,7 +1900,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_xqspi_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for XQSPI is forced to close.
+  * @brief  Indicate whether the clock for XQSPI is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1942,7 +1942,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_sram_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for SRAM is forced to close.
+  * @brief  Indicate whether the clock for SRAM is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -1984,7 +1984,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_uart0_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for UART0 is forced to close.
+  * @brief  Indicate whether the clock for UART0 is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2026,7 +2026,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_uart1_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for UART1 is forced to close.
+  * @brief  Indicate whether the clock for UART1 is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2068,7 +2068,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_i2c0_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for I2C0 is forced to close.
+  * @brief  Indicate whether the clock for I2C0 is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2110,7 +2110,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_i2c1_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for I2C1 is forced to close.
+  * @brief  Indicate whether the clock for I2C1 is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2152,7 +2152,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_spim_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for SPIM is forced to close.
+  * @brief  Indicate whether the clock for SPIM is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2194,7 +2194,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_spis_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for SPIS is forced to close.
+  * @brief  Indicate whether the clock for SPIS is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2236,7 +2236,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_qspi0_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for QSPI0 is forced to close.
+  * @brief  Indicate whether the clock for QSPI0 is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2278,7 +2278,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_qspi1_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for QSPI1 is forced to close.
+  * @brief  Indicate whether the clock for QSPI1 is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2320,7 +2320,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_i2s_m_hclk(void)
 }
 
 /**
-  * @brief  Indicates whether the clock for I2S master is forced to close.
+  * @brief  Indicate whether the clock for I2S master is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------
@@ -2362,7 +2362,7 @@ __STATIC_INLINE void ll_cgc_disable_force_off_secu_div4_pclk(void)
 }
 
 /**
-  * @brief  Indicates whether the div4 clock for security blocks is forced to close.
+  * @brief  Indicate whether the div4 clock for security blocks is forced to close.
   *
   *  Register  | BitsName
   *  ----------|--------

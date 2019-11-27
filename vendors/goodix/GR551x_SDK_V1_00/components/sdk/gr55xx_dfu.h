@@ -29,7 +29,8 @@
 
 /** @addtogroup DFU_DEFINES Defines
  * @{ */
-#define DFU_ADV_MAX_LENGTH   18     /**< The Max Length of Advertisement is 18 bytes. */
+#define DFU_ADV_MAX_LENGTH  18      /**< The max length of advertisement is 18 bytes. */
+#define RECEIVE_MAX_LEN     2048    /**< The max length of received data is 2048 bytes. */
 /** @} */
 
 /**@addtogroup DFU_ENUMERATIONS Enumerations
@@ -108,25 +109,28 @@ typedef struct
     uint32_t xqspi_speed: 4;                /**< Bit: 0-3  clock speed. 0 :64 MHz, 1:48 MHz, 2:32 MHz, 3:24 MHz, 4:16 MHz. */
     uint32_t code_copy_mode: 1;             /**< Bit: 4 code copy mode. 0:XIP,1:QSPI. */
     uint32_t system_clk: 3;                 /**< Bit: 5-7 system clock. 0:64 MHz, 1:48 MHz, 2:32 MHz(xo), 3:24 MHz, 4:16 MHz, 5:32 MHz(cpll). */
-    uint32_t reserved: 24;                  /**< Bit: 24 reserved. */
+    uint32_t check_image:1;                 /**< bit: 8 check image. */
+    uint32_t boot_delay:1;
+    uint32_t is_dap_boot:1;                 /** < bit:11 check if boot dap mode. */
+    uint32_t reserved:21;                   /**< bit: 24 reserved. */
 } boot_info_t;
 
 
 /**@brief DFU uart config definition. */
 typedef struct
 {
-    dfu_info_state        state;              /**< DFU UART Enable or Disable. This parameter can be a value of @ref dfu_info_state*/
-    dfu_uart_baudrate_t   baud_rate;          /**< UART communication baudrate. This parameter can be a value of @ref dfu_uart_baudrate_t*/
-    dfu_uart_data_bit_t   data_bit;           /**< The number of data bits transmitted or received in a frame. This parameter can be a value of @ref dfu_uart_data_bit_t*/
-    dfu_uart_stop_bit_t   stop_bits;          /**< The number of stop bits transmitted. This parameter can be a value of @ref dfu_uart_stop_bit_t*/
-    dfu_uart_parity_bit_t parity;             /**< Specifies the parity mode. This parameter can be a value of @ref dfu_uart_parity_bit_t*/
-    dfu_uart_pin_group_t  pin_group;          /**< Uart pin group. This parameter can be a value of @ref dfu_uart_pin_group_t*/
+    dfu_info_state        state;              /**< DFU UART Enable or Disable. This parameter can be a value of @ref dfu_info_state.*/
+    dfu_uart_baudrate_t   baud_rate;          /**< UART communication baudrate. This parameter can be a value of @ref dfu_uart_baudrate_t.*/
+    dfu_uart_data_bit_t   data_bit;           /**< The number of data bits transmitted or received in a frame. This parameter can be a value of @ref dfu_uart_data_bit_t.*/
+    dfu_uart_stop_bit_t   stop_bits;          /**< The number of stop bits transmitted. This parameter can be a value of @ref dfu_uart_stop_bit_t.*/
+    dfu_uart_parity_bit_t parity;             /**< Specify the parity mode. This parameter can be a value of @ref dfu_uart_parity_bit_t.*/
+    dfu_uart_pin_group_t  pin_group;          /**< Uart pin group. This parameter can be a value of @ref dfu_uart_pin_group_t.*/
 } dfu_uart_info_t;
 
 /**@brief DFU Advertisement name config definition. */
 typedef struct
 {
-    dfu_info_state state;                          /**< If a set name is used, this parameter can be a value of @ref dfu_info_state*/
+    dfu_info_state state;                          /**< If a set name is used, this parameter can be a value of @ref dfu_info_state.*/
     uint8_t        adv_name[DFU_ADV_MAX_LENGTH];   /**< Adv name data. */
     uint16_t       adv_name_length;                /**< The length of the name. */
 } dfu_adv_name_info_t;
@@ -134,9 +138,9 @@ typedef struct
 /**@brief DFU NVDS init info definition. */
 typedef struct
 {
-    dfu_info_state  state;                         /**< If NVDS init is required, this parameter can be a value of @ref dfu_info_state*/
-    uint16_t        page_size;                     /**< NVDS start address. */
-    uint32_t        start_address;                 /**< NVDS page size. */
+    dfu_info_state  state;                         /**< If NVDS init is required, this parameter can be a value of @ref dfu_info_state.*/
+    uint16_t        page_size;                     /**< NVDS page size. */
+    uint32_t        start_address;                 /**< NVDS start address. */
 }dfu_nvds_info_t;
 
 /**@brief DFU used functions config definition. */
@@ -151,14 +155,12 @@ typedef struct
     void (*dfu_flash_set_security)(bool enable);                                                  /**< The function is used to set the flash security mode as Enable or Disable. */
     bool (*dfu_flash_get_security)(void);                                                         /**< The function is used to get the flash security mode (Enable or Disable). */
 	void (*dfu_flash_get_info)(uint32_t *id, uint32_t *size);                                     /**< The function is used to get the flash id and size. */
-    void (*dfu_delay_reset_timer_start)(void);                                                    /**< The function is used to start a reset delay timer. can use dfu_default_reset_dealy_timer_start
-	                                                                                                   also can use own timer*/
 } dfu_func_t;
 
 /**@brief SPI used functions config definition. */
 typedef struct
 {
-    void (*dfu_spi_flash_init)(uint8_t cs_pin, uint8_t cs_mux, uint8_t spi_group);                 /**< The function is used to config flash spi. */
+    void (*dfu_spi_flash_init)(uint8_t *p_data);                                                   /**< The function is used to config flash spi. */
     uint32_t (*dfu_spi_flash_read)(uint32_t addr, uint8_t *buf, uint32_t size);                    /**< The function is used to read external flash . */
     uint32_t (*dfu_spi_flash_write)(uint32_t addr, uint8_t *buf, uint32_t size);                   /**< The function is used to write external flash. */
     bool (*dfu_spi_flash_erase)(uint32_t addr, uint32_t size);                                     /**< The function is used to erase external flash by address. */
@@ -170,9 +172,9 @@ typedef struct
 /**@brief DFU program state callback definition. */
 typedef struct
 {
-    void (*dfu_program_start_callback)(void);          /**<DFU Start Program Callback. */
-    void (*dfu_programing_callback)(uint8_t pro);      /**<DFU Start Programing Callback. */
-    void (*dfu_program_end_callback)(uint8_t status);  /**<DFU Start Program end Callback. */
+    void (*dfu_program_start_callback)(void);          /**<DFU program start callback. */
+    void (*dfu_programing_callback)(uint8_t pro);      /**<DFU programing callback. */
+    void (*dfu_program_end_callback)(uint8_t status);  /**<DFU program end callback. */
 } dfu_pro_callback_t;
 
 /** @} */
@@ -184,15 +186,25 @@ typedef struct
  *****************************************************************************************
  * @brief Function for initializing the DFU Used and Program State Callback.
  *
- * @note When APP wants to add DFU feature, the flash_read and flash_write functions should be registered.If want to creat own DFU bootloader,
- *       all functions in @ref dfu_func_t should be registered.If own DFU bootloader can shown DFU program state, all functions
- *       in @ref dfu_pro_callback_t should be registered.
+ * @note When APP wants to add DFU features, the flash_read and flash_write functions should be registered.
+ *       To creat own DFU bootloaders, all functions in dfu_func_t should be registered. In order to show
+ *       DFU program states by own DFU bootloaders, all functions in @ref dfu_pro_callback_t should be registered.
  *
  * @param[in]  p_app_dfu_func: DFU used functions.
+ * @param[in]  p_dfu_buffer: DFU data receiving buffer.
  * @param[in]  p_dfu_callback: DFU program state callback functions.
  *****************************************************************************************
  */
-void dfu_init(dfu_func_t *p_app_dfu_func, dfu_pro_callback_t *p_dfu_callback);
+void dfu_init(dfu_func_t *p_app_dfu_func, uint8_t* p_dfu_buffer, dfu_pro_callback_t *p_dfu_callback);
+
+/**
+ *****************************************************************************************
+ * @brief Function for reset the DFU cmd parse state.
+ *
+ * @note When APP wants to add DFU timeout feature, shoulde reset  DFU cmd parse state when timeout.
+ *****************************************************************************************
+ */
+void dfu_cmd_parse_state_reset(void);
 
 /**
  *****************************************************************************************
@@ -254,8 +266,8 @@ void dfu_schedule(void);
  *****************************************************************************************
  * @brief Function for jumping to address to run.
  *
- * @note In Apps, if the user wants to jump to another app or own a DFU bootloader and run the code,
- *       this function can be called. This functions does not change the boot info, so the original App will run after resetting.
+ * @note In Apps, if the user wants to jump to another APP or own a DFU bootloader and run the code,
+ *       this function can be called. This function does not change the boot info, so the original APP will run after resetting.
  *
  * @param[in]  start_addr: The jumped address.
  *****************************************************************************************
@@ -266,10 +278,10 @@ void dfu_start_jump(uint32_t start_addr);
  *****************************************************************************************
  * @brief Function for changing the boot info and reseting device.
  *
- * @note In Apps, if the user wants to jump to another app or own a DFU bootloader and run the code,
+ * @note In Apps, if the user wants to jump to another APP or own a DFU bootloader and run the code,
  *       this function can be called (the boot info will be changed).
  *
- * @param[in]  p_boot_info: The boot info of the start app.
+ * @param[in]  p_boot_info: The boot info of the APP you want to run.
  *****************************************************************************************
  */
 void dfu_start_address(boot_info_t *p_boot_info);
@@ -293,30 +305,22 @@ void dfu_start_default(dfu_uart_info_t *p_dfu_uart_info, dfu_adv_name_info_t *p_
  *****************************************************************************************
  * @brief Function for initializing the DFU SPI Flash Callback.
  *
- * @note When APP wants to add DFU operate external flash feature, the dfu_spi_flash_func_t should be registered.
+ * @note When APP wants to add DFU operationally external flash feature, the dfu_spi_flash_func_t should be registered.
  *
- * @param[in]  spi_flash_func: DFU operate external flash used functions.
+ * @param[in]  spi_flash_func: DFU operationally external flash used functions.
  *****************************************************************************************
  */
 void dfu_spi_flash_func_config(dfu_spi_flash_func_t *spi_flash_func);
 
 /**
  *****************************************************************************************
- * @brief Function for start default reset dealy timer
+ * @brief Function for starting default reset delay timer.
  *
- * @note If use dfu default reset dealy timer,should init ble stack .
+ * @note If DFU default reset delay timer is used, BLE stack should be initialized.
  *****************************************************************************************
  */
-void dfu_default_reset_dealy_timer_start(void);
+void dfu_default_reset_delay_timer_start(void);
 
-/**
- *****************************************************************************************
- * @brief Function for reset device.
- *
- * @note If not use dfu_default_reset_dealy_timer_start, This function should be called in own reset timer out handler.
- *****************************************************************************************
- */
-void dfu_delay_reset_timeout_handler(void);
 /** @} */
 #endif
 /** @} */

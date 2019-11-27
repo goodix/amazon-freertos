@@ -38,6 +38,7 @@
 #ifndef __APP_ASSERT_H__
 #define __APP_ASSERT_H__
 
+#include "gr55xx_sys.h"
 #include <stdint.h>
 
 /**
@@ -56,19 +57,6 @@
 /** @} */
 
 /**
- * @defgroup APP_ASSERT_STRUCT Enumerations
- * @{
- */
-/**@brief App assert callbacks.*/
-typedef struct 
-{
-    void (*app_assert_err_cb)(const char *expr, const char *file, int line);
-    void (*app_assert_param_cb)(int param0, int param1, const char *file, int line);
-    void (*app_assert_warn_cb)(int param0, int param1, const char *file, int line);
-}app_assert_cb_t;
-/** @} */
-
-/**
  * @defgroup APP_ASSERT_FUNCTION Functions
  * @{
  */
@@ -84,7 +72,7 @@ void app_assert_default_cb_register(void);
  * @brief Register user assert callbacks.
  *****************************************************************************************
  */
-void app_assert_cb_register(app_assert_cb_t *p_assert_cb);
+void app_assert_cb_register(sys_assert_cb_t *p_assert_cb);
 
 /**
  *****************************************************************************************

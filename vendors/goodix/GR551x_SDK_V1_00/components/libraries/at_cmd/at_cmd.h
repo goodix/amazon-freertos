@@ -106,6 +106,9 @@ typedef enum
     AT_CMD_DISCONN,            /**< Disconnect AT CMD. */
     AT_CMD_MTU_EXCHANGE,       /**< Exchange MTU AT CMD. */
     AT_CMD_SRVC_DISC,          /**< Discovery service AT CMD. */
+    AT_CMD_CONN_PARAM_UPDATE,  /**< Connect parameters update AT CMD. */
+    AT_CMD_ATTR_READ,          /**< Read attr AT CMD. */
+    AT_CMD_ATTR_WRITE,         /**< Write attr AT CMD. */
     AT_CMD_NB                  /**< Number of supported AT CMD. */
 } at_cmd_id_t;
 
@@ -178,6 +181,7 @@ typedef struct
     char              *cmd_tag_str;              /**< String of AT CMD tag. */
     uint8_t            cmd_tag_length;           /**< Length of AT CMD tag. */
     at_cmd_handler_t   cmd_handler;              /**< AT CMD handler. */
+    char              *cmd_timeout_str;          /**< String of timeout AT CMD. */
 } at_cmd_attr_t;
 
 /**@brief AT CMD initialization variables. */

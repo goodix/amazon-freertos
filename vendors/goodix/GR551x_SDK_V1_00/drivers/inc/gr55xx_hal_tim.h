@@ -3,7 +3,7 @@
  *
  * @file    gr55xx_hal_tim.h
  * @author  BLE Driver Team
- * @brief   Header file containing functions prototypes of TIM HAL library.
+ * @brief   Header file containing functions prototypes of TIMER HAL library.
  *
  ****************************************************************************************
  * @attention
@@ -43,14 +43,14 @@
   * @{
   */
 
-/** @defgroup HAL_TIM TIM
+/** @defgroup HAL_TIMER TIMER
   * @brief TIM HAL module driver.
   * @{
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GR55xx_HAL_TIM_H__
-#define __GR55xx_HAL_TIM_H__
+#ifndef __GR55xx_HAL_TIMER_H__
+#define __GR55xx_HAL_TIMER_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,154 +61,154 @@ extern "C" {
 #include "gr55xx_ll_tim.h"
 
 /* Exported types ------------------------------------------------------------*/
-/** @addtogroup HAL_TIM_ENUMERATIONS Enumerations
+/** @addtogroup HAL_TIMER_ENUMERATIONS Enumerations
   * @{
   */
 
-/** @defgroup HAL_TIM_state HAL TIM state
+/** @defgroup HAL_TIMER_state HAL TIMER state
   * @{
   */
 
 /**
-  * @brief  HAL TIM State Enumerations definition
+  * @brief  HAL TIMER State Enumerations definition
   */
 typedef enum
 {
-    HAL_TIM_STATE_RESET             = 0x00,    /**< Peripheral not yet initialized or disabled  */
-    HAL_TIM_STATE_READY             = 0x01,    /**< Peripheral Initialized and ready for use    */
-    HAL_TIM_STATE_BUSY              = 0x02,    /**< An internal process is ongoing              */
-    HAL_TIM_STATE_ERROR             = 0x04     /**< Reception process is ongoing                */
-} hal_tim_state_t;
+    HAL_TIMER_STATE_RESET             = 0x00,    /**< Peripheral not yet initialized or disabled  */
+    HAL_TIMER_STATE_READY             = 0x01,    /**< Peripheral Initialized and ready for use    */
+    HAL_TIMER_STATE_BUSY              = 0x02,    /**< An internal process is ongoing              */
+    HAL_TIMER_STATE_ERROR             = 0x04     /**< Reception process is ongoing                */
+} hal_timer_state_t;
 /** @} */
 
 /** @} */
 
-/** @addtogroup HAL_TIM_STRUCTURES Structures
+/** @addtogroup HAL_TIMER_STRUCTURES Structures
   * @{
   */
 
-/** @defgroup TIM_Configuration TIM Configuration
+/** @defgroup TIMER_Configuration TIMER Configuration
   * @{
   */
 
 /**
-  * @brief TIM init Structure definition
+  * @brief TIMER init Structure definition
   */
-typedef struct _tim_init
+typedef struct _timer_init
 {
     uint32_t auto_reload;                   /**< Specifies the auto-reload value. */
 
-} tim_init_t;
+} timer_init_t;
 
 /** @} */
 
-/** @defgroup TIM_handle TIM handle
+/** @defgroup TIMER_handle TIMER handle
   * @{
   */
 
 /**
-  * @brief TIM handle Structure definition
+  * @brief TIMER handle Structure definition
   */
-typedef struct _tim_handle
+typedef struct _timer_handle
 {
-    tim_regs_t               *p_instance;     /**< Register base address        */
+    timer_regs_t               *p_instance;     /**< Register base address        */
 
-    tim_init_t               init;          /**< TIM Base required parameters */
+    timer_init_t               init;            /**< TIMER Base required parameters */
 
-    __IO hal_lock_t          lock;          /**< Locking object               */
+    __IO hal_lock_t          lock;              /**< Locking object               */
 
-    __IO hal_tim_state_t     state;         /**< TIM operation state          */
+    __IO hal_timer_state_t     state;           /**< TIMER operation state          */
 
-} tim_handle_t;
+} timer_handle_t;
 /** @} */
 
 /** @} */
 
-/** @addtogroup HAL_TIM_STRUCTURES Callback Structures
+/** @addtogroup HAL_TIMER_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
-/** @defgroup HAL_TIM_Callback Callback
+/** @defgroup HAL_TIMER_Callback Callback
   * @{
   */
 
 /**
-  * @brief HAL_TIM Callback function definition
+  * @brief HAL_TIMER Callback function definition
   */
 
-typedef struct _hal_tim_callback
+typedef struct _hal_timer_callback
 {
-    void (*tim_msp_init)(tim_handle_t *p_timer);
-    void (*tim_msp_deinit)(tim_handle_t *p_timer);
-    void (*tim_period_elapsed_callback)(tim_handle_t *p_timer);
-} hal_tim_callback_t;
+    void (*timer_msp_init)(timer_handle_t *p_timer);
+    void (*timer_msp_deinit)(timer_handle_t *p_timer);
+    void (*timer_period_elapsed_callback)(timer_handle_t *p_timer);
+} hal_timer_callback_t;
 
 /** @} */
 
 /** @} */
 
 /**
-  * @defgroup  HAL_TIM_MACRO Defines
+  * @defgroup  HAL_TIMER_MACRO Defines
   * @{
   */
 
 /* Exported macro ------------------------------------------------------------*/
-/** @defgroup TIM_Exported_Macros TIM Exported Macros
+/** @defgroup TIMER_Exported_Macros TIMER Exported Macros
   * @{
   */
 
-/** @brief  Reset TIM handle states.
-  * @param  __HANDLE__ TIM handle.
+/** @brief  Reset TIMER handle states.
+  * @param  __HANDLE__ TIMER handle.
   * @retval None
   */
-#define __HAL_TIM_RESET_HANDLE_STATE(__HANDLE__)               ((__HANDLE__)->state = HAL_TIM_STATE_RESET)
+#define __HAL_TIMER_RESET_HANDLE_STATE(__HANDLE__)               ((__HANDLE__)->state = HAL_TIMER_STATE_RESET)
 
-/** @brief  Enable the specified TIM peripheral.
-  * @param  __HANDLE__ Specifies the TIM Handle.
+/** @brief  Enable the specified TIMER peripheral.
+  * @param  __HANDLE__ Specifies the TIMER Handle.
   * @retval None
   */
-#define __HAL_TIM_ENABLE(__HANDLE__)                           SET_BITS((__HANDLE__)->p_instance->CTRL, TIM_CTRL_EN)
+#define __HAL_TIMER_ENABLE(__HANDLE__)                           SET_BITS((__HANDLE__)->p_instance->CTRL, TIMER_CTRL_EN)
 
-/** @brief  Disable the specified TIM peripheral.
-  * @param  __HANDLE__ Specifies the TIM Handle.
+/** @brief  Disable the specified TIMER peripheral.
+  * @param  __HANDLE__ Specifies the TIMER Handle.
   * @retval None
   */
-#define __HAL_TIM_DISABLE(__HANDLE__)                          CLEAR_BITS((__HANDLE__)->p_instance->CTRL, TIM_CTRL_EN)
+#define __HAL_TIMER_DISABLE(__HANDLE__)                          CLEAR_BITS((__HANDLE__)->p_instance->CTRL, TIMER_CTRL_EN)
 
-/** @brief  Enable the TIM interrupt.
-  * @param  __HANDLE__ Specifies the TIM Handle.
+/** @brief  Enable the TIMER interrupt.
+  * @param  __HANDLE__ Specifies the TIMER Handle.
   * @retval None
   */
-#define __HAL_TIM_ENABLE_IT(__HANDLE__)                        SET_BITS((__HANDLE__)->p_instance->CTRL, TIM_CTRL_INTEN)
+#define __HAL_TIMER_ENABLE_IT(__HANDLE__)                        SET_BITS((__HANDLE__)->p_instance->CTRL, TIMER_CTRL_INTEN)
 
-/** @brief  Disable the TIM interrupt.
-  * @param  __HANDLE__ Specifies the TIM Handle.
+/** @brief  Disable the TIMER interrupt.
+  * @param  __HANDLE__ Specifies the TIMER Handle.
   * @retval None
   */
-#define __HAL_TIM_DISABLE_IT(__HANDLE__)                       CLEAR_BITS((__HANDLE__)->p_instance->CTRL, TIM_CTRL_INTEN)
+#define __HAL_TIMER_DISABLE_IT(__HANDLE__)                       CLEAR_BITS((__HANDLE__)->p_instance->CTRL, TIMER_CTRL_INTEN)
 
-/** @brief  Check whether the TIM interrupt has occurred or not.
-  * @param  __HANDLE__ Specifies the TIM Handle.
-  * @retval The new state of TIM interrupt (SET or RESET).
+/** @brief  Check whether the TIMER interrupt has occurred or not.
+  * @param  __HANDLE__ Specifies the TIMER Handle.
+  * @retval The new state of TIMER interrupt (SET or RESET).
   */
-#define __HAL_TIM_GET_FLAG_IT(__HANDLE__)                      ll_tim_is_active_flag_it(__HANDLE__->p_instance)
+#define __HAL_TIMER_GET_FLAG_IT(__HANDLE__)                      ll_timer_is_active_flag_it(__HANDLE__->p_instance)
 
-/** @brief  Clear the TIM interrupt flag.
-  * @param  __HANDLE__ Specifies the TIM Handle.
+/** @brief  Clear the TIMER interrupt flag.
+  * @param  __HANDLE__ Specifies the TIMER Handle.
   * @retval None
   */
-#define __HAL_TIM_CLEAR_FLAG_IT(__HANDLE__)                    ll_tim_clear_flag_it(__HANDLE__->p_instance)
+#define __HAL_TIMER_CLEAR_FLAG_IT(__HANDLE__)                    ll_timer_clear_flag_it(__HANDLE__->p_instance)
 
 /** @} */
 
 /** @} */
 
 /* Exported functions --------------------------------------------------------*/
-/** @addtogroup HAL_TIM_DRIVER_FUNCTIONS Functions
+/** @addtogroup HAL_TIMER_DRIVER_FUNCTIONS Functions
   * @{
   */
 
-/** @addtogroup TIM_Exported_Functions_Group1 Initialization and de-initialization functions
+/** @addtogroup TIMER_Exported_Functions_Group1 Initialization and de-initialization functions
   * @brief    Initialization and de-initialization functions
   *
   * @verbatim
@@ -217,8 +217,8 @@ typedef struct _hal_tim_callback
  ===============================================================================
     [..]
         This section provides functions allowing to:
-        (+) Initialize and configure the TIM.
-        (+) De-initialize the TIM.
+        (+) Initialize and configure the TIMER.
+        (+) De-initialize the TIMER.
         (+) Start the Timer.
         (+) Stop the Timer.
         (+) Start the Timer and enable interrupt.
@@ -230,135 +230,135 @@ typedef struct _hal_tim_callback
 
 /**
  ****************************************************************************************
- * @brief  Initialize the TIM according to the specified parameters
- *         in the tim_init_t and initialize the associated handle.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ * @brief  Initialize the TIMER according to the specified parameters
+ *         in the timer_init_t and initialize the associated handle.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_init(tim_handle_t *p_timer);
+hal_status_t hal_timer_base_init(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  De-initialize the TIM peripheral.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ * @brief  De-initialize the TIMER peripheral.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_deinit(tim_handle_t *p_timer);
+hal_status_t hal_timer_base_deinit(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  Initialize the TIM MSP.
+ * @brief  Initialize the TIMER MSP.
  * @note   This function should not be modified. When the callback is needed,
- *         the hal_tim_msp_init could be implemented in the user file.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ *         the hal_timer_base_msp_init could be implemented in the user file.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  ****************************************************************************************
  */
-void hal_tim_msp_init(tim_handle_t *p_timer);
+void hal_timer_base_msp_init(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  De-initialize the TIM MSP.
+ * @brief  De-initialize the TIMER MSP.
  * @note   This function should not be modified. When the callback is needed,
- *         the hal_tim_msp_deinit could be implemented in the user file.
+ *         the hal_timer_base_msp_deinit could be implemented in the user file.
  * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ *                 information for the specified TIMER module.
  ****************************************************************************************
  */
-void hal_tim_msp_deinit(tim_handle_t *p_timer);
+void hal_timer_base_msp_deinit(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  Starts the TIM counter.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ * @brief  Starts the TIMER counter.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_start(tim_handle_t *p_timer);
+hal_status_t hal_timer_base_start(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  Stops the TIM counter.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ * @brief  Stops the TIMER counter.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_stop(tim_handle_t *p_timer);
+hal_status_t hal_timer_base_stop(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  Starts the TIM counter in interrupt mode.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ * @brief  Starts the TIMER counter in interrupt mode.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_start_it(tim_handle_t *p_timer);
+hal_status_t hal_timer_base_start_it(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  Stops the TIM counter in interrupt mode.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+ * @brief  Stops the TIMER counter in interrupt mode.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_stop_it(tim_handle_t *p_timer);
+hal_status_t hal_timer_base_stop_it(timer_handle_t *p_timer);
 
 /** @} */
 
-/** @addtogroup TIM_IRQ_Handler_and_Callbacks IRQ Handler and Callbacks
+/** @addtogroup TIMER_IRQ_Handler_and_Callbacks IRQ Handler and Callbacks
   * @brief    IRQ Handler and Callbacks functions
  * @{
  */
 
 /**
  ****************************************************************************************
- * @brief Handle TIM interrupt request.
- * @param[in] p_timer: TIM handle.
+ * @brief Handle TIMER interrupt request.
+ * @param[in] p_timer: TIMER handle.
  ****************************************************************************************
  */
-void hal_tim_irq_handler(tim_handle_t *p_timer);
+void hal_timer_irq_handler(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
  * @brief  Period elapsed callback in non-blocking mode.
  * @note   This function should not be modified. When the callback is needed,
-            the hal_tim_period_elapsed_callback can be implemented in the user file.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
+            the hal_timer_period_elapsed_callback can be implemented in the user file.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
  ****************************************************************************************
  */
-void hal_tim_period_elapsed_callback(tim_handle_t *p_timer);
+void hal_timer_period_elapsed_callback(timer_handle_t *p_timer);
 
 /** @} */
 
-/** @addtogroup TIM_Exported_Functions_Group2 Peripheral Control and State functions
- *  @brief   TIM Peripheral State functions
+/** @addtogroup TIMER_Exported_Functions_Group2 Peripheral Control and State functions
+ *  @brief   TIMER Peripheral State functions
  *
 @verbatim
   ==============================================================================
@@ -366,8 +366,8 @@ void hal_tim_period_elapsed_callback(tim_handle_t *p_timer);
   ==============================================================================
     [..]
     This subsection provides functions allowing to :
-      (+) Return the TIM handle state.
-      (+) Configure the TIM.
+      (+) Return the TIMER handle state.
+      (+) Configure the TIMER.
 
 @endverbatim
   * @{
@@ -375,30 +375,30 @@ void hal_tim_period_elapsed_callback(tim_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  Return the TIM handle state.
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                 information for the specified TIM module.
- * @retval ::HAL_TIM_STATE_RESET: Peripheral not yet initialized or disabled.
- * @retval ::HAL_TIM_STATE_READY: Peripheral Initialized and ready for use.
- * @retval ::HAL_TIM_STATE_BUSY: An internal process is ongoing.
- * @retval ::HAL_TIM_STATE_ERROR: Reception process is ongoing.
+ * @brief  Return the TIMER handle state.
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                 information for the specified TIMER module.
+ * @retval ::HAL_TIMER_STATE_RESET: Peripheral not yet initialized or disabled.
+ * @retval ::HAL_TIMER_STATE_READY: Peripheral Initialized and ready for use.
+ * @retval ::HAL_TIMER_STATE_BUSY: An internal process is ongoing.
+ * @retval ::HAL_TIMER_STATE_ERROR: Reception process is ongoing.
  ****************************************************************************************
  */
-hal_tim_state_t hal_tim_get_state(tim_handle_t *p_timer);
+hal_timer_state_t hal_timer_get_state(timer_handle_t *p_timer);
 
 /**
  ****************************************************************************************
- * @brief  TIM configuration
- * @param[in]  p_timer: Pointer to a TIM handle which contains the configuration
- *                      information for the specified TIM module.
- * @param[in]  p_structure: The TIM configuration structure
+ * @brief  TIMER configuration
+ * @param[in]  p_timer: Pointer to a TIMER handle which contains the configuration
+ *                      information for the specified TIMER module.
+ * @param[in]  p_structure: The TIMER configuration structure
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_tim_set_config(tim_handle_t *p_timer, tim_init_t *p_structure);
+hal_status_t hal_timer_set_config(timer_handle_t *p_timer, timer_init_t *p_structure);
 
 /** @} */
 
@@ -408,7 +408,7 @@ hal_status_t hal_tim_set_config(tim_handle_t *p_timer, tim_init_t *p_structure);
 }
 #endif
 
-#endif /* __GR55xx_HAL_TIM_H__ */
+#endif /* __GR55xx_HAL_TIMER_H__ */
 
 /** @} */
 

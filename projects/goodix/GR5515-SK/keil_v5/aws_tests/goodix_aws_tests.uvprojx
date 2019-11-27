@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>GR5515_SK __CHECK_DEVICE_DEFINES __little_endian__=1 AMAZON_FREERTOS_ENABLE_UNIT_TESTS</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\..\freertos_kernel\;..\..\..\..\..\freertos_kernel\include;..\..\..\..\..\freertos_kernel\portable\RVDS\GR5515-SK;..\..\..\..\..\tools\cbmc\windows;..\..\..\..\..\libraries\3rdparty\jsmn;..\..\..\..\..\libraries\3rdparty\mbedtls\include\;..\..\..\..\..\libraries\3rdparty\mbedtls\include\mbedtls;..\..\..\..\..\libraries\3rdparty\pkcs11;..\..\..\..\..\libraries\3rdparty\tinycbor;..\..\..\..\..\libraries\3rdparty\unity\src;..\..\..\..\..\libraries\3rdparty\unity\extras\fixture\src;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include\tinycrypt;..\..\..\..\..\libraries\3rdparty\tinycrypt\asn1;..\..\..\..\..\libraries\abstractions\ble_hal\include;..\..\..\..\..\libraries\abstractions\pkcs11;..\..\..\..\..\libraries\abstractions\pkcs11\include;..\..\..\..\..\libraries\abstractions\pkcs11\mbedtls;..\..\..\..\..\libraries\abstractions\pkcs11\test;..\..\..\..\..\libraries\abstractions\platform\include;..\..\..\..\..\libraries\abstractions\platform\include\platform;..\..\..\..\..\libraries\abstractions\platform\include\types;..\..\..\..\..\libraries\abstractions\platform\freertos;..\..\..\..\..\libraries\abstractions\platform\freertos\include;..\..\..\..\..\libraries\abstractions\platform\freertos\include\platform;..\..\..\..\..\libraries\abstractions\posix\include\;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX\sys;..\..\..\..\..\libraries\abstractions\secure_sockets\include;..\..\..\..\..\libraries\c_sdk\aws\defender\include\;..\..\..\..\..\libraries\c_sdk\aws\defender\src\private;..\..\..\..\..\libraries\c_sdk\aws\shadow\include;..\..\..\..\..\libraries\c_sdk\aws\shadow\include\types;..\..\..\..\..\libraries\c_sdk\aws\shadow\src;..\..\..\..\..\libraries\c_sdk\aws\shadow\src\private;..\..\..\..\..\libraries\c_sdk\standard\ble\src;..\..\..\..\..\libraries\c_sdk\standard\ble\include;..\..\..\..\..\libraries\c_sdk\standard\common\include;..\..\..\..\..\libraries\c_sdk\standard\common\include\private;..\..\..\..\..\libraries\c_sdk\standard\common\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src\private;..\..\..\..\..\libraries\c_sdk\standard\mqtt\test\access;..\..\..\..\..\libraries\c_sdk\standard\serializer\include;..\..\..\..\..\libraries\freertos_plus\aws\ota;..\..\..\..\..\libraries\freertos_plus\aws\ota\include;..\..\..\..\..\libraries\freertos_plus\aws\ota\src;..\..\..\..\..\libraries\freertos_plus\standard\freertos_plus_posix\include;..\..\..\..\..\libraries\freertos_plus\standard\utils\include;..\..\..\..\..\libraries\freertos_plus\standard\crypto\include;..\..\..\..\..\libraries\freertos_plus\standard\tls\include;..\..\..\..\..\demos\network_manager;..\..\..\..\..\demos\dev_mode_key_provisioning;..\..\..\..\..\demos\dev_mode_key_provisioning\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\boards;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\sdk;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_key;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\at_cmd;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\bsp;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\gui;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\gui\gui_config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hci_uart;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\pwr_mgmt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\sensorsim;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\patch\ind;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\arm;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\cmsis\include;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble\user_callback;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\posix;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ota;..\..\..\..\..\libraries\freertos_plus\aws\ota\test;..\..\..\..\..\libraries\freertos_plus\aws\ota\test\test_files;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests\application_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests\application_code\goodix_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests\config_files;..\..\..\..\..\tests;..\..\..\..\..\tests\include</IncludePath>
+              <IncludePath>..\..\..\..\..\freertos_kernel\;..\..\..\..\..\freertos_kernel\include;..\..\..\..\..\freertos_kernel\portable\RVDS\GR5515-SK;..\..\..\..\..\tools\cbmc\windows;..\..\..\..\..\libraries\3rdparty\jsmn;..\..\..\..\..\libraries\3rdparty\mbedtls\include\;..\..\..\..\..\libraries\3rdparty\mbedtls\include\mbedtls;..\..\..\..\..\libraries\3rdparty\pkcs11;..\..\..\..\..\libraries\3rdparty\tinycbor;..\..\..\..\..\libraries\3rdparty\unity\src;..\..\..\..\..\libraries\3rdparty\unity\extras\fixture\src;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include;..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\include\tinycrypt;..\..\..\..\..\libraries\3rdparty\tinycrypt\asn1;..\..\..\..\..\libraries\abstractions\ble_hal\include;..\..\..\..\..\libraries\abstractions\pkcs11;..\..\..\..\..\libraries\abstractions\pkcs11\include;..\..\..\..\..\libraries\abstractions\pkcs11\mbedtls;..\..\..\..\..\libraries\abstractions\pkcs11\test;..\..\..\..\..\libraries\abstractions\platform\include;..\..\..\..\..\libraries\abstractions\platform\include\platform;..\..\..\..\..\libraries\abstractions\platform\include\types;..\..\..\..\..\libraries\abstractions\platform\freertos;..\..\..\..\..\libraries\abstractions\platform\freertos\include;..\..\..\..\..\libraries\abstractions\platform\freertos\include\platform;..\..\..\..\..\libraries\abstractions\posix\include\;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX;..\..\..\..\..\libraries\abstractions\posix\include\FreeRTOS_POSIX\sys;..\..\..\..\..\libraries\abstractions\secure_sockets\include;..\..\..\..\..\libraries\c_sdk\aws\defender\include\;..\..\..\..\..\libraries\c_sdk\aws\defender\src\private;..\..\..\..\..\libraries\c_sdk\aws\shadow\include;..\..\..\..\..\libraries\c_sdk\aws\shadow\include\types;..\..\..\..\..\libraries\c_sdk\aws\shadow\src;..\..\..\..\..\libraries\c_sdk\aws\shadow\src\private;..\..\..\..\..\libraries\c_sdk\standard\ble\src;..\..\..\..\..\libraries\c_sdk\standard\ble\include;..\..\..\..\..\libraries\c_sdk\standard\common\include;..\..\..\..\..\libraries\c_sdk\standard\common\include\private;..\..\..\..\..\libraries\c_sdk\standard\common\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include;..\..\..\..\..\libraries\c_sdk\standard\mqtt\include\types;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src;..\..\..\..\..\libraries\c_sdk\standard\mqtt\src\private;..\..\..\..\..\libraries\c_sdk\standard\mqtt\test\access;..\..\..\..\..\libraries\c_sdk\standard\serializer\include;..\..\..\..\..\libraries\freertos_plus\aws\ota;..\..\..\..\..\libraries\freertos_plus\aws\ota\include;..\..\..\..\..\libraries\freertos_plus\aws\ota\src;..\..\..\..\..\libraries\freertos_plus\standard\freertos_plus_posix\include;..\..\..\..\..\libraries\freertos_plus\standard\utils\include;..\..\..\..\..\libraries\freertos_plus\standard\crypto\include;..\..\..\..\..\libraries\freertos_plus\standard\tls\include;..\..\..\..\..\demos\network_manager;..\..\..\..\..\demos\dev_mode_key_provisioning;..\..\..\..\..\demos\dev_mode_key_provisioning\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\build\config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\boards;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\sdk;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_error;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_key;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_timer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\at_cmd;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\bsp;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\gui;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\gui\gui_config;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hal_flash\vflash;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\hci_uart;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\log;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\pmu_calibration;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\pwr_mgmt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\ring_buffer;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\sensorsim;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\utility;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\patch\ind;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\external\segger_rtt;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\include;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\arm;..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\cmsis\include;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ble\user_callback;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\posix;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ota;..\..\..\..\..\libraries\freertos_plus\aws\ota\test;..\..\..\..\..\libraries\freertos_plus\aws\ota\test\test_files;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests\application_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests\application_code\goodix_code;..\..\..\..\..\vendors\goodix\boards\GR5515-SK\aws_tests\config_files;..\..\..\..\..\tests;..\..\..\..\..\tests\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1968,21 +1968,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>libraries/3rdparty/jsmn</GroupName>
-          <Files>
-            <File>
-              <FileName>jsmn.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\libraries\3rdparty\jsmn\jsmn.c</FilePath>
-            </File>
-            <File>
-              <FileName>jsmn.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\libraries\3rdparty\jsmn\jsmn.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>libraries/3rdparty/tinycrypt</GroupName>
           <Files>
             <File>
@@ -2050,393 +2035,36 @@
               <FileName>aes_decrypt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\aes_decrypt.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>aes_encrypt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\aes_encrypt.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>cbc_mode.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\cbc_mode.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>ccm_mode.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\ccm_mode.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>cmac_mode.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\cmac_mode.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>ctr_mode.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\ctr_mode.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>ctr_prng.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\ctr_prng.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>ecc.c</FileName>
@@ -2666,225 +2294,36 @@
               <FileName>hmac.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\hmac.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>hmac_prng.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\hmac_prng.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>sha256.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\sha256.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>utils.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\libraries\3rdparty\tinycrypt\lib\source\utils.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>2</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libraries/3rdparty/jsmn</GroupName>
+          <Files>
+            <File>
+              <FileName>jsmn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\libraries\3rdparty\jsmn\jsmn.c</FilePath>
+            </File>
+            <File>
+              <FileName>jsmn.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\libraries\3rdparty\jsmn\jsmn.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2980,6 +2419,11 @@
               <FileName>iot_threads_afr.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../libraries/abstractions/platform/freertos/iot_threads_afr.c</FilePath>
+            </File>
+            <File>
+              <FileName>iot_metrics.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\libraries\abstractions\platform\freertos\iot_metrics.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3218,6 +2662,9 @@
               <FilePath>..\..\..\..\..\libraries\c_sdk\standard\ble\include\iot_ble_wifi_provisioning.h</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>libraries/c_sdk/standard/ble/include/private</GroupName>
         </Group>
         <Group>
           <GroupName>libraries/c_sdk/standard/ble/src</GroupName>
@@ -3549,14 +2996,14 @@
               <FilePath>..\..\..\..\..\libraries\freertos_plus\aws\ota\src\aws_iot_ota_agent.c</FilePath>
             </File>
             <File>
-              <FileName>aws_ota_cbor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\libraries\freertos_plus\aws\ota\src\aws_ota_cbor.c</FilePath>
-            </File>
-            <File>
               <FileName>aws_ota_agent_internal.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\libraries\freertos_plus\aws\ota\src\aws_ota_agent_internal.h</FilePath>
+            </File>
+            <File>
+              <FileName>aws_ota_cbor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\libraries\freertos_plus\aws\ota\src\aws_ota_cbor.c</FilePath>
             </File>
             <File>
               <FileName>aws_ota_cbor.h</FileName>
@@ -3713,7 +3160,7 @@
                   <RVCTCodeConst>0</RVCTCodeConst>
                   <RVCTZI>0</RVCTZI>
                   <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>1</ModuleSelection>
+                  <ModuleSelection>0</ModuleSelection>
                   <IncludeInBuild>2</IncludeInBuild>
                   <AlwaysBuild>2</AlwaysBuild>
                   <GenerateAssemblyFile>2</GenerateAssemblyFile>
@@ -3721,7 +3168,7 @@
                   <PublicsOnly>2</PublicsOnly>
                   <StopOnExitCode>11</StopOnExitCode>
                   <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules>ble_sdk_gapc.o|1|0|0|0,ble_sdk_gapm.o|1|0|0|0,ble_sdk_l2cap.o|1|0|0|0,ble_sdk_gatt_task.o|1|0|0|0,ble_sdk_gattc.o|1|0|0|0,ble_sdk_gatts.o|1|0|0|0,ble_sdk_prf.o|1|0|0|0,ble_sdk_prf_cllient.o|1|0|0|0,ble_bondmgr.o|1|0|0|0,ble_sdk.o|1|0|0|0,ble_sdk_task.o|1|0|0|0,system_sdk.o|1|0|0|0,sdk_timer.o|1|0|0|0,sdk_nvds.o|1|0|0|0,sys_context.o|1|0|0|0,gr55xx_hal.o|1|0|0|0,gr55xx_hal_adc.o|1|0|0|0,gr55xx_hal_aes.o|1|0|0|0,gr55xx_hal_aon_gpio.o|1|0|0|0,gr55xx_hal_aon_wdt.o|1|0|0|0,gr55xx_hal_calendar.o|1|0|0|0,gr55xx_hal_dual_tim.o|1|0|0|0,gr55xx_hal_efuse.o|1|0|0|0,gr55xx_hal_exflash.o|1|0|0|0,gr55xx_hal_gpio.o|1|0|0|0,gr55xx_hal_hmac.o|1|0|0|0,gr55xx_hal_i2c.o|1|0|0|0,gr55xx_hal_i2s.o|1|0|0|0,gr55xx_hal_pkc.o|1|0|0|0,gr55xx_hal_pwm.o|1|0|0|0,gr55xx_hal_pwr.o|1|0|0|0,gr55xx_hal_qspi.o|1|0|0|0,gr55xx_hal_rng.o|1|0|0|0,gr55xx_hal_spi.o|1|0|0|0,gr55xx_hal_tim.o|1|0|0|0,gr55xx_hal_uart.o|1|0|0|0,gr55xx_hal_wdt.o|1|0|0|0,gr55xx_hal_xqspi.o|1|0|0|0,ble_sdk_sec.o|1|0|0|0,rf_adi.o|1|0|0|0,rf_gdx_c0.o|1|0|0|0,rf_temp_calibrate_read.o|1|0|0|0,rf_gdx_c1.o|1|0|0|0,ble_sdk_audio.o|1|0|0|0,isogen.o|1|0|0|0,isogen_rx.o|1|0|0|0,isogen_tx.o|1|0|0|0,isoohci.o|1|0|0|0,isoohci_in.o|1|0|0|0,isoohci_out.o|1|0|0|0,isopcm.o|1|0|0|0,isopcm_rx.o|1|0|0|0,isopcm_tx.o|1|0|0|0,data_path.o|1|0|0|0,isogdx.o|1|0|0|0,isogdx_rx.o|1|0|0|0,isogdx_tx.o|1|0|0|0,ble_sdk_iso.o|1|0|0|0,rwip_sleep.o|1|0|0|0,dfu_cmd_handler.o|1|0|0|0,dfu_cmd_parse.o|1|0|0|0,dfu_img_info.o|1|0|0|0,dfu_init.o|1|0|0|0,dfu_memory.o|1|0|0|0,dfu_transport.o|1|0|0|0,dfu_start.o|1|0|0|0,dfu_efuse.o|1|0|0|0,tx_gain.o|1|0|0|0,sdk_pwr_mgmt.o|1|0|0|0,fpb.o|1|0|0|0,sdk_fpb_mgmt.o|1|0|0|0,svc_handler.o|1|0|0|0,platform_sdk.o|1|0|0|0,llm_hci_patch.o|1|0|0|0,lld_ci_patch.o|1|0|0|0,lli_ci_patch.o|1|0|0|0,gapm_cfg_patch.o|1|0|0|0,gapm_patch.o|1|0|0|0,smpc_patch.o|1|0|0|0,prf_patch.o|1|0|0|0,gapm_per_sync_patch.o|1|0|0|0,hci_patch.o|1|0|0|0,lld_scan_patch.o|1|0|0|0,llm_task_patch.o|1|0|0|0,gapm_adv_patch.o|1|0|0|0,co_list_patch.o|1|0|0|0,sch_prog_patch.o|1|0|0|0,lld_con_patch.o|1|0|0|0,gapc_hci_patch.o|1|0|0|0,rwble_patch.o|1|0|0|0,l2cc_sig_patch.o|1|0|0|0,l2cc_task_patch.o|1|0|0|0,llc_llcp_patch.o|1|0|0|0,lld_adv_patch.o|1|0|0|0,gapm_task_patch.o|1|0|0|0,gapm_scan_patch.o|1|0|0|0,patch.o|1|0|0|0</IncludeLibraryModules>
+                  <IncludeLibraryModules>ble_sdk_gapc.o|1|0|0|0,ble_sdk_gapm.o|1|0|0|0,ble_sdk_l2cap.o|1|0|0|0,ble_sdk_gatt_task.o|1|0|0|0,ble_sdk_gattc.o|1|0|0|0,ble_sdk_gatts.o|1|0|0|0,ble_sdk_prf.o|1|0|0|0,ble_sdk_prf_cllient.o|1|0|0|0,ble_bondmgr.o|1|0|0|0,ble_sdk.o|1|0|0|0,ble_sdk_task.o|1|0|0|0,system_sdk.o|1|0|0|0,sdk_timer.o|1|0|0|0,sdk_nvds.o|1|0|0|0,sys_context.o|1|0|0|0,gr55xx_hal.o|1|0|0|0,gr55xx_hal_adc.o|1|0|0|0,gr55xx_hal_aes.o|1|0|0|0,gr55xx_hal_aon_gpio.o|1|0|0|0,gr55xx_hal_aon_wdt.o|1|0|0|0,gr55xx_hal_calendar.o|1|0|0|0,gr55xx_hal_dual_tim.o|1|0|0|0,gr55xx_hal_efuse.o|1|0|0|0,gr55xx_hal_exflash.o|1|0|0|0,gr55xx_hal_gpio.o|1|0|0|0,gr55xx_hal_hmac.o|1|0|0|0,gr55xx_hal_i2c.o|1|0|0|0,gr55xx_hal_i2s.o|1|0|0|0,gr55xx_hal_pkc.o|1|0|0|0,gr55xx_hal_pwm.o|1|0|0|0,gr55xx_hal_pwr.o|1|0|0|0,gr55xx_hal_qspi.o|1|0|0|0,gr55xx_hal_rng.o|1|0|0|0,gr55xx_hal_spi.o|1|0|0|0,gr55xx_hal_tim.o|1|0|0|0,gr55xx_hal_uart.o|1|0|0|0,gr55xx_hal_wdt.o|1|0|0|0,gr55xx_hal_xqspi.o|1|0|0|0,gr55xx_ll_adc.o|1|0|0|0,gr55xx_ll_aes.o|1|0|0|0,gr55xx_ll_aon_gpio.o|1|0|0|0,gr55xx_ll_cgc.o|1|0|0|0,gr55xx_ll_comp.o|1|0|0|0,gr55xx_ll_dma.o|1|0|0|0,gr55xx_ll_pwm.o|1|0|0|0,gr55xx_ll_rng.o|1|0|0|0,gr55xx_ll_spi.o|1|0|0|0,gr55xx_ll_tim.o|1|0|0|0,gr55xx_ll_uart.o|1|0|0|0,gr55xx_ll_xqspi.o|1|0|0|0,ble_sdk_sec.o|1|0|0|0,rf_adi.o|1|0|0|0,rf_temp_calibrate_read.o|1|0|0|0,rf_gdx_c1.o|1|0|0|0,ble_sdk_audio.o|1|0|0|0,rwip_sleep.o|1|0|0|0,dfu_cmd_handler.o|1|0|0|0,dfu_cmd_parse.o|1|0|0|0,dfu_img_info.o|1|0|0|0,dfu_init.o|1|0|0|0,dfu_memory.o|1|0|0|0,dfu_transport.o|1|0|0|0,dfu_start.o|1|0|0|0,dfu_efuse.o|1|0|0|0,tx_gain.o|1|0|0|0,sdk_pwr_mgmt.o|1|0|0|0,fpb.o|1|0|0|0,sdk_fpb_mgmt.o|1|0|0|0,svc_handler.o|1|0|0|0,platform_sdk.o|1|0|0|0,llm_hci_patch.o|1|0|0|0,gapm_cfg_patch.o|1|0|0|0,gapm_patch.o|1|0|0|0,smpc_patch.o|1|0|0|0,prf_patch.o|1|0|0|0,lld_scan_patch.o|1|0|0|0,llm_task_patch.o|1|0|0|0,gapm_adv_patch.o|1|0|0|0,co_list_patch.o|1|0|0|0,sch_prog_patch.o|1|0|0|0,lld_con_patch.o|1|0|0|0,gapc_hci_patch.o|1|0|0|0,rwble_patch.o|1|0|0|0,l2cc_sig_patch.o|1|0|0|0,l2cc_task_patch.o|1|0|0|0,llc_llcp_patch.o|1|0|0|0,lld_adv_patch.o|1|0|0|0,gapm_task_patch.o|1|0|0|0,gapm_scan_patch.o|1|0|0|0,llc_encrypt_patch.o|1|0|0|0,attc_patch.o|1|0|0|0,gattc_task_patch.o|1|0|0|0,attm_db_patch.o|1|0|0|0,gapm_smp_patch.o|1|0|0|0,patch.o|1|0|0|0,ble_sdk_dbg.o|1|0|0|0</IncludeLibraryModules>
                   <ComprImg>1</ComprImg>
                 </CommonProperty>
                 <FileArmAds/>
@@ -3756,6 +3203,191 @@
               <FileName>platform_gr55xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\toolchain\gr551x\source\platform_gr55xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gr5515-sk/app_drivers/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>app_adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_aes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_aes.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_comp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_comp.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_drv_error.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_drv_error.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_dual_tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_dual_tim.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_gpiote.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_gpiote.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_hmac.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_hmac.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_i2s.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_i2s.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_io.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_io.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_pwr_mgmt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_pwr_mgmt.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_qspi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_qspi.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_rng.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_rng.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_tim.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\inc\app_uart.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gr5515-sk/app_drivers/src</GroupName>
+          <Files>
+            <File>
+              <FileName>app_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_aes.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_comp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_comp.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_dual_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_dual_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_gpiote.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_gpiote.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_hmac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_hmac.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_i2s.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_i2s.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_io.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_io.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_pwr_mgmt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_pwr_mgmt.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_qspi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_qspi.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_rng.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_rng.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\app_drivers\src\app_uart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4047,10 +3679,89 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_xqspi.h</FilePath>
             </File>
+            <File>
+              <FileName>gr55xx_hal_comp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_hal_comp.h</FilePath>
+            </File>
+            <File>
+              <FileName>gr55xx_ll_comp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\inc\gr55xx_ll_comp.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>gr5515-sk/drivers/src</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>0</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <uGnu>2</uGnu>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
           <Files>
             <File>
               <FileName>gr55xx_hal.c</FileName>
@@ -4096,6 +3807,57 @@
               <FileName>gr55xx_hal_exflash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_exflash.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>0</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>gr55xx_hal_gpio.c</FileName>
@@ -4168,346 +3930,263 @@
               <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_xqspi.c</FilePath>
             </File>
             <File>
-              <FileName>gr55xx_hal_adc_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_adc_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_aes_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aes_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_aon_gpio_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aon_gpio_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_aon_wdt_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_aon_wdt_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_calendar_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_calendar_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_dual_tim_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_dual_tim_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_efuse_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_efuse_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_exflash_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_exflash_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_gpio_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_gpio_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_hmac_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_hmac_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_i2c_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_i2c_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_i2s_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_i2s_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_pkc_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pkc_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_pwm_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pwm_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_pwr_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_pwr_br.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_qspi_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_qspi_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_rng_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_rng_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_spi_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_spi_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_tim_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_tim_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_uart_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_uart_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_wdt_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_wdt_br.c</FilePath>
-            </File>
-            <File>
-              <FileName>gr55xx_hal_xqspi_br.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\bridge\gr55xx_hal_xqspi_br.c</FilePath>
-            </File>
-            <File>
               <FileName>gr55xx_hal_cgc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_cgc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_cgc.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr55xx_hal_comp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_comp.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_cortex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_cortex.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_cortex.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_dma.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_msio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_msio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_msio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_msp_template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_msp_template.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_msp_template.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_hal_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_hal_utils.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_hal_utils.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_adc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_adc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aes.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_aes.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_aes.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_aon_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_aon_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_aon_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_cgc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_cgc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_cgc.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr55xx_ll_comp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_comp.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_dma.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_dma.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_dual_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_dual_tim.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_dual_tim.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_gpio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_hmac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_hmac.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_hmac.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_i2c.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_i2c.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_i2s.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_i2s.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_i2s.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_msio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_msio.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_msio.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pkc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_pkc.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_pkc.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_pwm.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_pwm.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_rng.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_rng.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_spi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_spi.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_tim.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_tim.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_uart.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_uart.c</FilePath>
             </File>
             <File>
               <FileName>gr55xx_ll_xqspi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src_inner\gr55xx_ll_xqspi.c</FilePath>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\drivers\src\gr55xx_ll_xqspi.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gr5515-sk/drivers/ext</GroupName>
+          <Files>
+            <File>
+              <FileName>gr551x_spi_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_spi_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_spi_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_spi_flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_temp_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_temp_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_temp_api.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_temp_api.h</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_tim_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_tim_delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_tim_delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_tim_delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_vbat_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_vbat_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_vbat_api.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_vbat_api.h</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_adc_voltage_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_adc_voltage_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>gr551x_adc_voltage_api.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\drivers_ext\gr551x\gr551x_adc_voltage_api.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>gr5515-sk/library/flash</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>0</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <uGnu>2</uGnu>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
           <Files>
             <File>
               <FileName>hal_flash.c</FileName>
@@ -4559,21 +4238,6 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log.h</FilePath>
             </File>
-            <File>
-              <FileName>app_log_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_log_port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_port.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_log_port.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_log\app_log_port.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -4608,6 +4272,21 @@
               <FileName>app_assert.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\app_assert\app_assert.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gr5515-sk/library/pmu_calibration</GroupName>
+          <Files>
+            <File>
+              <FileName>pmu_calibration.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\pmu_calibration\pmu_calibration.c</FilePath>
+            </File>
+            <File>
+              <FileName>pmu_calibration.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\libraries\pmu_calibration\pmu_calibration.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -4663,33 +4342,6 @@
         </Group>
         <Group>
           <GroupName>gr5515-sk/components/profiles</GroupName>
-          <Files>
-            <File>
-              <FileName>ble_prf_types.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_types.h</FilePath>
-            </File>
-            <File>
-              <FileName>ble_prf_utils.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_utils.c</FilePath>
-            </File>
-            <File>
-              <FileName>ble_prf_utils.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_prf_utils.h</FilePath>
-            </File>
-            <File>
-              <FileName>ble_srv_disc_utils.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_srv_disc_utils.c</FilePath>
-            </File>
-            <File>
-              <FileName>ble_srv_disc_utils.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\vendors\goodix\GR551x_SDK_V1_00\components\profiles\common\ble_srv_disc_utils.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>gr5515-sk/ports/posix</GroupName>
@@ -4838,6 +4490,62 @@
               <FileName>aws_ota_pal_config.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ota\aws_ota_pal_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>gr_ota_porting.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\vendors\goodix\boards\GR5515-SK\ports\ota\gr_ota_porting.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>0</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>2</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>gr_ota_pal.c</FileName>

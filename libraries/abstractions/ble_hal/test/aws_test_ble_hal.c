@@ -768,10 +768,10 @@ TEST_GROUP_RUNNER( Full_BLE )
     RUN_TEST_CASE( Full_BLE, BLE_Property_WriteDescriptor );                        //write 08 : 36 bytes
     RUN_TEST_CASE( Full_BLE, BLE_Property_ReadCharacteristic );                     //read 02 : 36bytes
     RUN_TEST_CASE( Full_BLE, BLE_Property_ReadDescriptor );                         //read 08 : 36bytes
-RUN_TEST_CASE( Full_BLE, BLE_Property_WriteNoResponse );                        //write 05 : 36 bytes
-
-RUN_TEST_CASE( Full_BLE, BLE_Property_Enable_Indication_Notification );         // 06 enable; 07 enable
-RUN_TEST_CASE( Full_BLE, BLE_Property_Notification );                           //auto run
+		RUN_TEST_CASE( Full_BLE, BLE_Property_WriteNoResponse );                        //write 05 : 36 bytes
+		
+		RUN_TEST_CASE( Full_BLE, BLE_Property_Enable_Indication_Notification );         // 06 enable; 07 enable
+		RUN_TEST_CASE( Full_BLE, BLE_Property_Notification );                           //auto run
     RUN_TEST_CASE( Full_BLE, BLE_Property_Indication );                             //auto run
     RUN_TEST_CASE( Full_BLE, BLE_Property_Disable_Indication_Notification );        // 06 disable; 07 disable
 

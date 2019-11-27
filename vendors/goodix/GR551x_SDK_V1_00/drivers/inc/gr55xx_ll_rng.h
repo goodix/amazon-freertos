@@ -391,7 +391,7 @@ __STATIC_INLINE uint32_t ll_rng_get_post_mode(rng_regs_t *RNGx)
   * @param  RNGx RNG instance.
    * @param  mode This parameter can be one of the following values:
   *         @arg @ref LL_RNG_OUTPUT_FR0_S0
-  *         @arg @ref LL_RNG_OUTPUT_CYCLIC_PORITY
+  *         @arg @ref LL_RNG_OUTPUT_CYCLIC_PARITY
   *         @arg @ref LL_RNG_OUTPUT_CYCLIC
   *         @arg @ref LL_RNG_OUTPUT_LFSR_RNG
   *         @arg @ref LL_RNG_OUTPUT_LFSR
@@ -412,7 +412,7 @@ __STATIC_INLINE void ll_rng_set_output_mode(rng_regs_t *RNGx, uint32_t mode)
   * @param  RNGx RNG instance.
   * @retval Returned value can be one of the following values:
   *         @arg @ref LL_RNG_OUTPUT_FR0_S0
-  *         @arg @ref LL_RNG_OUTPUT_CYCLIC_PORITY
+  *         @arg @ref LL_RNG_OUTPUT_CYCLIC_PARITY
   *         @arg @ref LL_RNG_OUTPUT_CYCLIC
   *         @arg @ref LL_RNG_OUTPUT_LFSR_RNG
   *         @arg @ref LL_RNG_OUTPUT_LFSR
@@ -470,12 +470,14 @@ __STATIC_INLINE void ll_rng_set_user_seed(rng_regs_t *RNGx, uint32_t seed)
     WRITE_REG(RNGx->USER_SEED, seed);
 }
 
+/** @} */
+
 /** @defgroup RNG_LL_EF_FLAG_Management FLAG Management
   * @{
   */
 
 /**
-  * @brief  Indicates if the Flag of RNG long run test is set or not.
+  * @brief  Indicate if the Flag of RNG long run test is set or not.
   *
   *  Register |BitsName
   *  ---------|--------
@@ -490,7 +492,7 @@ __STATIC_INLINE uint32_t ll_rng_is_active_flag_lr(rng_regs_t *RNGx)
 }
 
 /**
-  * @brief  Indicates if the RNG Status Flag is set or not.
+  * @brief  Indicate if the RNG Status Flag is set or not.
   *
   *  Register|BitsName
   *  --------|--------

@@ -271,7 +271,7 @@ void hal_msio_deinit(uint32_t msio_pin);
 /**
  ****************************************************************************************
  * @brief  Read the specified input port pin.
- * @param[in]  msio_pin: Specifies the port bit to read.
+ * @param[in]  msio_pin: Specifies the port bit to be read.
  *         This parameter can be one of the following values:
  *         @arg @ref MSIO_PIN_0
  *         @arg @ref MSIO_PIN_1

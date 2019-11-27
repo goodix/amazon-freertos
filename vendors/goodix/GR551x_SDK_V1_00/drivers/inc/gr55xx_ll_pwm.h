@@ -101,7 +101,7 @@ typedef struct _ll_pwm_init_t
                                      This parameter must be a number ranges between Min_Data = 0 and Max_Data = 0xFFFFFFFF.
                                      This parameter should be larger than 128.
 
-                                     This feature can be modified afterwards using unitary function @ref ll_pwm_set_period().*/
+                                     This feature can be modified afterwards using unitary function @ref ll_pwm_set_prescaler().*/
 
     uint32_t bprescaler;        /**< Specifies the required prescaler that the duty changes from 0% to 100% in breath mode.
                                      This parameter must be a number ranges between Min_Data=0 and Max_Data=0xFFFFFFFF.
@@ -273,7 +273,7 @@ __STATIC_INLINE void ll_pwm_disable(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the PWM is enabled.
+  * @brief  Indicate whether the PWM is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -318,7 +318,7 @@ __STATIC_INLINE void ll_pwm_disable_pause(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the PWM pause is enabled.
+  * @brief  Indicate whether the PWM pause is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -398,7 +398,7 @@ __STATIC_INLINE void ll_pwm_disable_positive_drive_channel_a(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the positive drive mode in channelA is enabled.
+  * @brief  Indicate whether the positive drive mode in channelA is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -443,7 +443,7 @@ __STATIC_INLINE void ll_pwm_disable_positive_drive_channel_b(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the positive drive mode in channelB is enabled.
+  * @brief  Indicate whether the positive drive mode in channelB is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -488,7 +488,7 @@ __STATIC_INLINE void ll_pwm_disable_positive_drive_channel_c(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the positive drive mode in channelC is enabled.
+  * @brief  Indicate whether the positive drive mode in channelC is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -548,7 +548,7 @@ __STATIC_INLINE void ll_pwm_disable_update_all(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update all parameters is enabled.
+  * @brief  Indicate whether the update all parameters is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -593,7 +593,7 @@ __STATIC_INLINE void ll_pwm_disable_update_period(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update period is enabled.
+  * @brief  Indicate whether the update period is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -638,7 +638,7 @@ __STATIC_INLINE void ll_pwm_disable_update_compare_a0(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update compareA0 is enabled.
+  * @brief  Indicate whether the update compareA0 is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -683,7 +683,7 @@ __STATIC_INLINE void ll_pwm_disable_update_compare_a1(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update compareA1 is enabled.
+  * @brief  Indicate whether the update compareA1 is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -728,7 +728,7 @@ __STATIC_INLINE void ll_pwm_disable_update_compare_b0(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update compareB0 is enabled.
+  * @brief  Indicate whether the update compareB0 is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -773,7 +773,7 @@ __STATIC_INLINE void ll_pwm_disable_update_compare_b1(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update compareB1 is enabled.
+  * @brief  Indicate whether the update compareB1 is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -818,7 +818,7 @@ __STATIC_INLINE void ll_pwm_disable_update_compare_c0(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update compareC0 is enabled.
+  * @brief  Indicate whether the update compareC0 is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -863,7 +863,7 @@ __STATIC_INLINE void ll_pwm_disable_update_compare_c1(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update compareC1 is enabled.
+  * @brief  Indicate whether the update compareC1 is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -908,7 +908,7 @@ __STATIC_INLINE void ll_pwm_disable_update_pause(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update pause is enabled.
+  * @brief  Indicate whether the update pause is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -953,7 +953,7 @@ __STATIC_INLINE void ll_pwm_disable_update_breath_period(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update breath period is enabled.
+  * @brief  Indicate whether the update breath period is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -998,7 +998,7 @@ __STATIC_INLINE void ll_pwm_disable_update_hold_period(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update hold period is enabled.
+  * @brief  Indicate whether the update hold period is enabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -1043,7 +1043,7 @@ __STATIC_INLINE void ll_pwm_disable_update_active_event(pwm_regs_t *PWMx)
 }
 
 /**
-  * @brief  Indicates whether the update active event is enabled.
+  * @brief  Indicate whether the update active event is enabled.
   *
   *  Register|BitsName
   *  --------|--------

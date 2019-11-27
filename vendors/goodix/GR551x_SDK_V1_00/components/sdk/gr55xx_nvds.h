@@ -32,7 +32,7 @@
 #define NV_TAGCAT_APP       0x4000  /**< NVDS tag mask for user application. */
 
 /**@brief Get NVDS tag for user application.
- * The value of Tag 0x0000 and 0xFFFF are invalid. idx should not be used
+ * The values of Tag 0x0000 and 0xFFFF are invalid. idx should not be used
  * as the parameter of NVDS APIs directly. The range of idx is 0x0001~0x3FFF.
  */
 #define NV_TAG_APP(idx)     (NV_TAGCAT_APP | ((idx) & 0x3FFF))
@@ -49,8 +49,10 @@ enum NVDS_STATUS
     NVDS_SPACE_NOT_ENOUGH,      /**< NVDS space is not enough. */
     NVDS_LENGTH_OUT_OF_RANGE,   /**< NVDS length out of range. */
     NVDS_INVALID_PARA,          /**< NVDS invalid params. */
-    NVDS_INVALID_SECTORS,         /**< NVDS invalid sector. */
-    NVDS_COMPACT_FAILED         /**< NVDS failed to compact sectors. */
+    NVDS_INVALID_START_ADDR,    /**< NVDS invalid start address. */
+    NVDS_INVALID_SECTORS,       /**< NVDS invalid sector. */
+    NVDS_COMPACT_FAILED,        /**< NVDS failed to compact sectors. */
+    NVDS_STORAGE_ACCESS_FAILED  /**< NVDS failed to access storage. */
 };
 /** @} */
 
@@ -67,10 +69,13 @@ typedef uint16_t NvdsTag_t;
  ****************************************************************************************
  * @brief Initialize the sectors for NVDS.
  *
- * @note NVDS locates in the last sectors of Flash.
+ * @note NVDS locates in the last sector of Flash.
  *
- * @param[in] start_addr: Start address of NVDS area. It must be sector-aligned.
- * @param[in] sectors:      The number of sectors.
+ * @param[in] start_addr: Start address of NVDS area. If the value equals zero,
+                          NVDS area will locate in the last sector(s) in flash
+                          memory. If the value does not equal zero, it must be
+                          sector-aligned.
+ * @param[in] sectors:    The number of sectors.
  *
  * @return ::NVDS_SUCCESS if successful.
  * @return error code in ::NVDS_STATUS if not successful.
@@ -98,7 +103,7 @@ uint8_t nvds_get(NvdsTag_t tag, uint16_t *p_len, uint8_t *p_buf);
  *
  * @param[in] tag:   Valid NVDS item tag.
  * @param[in] len:   Length of data to be written.
- * @param[in] p_buf: 2.	Data to be written.
+ * @param[in] p_buf: Data to be written.
  *
  * @return ::NVDS_SUCCESS: if successful.
  * @return error code in ::NVDS_STATUS if not successful.
@@ -124,8 +129,8 @@ uint8_t nvds_del(NvdsTag_t tag);
  *
  * @param[in] tag: The tag to get the length.
  *
- * @return length: if tag exist.
- * @return 0: if tag not exist.
+ * @return length: if tag exists.
+ * @return 0: if tag does not exist.
  ****************************************************************************************
  */
 uint16_t nvds_tag_length(NvdsTag_t tag);

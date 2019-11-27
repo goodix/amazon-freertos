@@ -169,14 +169,14 @@ typedef struct _pkc_ecc_point_multi
 
 /**
   * @brief PKC RSA Modular Exponentiation expression input
-  * @note  Result = A ^ B mod P
+  * @note  Result = A^B mod P
   */
 typedef struct _pkc_rsa_modular_exponent
 {
     uint32_t *p_A;                            /**< Pointer to operand A */
     uint32_t *p_B;                            /**< Pointer to operand B */
     uint32_t *p_P;                            /**< Pointer to prime number P */
-    uint32_t *p_P_R2;                         /**< P_R2 = R ^ 2 mod P, where R = 2 ^ DataBits  */
+    uint32_t *p_P_R2;                         /**< P_R2 = R^2 mod P, where R = 2^DataBits  */
     uint32_t ConstP;                        /**< Montgomery multiplication constant of P */
 } pkc_rsa_modular_exponent_t;
 
@@ -225,7 +225,7 @@ typedef struct _pkc_modular_compare
 
 /**
   * @brief PKC Montgomery Modular Multiplication expression input
-  * @note  Result = A * B * R ^ (-1) mod P, where R = 2 ^ DataBits
+  * @note  Result = A * B * R^(-1) mod P, where R = 2^DataBits
   */
 typedef struct _pkc_montgomery_multi
 {
@@ -233,12 +233,12 @@ typedef struct _pkc_montgomery_multi
     uint32_t *p_B;                            /**< Pointer to operand B */
     uint32_t *p_P;                            /**< Pointer to prime number P */
     uint32_t ConstP;                        /**< Montgomery multiplication constant for P,
-                                                 where constp = (-P[0]) ^ (-1) mod 2 ^ 32 */
+                                                 where constp = (-P[0])^(-1) mod 2^32 */
 } pkc_montgomery_multi_t;
 
 /**
   * @brief PKC Montgomery Inversion expression input
-  * @note  Result = A ^ (-1) * 2 ^ (K) mod P
+  * @note  Result = A^(-1) * 2^(K) mod P
   */
 typedef struct _pkc_montgomery_inversion
 {
@@ -270,7 +270,7 @@ typedef struct _pkc_big_number_add
 
 /** @} */
 
-/** @addtogroup HAL_PKC_STRUCTURES Callback Structures
+/** @addtogroup HAL_PKC_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -341,9 +341,9 @@ typedef struct _hal_pkc_callback
 /** @defgroup PKC_Bits_Length PKC Bits Length
   * @{
   */
-#define PKC_BITS_LENGTH_MIN            LL_PKC_BITS_LENGTH_MIN           /**< Bits length min value  */
-#define PKC_BITS_LENGTH_MAX            LL_PKC_BITS_LENGTH_MAX           /**< Bits length max value  */
-#define PKC_BIGMULTI_BITS_LENGTH_MAX   LL_PKC_BIGMULTI_BITS_LENGTH_MAX  /**< Big number multiplication bits Length max value */
+#define PKC_BITS_LENGTH_MIN            LL_PKC_BITS_LENGTH_MIN           /**< Min value of bits length  */
+#define PKC_BITS_LENGTH_MAX            LL_PKC_BITS_LENGTH_MAX           /**< Max value of bits length  */
+#define PKC_BIGMULTI_BITS_LENGTH_MAX   LL_PKC_BIGMULTI_BITS_LENGTH_MAX  /**< Max value of big number multiplication bits length */
 /** @} */
 
 /** @defgroup PKC_Flags PKC Flags
@@ -579,7 +579,7 @@ void hal_pkc_msp_deinit(pkc_handle_t *p_pkc);
 
 /** @} */
 
-/** @defgroup PKC_Exported_Functions_Group2 IO operation functions
+/** @defgroup PKC_Exported_Functions_Group2 IO Operation Functions
  *  @brief   Data transfers functions
  *
 @verbatim
@@ -814,7 +814,7 @@ hal_status_t hal_pkc_montgomery_multi_it(pkc_handle_t *p_pkc, pkc_montgomery_mul
  * @param[in]  p_pkc: Pointer to a PKC handle which contains the configuration
  *                 information for the specified PKC module.
  * @param[in]  p_input: Pointer to an expression structure which contains the input computing parameters.
- * @param[out] p_K: Parameter K in expression A ^ (-1) * 2 ^ (K) mod P
+ * @param[out] p_K: Parameter K in expression A^(-1) * 2^(K) mod P
  * @param[in]  timeout: Timeout duration
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
@@ -831,7 +831,7 @@ hal_status_t hal_pkc_montgomery_inversion(pkc_handle_t *p_pkc, pkc_montgomery_in
  * @param[in]  p_pkc: Pointer to a PKC handle which contains the configuration
  *                 information for the specified PKC module.
  * @param[in]  p_input: Pointer to an expression structure which contains the input computing parameters.
- * @param[out] p_K: Parameter K in expression A ^ (-1) * 2 ^ (K) mod P
+ * @param[out] p_K: Parameter K in expression A^(-1) * 2^(K) mod P
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.

@@ -309,7 +309,7 @@ __STATIC_INLINE void ll_wdt_reload_counter(wdt_regs_t *WDTx)
   */
 
 /**
-  * @brief  Indicates if the WDT Interrupt Flag is set or not.
+  * @brief  Indicate if the WDT Interrupt Flag is set or not.
   * @note   This bit is set by hardware when the counter has reached 0. It can
   *         be cleared by software by writing any value to the INTCLR Register.
   *

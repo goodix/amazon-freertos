@@ -42,7 +42,7 @@
 #include "cortex_backtrace.h"
 #include "app_error.h"
 #include "app_assert.h"
-#include "app_log_port.h"
+#include "app_log.h"
 #include <stdbool.h>
 #include <string.h>
 
@@ -750,6 +750,6 @@ void cortex_backtrace_fault_handler(uint32_t fault_handler_lr, uint32_t fault_ha
 #endif
 
     cb_call_stack_print(stack_pointer);
-    app_log_port_flush();
+    app_log_flush();
 }
 

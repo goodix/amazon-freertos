@@ -65,7 +65,7 @@ extern "C" {
   * @{
   */
 
-/** @defgroup HAL_AES_state HAL AES state
+/** @defgroup HAL_AES_state HAL AES State
   * @{
   */
 
@@ -119,7 +119,7 @@ typedef struct _aes_init
 } aes_init_t;
 /** @} */
 
-/** @defgroup AES_handle AES handle
+/** @defgroup AES_handle AES Handle
   * @{
   */
 
@@ -153,7 +153,7 @@ typedef struct _aes_handle
 
 /** @} */
 
-/** @addtogroup HAL_AES_STRUCTURES Callback Structures
+/** @addtogroup HAL_AES_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -388,7 +388,7 @@ typedef struct _aes_callback
  * @brief  Initialize the AES according to the specified parameters
  *         in the aes_init_t and initialize the associated handle.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration
  *                    information for the specified AES module.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -403,7 +403,7 @@ hal_status_t hal_aes_init(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  De-initialize the AES peripheral.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration
  *                    information for the specified AES module.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -421,7 +421,7 @@ hal_status_t hal_aes_deinit(aes_handle_t *p_aes);
  * @note   This function should not be modified. When the callback is needed,
  *         the hal_aes_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration
  *                    information for the specified AES module.
  ****************************************************************************************
  */
@@ -434,7 +434,7 @@ void hal_aes_msp_init(aes_handle_t *p_aes);
  * @note   This function should not be modified. When the callback is needed,
  *         the hal_aes_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration
  *                    information for the specified AES module.
  ****************************************************************************************
  */
@@ -501,7 +501,7 @@ void hal_aes_msp_deinit(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Encrypted an amount of data in blocking mode in ECB mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_plain_data: Pointer to plain data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -520,7 +520,7 @@ hal_status_t hal_aes_ecb_encrypt(aes_handle_t *p_aes, uint32_t *p_plain_data, ui
  ****************************************************************************************
  * @brief  Decrypted an amount of data in blocking mode in ECB mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_cypher_data: Pointer to cypher data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -539,7 +539,7 @@ hal_status_t hal_aes_ecb_decrypt(aes_handle_t *p_aes, uint32_t *p_cypher_data, u
  ****************************************************************************************
  * @brief  Encrypted an amount of data in blocking mode in CBC mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_plain_data: Pointer to plain data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -558,7 +558,7 @@ hal_status_t hal_aes_cbc_encrypt(aes_handle_t *p_aes, uint32_t *p_plain_data, ui
  ****************************************************************************************
  * @brief  Decrypted an amount of data in blocking mode in CBC mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_cypher_data: Pointer to cypher data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -577,7 +577,7 @@ hal_status_t hal_aes_cbc_decrypt(aes_handle_t *p_aes, uint32_t *p_cypher_data, u
  ****************************************************************************************
  * @brief  Encrypted an amount of data in non-blocking mode with Interrupt in ECB mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_plain_data: Pointer to plain data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -595,7 +595,7 @@ hal_status_t hal_aes_ecb_encrypt_it(aes_handle_t *p_aes, uint32_t *p_plain_data,
  ****************************************************************************************
  * @brief  Decrypted an amount of data in non-blocking mode with Interrupt in ECB mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_cypher_data: Pointer to cypher data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -613,7 +613,7 @@ hal_status_t hal_aes_ecb_decrypt_it(aes_handle_t *p_aes, uint32_t *p_cypher_data
  ****************************************************************************************
  * @brief  Encrypted an amount of data in non-blocking mode with Interrupt in CBC mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_plain_data: Pointer to plain data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -631,7 +631,7 @@ hal_status_t hal_aes_cbc_encrypt_it(aes_handle_t *p_aes, uint32_t *p_plain_data,
  ****************************************************************************************
  * @brief  Decrypted an amount of data in non-blocking mode with Interrupt in CBC mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_cypher_data: Pointer to cypher data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -649,7 +649,7 @@ hal_status_t hal_aes_cbc_decrypt_it(aes_handle_t *p_aes, uint32_t *p_cypher_data
  ****************************************************************************************
  * @brief  Encrypted an amount of data in non-blocking mode with DMA in ECB mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_plain_data: Pointer to plain data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -667,7 +667,7 @@ hal_status_t hal_aes_ecb_encrypt_dma(aes_handle_t *p_aes, uint32_t *p_plain_data
  ****************************************************************************************
  * @brief  Decrypted an amount of data in non-blocking mode with DMA in ECB mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_cypher_data: Pointer to cypher data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -685,7 +685,7 @@ hal_status_t hal_aes_ecb_decrypt_dma(aes_handle_t *p_aes, uint32_t *p_cypher_dat
  ****************************************************************************************
  * @brief  Encrypted an amount of data in non-blocking mode with DMA in CBC mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_plain_data: Pointer to plain data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -703,7 +703,7 @@ hal_status_t hal_aes_cbc_encrypt_dma(aes_handle_t *p_aes, uint32_t *p_plain_data
  ****************************************************************************************
  * @brief  Decrypted an amount of data in non-blocking mode with DMA in CBC mode.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  p_cypher_data: Pointer to cypher data buffer
  * @param[in]  number: Amount of data to be decrypted in bytes
@@ -721,7 +721,7 @@ hal_status_t hal_aes_cbc_decrypt_dma(aes_handle_t *p_aes, uint32_t *p_cypher_dat
  ****************************************************************************************
  * @brief  Abort the current encryption or decryption
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -736,7 +736,7 @@ hal_status_t hal_aes_abort(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Abort the current encryption or decryption (non-blocking function)
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -758,7 +758,7 @@ hal_status_t hal_aes_abort_it(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Handle AES interrupt request.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                     the specified the specified AES module.
  ****************************************************************************************
  */
@@ -768,7 +768,7 @@ void hal_aes_irq_handler(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Encrypt or decrypt Done callback.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  ****************************************************************************************
  */
@@ -778,7 +778,7 @@ void hal_aes_done_callback(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  AES error callback.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  ****************************************************************************************
  */
@@ -787,7 +787,7 @@ void hal_aes_error_callback(aes_handle_t *p_aes);
 /**
  ****************************************************************************************
  * @brief  AES Abort Complete callback.
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  ****************************************************************************************
  */
@@ -815,7 +815,7 @@ void hal_aes_abort_cplt_callback(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Return the AES handle state.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  *
  * @retval ::HAL_AES_STATE_RESET: Peripheral not initialized.
@@ -832,7 +832,7 @@ hal_aes_state_t hal_aes_get_state(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Return the AES error code.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  *
  * @return AES error code in bitmap format
@@ -844,7 +844,7 @@ uint32_t hal_aes_get_error(aes_handle_t *p_aes);
  ****************************************************************************************
  * @brief  Set the AES internal process timeout value.
  *
- * @param[in]  p_aes: Pointer to a AES handle which contains the configuration information for
+ * @param[in]  p_aes: Pointer to an AES handle which contains the configuration information for
  *                    the specified AES module.
  * @param[in]  timeout: Internal process timeout value.
  ****************************************************************************************

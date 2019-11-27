@@ -36,42 +36,185 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gr55xx_hal.h"
 
-#if defined(HAL_GPIO_MODULE_ENABLED) && defined(GR551xx_C2)
+/** @addtogroup HAL_DRIVER
+  * @{
+  */
 
-/* extern function -----------------------------------------------------------*/
+#ifdef HAL_GPIO_MODULE_ENABLED
+/* Private typedef -----------------------------------------------------------*/
+/* Private defines -----------------------------------------------------------*/
+/** @defgroup GPIO_Private_Defines GPIO Private Defines
+  * @{
+  */
+#define GPIO_MODE             (0x00000003U)
 
-extern void hal_gpio_init_ext(gpio_regs_t *GPIOx, gpio_init_t *p_gpio_init);
-extern void hal_gpio_deinit_ext(gpio_regs_t *GPIOx, uint32_t gpio_pin);
-extern void hal_gpio_register_callback(hal_gpio_callback_t *hal_gpio_callback);
+#define GPIO_MODE_IT_Pos      (4U)
+#define GPIO_MODE_IT          (0x7U << GPIO_MODE_IT_Pos)
 
+#define GPIO_NUMBER           (16U)
+
+#define __GPIO_DEFAULT_PIN_MUX    LL_GPIO_MUX_7
+
+/**
+  * @}
+  */
+
+/* Private macros ------------------------------------------------------------*/
+/* Private macros ------------------------------------------------------------*/
+/** @defgroup GPIO_Private_Macros GPIO Private Macros
+  * @{
+  */
+/**
+  * @}
+  */
 /* Private variables ---------------------------------------------------------*/
-
-static hal_gpio_callback_t gpio_callback =
-{
-    .gpio_callback = hal_gpio_callback,
-};
-
 /* Private function prototypes -----------------------------------------------*/
+/* Exported functions --------------------------------------------------------*/
 
-void hal_gpio_init(gpio_regs_t *GPIOx, gpio_init_t *p_gpio_init)
+/** @defgroup GPIO_Exported_Functions GPIO Exported Functions
+  * @{
+  */
+
+/** @defgroup GPIO_Exported_Functions_Group1 Initialization/de-initialization functions
+ *  @brief    Initialization and Configuration functions
+  * @{
+  */
+
+__WEAK void hal_gpio_init(gpio_regs_t *GPIOx, gpio_init_t *p_gpio_init)
 {
-    hal_gpio_register_callback(&gpio_callback);
-    
-    hal_gpio_init_ext(GPIOx, p_gpio_init);
+    /* Check the parameters */
+    gr_assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    gr_assert_param(IS_GPIO_PIN(p_gpio_init->pin));
+    gr_assert_param(IS_GPIO_MODE(p_gpio_init->mode));
+
+    ll_gpio_init_t init;
+
+    init.pin = p_gpio_init->pin;
+    init.mode = p_gpio_init->mode & GPIO_MODE;
+    init.pull = p_gpio_init->pull;
+    init.mux = p_gpio_init->mux;
+    init.trigger = (p_gpio_init->mode >> GPIO_MODE_IT_Pos);
+
+    ll_gpio_init(GPIOx, &init);
 }
 
-void hal_gpio_deinit(gpio_regs_t *GPIOx, uint32_t gpio_pin)
+__WEAK void hal_gpio_deinit(gpio_regs_t *GPIOx, uint32_t gpio_pin)
 {
-    hal_gpio_register_callback(&gpio_callback);
-    
-    hal_gpio_deinit_ext(GPIOx, gpio_pin);
+    uint32_t current_pin = 0x00000000U;
+    uint32_t pin_tmp     = 0x00000000U;
+
+    /* Check the parameters */
+    gr_assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+
+    /* Data output register set to default reset values */
+    ll_gpio_reset_output_pin(GPIOx, gpio_pin);
+    /* Output enable register set to default reset values */
+    ll_gpio_set_pin_mode(GPIOx, gpio_pin, GPIO_MODE_INPUT);
+    /* Disable Interrupt */
+    ll_gpio_disable_it(GPIOx, gpio_pin);
+    /* Interrupt status clear*/
+    __HAL_GPIO_IT_CLEAR_IT(GPIOx, gpio_pin);
+
+    ll_gpio_set_pin_pull(GPIOx, gpio_pin, GPIO_PULLDOWN);
+
+    pin_tmp = gpio_pin;
+    while (pin_tmp)
+    {
+        current_pin = (0x1U << POSITION_VAL(pin_tmp));
+        /* Clear the lowest bit 1 */
+        pin_tmp &= (pin_tmp - 1);
+
+        if (GPIO_PIN_8 > current_pin)
+        {
+            if ((GPIO0 == GPIOx) && ((GPIO_PIN_0 == current_pin) || (GPIO_PIN_1 == current_pin)))
+            {
+                ll_gpio_set_mux_pin_0_7(GPIOx, current_pin, LL_GPIO_MUX_0);
+            }
+            else
+            {
+                ll_gpio_set_mux_pin_0_7(GPIOx, current_pin, __GPIO_DEFAULT_PIN_MUX);
+            }
+        }
+        else
+        {
+            ll_gpio_set_mux_pin_8_15(GPIOx, current_pin, __GPIO_DEFAULT_PIN_MUX);
+        }
+    }
 }
 
-__WEAK void hal_gpio_callback(gpio_regs_t *GPIOx, uint16_t gpio_pin)
+/**
+  * @}
+  */
+
+/** @defgroup GPIO_Exported_Functions_Group2 IO operation functions
+ *  @brief GPIO Read, Write, Toggle, Lock and EXTI management functions.
+  * @{
+  */
+
+__WEAK gpio_pin_state_t hal_gpio_read_pin(gpio_regs_t *GPIOx, uint16_t gpio_pin)
+{
+    /* Check the parameters */
+    gr_assert_param(IS_GPIO_PIN(gpio_pin));
+
+    return (gpio_pin_state_t)ll_gpio_is_input_pin_set(GPIOx, gpio_pin);
+}
+
+__WEAK void hal_gpio_write_pin(gpio_regs_t* GPIOx, uint16_t gpio_pin, gpio_pin_state_t pin_state)
+{
+    /* Check the parameters */
+    gr_assert_param(IS_GPIO_PIN(gpio_pin));
+    gr_assert_param(IS_GPIO_PIN_ACTION(pin_state));
+
+    if (GPIO_PIN_RESET != pin_state)
+    {
+        ll_gpio_set_output_pin(GPIOx, gpio_pin);
+    }
+    else
+    {
+        ll_gpio_reset_output_pin(GPIOx, gpio_pin);
+    }
+
+}
+
+__WEAK void hal_gpio_toggle_pin(gpio_regs_t *GPIOx, uint16_t gpio_pin)
+{
+    /* Check the parameters */
+    gr_assert_param(IS_GPIO_PIN(gpio_pin));
+
+    ll_gpio_toggle_pin(GPIOx, gpio_pin);
+}
+
+__WEAK void hal_gpio_exti_irq_handler(gpio_regs_t *GPIOx)
+{
+    uint16_t Triggered_Pin = __HAL_GPIO_IT_GET_IT(GPIOx, GPIO_PIN_ALL);
+
+    /* GPIO pin interrupt detected */
+    if (RESET != Triggered_Pin)
+    {
+        __HAL_GPIO_IT_CLEAR_IT(GPIOx, Triggered_Pin);
+        hal_gpio_exti_callback(GPIOx, Triggered_Pin);
+    }
+}
+
+__WEAK void hal_gpio_exti_callback(gpio_regs_t *GPIOx, uint16_t gpio_pin)
 {
     /* Prevent unused argument(s) compilation warning */
     UNUSED(GPIOx);
     UNUSED(gpio_pin);
 }
 
+/**
+  * @}
+  */
+
+
+/**
+  * @}
+  */
+
 #endif /* HAL_GPIO_MODULE_ENABLED */
+
+/**
+  * @}
+  */
+ 

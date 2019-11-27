@@ -41,7 +41,7 @@
  */
 #include "at_cmd.h"
 #include "at_cmd_utils.h"
-#include "cmsis_armcc.h"
+#include "cmsis_compiler.h"
 #include <string.h>
 
 /*
@@ -90,8 +90,7 @@ static bool at_cmd_integrity_check(const uint8_t *p_data, uint16_t length, at_cm
     {
         return false;
     }
-
-    for (uint8_t i = 0; i < length; i++)
+    for (uint8_t i = 1; i < length; i++)
     {
         if (0x0a == p_data[i] && 0x0d == p_data[i - 1])
         {
@@ -113,6 +112,8 @@ static bool at_cmd_integrity_check(const uint8_t *p_data, uint16_t length, at_cm
  */
 static void at_cmd_args_get(at_cmd_parse_t *p_parse_rlt)
 {
+    p_parse_rlt->arg_count = 0;
+
     uint16_t first_arg_idx = 0;
 
     p_parse_rlt->cmd_tag_idx = 3;
@@ -260,7 +261,38 @@ void at_cmd_execute_cplt(at_cmd_rsp_t *p_cmd_rsp)
 
     if (AT_CMD_ERR_NO_ERROR != p_cmd_rsp->error_code)
     {
-        length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR:%d", p_cmd_rsp->error_code);
+        switch(p_cmd_rsp->error_code)
+        {
+            case AT_CMD_ERR_INVALID_INPUT:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: Invalid input.");
+                break;
+            case AT_CMD_ERR_UNSUPPORTED_CMD:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: Unsupported AT CMD.");
+                break;
+            case AT_CMD_ERR_PARSE_NOT_ALLOWED:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: No allowed parse state.");
+                break;
+            case AT_CMD_ERR_CMD_REQ_ALLOWED:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: Command request is not allowed.");
+                break;
+            case AT_CMD_ERR_NO_CMD_HANDLER:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: No AT CMD handler.");
+                break;
+            case AT_CMD_ERR_INVALID_PARAM:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: Invalid parameters.");
+                break;
+            case AT_CMD_ERR_HAL_ERROR:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: Hal error.");
+                break;
+            case AT_CMD_ERR_TIMEOUT:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: AT CMD execute timeout.");
+                break;
+            case AT_CMD_ERR_OTHER_ERROR:
+                length = at_cmd_printf_bush(at_cmd_rsp_buff, "ERR: Other error code.");
+                break;
+            default:
+                break;
+        }
     }
     else
     {
@@ -284,7 +316,13 @@ void at_cmd_execute_cplt(at_cmd_rsp_t *p_cmd_rsp)
     }
 
     s_at_cmd_env.cmd_state = AT_CMD_IN_READY_PARSE;
-    s_at_cmd_env.cmd_src   = AT_CMD_SRC_INVALID;
+    if (AT_CMD_ERR_TIMEOUT == p_cmd_rsp->error_code &&
+        s_at_cmd_env.p_cmd_attr[s_parse_rlt.cmd_idx].cmd_timeout_str)
+    {
+        char *cmd_timeout_str = s_at_cmd_env.p_cmd_attr[s_parse_rlt.cmd_idx].cmd_timeout_str;
+        uint16_t length = strlen(cmd_timeout_str);
+        at_cmd_parse(s_at_cmd_env.cmd_src, (const uint8_t *)cmd_timeout_str, length);
+    }
 }
 
 void at_cmd_schedule(void)
@@ -310,4 +348,3 @@ void at_cmd_schedule(void)
         }
     }
 }
-

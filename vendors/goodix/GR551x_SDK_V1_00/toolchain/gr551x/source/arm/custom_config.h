@@ -34,7 +34,7 @@
   POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************************
  */
- 
+
 /*
  * DEFINES
  *****************************************************************************************
@@ -44,85 +44,145 @@
 
 // <<< Use Configuration Wizard in Context Menu >>>
 
-// <h>basic configuration
+// <h> Basic configuration
 
-// <o>enable hardfault callstack info print
-//          <0=> DISABLE
-//          <1=> ENABLE
-#define ENABLE_FAULT_TRACE      0
+// <o> Enable hardfault callstack info print
+// <0=> DISABLE
+// <1=> ENABLE
+#ifndef HARDFAULT_TRACE_ENABLE
+#define HARDFAULT_TRACE_ENABLE  1
+#endif
 
-// <o>APP log print
-//          <0=> DISABLE
-//          <1=> ENABLE
-#define APP_LOG_ENABLE          1   
+// <o> Enable app driver module
+// <0=> DISABLE
+// <1=> ENABLE
+#ifndef APP_DRIVER_USE_ENABLE
+#define APP_DRIVER_USE_ENABLE   1
+#endif
 
-// <o> The start address of NVDS 
+// <o> Eanble APP log module
+// <0=> DISABLE
+// <1=> ENABLE
+#ifndef APP_LOG_ENABLE
+#define APP_LOG_ENABLE          1
+#endif
+
+// <o> Enable SK GUI module
+// <0=> DISABLE
+// <1=> ENABLE
+#ifndef SK_GUI_ENABLE
+#define SK_GUI_ENABLE           1
+#endif
+
+// <o> Enable DTM test support
+// <0=> DISABLE
+// <1=> ENABLE
+#ifndef DTM_TEST_ENABLE
+#define DTM_TEST_ENABLE         0
+#endif
+
+// <o> Enable BLE DFU support
+// <0=> DISABLE
+// <1=> ENABLE
+#ifndef DFU_ENABLE
+#define DFU_ENABLE              0
+#endif
+
+// <o> The start address of NVDS
 //  <i>Default: 0x0107E000
-#define NVDS_START_ADDR         0x010FC000    
+#define NVDS_START_ADDR         0x010FC000
 
-// <o> The Number of NVDS sector, each sector is 4K
-//  <i>Default:  1
-#define NVDS_NUM_SECTOR         1             //<The Number of NVDS block, the size of a block is 4K. */
+// <o> The Number of sectors for NVDS
+// <i> Default:  1
+#ifndef NVDS_NUM_SECTOR
+#define NVDS_NUM_SECTOR         1
+#endif
 
 // <o> Call Stack Size
-//  <i>Default: 0x8000
-#define CSTACK_HEAP_SIZE        0x8000        //<Call Stack Size.
+// <i> Default: 0x8000
+#ifndef CSTACK_HEAP_SIZE
+#define CSTACK_HEAP_SIZE        0x8000
+#endif
 
-// <o> RAM size of Application 
-//  <i>Default: 0x00030000
-#define APP_RAM_SIZE            0x00030000    //<RAM size of Application reserved. */
+// <o> RAM size of Application
+// <i> Default: 0x00030000
+#ifndef APP_RAM_SIZE
+#define APP_RAM_SIZE            0x00030000
+#endif
 
-// <o> Code size of Application 
-//  <i>Default: 0x00800000
-#define APP_MAX_CODE_SIZE       0x00800000    //<MAX size of Application reserved. */
+// <o> Code size of Application
+// <i> Default: 0x00800000
+#ifndef APP_MAX_CODE_SIZE
+#define APP_MAX_CODE_SIZE       0x00800000
+#endif
 // </h>
 
+// <h> Boot info configuration
 
-// <h>boot info configuration
 // <o> Code load address
-//  <i>Default:  0x01002000
-#define APP_CODE_LOAD_ADDR      0x01002000    
+// <i> Default:  0x01002000
+#define APP_CODE_LOAD_ADDR      0x01002000
+
 // <o> Code run address
-//  <i>Default:  0x01002000
-#define APP_CODE_RUN_ADDR       0x01002000                  
+// <i> Default:  0x01002000
+#define APP_CODE_RUN_ADDR       0x01002000
 
-//<ol.0..5> System clock
-//          <0=> 64MHZ
-//          <1=> 48MHZ
-//          <2=> 16MHZ-XO
-//          <3=> 24MHZ
-//          <4=> 16MHZ
-//          <5=> 32MHZ-CPLL
-//  <i>Default:  0 
-//  <i>(0:64Mhz, 1:48Mhz, 2:16Mhz(xo), 3:24Mhz, 4:16Mhz, 5:32Mhz(cpll))
-#define SYSTEM_CLOCK            0             /**<System clock(0:64Mhz, 1:48Mhz, 2:16Mhz(xo), 3:24Mhz, 4:16Mhz, 5:32Mhz(cpll)) */
+// <ol.0..5> System clock
+// <0=> 64MHZ
+// <1=> 48MHZ
+// <2=> 16MHZ-XO
+// <3=> 24MHZ
+// <4=> 16MHZ
+// <5=> 32MHZ-CPLL
+#define SYSTEM_CLOCK            0
 
+// <o> External clock accuracy used in the LL to compute timing  <1-500>
+// <i> Range: 1-500
+#define CFG_LF_ACCURACY_PPM     500
 
-// <o>Delay time for Boot startup
-//                      <0=> Not Delay
-//                      <1=> Delay 1s
-#define BOOT_LONG_TIME          1             
+// <o> Delay time for Boot startup
+// <0=> Not Delay
+// <1=> Delay 1s
+#define BOOT_LONG_TIME          1
 
+// <o> Code version.16bits
+#define VERSION                 1
 
-#define VERSION                 1             /**<Code version.16bits */
+// <o> DAP boot mode
+// <0=> DISABLE
+// <1=> ENABLE
+#define DAP_BOOT_ENABLE         1
 // </h>
-
 
 // <h> ble resource configuration
-//   <o> Support maximum number of BLE profile  <1-64>
-//      <i>CFG_MAX_PRF_NB
-#define CFG_MAX_PRF_NB          (4)           
-//   <o> Support maximum number of bonded devices  <1-10>
-//      <i>CFG_MAX_BOND_DEV_NUM
-#define CFG_MAX_BOND_DEV_NUM    (4)          
-//   <o> Support maximum number of BLE link  <1-10>
-//      <i>CFG_MAX_CONNECTIONS
-#define CFG_MAX_CONNECTIONS     (4)          
+
+// <o> Support maximum number of BLE profile <1-64>
+// <i> Range: 1-64
+#ifndef CFG_MAX_PRF_NB
+#define CFG_MAX_PRF_NB          10
+#endif
+
+// <o> Support maximum number of bonded devices <1-10>
+// <i> Range: 1-10
+#ifndef CFG_MAX_BOND_DEV_NUM
+#define CFG_MAX_BOND_DEV_NUM    4
+#endif
+
+// <o> Support maximum number of BLE link <1-10>
+// <i> Range: 1-10
+#ifndef CFG_MAX_CONNECTIONS
+#define CFG_MAX_CONNECTIONS     10
+#endif
 // </h>
 
-#define GR551xx_C1
-#define CFG_PATCH_BY_FPB
-#define CFG_ISO_SUPPORT   // modularize the iso in ble_tool
+// <h> mesh support configuration
+// <o> mesh support
+// <0=> NOT SUPPORT
+// <1=> SUPPORT
+#ifndef CFG_MESH_SUPPORT
+#define CFG_MESH_SUPPORT        0
+#endif
+// </h>
 
 // <<< end of configuration section >>>
 #endif //__CUSTOM_CONFIG_H__

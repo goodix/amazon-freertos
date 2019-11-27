@@ -63,10 +63,16 @@
 /**@brief Characteristic Base UUID. */
 #define BLE_ATT_BT_UUID_128             {0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, \
                                          0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
-/**@brief Change a 16-bit UUID array to a 128-bit one (append 0) . */
+/** @brief  Change a 16-bit UUID array to a 128-bit one (append 0).
+  * @param  uuid: 16-bit UUID
+  * @retval None
+  */
 #define BLE_ATT_16_TO_128_ARRAY(uuid)   {(uuid) & 0xFF, ((uuid) >> 8) & 0xFF, 0x00, 0x00, 0x00, \
                                          0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00 }
-/**@brief Change a 16-bit UUID array to a 16-bit one (append 0) . */
+/** @brief  Change a 16-bit UUID array to a 16-bit one (append 0).
+  * @param  uuid: 16-bit UUID
+  * @retval None
+  */
 #define BLE_ATT_16_TO_16_ARRAY(uuid)    {(uuid) & 0xFF, ((uuid) >> 8) & 0xFF}
 /** @} */
 
@@ -74,7 +80,7 @@
 /** @addtogroup BLE_ATT_ENUMERATIONS Enumerations
  * @{ */
 
-/**@brief Attribute Specification Defines: Common 16-bit (Universal Unique Identifier). */
+/**@brief Attribute Specification Definitions: Common 16-bit (Universal Unique Identifier). */
 typedef enum
 {
     BLE_ATT_INVALID_UUID                                         = BLE_ATT_UUID_16(0x0000), /**< Invalid UUID. */
@@ -146,10 +152,10 @@ typedef enum
     BLE_ATT_UNIT_JOULE                                           = BLE_ATT_UUID_16(0x2725), /**< Energy unit: joule. */
     BLE_ATT_UNIT_WATT                                            = BLE_ATT_UUID_16(0x2726), /**< Power unit: watt. */
     BLE_ATT_UNIT_COULOMB                                         = BLE_ATT_UUID_16(0x2727), /**< Electric Charge unit: coulomb. */
-    BLE_ATT_UNIT_VOLT                                            = BLE_ATT_UUID_16(0x2728), /**< Electric potential difference: Volt. */
+    BLE_ATT_UNIT_VOLT                                            = BLE_ATT_UUID_16(0x2728), /**< Electric potential difference unit: Volt. */
     BLE_ATT_UNIT_FARAD                                           = BLE_ATT_UUID_16(0x2729), /**< Capacitance unit: Farad. */
     BLE_ATT_UNIT_OHM                                             = BLE_ATT_UUID_16(0x272A), /**< Electric resistance unit: ohm. */
-    BLE_ATT_UNIT_SIEMENS                                         = BLE_ATT_UUID_16(0x272B), /**< Electric conductance: siemens. */
+    BLE_ATT_UNIT_SIEMENS                                         = BLE_ATT_UUID_16(0x272B), /**< Electric conductance unit: siemens. */
     BLE_ATT_UNIT_WEBER                                           = BLE_ATT_UUID_16(0x272C), /**< Magnetic flux unit: weber. */
     BLE_ATT_UNIT_TESLA                                           = BLE_ATT_UUID_16(0x272D), /**< Magnetic flux density unit: Tesla. */
     BLE_ATT_UNIT_HENRY                                           = BLE_ATT_UUID_16(0x272E), /**< Inductance unit: henry. */
@@ -166,10 +172,10 @@ typedef enum
     BLE_ATT_UNIT_RADIAN_PER_SECOND                               = BLE_ATT_UUID_16(0x2743), /**< Angular velocity unit: radian per second. */
     BLE_ATT_UNIT_RADIAN_PER_SECOND_SQ                            = BLE_ATT_UUID_16(0x2744), /**< Angular acceleration unit: radian per second squared. */
     BLE_ATT_UNIT_WATT_PER_SQ_METRE                               = BLE_ATT_UUID_16(0x2745), /**< Heat flux density unit: watt per square meter. */
-    BLE_ATT_UNIT_JOULE_PER_KELVIN                                = BLE_ATT_UUID_16(0x2746), /**< HEat capacity unit: joule per Kelvin. */
+    BLE_ATT_UNIT_JOULE_PER_KELVIN                                = BLE_ATT_UUID_16(0x2746), /**< Heat capacity unit: joule per Kelvin. */
     BLE_ATT_UNIT_JOULE_PER_KG_KELVIN                             = BLE_ATT_UUID_16(0x2747), /**< Specific heat capacity unit: joule per kilogram kelvin. */
     BLE_ATT_UNIT_JOULE_PER_KG                                    = BLE_ATT_UUID_16(0x2748), /**< Specific Energy unit: joule per kilogram. */
-    BLE_ATT_UNIT_WATT_PER_METRE_KELVIN                           = BLE_ATT_UUID_16(0x2749), /**< Thermal conductivity: watt per meter Kelvin. */
+    BLE_ATT_UNIT_WATT_PER_METRE_KELVIN                           = BLE_ATT_UUID_16(0x2749), /**< Thermal conductivity unit: watt per meter Kelvin. */
     BLE_ATT_UNIT_JOULE_PER_CUBIC_METRE                           = BLE_ATT_UUID_16(0x274A), /**< Energy Density unit: joule per cubic meter. */
     BLE_ATT_UNIT_VOLT_PER_METRE                                  = BLE_ATT_UUID_16(0x274B), /**< Electric field strength unit: volt per meter. */
     BLE_ATT_UNIT_COULOMB_PER_CUBIC_METRE                         = BLE_ATT_UUID_16(0x274C), /**< Electric charge density unit: coulomb per cubic meter. */
@@ -214,8 +220,8 @@ typedef enum
     BLE_ATT_UNIT_KG_CALORIE                                      = BLE_ATT_UUID_16(0x27AA), /**< Energy unit: kilogram calorie. */
     BLE_ATT_UNIT_KILOWATT_HOUR                                   = BLE_ATT_UUID_16(0x27AB), /**< Energy unit: kilowatt hour. */
     BLE_ATT_UNIT_FAHRENHEIT                                      = BLE_ATT_UUID_16(0x27AC), /**< Thermodynamic temperature unit: degree Fahrenheit. */
-    BLE_ATT_UNIT_PERCENTAGE                                      = BLE_ATT_UUID_16(0x27AD), /**< Percentage. */
-    BLE_ATT_UNIT_PER_MILLE                                       = BLE_ATT_UUID_16(0x27AE), /**< Per mille. */
+    BLE_ATT_UNIT_PERCENTAGE                                      = BLE_ATT_UUID_16(0x27AD), /**< Unit: Percentage. */
+    BLE_ATT_UNIT_PER_MILLE                                       = BLE_ATT_UUID_16(0x27AE), /**< Unit: per mille. */
     BLE_ATT_UNIT_BEATS_PER_MINUTE                                = BLE_ATT_UUID_16(0x27AF), /**< Period unit: beats per minute. */
     BLE_ATT_UNIT_AMPERE_HOURS                                    = BLE_ATT_UUID_16(0x27B0), /**< Electric charge unit: ampere hours. */
     BLE_ATT_UNIT_MILLIGRAM_PER_DECILITRE                         = BLE_ATT_UUID_16(0x27B1), /**< Mass density unit: milligram per decilitre. */
@@ -369,7 +375,7 @@ typedef enum
     BLE_ATT_CHAR_RESTING_HEART_RATE                              = BLE_ATT_UUID_16(0x2A92), /**< Resting Heart Rate. */
     BLE_ATT_CHAR_SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS = BLE_ATT_UUID_16(0x2A93), /**< Sport Type For Aerobic And Anaerobic Thresholds. */
     BLE_ATT_CHAR_THREE_ZONE_HEART_RATE_LIMITS                    = BLE_ATT_UUID_16(0x2A94), /**< Three Zone Heart Rate Limits. */
-    BLE_ATT_CHAR_TWO_ZONE_HEART_RATE_LIMIT                       = BLE_ATT_UUID_16(0x2A95), /**< Two Zone Heart Rate Limit. */
+    BLE_ATT_CHAR_TWO_ZONE_HEART_RATE_LIMIT                       = BLE_ATT_UUID_16(0x2A95), /**< Two Zone Heart Rate Limits. */
     BLE_ATT_CHAR_VO2_MAX                                         = BLE_ATT_UUID_16(0x2A96), /**< Vo2 Max. */
     BLE_ATT_CHAR_WAIST_CIRCUMFERENCE                             = BLE_ATT_UUID_16(0x2A97), /**< Waist Circumference. */
     BLE_ATT_CHAR_WEIGHT                                          = BLE_ATT_UUID_16(0x2A98), /**< Weight. */

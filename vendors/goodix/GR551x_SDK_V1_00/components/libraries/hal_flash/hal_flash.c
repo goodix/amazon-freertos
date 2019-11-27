@@ -53,6 +53,7 @@
 #include "hal_flash.h"
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>
 
 #ifndef EXFLASH_ENABLE
 #define EXFLASH_ENABLE                        /**<Use exflash. */
@@ -68,7 +69,7 @@ extern uint32_t sys_security_enable_status_check(void);
 
 #if defined(ROM_RUN_IN_FLASH) || defined(GR551xx_C0) || defined(GR551xx_C1)
 const uint32_t baud_rate[6] = {XQSPI_BAUD_RATE_64M, XQSPI_BAUD_RATE_48M, XQSPI_BAUD_RATE_16M,
-                                XQSPI_BAUD_RATE_24M, XQSPI_BAUD_RATE_16M, XQSPI_BAUD_RATE_32M};
+                               XQSPI_BAUD_RATE_24M, XQSPI_BAUD_RATE_16M, XQSPI_BAUD_RATE_32M};
 xqspi_handle_t g_xqspi_handle = {0};
 #endif
 
@@ -110,6 +111,53 @@ uint32_t hal_flash_write(const uint32_t addr, const uint8_t *buf, const uint32_t
     return (HAL_OK == hal_exflash_write(&g_exflash_handle, addr, (uint8_t*)buf, size)) ? size : 0;
 }
 
+uint32_t hal_flash_write_r(const uint32_t addr, const uint8_t *buf, const uint32_t size)
+{
+    hal_status_t status;
+
+    status = hal_exflash_write(&g_exflash_handle, addr, (uint8_t*)buf, size);
+    if (HAL_OK == status)
+    {
+        /* It's possible that the data is not written to flash memory.
+         * So we must read the data from flash memory, and check it. */
+        uint8_t  rd_buf[EXFLASH_SIZE_PAGE_BYTES];
+        uint32_t offset     = 0;
+        uint32_t unrd_bytes = size;
+        uint32_t rd_bytes   = size > EXFLASH_SIZE_PAGE_BYTES ?
+                              EXFLASH_SIZE_PAGE_BYTES : size;
+
+        do
+        {
+            status = hal_exflash_read(&g_exflash_handle, addr + offset,
+                                      rd_buf, rd_bytes);
+            if ((HAL_OK == status) && (memcmp(buf + offset, rd_buf, rd_bytes) == 0))
+            {
+                unrd_bytes -= rd_bytes;
+                if (0 == unrd_bytes)
+                {
+                    return size;
+                }
+                else
+                {
+                    offset += rd_bytes;
+                    rd_bytes = unrd_bytes > EXFLASH_SIZE_PAGE_BYTES ?
+                               EXFLASH_SIZE_PAGE_BYTES : unrd_bytes;
+                    if ((offset >= size) || ((offset + rd_bytes) > size))
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                break;
+            }
+        } while(1);
+    }
+
+    return 0;
+}
+
 void hal_flash_set_security(bool enable)
 {
     g_exflash_handle.security = (enable ? HAL_EXFLASH_ENCRYPTED : HAL_EXFLASH_UNENCRYPTED);
@@ -146,6 +194,7 @@ uint32_t hal_flash_sector_size(void)
 {
     return EXFLASH_SIZE_SECTOR_BYTES;
 }
+
 #endif // EXFLASH_ENABLE
 
 /******************************************************************************/

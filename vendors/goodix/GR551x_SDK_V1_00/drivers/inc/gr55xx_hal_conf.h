@@ -55,7 +55,7 @@ extern "C" {
 #define HAL_AON_GPIO_MODULE_ENABLED     /**< Enable AON GPIO HAL module driver */ 
 #define HAL_CORTEX_MODULE_ENABLED       /**< Enable CORTEX HAL module driver   */ 
 #define HAL_DMA_MODULE_ENABLED          /**< Enable DMA HAL module driver      */ 
-#define HAL_DUAL_TIM_MODULE_ENABLED     /**< Enable DUAL TIM module driver     */
+#define HAL_DUAL_TIMER_MODULE_ENABLED   /**< Enable DUAL TIM module driver     */
 #define HAL_EXFLASH_MODULE_ENABLED      /**< Enable EXFLASH module driver      */
 #define HAL_GPIO_MODULE_ENABLED         /**< Enable GPIO module driver         */
 #define HAL_I2C_MODULE_ENABLED          /**< Enable I2C module driver          */
@@ -65,7 +65,7 @@ extern "C" {
 #define HAL_PWR_MODULE_ENABLED          /**< Enable PWR module driver          */
 #define HAL_QSPI_MODULE_ENABLED         /**< Enable QSPI module driver         */
 #define HAL_SPI_MODULE_ENABLED          /**< Enable SPI module driver          */
-#define HAL_TIM_MODULE_ENABLED          /**< Enable TIM module driver          */
+#define HAL_TIMER_MODULE_ENABLED        /**< Enable TIM module driver          */
 #define HAL_UART_MODULE_ENABLED         /**< Enable UART module driver         */
 #define HAL_WDT_MODULE_ENABLED          /**< Enable WDT module driver          */
 #define HAL_XQSPI_MODULE_ENABLED        /**< Enable XQSPI module driver        */
@@ -78,6 +78,7 @@ extern "C" {
 #define HAL_ISO7816_MODULE_ENABLED      /**< Enable ISO7816 module driver      */
 #define HAL_CGC_MODULE_ENABLED          /**< Enable CGC module driver          */
 #define HAL_RNG_MODULE_ENABLED          /**< Enable RNG module driver          */
+#define HAL_COMP_MODULE_ENABLED         /**< Enable COMP module driver         */
 
 /* ########################### System Configuration ######################### */
 /**
@@ -126,9 +127,9 @@ extern "C" {
 #include "gr55xx_hal_dma.h"
 #endif /* HAL_DMA_MODULE_ENABLED */
 
-#ifdef HAL_DUAL_TIM_MODULE_ENABLED
+#ifdef HAL_DUAL_TIMER_MODULE_ENABLED
 #include "gr55xx_hal_dual_tim.h"
-#endif /* HAL_DUAL_TIM_MODULE_ENABLED */
+#endif /* HAL_DUAL_TIMER_MODULE_ENABLED */
 
 #ifdef HAL_GPIO_MODULE_ENABLED
 #include "gr55xx_hal_gpio.h"
@@ -170,9 +171,9 @@ extern "C" {
 #include "gr55xx_hal_spi.h"
 #endif /* HAL_SPI_MODULE_ENABLED */
 
-#ifdef HAL_TIM_MODULE_ENABLED
+#ifdef HAL_TIMER_MODULE_ENABLED
 #include "gr55xx_hal_tim.h"
-#endif /* HAL_TIM_MODULE_ENABLED */
+#endif /* HAL_TIMER_MODULE_ENABLED */
 
 #ifdef HAL_UART_MODULE_ENABLED
 #include "gr55xx_hal_uart.h"
@@ -201,6 +202,10 @@ extern "C" {
 #ifdef HAL_RNG_MODULE_ENABLED
 #include "gr55xx_hal_rng.h"
 #endif /* HAL_RNG_MODULE_ENABLED */
+
+#ifdef HAL_COMP_MODULE_ENABLED
+#include "gr55xx_hal_comp.h"
+#endif /* HAL_COMP_MODULE_ENABLED */
 
 /* Exported macro ------------------------------------------------------------*/
 #ifdef  USE_FULL_ASSERT

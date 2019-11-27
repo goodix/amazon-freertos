@@ -128,7 +128,7 @@ static void gr_ble_cb_msg_handle_task( void * p )
                                                                             s_gr_ble_gap_params_ins.gap_conn_param.ulMaxInterval,
                                                                             conn_update->update.latency,
                                                                             usActualInterval,
-                                                                            conn_update->update.time_out );
+                                                                            conn_update->update.sup_timeout );
                         }
                     } else {
                         if( xBTBleAdapterCallbacks.pxConnParameterUpdateCb != NULL)

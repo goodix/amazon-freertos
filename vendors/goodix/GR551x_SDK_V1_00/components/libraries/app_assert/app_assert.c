@@ -103,11 +103,11 @@ static void app_assert_err_cb(const char *expr, const char *file, int line);
  */
 static struct app_asser_info_t  s_assert_info;
 
-static app_assert_cb_t s_assert_cbs =
+static sys_assert_cb_t s_assert_cbs =
 {
-    .app_assert_err_cb   = app_assert_err_cb ,
-    .app_assert_param_cb = app_assert_param_cb,
-    .app_assert_warn_cb  = app_assert_warn_cb,
+    .assert_err_cb   = app_assert_err_cb ,
+    .assert_param_cb = app_assert_param_cb,
+    .assert_warn_cb  = app_assert_warn_cb,
 };
 
 /*
@@ -256,30 +256,28 @@ static void app_assert_err_cb(const char *expr, const char *file, int line)
  * GLOBAL FUNCTION DEFINITIONS
  *****************************************************************************************
  */
-extern void sdk_register_assert_cb(app_assert_cb_t callback);
-
 void app_assert_default_cb_register(void)
 {
-    sdk_register_assert_cb(s_assert_cbs);
+    sys_assert_cb_register(&s_assert_cbs);
 }
 
-void app_assert_cb_register(app_assert_cb_t *p_assert_cb)
+void app_assert_cb_register(sys_assert_cb_t *p_assert_cb)
 {
     if (p_assert_cb)
     {
-        s_assert_cbs.app_assert_err_cb   = p_assert_cb->app_assert_err_cb;
-        s_assert_cbs.app_assert_param_cb = p_assert_cb->app_assert_param_cb;
-        s_assert_cbs.app_assert_warn_cb  = p_assert_cb->app_assert_warn_cb;
+        s_assert_cbs.assert_err_cb   = p_assert_cb->assert_err_cb;
+        s_assert_cbs.assert_param_cb = p_assert_cb->assert_param_cb;
+        s_assert_cbs.assert_warn_cb  = p_assert_cb->assert_warn_cb;
 
-        sdk_register_assert_cb(s_assert_cbs);
+        sys_assert_cb_register(&s_assert_cbs);
     }
 }
 
 void app_assert_handler(const char *expr, const char *file, int line)
 {
-    if (s_assert_cbs.app_assert_err_cb)
+    if (s_assert_cbs.assert_err_cb)
     {
-        s_assert_cbs.app_assert_err_cb(expr, file, line);
+        s_assert_cbs.assert_err_cb(expr, file, line);
     }
 }
 

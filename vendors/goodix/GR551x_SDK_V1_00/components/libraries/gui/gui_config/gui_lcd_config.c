@@ -44,7 +44,7 @@
 #include "st7735.h"
 #include "gui_animation.h"
 
-
+static bool gui_refresh_flag = false;
 /*
  * GLOBAL FUNCTION DEFINITIONS
  *******************************************************************************
@@ -78,7 +78,7 @@ T_COLOR gui_read_point(uint16_t x, uint16_t y)
 
 void gui_refresh(void)
 {
-    lcd_refresh();
+    gui_refresh_flag = true;
 }
 
 void gui_rectangle_refresh(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
@@ -89,5 +89,14 @@ void gui_rectangle_refresh(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 void gui_set_refresh_mem(bool gram_set)
 {
     lcd_set_memory(gram_set);
+}
+
+void gui_refresh_schedule(void)
+{
+    if(gui_refresh_flag)
+    {
+        lcd_refresh();
+        gui_refresh_flag = false;
+    }
 }
 

@@ -86,6 +86,13 @@
 #define PWM1_CHANNEL_B                  MSIO_PIN_4
 #define PWM1_PORT                       MSIO
 
+/*******COMP IO CONFIG***************************/
+#define COMP_INPUT_PIN                  MSIO_PIN_0
+#define COMP_INPUT_PORT                 MSIO
+
+#define COMP_VREF_PIN                   MSIO_PIN_1
+#define COMP_VREF_PORT                  MSIO
+
 /*******QSPI IO CONFIG*************************/
 #define QSPI_MODULE                     QSPI1
 #define QSPI_GPIO_MUX                   GPIO_MUX_2

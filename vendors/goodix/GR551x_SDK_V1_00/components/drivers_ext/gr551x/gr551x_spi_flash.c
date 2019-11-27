@@ -1,68 +1,65 @@
+/**
+  ****************************************************************************************
+  * @file    gr551x_spi_flash.c
+  * @author  BLE Driver Team
+  * @brief   HAL APP module driver.
+  ****************************************************************************************
+  * @attention
+  #####Copyright (c) 2019 GOODIX
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+   * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+   * Neither the name of GOODIX nor the names of its contributors may be used
+     to endorse or promote products derived from this software without
+     specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+  ****************************************************************************************
+  */
+
+/*
+ * INCLUDE FILES
+ *****************************************************************************************
+ */
 #include <string.h>
 #include "gr55xx_hal.h"
 #include "gr551x_spi_flash.h"
 
+/*
+ * DEFINES
+ *****************************************************************************************
+ */
 #define SPIM_SPEED_1M                     (1000000)
-#define SPIM_FLASH_CS_LOW()               hal_gpio_write_pin(g_spim_flash_io.spi_cs.gpio, g_spim_flash_io.spi_cs.pin, GPIO_PIN_RESET)
-#define SPIM_FLASH_CS_HIGH()              hal_gpio_write_pin(g_spim_flash_io.spi_cs.gpio, g_spim_flash_io.spi_cs.pin, GPIO_PIN_SET)
+#define SPIM_FLASH_CS_LOW()               app_io_write_pin(g_spim_flash_io.spi_cs.gpio, g_spim_flash_io.spi_cs.pin, APP_IO_PIN_RESET)
+#define SPIM_FLASH_CS_HIGH()              app_io_write_pin(g_spim_flash_io.spi_cs.gpio, g_spim_flash_io.spi_cs.pin, APP_IO_PIN_SET)
 
+/*
+ * LOCAL VARIABLE DEFINITIONS
+ *****************************************************************************************
+ */
 spi_handle_t   g_spim_handle;
 spi_flash_io_t g_spim_flash_io;
 
-void spi_flash_init(spi_flash_io_t *p_spi_flash)
-{
-    hal_status_t status = HAL_OK;
-    gpio_init_t gpio_config = GPIO_DEFAULT_CONFIG;
-
-    g_spim_handle.p_instance              = SPIM;
-    g_spim_handle.init.data_size          = SPI_DATASIZE_8BIT;
-    g_spim_handle.init.clock_polarity     = SPI_POLARITY_LOW;
-    g_spim_handle.init.clock_phase        = SPI_PHASE_1EDGE;
-    g_spim_handle.init.baudrate_prescaler = SystemCoreClock / SPIM_SPEED_1M;
-    g_spim_handle.init.ti_mode            = SPI_TIMODE_DISABLE;
-    g_spim_handle.init.slave_select       = SPI_SLAVE_SELECT_0;
-    hal_spi_deinit(&g_spim_handle);
-    
-    memcpy(&g_spim_flash_io, p_spi_flash, sizeof(spi_flash_io_t));
-    
-    /* Configurate the cs pin of spi */
-    gpio_config.mode = GPIO_MODE_OUTPUT;
-    gpio_config.pin  = g_spim_flash_io.spi_cs.pin;
-    gpio_config.mux  = g_spim_flash_io.spi_cs.mux;
-    gpio_config.pull = GPIO_PULLUP;
-    hal_gpio_init(g_spim_flash_io.spi_cs.gpio, &gpio_config);
-    SPIM_FLASH_CS_HIGH();
-    
-    /* Configurate the clk pin of spi */
-    gpio_config.mode = GPIO_MODE_MUX;
-    gpio_config.pin  = g_spim_flash_io.spi_clk.pin;
-    gpio_config.mux  = g_spim_flash_io.spi_clk.mux;
-    gpio_config.pull = GPIO_PULLUP;
-    hal_gpio_init(g_spim_flash_io.spi_clk.gpio, &gpio_config);
-    
-    /* Configurate the mosi pin of spi */
-    gpio_config.mode = GPIO_MODE_MUX;
-    gpio_config.pin  = g_spim_flash_io.spi_mosi.pin;
-    gpio_config.mux  = g_spim_flash_io.spi_mosi.mux;
-    gpio_config.pull = GPIO_PULLUP;
-    hal_gpio_init(g_spim_flash_io.spi_mosi.gpio, &gpio_config);
-    
-    /* Configurate the miso pin of spi */
-    gpio_config.mode = GPIO_MODE_MUX;
-    gpio_config.pin  = g_spim_flash_io.spi_miso.pin;
-    gpio_config.mux  = g_spim_flash_io.spi_miso.mux;
-    gpio_config.pull = GPIO_PULLUP;
-    hal_gpio_init(g_spim_flash_io.spi_miso.gpio, &gpio_config);
-
-    
-    status = hal_spi_init(&g_spim_handle);
-    if (status != HAL_OK)
-    {
-        return;
-    }
-    return;
-}
-
+/*
+ * LOCAL FUNCTION DEFINITIONS
+ *****************************************************************************************
+ */
 static void spi_flash_write_enable(void)
 {
     uint8_t control_frame[1] = {SPI_FLASH_CMD_WREN};
@@ -84,6 +81,87 @@ static uint32_t spi_flash_read_status(void)
     SPIM_FLASH_CS_HIGH();
     
     return ret;
+}
+
+static uint32_t spi_flash_device_size(void)
+{
+    uint32_t flash_size = 0;
+    uint8_t control_frame[5] = {0};
+    uint8_t data[4] = {0};
+
+    control_frame[0] = SPI_FLASH_CMD_SFUD;
+    control_frame[3] = 0x34;
+    control_frame[4] = DUMMY_BYTE;
+
+    SPIM_FLASH_CS_LOW();
+    hal_spi_transmit(&g_spim_handle, control_frame, sizeof(control_frame), 5000);
+    hal_spi_receive(&g_spim_handle, data, sizeof(data), 5000);
+    SPIM_FLASH_CS_HIGH();
+
+    if (data[0] != 0 && data[3] < 0xFF)
+    {
+        flash_size = ((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] << 0) + 1) / 8;
+    }
+
+    return flash_size;
+}
+
+/*
+ * GLOBAL FUNCTION DEFINITIONS
+ ****************************************************************************************
+ */
+void spi_flash_init(spi_flash_io_t *p_spi_flash)
+{
+    hal_status_t status = HAL_OK;
+    app_io_init_t io_config = APP_IO_DEFAULT_CONFIG;
+
+    g_spim_handle.p_instance              = SPIM;
+    g_spim_handle.init.data_size          = SPI_DATASIZE_8BIT;
+    g_spim_handle.init.clock_polarity     = SPI_POLARITY_LOW;
+    g_spim_handle.init.clock_phase        = SPI_PHASE_1EDGE;
+    g_spim_handle.init.baudrate_prescaler = SystemCoreClock / SPIM_SPEED_1M;
+    g_spim_handle.init.ti_mode            = SPI_TIMODE_DISABLE;
+    g_spim_handle.init.slave_select       = SPI_SLAVE_SELECT_0;
+    hal_spi_deinit(&g_spim_handle);
+    
+    memcpy(&g_spim_flash_io, p_spi_flash, sizeof(spi_flash_io_t));
+    
+    /* Configurate the cs pin of spi */
+    io_config.mode = APP_IO_MODE_OUT_PUT;
+    io_config.pin  = g_spim_flash_io.spi_cs.pin;
+    io_config.mux  = g_spim_flash_io.spi_cs.mux;
+    io_config.pull = APP_IO_PULLUP;
+    app_io_init(g_spim_flash_io.spi_cs.gpio, &io_config);
+    SPIM_FLASH_CS_HIGH();
+    
+    /* Configurate the clk pin of spi */
+    io_config.mode = APP_IO_MODE_MUX;
+    io_config.pin  = g_spim_flash_io.spi_clk.pin;
+    io_config.mux  = g_spim_flash_io.spi_clk.mux;
+    io_config.pull = APP_IO_PULLUP;
+    app_io_init(g_spim_flash_io.spi_clk.gpio, &io_config);
+    
+    /* Configurate the mosi pin of spi */
+    io_config.mode = APP_IO_MODE_MUX;
+    io_config.pin  = g_spim_flash_io.spi_mosi.pin;
+    io_config.mux  = g_spim_flash_io.spi_mosi.mux;
+    io_config.pull = APP_IO_PULLUP;
+    app_io_init(g_spim_flash_io.spi_mosi.gpio, &io_config);
+    
+    /* Configurate the miso pin of spi */
+    io_config.mode = APP_IO_MODE_MUX;
+    io_config.pin  = g_spim_flash_io.spi_miso.pin;
+    io_config.mux  = g_spim_flash_io.spi_miso.mux;
+    io_config.pull = APP_IO_PULLUP;
+    app_io_init(g_spim_flash_io.spi_miso.gpio, &io_config);
+
+    
+    status = hal_spi_init(&g_spim_handle);
+    if (status != HAL_OK)
+    {
+        return;
+    }
+    return;
 }
 
 uint32_t spi_flash_write(uint32_t address, uint8_t *buffer, uint32_t nbytes)
@@ -265,29 +343,6 @@ uint32_t spi_flash_device_id(void)
     SPIM_FLASH_CS_HIGH();
 
     return (((uint32_t)data[0] << 16) + ((uint32_t)data[1] << 8) + data[2]);
-}
-
-static uint32_t spi_flash_device_size(void)
-{
-    uint32_t flash_size = 0;
-    uint8_t control_frame[5] = {0};
-    uint8_t data[4] = {0};
-
-    control_frame[0] = SPI_FLASH_CMD_SFUD;
-    control_frame[3] = 0x34;
-    control_frame[4] = DUMMY_BYTE;
-
-    SPIM_FLASH_CS_LOW();
-    hal_spi_transmit(&g_spim_handle, control_frame, sizeof(control_frame), 5000);
-    hal_spi_receive(&g_spim_handle, data, sizeof(data), 5000);
-    SPIM_FLASH_CS_HIGH();
-
-    if (data[0] != 0 && data[3] < 0xFF)
-    {
-        flash_size = ((data[3] << 24) + (data[2] << 16) + (data[1] << 8) + (data[0] << 0) + 1) / 8;
-    }
-
-    return flash_size;
 }
 
 void spi_flash_device_info(uint32_t *id, uint32_t *size)

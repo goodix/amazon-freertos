@@ -47,13 +47,13 @@
  */
 static uint32_t fus = 0;
 static uint32_t fms = 0;
-static dual_tim_regs_t *tim_regs;
+static dual_timer_regs_t *tim_regs;
 
 /*
  * GLOBAL FUNCTION DEFINITIONS
  *****************************************************************************************
  */
-void tim_delay_init(dual_tim_regs_t *timx)
+void tim_delay_init(dual_timer_regs_t *timx)
 {
     fus = SystemCoreClock / 1000000;
     fms = SystemCoreClock / 1000;

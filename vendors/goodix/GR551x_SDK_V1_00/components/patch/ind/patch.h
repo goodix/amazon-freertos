@@ -20,21 +20,15 @@
  */
 enum
 {
-    BIT_LLD_CI_SCHED,
-    BIT_HCI_LE_SET_CIG_PARAMS_CMD_HANDLER,
-    BIT_GAPM_OP_SETUP_CONTINUE,
-    BIT_SMPC_IS_SEC_MODE_REACHED,
-    BIT_GAPM_OP_RESET_CONTINUE,
-    BIT_GAPM_PER_SYNC_SEND_SYNC_ESTABLISHED_IND,
-    BIT_HCI_SEND_2_HOST,
-    BIT_HCI_SEND_2_CONTROLLER,
-    BIT_GAPM_SEND_COMPLETE_EVT,
-    BIT_GAPM_ADV_CHECK_PARAM,
     BIT_CO_LIST_PUSH_BACK,
     BIT_CO_LIST_POP_FRONT,
-    BIT_SCH_PROG_PUSH,
-    BIT_LLD_CON_EVT_TIME_UPDATE,
-    BIT_LLD_CON_FRM_CBK,
+    BIT_GAPM_SEND_COMPLETE_EVT,
+    BIT_SCH_ARB_INSERT,  // it's used to realize the ble idle time notify function, not MANDATORY
+    BIT_ATTMDB_SVC_INIT,
+    BIT_LLC_PREF_PARAM_COMPUTE, // it's used to implement the anchor point movement, not MANDATORY
+    BIT_LLC_HCI_CON_UPD_INFO_SEND, // it's used to implement the anchor point movement accuracy, not MANDATORY
+    BIT_SCH_ARB_PROG_TIMER, // MANDATORY
+    BIT_GAPM_SMP_RESOLV_OP_CONT, // it's used for multi-link(over 3 links) pair process
 };
 
 /*
@@ -43,24 +37,33 @@ enum
  */
 #define PATCH_ENABLE_FLAG(BIT) (1<<BIT)
 //please add the macro for the different application(Only Support 6 patches);
-// PATCH_ENABLE_FLAG(BIT_SCH_PROG_PUSH)
 #define MANDATORY_PATCH         ( PATCH_ENABLE_FLAG(BIT_CO_LIST_PUSH_BACK)         \
                                 | PATCH_ENABLE_FLAG(BIT_CO_LIST_POP_FRONT)         \
                                 | PATCH_ENABLE_FLAG(BIT_GAPM_SEND_COMPLETE_EVT)    \
-                                | PATCH_ENABLE_FLAG(BIT_LLD_CON_EVT_TIME_UPDATE)   \
-                                | PATCH_ENABLE_FLAG(BIT_LLD_CON_FRM_CBK)           \
-                                | PATCH_ENABLE_FLAG(BIT_SMPC_IS_SEC_MODE_REACHED)  \
+                                | PATCH_ENABLE_FLAG(BIT_GAPM_SMP_RESOLV_OP_CONT)   \
+                                | PATCH_ENABLE_FLAG(BIT_ATTMDB_SVC_INIT)           \
+                                | PATCH_ENABLE_FLAG(BIT_SCH_ARB_PROG_TIMER)        \
                                 )
 
 #define OPTIMIZING_PATCH        0
+                               
+#define THROUGHPUT_PATCH        MANDATORY_PATCH
 
-#define ISO_PATCH               ( PATCH_ENABLE_FLAG(BIT_GAPM_OP_RESET_CONTINUE)                   \
-                                | PATCH_ENABLE_FLAG(BIT_HCI_SEND_2_HOST)                          \
-                                | PATCH_ENABLE_FLAG(BIT_HCI_SEND_2_CONTROLLER)                    \
-                                | PATCH_ENABLE_FLAG(BIT_GAPM_PER_SYNC_SEND_SYNC_ESTABLISHED_IND)  \
+#define MULTI_LINK_PATCH        ( PATCH_ENABLE_FLAG(BIT_CO_LIST_PUSH_BACK)         \
+                                | PATCH_ENABLE_FLAG(BIT_CO_LIST_POP_FRONT)         \
+                                | PATCH_ENABLE_FLAG(BIT_GAPM_SEND_COMPLETE_EVT)    \
+                                | PATCH_ENABLE_FLAG(BIT_GAPM_SMP_RESOLV_OP_CONT)   \
+                                | PATCH_ENABLE_FLAG(BIT_ATTMDB_SVC_INIT)           \
+                                | PATCH_ENABLE_FLAG(BIT_LLC_PREF_PARAM_COMPUTE)    \
                                 )
                                 
-#define THROUGHPUT_PATCH        MANDATORY_PATCH
+#define IDLE_NOTIFY_PATCH       ( PATCH_ENABLE_FLAG(BIT_CO_LIST_PUSH_BACK)         \
+                                | PATCH_ENABLE_FLAG(BIT_CO_LIST_POP_FRONT)         \
+                                | PATCH_ENABLE_FLAG(BIT_GAPM_SEND_COMPLETE_EVT)    \
+                                | PATCH_ENABLE_FLAG(BIT_SCH_ARB_INSERT)            \
+                                | PATCH_ENABLE_FLAG(BIT_ATTMDB_SVC_INIT)           \
+                                | PATCH_ENABLE_FLAG(BIT_LLC_PREF_PARAM_COMPUTE)    \
+                                )
 
 /*
  * FUNCTION DECLARATIONS

@@ -116,7 +116,7 @@ extern "C" {
 #define LL_PWR_WKUP_COND_BLE                AON_PWR_REG01_WAKE_UP_SEL_BLE           /**< BLE wakeup                  */
 #define LL_PWR_WKUP_COND_CALENDAR           AON_PWR_REG01_WAKE_UP_SEL_CALENDAR      /**< Calendar wakeup             */
 #define LL_PWR_WKUP_COND_BOD_FEDGE          AON_PWR_REG01_WAKE_UP_SEL_PMU_BOD_FEDGE /**< PMU Bod falling edge wakeup */
-#define LL_PWR_WKUP_COND_MISO_COMP          AON_PWR_REG01_WAKE_UP_SEL_MISO_COMP     /**< Msio comparator wakeup      */
+#define LL_PWR_WKUP_COND_MSIO_COMP          AON_PWR_REG01_WAKE_UP_SEL_MSIO_COMP     /**< Msio comparator wakeup      */
 #define LL_PWR_WKUP_COND_ALL                AON_PWR_REG01_WAKE_UP_SEL               /**< All wakeup sources mask     */
 /** @} */
 
@@ -175,6 +175,7 @@ extern "C" {
 #define LL_PWR_CMD_EXT_CLK                  AON_PSC_CMD_OPC_OPCODE_EXT_CLK          /**< Select external clock (xo_32KHz) command   */
 #define LL_PWR_CMD_RNG_CLK                  AON_PSC_CMD_OPC_OPCODE_RNG_CLK          /**< Select RING OSC clock command              */
 #define LL_PWR_CMD_RTC_CLK                  AON_PSC_CMD_OPC_OPCODE_RTC_CLK          /**< Select RTC clock command                   */
+#define LL_PWR_CMD_RNG2_CLK                 AON_PSC_CMD_OPC_OPCODE_RNG2_CLK         /**< Select RING OSC clock command              */
 #define LL_PWR_CMD_LD_MEM_SLP_CFG           AON_PSC_CMD_OPC_OPCODE_LD_MEM_SLP_CFG   /**< Load memory sleep settings command         */
 #define LL_PWR_CMD_LD_MEM_WKUP_CFG          AON_PSC_CMD_OPC_OPCODE_LD_MEM_WKUP_CFG  /**< Load memory wakeup settings command        */
 #define LL_PWR_CMD_DPAD_LE_HI               AON_PSC_CMD_OPC_OPCODE_DPAD_LE_HI       /**< Force dpad_le high                         */
@@ -286,11 +287,11 @@ extern "C" {
   *         @arg @ref LL_PWR_WKUP_COND_BLE
   *         @arg @ref LL_PWR_WKUP_COND_CALENDAR
   *         @arg @ref LL_PWR_WKUP_COND_BOD_FEDGE
-  *         @arg @ref LL_PWR_WKUP_COND_MISO_COMP
+  *         @arg @ref LL_PWR_WKUP_COND_MSIO_COMP
   *         @arg @ref LL_PWR_WKUP_COND_ALL
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_wakeup_condition(uint32_t condition)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_wakeup_condition(uint32_t condition)
 {
     MODIFY_REG(AON->PWR_RET01, AON_PWR_REG01_WAKE_UP_SEL, condition);
 }
@@ -308,10 +309,10 @@ __STATIC_INLINE void ll_pwr_set_wakeup_condition(uint32_t condition)
   *         @arg @ref LL_PWR_WKUP_COND_BLE
   *         @arg @ref LL_PWR_WKUP_COND_CALENDAR
   *         @arg @ref LL_PWR_WKUP_COND_BOD_FEDGE
-  *         @arg @ref LL_PWR_WKUP_COND_MISO_COMP
+  *         @arg @ref LL_PWR_WKUP_COND_MSIO_COMP
   *         @arg @ref LL_PWR_WKUP_COND_ALL
   */
-__STATIC_INLINE uint32_t ll_pwr_get_wakeup_condition(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_wakeup_condition(void)
 {
     return ((uint32_t)READ_BITS(AON->PWR_RET01, AON_PWR_REG01_WAKE_UP_SEL));
 }
@@ -336,7 +337,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_wakeup_condition(void)
   *         @arg @ref LL_PWR_WKUP_EVENT_WDT
   *         @arg @ref LL_PWR_WKUP_EVENT_CALENDAR
   */
-__STATIC_INLINE uint32_t ll_pwr_get_wakeup_event(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_wakeup_event(void)
 {
     return ((uint32_t)READ_BITS(AON->SLP_EVENT, LL_PWR_WKUP_EVENT_ALL));
 }
@@ -358,7 +359,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_wakeup_event(void)
   *         @arg @ref LL_PWR_EXTWKUP_PIN_ALL
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_ext_wakeup_pin(uint32_t wakeup_pin)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_ext_wakeup_pin(uint32_t wakeup_pin)
 {
     SET_BITS(AON->EXT_WKUP_CTL, wakeup_pin);
 }
@@ -380,7 +381,7 @@ __STATIC_INLINE void ll_pwr_enable_ext_wakeup_pin(uint32_t wakeup_pin)
   *         @arg @ref LL_PWR_EXTWKUP_PIN_ALL
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_ext_wakeup_pin(uint32_t wakeup_pin)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_ext_wakeup_pin(uint32_t wakeup_pin)
 {
     CLEAR_BITS(AON->EXT_WKUP_CTL, wakeup_pin);
 }
@@ -402,7 +403,7 @@ __STATIC_INLINE void ll_pwr_disable_ext_wakeup_pin(uint32_t wakeup_pin)
   *         @arg @ref LL_PWR_EXTWKUP_PIN_ALL
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_ext_wakeup_pin(uint32_t wakeup_pin)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_ext_wakeup_pin(uint32_t wakeup_pin)
 {
     return (READ_BITS(AON->EXT_WKUP_CTL, wakeup_pin) == wakeup_pin);
 }
@@ -430,7 +431,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_ext_wakeup_pin(uint32_t wakeup_pin)
   *         @arg @ref LL_PWR_EXTWKUP_TYPE_FALLING
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_ext_wakeup_type(uint32_t wakeup_pin, uint32_t wakeup_type)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_ext_wakeup_type(uint32_t wakeup_pin, uint32_t wakeup_type)
 {
     uint32_t invert =  ((wakeup_type & LL_PWR_EXTWKUP_INVERT_LSB) == LL_PWR_EXTWKUP_INVERT_LSB) ? (wakeup_pin << AON_EXT_WKUP_CTL_INVERT_Pos) : 0;
     uint32_t type =  ((wakeup_type & LL_PWR_EXTWKUP_TYPE_LSB) == LL_PWR_EXTWKUP_TYPE_LSB) ? (wakeup_pin << AON_EXT_WKUP_CTL_TYPE_Pos) : 0;
@@ -460,7 +461,7 @@ __STATIC_INLINE void ll_pwr_set_ext_wakeup_type(uint32_t wakeup_pin, uint32_t wa
   *         @arg @ref LL_PWR_EXTWKUP_TYPE_RISING
   *         @arg @ref LL_PWR_EXTWKUP_TYPE_FALLING
   */
-__STATIC_INLINE uint32_t ll_pwr_get_ext_wakeup_type(uint32_t wakeup_pin)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_ext_wakeup_type(uint32_t wakeup_pin)
 {
     return ((uint32_t)(READ_BITS(AON->EXT_WKUP_CTL, AON_EXT_WKUP_CTL_INVERT | AON_EXT_WKUP_CTL_TYPE) >> POSITION_VAL(wakeup_pin)));
 }
@@ -477,7 +478,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_ext_wakeup_type(uint32_t wakeup_pin)
   * @param  value  32 bits count value loaded into the t32bit_timer
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_sleep_timer_value(uint32_t value)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_sleep_timer_value(uint32_t value)
 {
     WRITE_REG(AON->TIMER_VALUE, value);
 }
@@ -491,7 +492,7 @@ __STATIC_INLINE void ll_pwr_set_sleep_timer_value(uint32_t value)
   *
   * @retval 32 bit AON Timer Count Value
   */
-__STATIC_INLINE uint32_t ll_pwr_get_sleep_timer_value(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_sleep_timer_value(void)
 {
     return READ_REG(AON->TIMER_VALUE);
 }
@@ -506,7 +507,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_sleep_timer_value(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_smc_wakeup_req(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_smc_wakeup_req(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_SMC_WAKEUP_REQ);
 }
@@ -521,7 +522,7 @@ __STATIC_INLINE void ll_pwr_enable_smc_wakeup_req(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_smc_wakeup_req(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_smc_wakeup_req(void)
 {
     CLEAR_BITS(AON->PWR_RET01, AON_PWR_REG01_SMC_WAKEUP_REQ);
 }
@@ -535,7 +536,7 @@ __STATIC_INLINE void ll_pwr_disable_smc_wakeup_req(void)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_smc_wakeup_req(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_smc_wakeup_req(void)
 {
     return (READ_BITS(AON->PWR_RET01, AON_PWR_REG01_SMC_WAKEUP_REQ) == AON_PWR_REG01_SMC_WAKEUP_REQ);
 }
@@ -589,7 +590,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_smc_wakeup_req(void)
   *         @arg @ref LL_PWR_MEM_POWER_RETENTION
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_mem_deep_sleep_power(uint32_t mem, uint32_t power)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_mem_deep_sleep_power(uint32_t mem, uint32_t power)
 {
     MODIFY_REG(AON->MEM_PWR_SLP, mem, mem & __LL_PWR_GET_MEM_PWR_MASK(power));
 }
@@ -642,7 +643,7 @@ __STATIC_INLINE void ll_pwr_set_mem_deep_sleep_power(uint32_t mem, uint32_t powe
   *         @arg @ref LL_PWR_MEM_POWER_FULL
   *         @arg @ref LL_PWR_MEM_POWER_RETENTION
   */
-__STATIC_INLINE uint32_t ll_pwr_get_mem_deep_sleep_power(uint32_t mem)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_mem_deep_sleep_power(uint32_t mem)
 {
     return ((uint32_t)(READ_BITS(AON->MEM_PWR_SLP, mem) >> POSITION_VAL(mem)));
 }
@@ -696,7 +697,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_mem_deep_sleep_power(uint32_t mem)
   *         @arg @ref LL_PWR_MEM_POWER_RETENTION
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_mem_wakeup_power(uint32_t mem, uint32_t power)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_mem_wakeup_power(uint32_t mem, uint32_t power)
 {
     MODIFY_REG(AON->MEM_PWR_WKUP, mem, mem & __LL_PWR_GET_MEM_PWR_MASK(power));
 }
@@ -748,7 +749,7 @@ __STATIC_INLINE void ll_pwr_set_mem_wakeup_power(uint32_t mem, uint32_t power)
   *         @arg @ref LL_PWR_MEM_POWER_FULL
   *         @arg @ref LL_PWR_MEM_POWER_RETENTION
   */
-__STATIC_INLINE uint32_t ll_pwr_get_mem_wakeup_power(uint32_t mem)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_mem_wakeup_power(uint32_t mem)
 {
     return ((uint32_t)(READ_BITS(AON->MEM_PWR_WKUP, mem) >> POSITION_VAL(mem)));
 }
@@ -769,7 +770,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_mem_wakeup_power(uint32_t mem)
   *         @arg @ref LL_PWR_DPAD_LE_ON
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_dpad_le_value(uint32_t sleep, uint32_t wakeup)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_dpad_le_value(uint32_t sleep, uint32_t wakeup)
 {
     MODIFY_REG(AON->MEM_N_SLP_CTL, AON_MEM_CTL_DPAD_LE_SLP_VAL, (sleep << AON_MEM_CTL_DPAD_LE_SLP_VAL_Pos));
     MODIFY_REG(AON->MEM_N_SLP_CTL, AON_MEM_CTL_DPAD_LE_WKUP_VAL, (wakeup << AON_MEM_CTL_DPAD_LE_WKUP_VAL_Pos));
@@ -808,7 +809,7 @@ __STATIC_INLINE void ll_pwr_set_dpad_le_value(uint32_t sleep, uint32_t wakeup)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_req_excute_psc_command(uint32_t command)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_req_excute_psc_command(uint32_t command)
 {
     WRITE_REG(AON->PSC_CMD_OPC, (uint8_t)command);
     SET_BITS(AON->PSC_CMD, AON_PSC_CMD_MCU_PWR_REQ);
@@ -831,7 +832,7 @@ __STATIC_INLINE void ll_pwr_req_excute_psc_command(uint32_t command)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_timer_reset(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_timer_reset(void)
 {
     CLEAR_BITS(AON->PWR_RET01, AON_PWR_REG01_COMM_TIMER_RST_N);
 }
@@ -846,7 +847,7 @@ __STATIC_INLINE void ll_pwr_enable_comm_timer_reset(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_comm_timer_reset(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_comm_timer_reset(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_COMM_TIMER_RST_N);
 }
@@ -860,7 +861,7 @@ __STATIC_INLINE void ll_pwr_disable_comm_timer_reset(void)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_timer_reset(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_timer_reset(void)
 {
     return ((uint32_t)(READ_BITS(AON->PWR_RET01, AON_PWR_REG01_COMM_TIMER_RST_N) == 0x0U));
 }
@@ -877,7 +878,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_timer_reset(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_core_reset(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_core_reset(void)
 {
     CLEAR_BITS(AON->PWR_RET01, AON_PWR_REG01_COMM_CORE_RST_N);
 }
@@ -892,7 +893,7 @@ __STATIC_INLINE void ll_pwr_enable_comm_core_reset(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_comm_core_reset(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_comm_core_reset(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_COMM_CORE_RST_N);
 }
@@ -906,7 +907,7 @@ __STATIC_INLINE void ll_pwr_disable_comm_core_reset(void)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_reset(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_reset(void)
 {
     return ((uint32_t)(READ_BITS(AON->PWR_RET01, AON_PWR_REG01_COMM_CORE_RST_N) == 0x0U));
 }
@@ -921,7 +922,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_reset(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_timer_power(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_timer_power(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_ISO_EN_PD_COMM_TIMER);
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_PWR_EN_PD_COMM_TIMER);
@@ -938,7 +939,7 @@ __STATIC_INLINE void ll_pwr_enable_comm_timer_power(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_comm_timer_power(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_comm_timer_power(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_PWR_EN_PD_COMM_TIMER);
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_ISO_EN_PD_COMM_TIMER);
@@ -955,7 +956,7 @@ __STATIC_INLINE void ll_pwr_disable_comm_timer_power(void)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_timer_power(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_timer_power(void)
 {
     return ((uint32_t)(READ_BITS(AON->PWR_RET01, AON_PWR_REG01_PWR_EN_PD_COMM_TIMER) == AON_PWR_REG01_PWR_EN_PD_COMM_TIMER));
 }
@@ -970,7 +971,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_timer_power(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_core_power(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_core_power(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_ISO_EN_PD_COMM_CORE);
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_PWR_EN_PD_COMM_CORE);
@@ -987,7 +988,7 @@ __STATIC_INLINE void ll_pwr_enable_comm_core_power(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_comm_core_power(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_comm_core_power(void)
 {
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_PWR_EN_PD_COMM_CORE);
     SET_BITS(AON->PWR_RET01, AON_PWR_REG01_ISO_EN_PD_COMM_CORE);
@@ -1004,7 +1005,7 @@ __STATIC_INLINE void ll_pwr_disable_comm_core_power(void)
   *
   * @retval None
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_power(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_power(void)
 {
     return ((uint32_t)(READ_BITS(AON->PWR_RET01, AON_PWR_REG01_PWR_EN_PD_COMM_CORE) == AON_PWR_REG01_PWR_EN_PD_COMM_CORE));
 }
@@ -1023,7 +1024,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_power(void)
   *         @arg @ref LL_PWR_TIMER_READ_SEL_CAL_ALARM
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_timer_read_select(uint32_t select)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_timer_read_select(uint32_t select)
 {
     MODIFY_REG(AON->AON_PAD_CTL1, AON_PAD_CTL1_TIMER_READ_SEL, select);
 }
@@ -1041,7 +1042,7 @@ __STATIC_INLINE void ll_pwr_set_timer_read_select(uint32_t select)
   *         @arg @ref LL_PWR_TIMER_READ_SEL_SLP_TIMER
   *         @arg @ref LL_PWR_TIMER_READ_SEL_CAL_ALARM
   */
-__STATIC_INLINE uint32_t ll_pwr_get_timer_read_select(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_timer_read_select(void)
 {
     return ((uint32_t)READ_BITS(AON->AON_PAD_CTL1, AON_PAD_CTL1_TIMER_READ_SEL));
 }
@@ -1060,7 +1061,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_timer_read_select(void)
   *         @arg @ref LL_PWR_TIMER_READ_SEL_SLP_TIMER
   *         @arg @ref LL_PWR_TIMER_READ_SEL_CAL_ALARM
   */
-__STATIC_INLINE uint32_t ll_pwr_get_timer_read_value(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_timer_read_value(void)
 {
     return ((uint32_t)READ_REG(AON->TIMER_VAL));
 }
@@ -1070,13 +1071,13 @@ __STATIC_INLINE uint32_t ll_pwr_get_timer_read_value(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_OSC_SLEEP_EN
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_OSC_SLEEP_EN
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_osc_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_osc_sleep(void)
 {
-    SET_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN);
+    SET_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN);
 }
 
 
@@ -1086,13 +1087,13 @@ __STATIC_INLINE void ll_pwr_enable_osc_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_OSC_SLEEP_EN
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_OSC_SLEEP_EN
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_osc_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_osc_sleep(void)
 {
-    CLEAR_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN);
+    CLEAR_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN);
 }
 
 /**
@@ -1100,13 +1101,13 @@ __STATIC_INLINE void ll_pwr_disable_osc_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_OSC_SLEEP_EN
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_OSC_SLEEP_EN
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_osc_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_osc_sleep(void)
 {
-    return ((uint32_t)(READ_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN) == AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN));
+    return ((uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN) == AON_COMM_DEEPSLCNTL_OSC_SLEEP_EN));
 }
 
 /**
@@ -1114,13 +1115,13 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_osc_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_RADIO_SLEEP_EN
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_RADIO_SLEEP_EN
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_radio_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_radio_sleep(void)
 {
-    SET_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN);
+    SET_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN);
 }
 
 /**
@@ -1129,13 +1130,13 @@ __STATIC_INLINE void ll_pwr_enable_radio_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_RADIO_SLEEP_EN
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_RADIO_SLEEP_EN
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_radio_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_radio_sleep(void)
 {
-    CLEAR_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN);
+    CLEAR_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN);
 }
 
 /**
@@ -1143,13 +1144,13 @@ __STATIC_INLINE void ll_pwr_disable_radio_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_RADIO_SLEEP_EN
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_RADIO_SLEEP_EN
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_radio_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_radio_sleep(void)
 {
-    return ((uint32_t)(READ_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN) == AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN));
+    return ((uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN) == AON_COMM_DEEPSLCNTL_RADIO_SLEEP_EN));
 }
 
 /**
@@ -1158,13 +1159,13 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_radio_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_ON
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_ON
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_core_deep_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_core_deep_sleep(void)
 {
-    SET_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON);
+    SET_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON);
 }
 
 /**
@@ -1173,13 +1174,13 @@ __STATIC_INLINE void ll_pwr_enable_comm_core_deep_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_ON
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_ON
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_comm_core_deep_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_comm_core_deep_sleep(void)
 {
-    CLEAR_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON);
+    CLEAR_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON);
 }
 
 /**
@@ -1187,13 +1188,13 @@ __STATIC_INLINE void ll_pwr_disable_comm_core_deep_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_ON
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_ON
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_deep_sleep(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_deep_sleep(void)
 {
-    return ((uint32_t)(READ_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON) == AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON));
+    return ((uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON) == AON_COMM_DEEPSLCNTL_DEEP_SLEEP_ON));
 }
 
 /**
@@ -1203,13 +1204,13 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_deep_sleep(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_soft_wakeup_req(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_soft_wakeup_req(void)
 {
-    SET_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ);
+    SET_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ);
 }
 
 /**
@@ -1218,13 +1219,13 @@ __STATIC_INLINE void ll_pwr_enable_comm_soft_wakeup_req(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_soft_wakeup_req(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_soft_wakeup_req(void)
 {
-    return ((uint32_t)(READ_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ) == AON_COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ));
+    return ((uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ) == AON_COMM_DEEPSLCNTL_SOFT_WAKEUP_REQ));
 }
 
 /**
@@ -1233,13 +1234,13 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_soft_wakeup_req(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_EXTWKUPDSB
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_EXTWKUPDSB
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_enable_comm_core_ext_wakeup(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_enable_comm_core_ext_wakeup(void)
 {
-    CLEAR_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_EXTWKUPDSB);
+    CLEAR_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_EXTWKUPDSB);
 }
 
 /**
@@ -1248,13 +1249,13 @@ __STATIC_INLINE void ll_pwr_enable_comm_core_ext_wakeup(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_EXTWKUPDSB
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_EXTWKUPDSB
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_comm_core_ext_wakeup(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_comm_core_ext_wakeup(void)
 {
-    SET_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_EXTWKUPDSB);
+    SET_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_EXTWKUPDSB);
 }
 
 /**
@@ -1262,13 +1263,13 @@ __STATIC_INLINE void ll_pwr_disable_comm_core_ext_wakeup(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_EXTWKUPDSB
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_EXTWKUPDSB
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_ext_wakeup(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_ext_wakeup(void)
 {
-    return ((uint32_t)(READ_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_EXTWKUPDSB) == 0x0U));
+    return ((uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_EXTWKUPDSB) == 0x0U));
 }
 
 /**
@@ -1281,7 +1282,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_enabled_comm_core_ext_wakeup(void)
   * @param  time  32 bit clock cycles loaded into the AON_COMM_TMR_DEEPSLWKUP_DEEPSLTIME
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_comm_core_wakeup_time(uint32_t time)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_comm_core_wakeup_time(uint32_t time)
 {
     WRITE_REG(AON->PWR_RET28, time);
 }
@@ -1295,7 +1296,7 @@ __STATIC_INLINE void ll_pwr_set_comm_core_wakeup_time(uint32_t time)
   *
   * @retval Clock cycles to spend in Deep Sleep Mode before waking-up the device
   */
-__STATIC_INLINE uint32_t ll_pwr_get_comm_wakeup_time(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_comm_wakeup_time(void)
 {
     return ((uint32_t)READ_REG(AON->PWR_RET28));
 }
@@ -1310,7 +1311,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_comm_wakeup_time(void)
   *
   * @retval Sleep duration
   */
-__STATIC_INLINE uint32_t ll_pwr_get_comm_sleep_duration(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_comm_sleep_duration(void)
 {
     return ((uint32_t)READ_REG(MCU_SUB->COMM_TMR_DEEPSLPSTAT));
 }
@@ -1331,7 +1332,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_comm_sleep_duration(void)
   * @param  twrm    Time in low power oscillator cycles allowed for the radio module to leave low–power mode.
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_set_comm_wakeup_timing(uint32_t twext, uint32_t twosc, uint32_t twrm)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_set_comm_wakeup_timing(uint32_t twext, uint32_t twosc, uint32_t twrm)
 {
     WRITE_REG(AON->PWR_RET29, (twext << AON_COMM_TMR_ENBPRESET_TWEXT_Pos) |
                               (twosc << AON_COMM_TMR_ENBPRESET_TWOSC_Pos) |
@@ -1350,7 +1351,7 @@ __STATIC_INLINE void ll_pwr_set_comm_wakeup_timing(uint32_t twext, uint32_t twos
   *
   * @retval COMM_TMR_ENBPRESET Register value
   */
-__STATIC_INLINE uint32_t ll_pwr_read_comm_wakeup_timing(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_read_comm_wakeup_timing(void)
 {
     return ((uint32_t)READ_REG(AON->PWR_RET29));
 }
@@ -1360,7 +1361,7 @@ __STATIC_INLINE uint32_t ll_pwr_read_comm_wakeup_timing(void)
   *
   * @retval TWOSC value
   */
-__STATIC_INLINE uint32_t ll_pwr_read_comm_wakeup_timing_twosc(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_read_comm_wakeup_timing_twosc(void)
 {
     return ((((uint32_t)READ_REG(AON->PWR_RET29) & AON_COMM_TMR_ENBPRESET_TWOSC_Msk)) >> AON_COMM_TMR_ENBPRESET_TWOSC_Pos);
 }
@@ -1389,7 +1390,7 @@ __STATIC_INLINE uint32_t ll_pwr_read_comm_wakeup_timing_twosc(void)
   *         @arg @ref LL_PWR_EXTWKUP_PIN5
   *         @arg @ref LL_PWR_EXTWKUP_PIN_ALL
   */
-__STATIC_INLINE uint32_t ll_pwr_get_ext_wakeup_status(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_get_ext_wakeup_status(void)
 {
     return ((uint32_t)(READ_BITS(AON->SLP_EVENT, AON_SLP_EVENT_EXT_WKUP_STATUS) >> AON_SLP_EVENT_EXT_WKUP_STATUS_Pos));
 }
@@ -1411,7 +1412,7 @@ __STATIC_INLINE uint32_t ll_pwr_get_ext_wakeup_status(void)
   *         @arg @ref LL_PWR_EXTWKUP_PIN_ALL
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_clear_ext_wakeup_status(uint32_t wakeup_pin)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_clear_ext_wakeup_status(uint32_t wakeup_pin)
 {
     WRITE_REG(AON->SLP_EVENT, ~(wakeup_pin << AON_SLP_EVENT_EXT_WKUP_STATUS_Pos));
 }
@@ -1436,13 +1437,13 @@ __STATIC_INLINE void ll_pwr_clear_ext_wakeup_status(uint32_t wakeup_pin)
   *         @arg @ref LL_PWR_WKUP_EVENT_CALENDAR
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_clear_wakeup_event(uint32_t event)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_clear_wakeup_event(uint32_t event)
 {
     WRITE_REG(AON->SLP_EVENT, ~(event & LL_PWR_WKUP_EVENT_ALL));
 }
 
 /**
-  * @brief  Indicates if the Power State Controller is in busy state.
+  * @brief  Indicate if the Power State Controller is in busy state.
   * @note   This is bit set 1 when the PSC_CMD_REQ[0] is set to 1, and will remain 1 until
   *         the PSC_CMD_OPC has been transferred to the PSC.
   *
@@ -1452,24 +1453,24 @@ __STATIC_INLINE void ll_pwr_clear_wakeup_event(uint32_t event)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_active_flag_psc_cmd_busy(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_active_flag_psc_cmd_busy(void)
 {
     return (READ_BITS(AON->PSC_CMD, AON_PSC_CMD_MCU_PWR_BUSY) == AON_PSC_CMD_MCU_PWR_BUSY);
 }
 
 /**
-  * @brief  Indicates if the Communication Core is in Deep Sleep Mode.
+  * @brief  Indicate if the Communication Core is in Deep Sleep Mode.
   * @note   When Communication Core is in Deep Sleep Mode, only low_power_clk is running.
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_STAT
+  *  MSIO_PAD_CFG_1 | COMM_DEEPSLCNTL_DEEP_SLEEP_STAT
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_pwr_is_active_flag_comm_deep_sleep_stat(void)
+SECTION_RAM_CODE __STATIC_INLINE uint32_t ll_pwr_is_active_flag_comm_deep_sleep_stat(void)
 {
-    return (READ_BITS(AON->MISO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT) == AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT);
+    return (READ_BITS(AON->MSIO_PAD_CFG_1, AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT) == AON_COMM_DEEPSLCNTL_DEEP_SLEEP_STAT);
 }
 
 /**
@@ -1482,7 +1483,7 @@ __STATIC_INLINE uint32_t ll_pwr_is_active_flag_comm_deep_sleep_stat(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_pwr_disable_cache_module(void)
+SECTION_RAM_CODE __STATIC_INLINE void ll_pwr_disable_cache_module(void)
 {
     SET_BITS(XQSPI->CACHE.CTRL0, XQSPI_CACHE_CTRL0_DIS);
     __NOP();__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();

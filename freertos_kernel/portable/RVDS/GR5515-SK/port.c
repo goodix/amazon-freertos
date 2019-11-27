@@ -1,6 +1,6 @@
 /*
- * FreeRTOS Kernel V10.0.0
- * Copyright (C) 2017 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS Kernel V10.2.0
+ * Copyright (C) 2019 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -10,8 +10,7 @@
  * subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software. If you wish to use our Amazon
- * FreeRTOS name, please do so in a fair use way that does not cause confusion.
+ * copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -33,9 +32,6 @@
 /* Scheduler includes. */
 #include "FreeRTOS.h"
 #include "task.h"
-//#include "systick.h"
-
-
 
 #ifndef __TARGET_FPU_VFP
 	#error This port can only be used when the project options are configured to enable hardware floating point support.
@@ -147,6 +143,12 @@ static void prvEnableVFP( void );
  */
 static void prvTaskExitError( void );
 
+enum
+{
+	 RTOS_NOT_INIT=0,
+	 RTOS_INIT_DONE,
+};
+static uint8_t xPortSystick_rtos_ready = RTOS_NOT_INIT;
 /*-----------------------------------------------------------*/
 
 /* Each task maintains its own interrupt status in the critical nesting
@@ -249,7 +251,6 @@ __asm void vPortSVCHandler( void )
 	msr psp, r0
 	isb
 	mov r0, #0
-	
 	msr	basepri, r0
 	bx r14
 }
@@ -318,16 +319,8 @@ BaseType_t xPortStartScheduler( void )
 	#if( configASSERT_DEFINED == 1 )
 	{
 		volatile uint32_t ulOriginalPriority;
-		volatile uint32_t ulOriginalPriority2;
 		volatile uint8_t * const pucFirstUserPriorityRegister = ( uint8_t * ) ( portNVIC_IP_REGISTERS_OFFSET_16 + portFIRST_USER_INTERRUPT_NUMBER );
 		volatile uint8_t ucMaxPriorityValue;
-        
-        volatile uint8_t pbits = 
-#if defined (__NVIC_PRIO_BITS)            
-        __NVIC_PRIO_BITS;
-#else
-        configPRIO_BITS;
-#endif        
 
 		/* Determine the maximum priority from which ISR safe FreeRTOS API
 		functions can be called.  ISR safe functions are those that end in
@@ -344,7 +337,6 @@ BaseType_t xPortStartScheduler( void )
 		/* Read the value back to see how many bits stuck. */
 		ucMaxPriorityValue = *pucFirstUserPriorityRegister;
 
-		ulOriginalPriority2 = configKERNEL_INTERRUPT_PRIORITY;
 		/* The kernel interrupt priority should be set to the lowest
 		priority. */
 		//configASSERT( ucMaxPriorityValue == ( configKERNEL_INTERRUPT_PRIORITY & ucMaxPriorityValue ) );
@@ -407,6 +399,7 @@ BaseType_t xPortStartScheduler( void )
 	/* Lazy save always. */
 	*( portFPCCR ) |= portASPEN_AND_LSPEN_BITS;
   
+	xPortSystick_rtos_ready = RTOS_INIT_DONE;
 	svc_func_register(0xF4, vPortSVCHandler);
 	
 	/* Start the first task. */
@@ -514,25 +507,30 @@ __asm void xPortPendSVHandler( void )
 	bx r14
 }
 /*-----------------------------------------------------------*/
-
 void xPortSysTickHandler( void )
 {
-	/* The SysTick runs at the lowest interrupt priority, so when this interrupt
-	executes all interrupts must be unmasked.  There is therefore no need to
-	save and then restore the interrupt mask value as its value is already
-	known - therefore the slightly faster vPortRaiseBASEPRI() function is used
-	in place of portSET_INTERRUPT_MASK_FROM_ISR(). */
-	vPortRaiseBASEPRI();
-	{
-		/* Increment the RTOS tick. */
-		if( xTaskIncrementTick() != pdFALSE )
-		{
-			/* A context switch is required.  Context switching is performed in
-			the PendSV interrupt.  Pend the PendSV interrupt. */
-			portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
-		}
-	}
-	vPortClearBASEPRIFromISR();
+    /* The SysTick runs at the lowest interrupt priority, so when this interrupt
+    executes all interrupts must be unmasked.  There is therefore no need to
+    save and then restore the interrupt mask value as its value is already
+    known - therefore the slightly faster vPortRaiseBASEPRI() function is used
+    in place of portSET_INTERRUPT_MASK_FROM_ISR(). */
+    vPortRaiseBASEPRI();
+    {
+        /* Increment the RTOS tick. */
+        if (RTOS_INIT_DONE == xPortSystick_rtos_ready)
+        {
+            if( xTaskIncrementTick() != pdFALSE )
+            {
+                /* A context switch is required.  Context switching is performed in
+                the PendSV interrupt.  Pend the PendSV interrupt. */
+                portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+            }
+        }
+        
+        //extern void hal_increment_tick(void);
+        //hal_increment_tick();
+    }
+    vPortClearBASEPRIFromISR();
 }
 /*-----------------------------------------------------------*/
 
@@ -608,13 +606,12 @@ void xPortSysTickHandler( void )
 			time variable must remain unmodified, so a copy is taken. */
 			xModifiableIdleTime = xExpectedIdleTime;
 			configPRE_SLEEP_PROCESSING( xModifiableIdleTime );
-            if( xModifiableIdleTime > 0 )
-            {
-                __dsb( portSY_FULL_READ_WRITE );
-                extern void pwr_mgmt_wfe_sleep();
-                pwr_mgmt_wfe_sleep();
-                __isb( portSY_FULL_READ_WRITE );
-            }
+			if( xModifiableIdleTime > 0 )
+			{
+				__dsb( portSY_FULL_READ_WRITE );
+				__wfi();
+				__isb( portSY_FULL_READ_WRITE );
+			}
 			configPOST_SLEEP_PROCESSING( xExpectedIdleTime );
 
 			/* Re-enable interrupts to allow the interrupt that brought the MCU
@@ -701,7 +698,6 @@ void xPortSysTickHandler( void )
 		}
 	}
 
- 
 #endif /* #if configUSE_TICKLESS_IDLE */
 
 /*-----------------------------------------------------------*/
@@ -714,7 +710,6 @@ void xPortSysTickHandler( void )
 
 	void vPortSetupTimerInterrupt( void )
 	{
-		//systick_config_t tick_config;
 		/* Calculate the constants required to configure the tick interrupt. */
 		#if( configUSE_TICKLESS_IDLE == 1 )
 		{
@@ -731,7 +726,6 @@ void xPortSysTickHandler( void )
 		/* Configure SysTick to interrupt at the requested rate. */
 		portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
 		portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT | portNVIC_SYSTICK_ENABLE_BIT );
-		
 	}
 
 #endif /* configOVERRIDE_DEFAULT_TICK_CONFIGURATION */
@@ -805,23 +799,5 @@ __asm uint32_t vPortGetIPSR( void )
 	}
 
 #endif /* configASSERT_DEFINED */
-	
-	
 
-
-//void vApplicationStackOverflowHook()
-//{
-//	
-//}
-
-//void vApplicationTickHook()
-//{
-//	
-//}
-
-
-//void vApplicationMallocFailedHook()
-//{
-//	
-//}
 

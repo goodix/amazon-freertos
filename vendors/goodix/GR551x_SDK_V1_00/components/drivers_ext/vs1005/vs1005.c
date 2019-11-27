@@ -54,7 +54,7 @@ const uint16_t g_bit_rate[2][16]=
 
 vs_param_t g_vs_set_param =
 {
-    .voice_num = 180,
+    .voice_num = 240,
     .bf_limit = 6,
     .bass = 15,
     .tf_limit = 10,
@@ -311,14 +311,10 @@ uint16_t vs_get_end_fill_byte(void)
 
 uint8_t vs_send_music_data(uint8_t *buf,uint8_t len)
 {
-    uint8_t i = 0;
     if(vs_read_dq_pin()!=BIT_RESET)
     {
         vs_set_xdcs_pin(BIT_RESET);
-        for(i=0; i<len; i++)
-        {
-            vs_spi_write_byte(buf[i]);
-        }
+        vs_spi_write_buffer(buf, len);
         vs_set_xdcs_pin(BIT_SET);
     }
     else

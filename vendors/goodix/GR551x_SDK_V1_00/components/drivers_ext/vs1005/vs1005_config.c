@@ -47,14 +47,7 @@
  * LOCAL VARIABLE DEFINITIONS
  *****************************************************************************************
  */
-
-spi_handle_t g_SPIMHandle;
-
-static dma_handle_t      s_TXDMAHandle;
-static dma_handle_t      s_RXDMAHandle;
-static volatile uint8_t  s_master_tx_done = 0;
-static volatile uint8_t  s_master_rx_done = 0;
-
+static spi_handle_t g_SPIMHandle;
 /*
  * GLOBAL FUNCTION DEFINITIONS
  ****************************************************************************************
@@ -62,12 +55,6 @@ static volatile uint8_t  s_master_rx_done = 0;
 void hal_spi_msp_init(spi_handle_t *p_spi)
 {
     gpio_init_t GPIO_InitStructure;
-    
-    NVIC_ClearPendingIRQ(SPI_M_IRQn);
-    NVIC_EnableIRQ(SPI_M_IRQn);
-    
-    NVIC_ClearPendingIRQ(DMA_IRQn);
-    hal_nvic_enable_irq(DMA_IRQn);
     
     /* CONFIG FOR GPIO */
     GPIO_InitStructure.mode = GPIO_MODE_OUTPUT;
@@ -94,83 +81,17 @@ void hal_spi_msp_init(spi_handle_t *p_spi)
     /* CONFIG FOR SPI CONTROL IO */
     GPIO_InitStructure.mode = GPIO_MODE_MUX;
     GPIO_InitStructure.pin  = VS_CLK_PIN | VS_MOSI_PIN | VS_MISO_PIN;
-    GPIO_InitStructure.mux  = VS_SPI_GPIO_MUX_0;
-    hal_gpio_init(VS_SPI_GPIO_GRP_0, &GPIO_InitStructure);
- 
-    /* Configure the DMA handler for Transmission process */
-    p_spi->p_dmarx = &s_RXDMAHandle;
-    p_spi->p_dmatx = &s_TXDMAHandle;
-    s_RXDMAHandle.p_parent = p_spi;
-    s_TXDMAHandle.p_parent = p_spi;
-    p_spi->p_dmatx->instance           = DMA_Channel0;
-    p_spi->p_dmatx->init.direction     = DMA_MEMORY_TO_PERIPH;
-    p_spi->p_dmatx->init.src_increment = DMA_SRC_INCREMENT;
-    p_spi->p_dmatx->init.dst_increment = DMA_DST_NO_CHANGE;
-    if (p_spi->init.data_size <= SPI_DATASIZE_8BIT)
-    {
-        p_spi->p_dmatx->init.src_data_alignment = DMA_SDATAALIGN_BYTE;
-        p_spi->p_dmatx->init.dst_data_alignment = DMA_DDATAALIGN_BYTE;
-    }
-    else if (p_spi->init.data_size <= SPI_DATASIZE_16BIT)
-    {
-        p_spi->p_dmatx->init.src_data_alignment = DMA_SDATAALIGN_HALFWORD;
-        p_spi->p_dmatx->init.dst_data_alignment = DMA_DDATAALIGN_HALFWORD;
-    }
-    else
-    {
-        p_spi->p_dmatx->init.src_data_alignment = DMA_SDATAALIGN_WORD;
-        p_spi->p_dmatx->init.dst_data_alignment = DMA_DDATAALIGN_WORD;
-    }
-    p_spi->p_dmatx->init.mode          = DMA_NORMAL;
-    p_spi->p_dmatx->init.priority      = DMA_PRIORITY_LOW;
-    
-    p_spi->p_dmarx->instance           = DMA_Channel1;
-    p_spi->p_dmarx->init.direction     = DMA_PERIPH_TO_MEMORY;
-    p_spi->p_dmarx->init.src_increment = DMA_SRC_NO_CHANGE;
-    p_spi->p_dmarx->init.dst_increment = DMA_DST_INCREMENT;
-    if (p_spi->init.data_size <= SPI_DATASIZE_8BIT)
-    {
-        p_spi->p_dmarx->init.src_data_alignment = DMA_SDATAALIGN_BYTE;
-        p_spi->p_dmarx->init.dst_data_alignment = DMA_DDATAALIGN_BYTE;
-    }
-    else if (p_spi->init.data_size <= SPI_DATASIZE_16BIT)
-    {
-        p_spi->p_dmarx->init.src_data_alignment = DMA_SDATAALIGN_HALFWORD;
-        p_spi->p_dmarx->init.dst_data_alignment = DMA_DDATAALIGN_HALFWORD;
-    }
-    else
-    {
-        p_spi->p_dmarx->init.src_data_alignment = DMA_SDATAALIGN_WORD;
-        p_spi->p_dmarx->init.dst_data_alignment = DMA_DDATAALIGN_WORD;
-    }
-    p_spi->p_dmarx->init.mode          = DMA_NORMAL;
-    p_spi->p_dmarx->init.priority      = DMA_PRIORITY_LOW;
-    
-    hal_dma_init(p_spi->p_dmatx);
-    hal_dma_init(p_spi->p_dmarx);
+    GPIO_InitStructure.mux  = VS_SPI_GPIO_MUX;
+    hal_gpio_init(VS_SPI_GPIO_GRP, &GPIO_InitStructure);
 }
 
 void hal_spi_msp_deinit(spi_handle_t *p_spi)
 {
-    hal_gpio_deinit(VS1005_GROUP_0, VS_XCS_PIN | VS_XDCS_PIN | VS_CLK_PIN | VS_MOSI_PIN | VS_MISO_PIN);
-    NVIC_DisableIRQ(SPI_M_IRQn);
-    hal_dma_deinit(p_spi->p_dmatx);
-    hal_dma_deinit(p_spi->p_dmarx);
-}
-
-void hal_spi_rx_cplt_callback(spi_handle_t *p_spi)
-{
-    s_master_rx_done = 1;
-}
-
-void hal_spi_tx_cplt_callback(spi_handle_t *p_spi)
-{
-    s_master_tx_done = 1;
+    hal_gpio_deinit(VS1005_GROUP, VS_XCS_PIN | VS_XDCS_PIN | VS_CLK_PIN | VS_MOSI_PIN | VS_MISO_PIN);
 }
 
 void vs_config_init(void)
 {
-    hal_status_t status;
     g_SPIMHandle.p_instance              = SPIM;
     g_SPIMHandle.init.data_size          = SPI_DATASIZE_8BIT;
     g_SPIMHandle.init.clock_polarity     = SPI_POLARITY_HIGH;
@@ -178,31 +99,26 @@ void vs_config_init(void)
     g_SPIMHandle.init.baudrate_prescaler = SystemCoreClock / 2000000;
     g_SPIMHandle.init.ti_mode            = SPI_TIMODE_DISABLE;
     g_SPIMHandle.init.slave_select       = SPI_SLAVE_SELECT_0;
-
-
     hal_spi_deinit(&g_SPIMHandle); 
-    status = hal_spi_init(&g_SPIMHandle);
-    if (status != HAL_OK)
-    {
-        
-    }
+    hal_spi_init(&g_SPIMHandle);
 }
 
 uint8_t vs_spi_read_byte(void)
 {
-    uint8_t wdata[4] = {0};
-    uint8_t rdata[4] = {0};
-    wdata[0] = 0xff;
-    hal_spi_transmit_receive(&g_SPIMHandle, wdata, rdata, 1, 5000);
-    return rdata[0];
+    uint8_t rdata = 0;
+    hal_spi_receive(&g_SPIMHandle, &rdata, 1, 5000);
+    return rdata;
 }
 
 void vs_spi_write_byte(uint8_t data)
 {
-    uint8_t wdata[4] = {0};
-    uint8_t rdata[4] = {0};
-    wdata[0] = data;
-    hal_spi_transmit_receive(&g_SPIMHandle, wdata, rdata, 1, 5000);
+    uint8_t wdata = data;
+    hal_spi_transmit(&g_SPIMHandle, &wdata, 1, 5000);
+}
+
+void vs_spi_write_buffer(uint8_t *data, uint16_t len)
+{
+    hal_spi_transmit(&g_SPIMHandle, data, len, 5000);
 }
 
 void vs_set_rst_pin(bit_action_t bit_val)

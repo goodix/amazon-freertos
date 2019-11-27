@@ -109,7 +109,7 @@ typedef struct _wdt_handle
 
 /** @} */
 
-/** @addtogroup HAL_WDT_STRUCTURES Callback Structures
+/** @addtogroup HAL_WDT_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -220,8 +220,8 @@ hal_status_t hal_wdt_deinit(wdt_handle_t *p_wdt);
  * @brief  Initialize the WDT MSP.
  * @param[in]  p_wdt: Pointer to a WDT handle which contains the configuration
  *               information for the specified WDT module.
- * @note   When rewriting this function in user file, mechanism may be added
- *         to avoid multiple initialize when hal_wdt_init function is called
+ * @note   When rewriting this function in a user file, this mechanism may be added
+ *         to avoid multiple initialization when hal_wdt_init function is called
  *         again to change parameters.
  ****************************************************************************************
  */
@@ -232,8 +232,8 @@ void hal_wdt_msp_init(wdt_handle_t *p_wdt);
  * @brief  De-initialize the WDT MSP.
  * @param[in]  p_wdt: Pointer to a WDT handle which contains the configuration
  *               information for the specified WDT module.
- * @note   When rewriting this function in user file, mechanism may be added
- *         to avoid multiple initialize when hal_wdt_init function is called
+ * @note   When rewriting this function in a user file, this mechanism may be added
+ *         to avoid multiple initialization when hal_wdt_init function is called
  *         again to change parameters.
  ****************************************************************************************
  */

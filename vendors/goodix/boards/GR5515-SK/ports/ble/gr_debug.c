@@ -101,7 +101,7 @@ void gr_debug_print_irq_prio(void){
 static void gr_ble_stack_task(void * pvParameter){
 #if GR_CALLBACK_TRACE_ENABLE == 0u
     //if callback trace is on, disable log sync
-    app_log_activate_thread_safe();
+    //app_log_activate_thread_safe();
 #endif
     
 #if GR_DEBUG_CODE > 0u    
@@ -109,11 +109,11 @@ static void gr_ble_stack_task(void * pvParameter){
     TaskStatus_t *TStatus = NULL;
     uint32_t  tun_time = 0, i=0;
     
-    vTaskDelay(500);    
+    //vTaskDelay(500);    
     gr_debug_print_irq_prio();
 #endif
     
-    vTaskDelay(500);
+    //vTaskDelay(500);
     
     while(true) {
 #if GR_DEBUG_CODE > 0u        
@@ -148,11 +148,11 @@ static void gr_ble_stack_task(void * pvParameter){
             GRH_LOG(INFO, ("=======================================================\r\n"));
         }        
                 
-        vTaskDelay(5000);
+        vTaskDelay(1000);
         
         //__BKPT(0);
         
-        gr_jump2iap();
+        //gr_jump2iap();
         
         //__set_FAULTMASK(1);
         //NVIC_SystemReset();

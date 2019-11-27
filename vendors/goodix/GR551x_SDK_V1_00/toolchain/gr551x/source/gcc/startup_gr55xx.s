@@ -125,11 +125,9 @@ __Vectors:
     .type       Reset_Handler, %function
 Reset_Handler:
  
-    bl    boot_code
-
     bl    SystemInit
 
-    bl    main
+    bl    main_init
 
     .pool
     .size    Reset_Handler, . - Reset_Handler
@@ -161,8 +159,6 @@ Default_Handler:
     def_irq_handler    SysTick_Handler
 
     def_irq_handler    WDT_IRQHandler
-    def_irq_handler    BLE_SDK_Handler
-    def_irq_handler    BLE_IRQHandler
     def_irq_handler    DMA_IRQHandler
     def_irq_handler    SPI_M_IRQHandler
     def_irq_handler    SPI_S_IRQHandler
@@ -185,7 +181,6 @@ Default_Handler:
     def_irq_handler    XQSPI_IRQHandler
     def_irq_handler    QSPI1_IRQHandler
     def_irq_handler    PWR_CMD_IRQHandler
-    def_irq_handler    BLESLP_IRQHandler
     def_irq_handler    SLPTIMER_IRQHandler
     def_irq_handler    EXTWKUP_IRQHandler
     def_irq_handler    AON_WDT_IRQHandler

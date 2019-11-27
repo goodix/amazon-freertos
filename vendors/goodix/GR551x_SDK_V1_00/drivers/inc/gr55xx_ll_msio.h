@@ -238,8 +238,8 @@ typedef struct _ll_msio_init
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | OE_N
-  *  MISO_PAD_CFG_0 | IE_N
+  *  MSIO_PAD_CFG_0 | OE_N
+  *  MSIO_PAD_CFG_0 | IE_N
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -257,17 +257,17 @@ typedef struct _ll_msio_init
   */
 __STATIC_INLINE void ll_msio_set_pin_direction(uint32_t pin_mask, uint32_t direction)
 {
-    uint32_t oe_mask = (pin_mask << AON_MISO_PAD_CFG_0_OE_N_Pos) & AON_MISO_PAD_CFG_0_OE_N;
-    uint32_t ie_mask = (pin_mask << AON_MISO_PAD_CFG_0_IE_N_Pos) & AON_MISO_PAD_CFG_0_IE_N;
+    uint32_t oe_mask = (pin_mask << AON_MSIO_PAD_CFG_0_OE_N_Pos) & AON_MSIO_PAD_CFG_0_OE_N;
+    uint32_t ie_mask = (pin_mask << AON_MSIO_PAD_CFG_0_IE_N_Pos) & AON_MSIO_PAD_CFG_0_IE_N;
     if (direction != LL_MSIO_DIRECTION_NONE)
     {
         if (direction != LL_MSIO_DIRECTION_INOUT)
-            MODIFY_REG(AON->MISO_PAD_CFG_0, (ie_mask | oe_mask), (direction != LL_MSIO_DIRECTION_INPUT) ? ie_mask : oe_mask);
+            MODIFY_REG(AON->MSIO_PAD_CFG_0, (ie_mask | oe_mask), (direction != LL_MSIO_DIRECTION_INPUT) ? ie_mask : oe_mask);
         else
-            CLEAR_BITS(AON->MISO_PAD_CFG_0, (ie_mask | oe_mask));
+            CLEAR_BITS(AON->MSIO_PAD_CFG_0, (ie_mask | oe_mask));
     }
     else
-        SET_BITS(AON->MISO_PAD_CFG_0, (ie_mask | oe_mask));
+        SET_BITS(AON->MSIO_PAD_CFG_0, (ie_mask | oe_mask));
 }
 
 /**
@@ -277,8 +277,8 @@ __STATIC_INLINE void ll_msio_set_pin_direction(uint32_t pin_mask, uint32_t direc
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | OE_N
-  *  MISO_PAD_CFG_0 | IE_N
+  *  MSIO_PAD_CFG_0 | OE_N
+  *  MSIO_PAD_CFG_0 | IE_N
   *
   * @param  pin This parameter can be one of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -294,9 +294,9 @@ __STATIC_INLINE void ll_msio_set_pin_direction(uint32_t pin_mask, uint32_t direc
   */
 __STATIC_INLINE uint32_t ll_msio_get_pin_direction(uint32_t pin)
 {
-    uint32_t oe_mask = (pin << AON_MISO_PAD_CFG_0_OE_N_Pos) & AON_MISO_PAD_CFG_0_OE_N;
-    uint32_t ie_mask = (pin << AON_MISO_PAD_CFG_0_IE_N_Pos) & AON_MISO_PAD_CFG_0_IE_N;
-    uint32_t mask    = READ_BITS(AON->MISO_PAD_CFG_0, (ie_mask | oe_mask));
+    uint32_t oe_mask = (pin << AON_MSIO_PAD_CFG_0_OE_N_Pos) & AON_MSIO_PAD_CFG_0_OE_N;
+    uint32_t ie_mask = (pin << AON_MSIO_PAD_CFG_0_IE_N_Pos) & AON_MSIO_PAD_CFG_0_IE_N;
+    uint32_t mask    = READ_BITS(AON->MSIO_PAD_CFG_0, (ie_mask | oe_mask));
     if (mask == (ie_mask | oe_mask))
         return LL_MSIO_DIRECTION_NONE;
     else
@@ -313,7 +313,7 @@ __STATIC_INLINE uint32_t ll_msio_get_pin_direction(uint32_t pin)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | AE_N
+  *  MSIO_PAD_CFG_1 | AE_N
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -329,9 +329,9 @@ __STATIC_INLINE uint32_t ll_msio_get_pin_direction(uint32_t pin)
   */
 __STATIC_INLINE void ll_msio_set_pin_mode(uint32_t pin_mask, uint32_t mode)
 {
-    uint32_t ae_mask = (pin_mask << AON_MISO_PAD_CFG_1_AE_N_Pos) & AON_MISO_PAD_CFG_1_AE_N;
+    uint32_t ae_mask = (pin_mask << AON_MSIO_PAD_CFG_1_AE_N_Pos) & AON_MSIO_PAD_CFG_1_AE_N;
     uint32_t ae_n    = (mode != LL_MSIO_MODE_DIGITAL) ? 0U : ae_mask;
-    MODIFY_REG(AON->MISO_PAD_CFG_1, ae_mask, ae_n);
+    MODIFY_REG(AON->MSIO_PAD_CFG_1, ae_mask, ae_n);
 }
 
 /**
@@ -341,7 +341,7 @@ __STATIC_INLINE void ll_msio_set_pin_mode(uint32_t pin_mask, uint32_t mode)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | AE_N
+  *  MSIO_PAD_CFG_1 | AE_N
   *
   * @param  pin This parameter can be one of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -355,8 +355,8 @@ __STATIC_INLINE void ll_msio_set_pin_mode(uint32_t pin_mask, uint32_t mode)
   */
 __STATIC_INLINE uint32_t ll_msio_get_pin_mode(uint32_t pin)
 {
-    uint32_t ae_mask = (pin << AON_MISO_PAD_CFG_1_AE_N_Pos) & AON_MISO_PAD_CFG_1_AE_N;
-    return ((READ_BITS(AON->MISO_PAD_CFG_1, ae_mask) == ae_mask) ? LL_MSIO_MODE_DIGITAL : LL_MSIO_MODE_ANALOG);
+    uint32_t ae_mask = (pin << AON_MSIO_PAD_CFG_1_AE_N_Pos) & AON_MSIO_PAD_CFG_1_AE_N;
+    return ((READ_BITS(AON->MSIO_PAD_CFG_1, ae_mask) == ae_mask) ? LL_MSIO_MODE_DIGITAL : LL_MSIO_MODE_ANALOG);
 }
 
 /**
@@ -364,8 +364,8 @@ __STATIC_INLINE uint32_t ll_msio_get_pin_mode(uint32_t pin)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | RE_N
-  *  MISO_PAD_CFG_1 | RTYPE
+  *  MSIO_PAD_CFG_0 | RE_N
+  *  MSIO_PAD_CFG_1 | RTYPE
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -384,14 +384,14 @@ __STATIC_INLINE void ll_msio_set_pin_pull(uint32_t pin_mask, uint32_t pull)
 {
     if (pull != LL_MSIO_PULL_NO)
     {
-        uint32_t rtype_mask = (pin_mask << AON_MISO_PAD_CFG_1_RTYPE_Pos) & AON_MISO_PAD_CFG_1_RTYPE;
+        uint32_t rtype_mask = (pin_mask << AON_MSIO_PAD_CFG_1_RTYPE_Pos) & AON_MSIO_PAD_CFG_1_RTYPE;
         uint32_t rtype      = (pull != LL_MSIO_PULL_UP) ? 0U : rtype_mask;
-        CLEAR_BITS(AON->MISO_PAD_CFG_0, (pin_mask << AON_MISO_PAD_CFG_0_RE_N_Pos) & AON_MISO_PAD_CFG_0_RE_N);
-        MODIFY_REG(AON->MISO_PAD_CFG_1, rtype_mask, rtype);
+        CLEAR_BITS(AON->MSIO_PAD_CFG_0, (pin_mask << AON_MSIO_PAD_CFG_0_RE_N_Pos) & AON_MSIO_PAD_CFG_0_RE_N);
+        MODIFY_REG(AON->MSIO_PAD_CFG_1, rtype_mask, rtype);
     }
     else
     {
-        SET_BITS(AON->MISO_PAD_CFG_0, (pin_mask << AON_MISO_PAD_CFG_0_RE_N_Pos) & AON_MISO_PAD_CFG_0_RE_N);
+        SET_BITS(AON->MSIO_PAD_CFG_0, (pin_mask << AON_MSIO_PAD_CFG_0_RE_N_Pos) & AON_MSIO_PAD_CFG_0_RE_N);
     }
 }
 
@@ -401,8 +401,8 @@ __STATIC_INLINE void ll_msio_set_pin_pull(uint32_t pin_mask, uint32_t pull)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | RE_N
-  *  MISO_PAD_CFG_1 | RTYPE
+  *  MSIO_PAD_CFG_0 | RE_N
+  *  MSIO_PAD_CFG_1 | RTYPE
   *
   * @param  pin This parameter can be one of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -417,14 +417,14 @@ __STATIC_INLINE void ll_msio_set_pin_pull(uint32_t pin_mask, uint32_t pull)
   */
 __STATIC_INLINE uint32_t ll_msio_get_pin_pull(uint32_t pin)
 {
-    if (READ_BITS(AON->MISO_PAD_CFG_0, (pin << AON_MISO_PAD_CFG_0_RE_N_Pos) & AON_MISO_PAD_CFG_0_RE_N))
+    if (READ_BITS(AON->MSIO_PAD_CFG_0, (pin << AON_MSIO_PAD_CFG_0_RE_N_Pos) & AON_MSIO_PAD_CFG_0_RE_N))
     {
         return LL_MSIO_PULL_NO;
     }
     else
     {
-        uint32_t rtype_mask = (pin << AON_MISO_PAD_CFG_1_RTYPE_Pos) & AON_MISO_PAD_CFG_1_RTYPE;
-        return ((READ_BITS(AON->MISO_PAD_CFG_1, rtype_mask) != RESET) ? LL_MSIO_PULL_UP : LL_MSIO_PULL_DOWN);
+        uint32_t rtype_mask = (pin << AON_MSIO_PAD_CFG_1_RTYPE_Pos) & AON_MSIO_PAD_CFG_1_RTYPE;
+        return ((READ_BITS(AON->MSIO_PAD_CFG_1, rtype_mask) != RESET) ? LL_MSIO_PULL_UP : LL_MSIO_PULL_DOWN);
     }
 }
 
@@ -436,7 +436,7 @@ __STATIC_INLINE uint32_t ll_msio_get_pin_pull(uint32_t pin)
   *  Register|BitsName
   *  --------|--------
   *  MSIO_PAD_MUX_CTL | CTL_00_04
-  *  MISO_PAD_CFG_1   | MCU_OVR
+  *  MSIO_PAD_CFG_1   | MCU_OVR
   *
   * @param  pin This parameter can be one of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -460,12 +460,12 @@ __STATIC_INLINE void ll_msio_set_pin_mux(uint32_t pin, uint32_t mux)
     uint32_t pos = POSITION_VAL(pin) << 2;
     if(LL_MSIO_MUX_7 == mux)
     {
-        CLEAR_BITS(AON->MISO_PAD_CFG_1, pin << AON_MISO_PAD_CFG_1_MCU_OVR_Pos);
+        CLEAR_BITS(AON->MSIO_PAD_CFG_1, pin << AON_MSIO_PAD_CFG_1_MCU_OVR_Pos);
     }
     else
     {
         MODIFY_REG(MCU_SUB->MSIO_PAD_MUX_CTL, 0xF << pos, mux << pos);
-        SET_BITS(AON->MISO_PAD_CFG_1, pin << AON_MISO_PAD_CFG_1_MCU_OVR_Pos);
+        SET_BITS(AON->MSIO_PAD_CFG_1, pin << AON_MSIO_PAD_CFG_1_MCU_OVR_Pos);
     }
 }
 
@@ -475,7 +475,7 @@ __STATIC_INLINE void ll_msio_set_pin_mux(uint32_t pin, uint32_t mux)
   *  Register|BitsName
   *  --------|--------
   *  MSIO_PAD_MUX_CTL | CTL_00_04
-  *  MISO_PAD_CFG_1   | MCU_OVR
+  *  MSIO_PAD_CFG_1   | MCU_OVR
   *
   * @param  pin This parameter can be one of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -495,7 +495,7 @@ __STATIC_INLINE void ll_msio_set_pin_mux(uint32_t pin, uint32_t mux)
   */
 __STATIC_INLINE uint32_t ll_msio_get_pin_mux(uint32_t pin)
 {
-    if(READ_BITS(AON->MISO_PAD_CFG_1, pin << AON_MISO_PAD_CFG_1_MCU_OVR_Pos))
+    if(READ_BITS(AON->MSIO_PAD_CFG_1, pin << AON_MSIO_PAD_CFG_1_MCU_OVR_Pos))
     {
         uint32_t pos = POSITION_VAL(pin) << 2;
         return (READ_BITS(MCU_SUB->MSIO_PAD_MUX_CTL, 0xF << pos) >> pos);
@@ -552,14 +552,14 @@ __STATIC_INLINE uint32_t ll_msio_is_input_pin_set(uint32_t pin_mask)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | IN
+  *  MSIO_PAD_CFG_0 | IN
   *
   * @param  port_value Level value for each pin of the port
   * @retval None
   */
 __STATIC_INLINE void ll_msio_write_output_port(uint32_t port_value)
 {
-    MODIFY_REG(AON->MISO_PAD_CFG_0, AON_MISO_PAD_CFG_0_IN, (port_value << AON_MISO_PAD_CFG_0_IN_Pos) & AON_MISO_PAD_CFG_0_IN);
+    MODIFY_REG(AON->MSIO_PAD_CFG_0, AON_MSIO_PAD_CFG_0_IN, (port_value << AON_MSIO_PAD_CFG_0_IN_Pos) & AON_MSIO_PAD_CFG_0_IN);
 }
 
 /**
@@ -567,13 +567,13 @@ __STATIC_INLINE void ll_msio_write_output_port(uint32_t port_value)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | IN
+  *  MSIO_PAD_CFG_0 | IN
   *
   * @retval Output data register value of port
   */
 __STATIC_INLINE uint32_t ll_msio_read_output_port(void)
 {
-    return (uint32_t)(READ_BITS(AON->MISO_PAD_CFG_0, AON_MISO_PAD_CFG_0_IN) >> AON_MISO_PAD_CFG_0_IN_Pos);
+    return (uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_0, AON_MSIO_PAD_CFG_0_IN) >> AON_MSIO_PAD_CFG_0_IN_Pos);
 }
 
 /**
@@ -581,7 +581,7 @@ __STATIC_INLINE uint32_t ll_msio_read_output_port(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | IN
+  *  MSIO_PAD_CFG_0 | IN
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -594,8 +594,8 @@ __STATIC_INLINE uint32_t ll_msio_read_output_port(void)
   */
 __STATIC_INLINE uint32_t ll_msio_is_output_pin_set(uint32_t pin_mask)
 {
-    pin_mask = (pin_mask << AON_MISO_PAD_CFG_0_IN_Pos) & AON_MISO_PAD_CFG_0_IN;
-    return (uint32_t)(READ_BITS(AON->MISO_PAD_CFG_0, pin_mask) == pin_mask);
+    pin_mask = (pin_mask << AON_MSIO_PAD_CFG_0_IN_Pos) & AON_MSIO_PAD_CFG_0_IN;
+    return (uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_0, pin_mask) == pin_mask);
 }
 
 /**
@@ -603,7 +603,7 @@ __STATIC_INLINE uint32_t ll_msio_is_output_pin_set(uint32_t pin_mask)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | IN
+  *  MSIO_PAD_CFG_0 | IN
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -616,7 +616,7 @@ __STATIC_INLINE uint32_t ll_msio_is_output_pin_set(uint32_t pin_mask)
   */
 __STATIC_INLINE void ll_msio_set_output_pin(uint32_t pin_mask)
 {
-    SET_BITS(AON->MISO_PAD_CFG_0, (pin_mask << AON_MISO_PAD_CFG_0_IN_Pos) & AON_MISO_PAD_CFG_0_IN);
+    SET_BITS(AON->MSIO_PAD_CFG_0, (pin_mask << AON_MSIO_PAD_CFG_0_IN_Pos) & AON_MSIO_PAD_CFG_0_IN);
 }
 
 /**
@@ -624,7 +624,7 @@ __STATIC_INLINE void ll_msio_set_output_pin(uint32_t pin_mask)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | IN
+  *  MSIO_PAD_CFG_0 | IN
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -637,7 +637,7 @@ __STATIC_INLINE void ll_msio_set_output_pin(uint32_t pin_mask)
   */
 __STATIC_INLINE void ll_msio_reset_output_pin(uint32_t pin_mask)
 {
-    CLEAR_BITS(AON->MISO_PAD_CFG_0, (pin_mask << AON_MISO_PAD_CFG_0_IN_Pos) & AON_MISO_PAD_CFG_0_IN);
+    CLEAR_BITS(AON->MSIO_PAD_CFG_0, (pin_mask << AON_MSIO_PAD_CFG_0_IN_Pos) & AON_MSIO_PAD_CFG_0_IN);
 }
 
 /**
@@ -645,7 +645,7 @@ __STATIC_INLINE void ll_msio_reset_output_pin(uint32_t pin_mask)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_0 | IN
+  *  MSIO_PAD_CFG_0 | IN
   *
   * @param  pin_mask This parameter can be a combination of the following values:
   *         @arg @ref LL_MSIO_PIN_0
@@ -658,7 +658,7 @@ __STATIC_INLINE void ll_msio_reset_output_pin(uint32_t pin_mask)
   */
 __STATIC_INLINE void ll_msio_toggle_pin(uint32_t pin_mask)
 {
-    WRITE_REG(AON->MISO_PAD_CFG_0, (READ_REG(AON->MISO_PAD_CFG_0) ^ ((pin_mask << AON_MISO_PAD_CFG_0_IN_Pos) & AON_MISO_PAD_CFG_0_IN)));
+    WRITE_REG(AON->MSIO_PAD_CFG_0, (READ_REG(AON->MSIO_PAD_CFG_0) ^ ((pin_mask << AON_MSIO_PAD_CFG_0_IN_Pos) & AON_MSIO_PAD_CFG_0_IN)));
 }
 
 /** @} */

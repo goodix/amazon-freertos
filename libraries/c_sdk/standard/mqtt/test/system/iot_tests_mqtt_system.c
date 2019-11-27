@@ -60,7 +60,7 @@
  * Provide default values of test configuration constants.
  */
 #ifndef IOT_TEST_MQTT_TIMEOUT_MS
-    #define IOT_TEST_MQTT_TIMEOUT_MS      ( 30000 )
+    #define IOT_TEST_MQTT_TIMEOUT_MS      ( 5000 )
 #endif
 #ifndef IOT_TEST_MQTT_TOPIC_PREFIX
     #define IOT_TEST_MQTT_TOPIC_PREFIX    "iotmqtttest"
@@ -174,7 +174,6 @@ static IotMqttConnection_t _mqttConnection = IOT_MQTT_CONNECTION_INITIALIZER;
 /**
  * @brief Filler text to publish.
  */
-#if 1
 static const char _pSamplePayload[] =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
     " incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis "
@@ -188,10 +187,7 @@ static const char _pSamplePayload[] =
     "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu"
     " fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in"
     " culpa qui officia deserunt mollit anim id est laborum.";
-#else
-static const char _pSamplePayload[] =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor";
-#endif
+
 /**
  * @brief Length of #_pSamplePayload.
  */
@@ -675,18 +671,16 @@ TEST_TEAR_DOWN( MQTT_System )
 TEST_GROUP_RUNNER( MQTT_System )
 {
     /* For these tests, use the BLE network interface. */
-    IotTestNetwork_SelectNetworkType( AWSIOT_NETWORK_TYPE_BLE );
+    IotTestNetwork_SelectNetworkType( DEFAULT_NETWORK );
     
     RUN_TEST_CASE( MQTT_System, SubscribePublishWaitQoS0 );
     RUN_TEST_CASE( MQTT_System, SubscribePublishWaitQoS1 );
     RUN_TEST_CASE( MQTT_System, SubscribePublishAsync );
-    
-		//RUN_TEST_CASE( MQTT_System, LastWillAndTestament );  //xx
-    //RUN_TEST_CASE( MQTT_System, RestorePreviousSession ); //xx
-    
+    RUN_TEST_CASE( MQTT_System, LastWillAndTestament );
+    RUN_TEST_CASE( MQTT_System, RestorePreviousSession );
+    RUN_TEST_CASE( MQTT_System, WaitAfterDisconnect );
     RUN_TEST_CASE( MQTT_System, SubscribeCompleteReentrancy );
-    RUN_TEST_CASE( MQTT_System, IncomingPublishReentrancy );
-		RUN_TEST_CASE( MQTT_System, WaitAfterDisconnect );
+    RUN_TEST_CASE( MQTT_System, IncomingPublishReentrancy )
 }
 
 /*-----------------------------------------------------------*/
@@ -868,7 +862,7 @@ TEST( MQTT_System, LastWillAndTestament )
         lwtNetworkInfo.u.setup.pNetworkCredentialInfo = ( void * ) &_credentials;
     #endif
 
-    lwtNetworkInfo.pNetworkInterface = IOT_TEST_NETWORK_INTERFACE;						
+    lwtNetworkInfo.pNetworkInterface = IOT_TEST_NETWORK_INTERFACE;
 
     lwtConnectInfo.awsIotMqttMode = AWS_IOT_MQTT_SERVER;
     lwtConnectInfo.cleanSession = true;

@@ -75,26 +75,29 @@ extern "C" {
   */
 typedef enum
 {
-    HAL_UART_STATE_RESET = 0x00U, /**< Peripheral is not initialized.
-                                       Value is allowed for gState and RxState */
+    HAL_UART_STATE_RESET     = 0x00U,  /**< Peripheral is not initialized.
+                                            Value is allowed for gState and RxState */
 
-    HAL_UART_STATE_READY,         /**< Peripheral Initialized and ready for use.
-                                       Value is allowed for gState and RxState */
+    HAL_UART_STATE_READY     = 0x10U,  /**< Peripheral initialized and ready for use.
+                                            Value is allowed for gState and RxState */
 
-    HAL_UART_STATE_BUSY,          /**< An internal process is ongoing.
-                                       Value is allowed for gState only */
+    HAL_UART_STATE_BUSY      = 0x14U,  /**< An internal process is ongoing.
+                                            Value is allowed for gState only */
 
-    HAL_UART_STATE_BUSY_TX,       /**< Data Transmission process is ongoing.
-                                       Value is allowed for gState only */
+    HAL_UART_STATE_BUSY_TX   = 0x11U,  /**< Data Transmission process is ongoing.
+                                            Value is allowed for gState only */
 
-    HAL_UART_STATE_BUSY_RX,       /**< Data Reception process is ongoing.
-                                       Value is allowed for RxState only */
+    HAL_UART_STATE_BUSY_RX   = 0x12U,  /**< Data Reception process is ongoing.
+                                            Value is allowed for RxState only */
 
-    HAL_UART_STATE_TIMEOUT,       /**< Timeout state.
-                                       Value is allowed for gState only */
+    HAL_UART_STATE_BUSY_TXRX = 0x13U,  /**< Data Transmission and Reception process is ongoing.
+                                            Value is allowed for gState only */
 
-    HAL_UART_STATE_ERROR          /**< Error.
-                                       Value is allowed for gState only */
+    HAL_UART_STATE_TIMEOUT   = 0x30U,  /**< Timeout state.
+                                            Value is allowed for gState only */
+
+    HAL_UART_STATE_ERROR     = 0x70U   /**< Error.
+                                            Value is allowed for gState only */
 
 } hal_uart_state_t;
 
@@ -130,9 +133,9 @@ typedef struct _uart_init
                                      This parameter can be a value of @ref UART_Hardware_Flow_Control. */
 
     uint32_t rx_timeout_mode;   /**< Specifies whether the receive timeout mode is enabled or disabled.
-                                     When rx_timeout_mode was enabled, character timeout interrupt will disable
-                                     current receive process after the data in RxFIFO was received, and call
-                                     hal_uart_rx_cplt_callback(). Note that the rx_timeout_mode only worked
+                                     When rx_timeout_mode is enabled, character timeout interrupt will disable
+                                     current receive process after the data in RxFIFO is received, and call
+                                     hal_uart_rx_cplt_callback(). Note that the rx_timeout_mode only works
                                      in interrupt mode.
                                      This parameter can be a value of @ref UART_Receiver_TimeOut. */
 
@@ -188,7 +191,7 @@ typedef struct _uart_handle
 
 /** @} */
 
-/** @addtogroup HAL_UART_STRUCTURES Callback Structures
+/** @addtogroup HAL_UART_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -430,7 +433,7 @@ typedef struct _hal_uart_callback
 /** @} */
 
 /**
-  * @brief UART_default_config InitStruct default configuartion
+  * @brief Default configuartion for initializing structure
   */
 #define UART_DEFAULT_CONFIG                             \
 {                                                       \
@@ -749,7 +752,7 @@ hal_status_t hal_uart_dma_stop(uart_handle_t *p_uart);
  *           - Disable the DMA transfer in the peripheral register (if enabled)
  *           - Abort DMA transfer by calling hal_dma_abort (in case of transfer in DMA mode)
  *           - Set handle State to READY
- * @note   This procedure is executed in blocking mode : when exiting function, Abort is considered as completed.
+ * @note   This procedure is executed in blocking mode: when exiting function, Abort is considered as completed.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
@@ -769,7 +772,7 @@ hal_status_t hal_uart_abort(uart_handle_t *p_uart);
  *           - Disable the DMA transfer in the peripheral register (if enabled)
  *           - Abort DMA transfer by calling hal_dma_abort (in case of transfer in DMA mode)
  *           - Set handle State to READY
- * @note   This procedure is executed in blocking mode : when exiting function, Abort is considered as completed.
+ * @note   This procedure is executed in blocking mode: when exiting function, Abort is considered as completed.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
@@ -789,7 +792,7 @@ hal_status_t hal_uart_abort_transmit(uart_handle_t *p_uart);
  *           - Disable the DMA transfer in the peripheral register (if enabled)
  *           - Abort DMA transfer by calling hal_dma_abort (in case of transfer in DMA mode)
  *           - Set handle State to READY
- * @note   This procedure is executed in blocking mode : when exiting function, Abort is considered as completed.
+ * @note   This procedure is executed in blocking mode: when exiting function, Abort is considered as completed.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
@@ -971,7 +974,7 @@ void hal_uart_abort_rx_cplt_callback (uart_handle_t *p_uart);
  * @param[in] p_uart: Pointer to a UART handle which contains the configuration
  *                 information for the specified UART module.
  * @retval ::HAL_UART_STATE_RESET: Peripheral is not initialized.
- * @retval ::HAL_UART_STATE_READY: Peripheral Initialized and ready for use.
+ * @retval ::HAL_UART_STATE_READY: Peripheral initialized and ready for use.
  * @retval ::HAL_UART_STATE_BUSY: An internal process is ongoing.
  * @retval ::HAL_UART_STATE_BUSY_TX: Data Transmission process is ongoing.
  * @retval ::HAL_UART_STATE_BUSY_RX: Data Reception process is ongoing.

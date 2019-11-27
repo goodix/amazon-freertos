@@ -235,6 +235,15 @@ void hci_uart_rx_cplt_callback(uart_handle_t *huart);
  */
 void hci_uart_error_callback(uart_handle_t *huart);
 
+/**
+ ****************************************************************************************
+ * @brief BLE HCI test init.
+ *
+ * If users want to support dtm test, this function should be called.
+ *****************************************************************************************
+ */
+void ble_hci_uart_init(uint8_t *buff, uint16_t size);
+
 /** @} */
 
 #endif /* HCI_UART_H_ */

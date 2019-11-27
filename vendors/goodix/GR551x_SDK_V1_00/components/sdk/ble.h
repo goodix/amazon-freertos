@@ -38,6 +38,10 @@
 
 #include <stdio.h> 
 
+/** @addtogroup BLE_COMMEN_ENUM Enumerations
+ * @{
+ */
+
 /**
  * @brief RF TX mode. 
  */
@@ -56,6 +60,7 @@ typedef enum
     BLE_RF_MATCH_CIRCUIT_25OHM = 25,
     BLE_RF_MATCH_CIRCUIT_100OHM = 100,
 } ble_rf_match_circuit_t;
+/** @} */
 
 /** @addtogroup BLE_COMMEN_STRUCTURES Structures
  * @{
@@ -103,7 +108,7 @@ typedef struct
 } hci_uart_call_t;
 /** @} */
 
-/** @addtogroup BLE_COMMEN_FUNCTION Functions
+/** @addtogroup BLE_COMMEN_FUNCTIONS Functions
  * @{ */
 /**
  *****************************************************************************************
@@ -127,17 +132,47 @@ void ble_hci_uart_register(uint8_t id, hci_uart_call_t *api);
 
 /**
  *****************************************************************************************
+ * @brief Register BLE idle time notification callback function.
+ *
+ * @param[in] callback:  function pointer of BLE idle time notification function.
+ * @note        param[in] of callback: hs - the idle time of BLE in half slot (312.5μs).
+ *                  Callback will be called by BLE ISR to notify the rest idle time if there are some BLE activities.
+ *                  It should be realized as simlpe as you can.
+ *                  It's not suitable for ISO activities.
+ *****************************************************************************************
+ */
+void ble_idle_time_notify_cb_register(void (*callback)(uint32_t hs));
+
+/**
+ *****************************************************************************************
+ * @brief Register BLE activity start time notification callback function.
+ *
+ * @param[in] callback:  function pointer of BLE activity start time notification function.
+ * @note            param[in] of callback: e_role - the role of activity, @ref gap_activity_role_t for possible roles.
+ *                  param[in] of callback: index: The index parameter is interpreted by role.
+ *                  If role is @ref GAP_ACTIVITY_ROLE_ADV, it's the index of Advertising.
+ *                  If role is @ref GAP_ACTIVITY_ROLE_CON, it's the index of Connection.
+ *                  For all other roles, it should be ignored.
+ *                  Callback will be called by BLE ISR when the BLE activity starts very time.
+ *                  It should be realized as simlpe as you can.
+ *                  It's not suitable for ISO activities.
+ *****************************************************************************************
+ */
+void ble_activity_start_notify_cb_register(void (*callback)(gap_activity_role_t e_role,  uint8_t index));
+
+/**
+ *****************************************************************************************
  * @brief Change the RF TX mode of LP or ULP.
 
- * @param[in] rf_tx_mode:    Refer to ble_rf_tx_mode_t.
- *                                        BLE_RF_TX_MODE_LP_MODE: LP mode
- *                                        BLE_RF_TX_MODE_ULP_MODE: ULP mode
- *                                        Others: invalid mode
+ * @param[in] e_rf_tx_mode:    Refer to @ref ble_rf_tx_mode_t.
+ *                                        BLE_RF_TX_MODE_LP_MODE: LP mode.
+ *                                        BLE_RF_TX_MODE_ULP_MODE: ULP mode.
+ *                                        Others: invalid mode.
  *                               
  * @note  This function should be called before BLE stack init.
  *
- * @return    SDK_SUCCESS              : Succeeded  to set Tx mode   
- *                SDK_ERR_DISALLOWED : Failed to set Tx mode
+ * @return        SDK_SUCCESS: Successfully set Tx mode.   
+ *                SDK_ERR_DISALLOWED: Failed to set Tx mode.
  *****************************************************************************************
  */
 uint8_t ble_rf_tx_mode_set(ble_rf_tx_mode_t e_rf_tx_mode);
@@ -146,9 +181,9 @@ uint8_t ble_rf_tx_mode_set(ble_rf_tx_mode_t e_rf_tx_mode);
  *****************************************************************************************
  * @brief  Get the RF TX mode of LP or ULP.
  *
- * @return  BLE_RF_TX_MODE_LP_MODE: LP Mode
- *              BLE_RF_TX_MODE_ULP_MODE: ULP Mode
- *              others: Fail
+ * @return  BLE_RF_TX_MODE_LP_MODE: LP Mode.
+ *              BLE_RF_TX_MODE_ULP_MODE: ULP Mode.
+ *              Others: Fail.
  *****************************************************************************************
  */
 ble_rf_tx_mode_t ble_rf_tx_mode_get(void);
@@ -159,10 +194,10 @@ ble_rf_tx_mode_t ble_rf_tx_mode_get(void);
  *
  * @note  This function should be called before BLE stack init.
  *
- * @param[in]  The resistance value (ohm) of the RF match circuit according to the board.
- *                    BLE_RF_MATCH_CIRCUIT_25OHM: 25 ohm
- *                    BLE_RF_MATCH_CIRCUIT_100OHM: 100 ohm
- *                    others: invalid
+ * @param[in] e_ohm: The resistance value (ohm) of the RF match circuit according to the board.
+ *                                    BLE_RF_MATCH_CIRCUIT_25OHM: 25 ohm.
+ *                                    BLE_RF_MATCH_CIRCUIT_100OHM: 100 ohm.
+ *                                    Others: invalid.
  *****************************************************************************************
  */
 void ble_rf_match_circuit_set(ble_rf_match_circuit_t e_ohm);
@@ -172,9 +207,9 @@ void ble_rf_match_circuit_set(ble_rf_match_circuit_t e_ohm);
  * @brief  Get the resistance value of the RF match circuit (unit: ohm).
  *
  * @return  The resistance value (ohm) of the RF match circuit according to the board (ohm).
- *                    BLE_RF_MATCH_CIRCUIT_25OHM: 25 ohm
- *                    BLE_RF_MATCH_CIRCUIT_100OHM: 100 ohm
- *                    others: invalid
+ *                    BLE_RF_MATCH_CIRCUIT_25OHM: 25 ohm.
+ *                    BLE_RF_MATCH_CIRCUIT_100OHM: 100 ohm.
+ *                    Others: invalid.
  *****************************************************************************************
  */
 ble_rf_match_circuit_t ble_rf_match_circuit_get(void);

@@ -143,6 +143,10 @@ typedef enum
 #define UNUSED(x) ((void)(x))
 #endif
 
+#ifndef SECTION_RAM_CODE
+#define SECTION_RAM_CODE __attribute__((section("RAM_CODE")))   /**< To prevent doxygen from misidentifying the function name */
+#endif
+
 /** @} */
 
 #ifdef __cplusplus

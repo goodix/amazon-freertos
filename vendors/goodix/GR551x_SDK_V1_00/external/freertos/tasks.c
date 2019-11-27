@@ -3328,7 +3328,7 @@ static portTASK_FUNCTION( prvIdleTask, pvParameters )
 		#endif /* configUSE_IDLE_HOOK */
     
     
-    //#ifdef USE_DEEP_SLEEP_MODE
+    
     {
         extern void vPortEnterDeepSleep( TickType_t xExpectedIdleTime );
         volatile TickType_t xExpectedIdleTime = prvGetExpectedIdleTime();
@@ -3336,12 +3336,12 @@ static portTASK_FUNCTION( prvIdleTask, pvParameters )
         vPortEnterDeepSleep( xExpectedIdleTime );
         xTaskResumeAll();
     }
-   // #else
+ 
 		/* This conditional compilation should use inequality to 0, not equality
 		to 1.  This is to ensure portSUPPRESS_TICKS_AND_SLEEP() is called when
 		user defined low power mode	implementations require
 		configUSE_TICKLESS_IDLE to be set to a value other than 1. */
-		#if ( configUSE_TICKLESS_IDLE != 0 )
+		#if ( 0 )
 		{
 		TickType_t xExpectedIdleTime;
 

@@ -36,37 +36,102 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gr55xx_hal.h"
 
-#if defined(HAL_WDT_MODULE_ENABLED) && defined(GR551xx_C2)
+/** @addtogroup HAL_DRIVER
+  * @{
+  */
 
-/* extern function -----------------------------------------------------------*/
+#ifdef HAL_WDT_MODULE_ENABLED
+/** @addtogroup WDT WDT
+  * @{
+  */
 
-extern hal_status_t hal_wdt_init_ext(wdt_handle_t *p_wdt);
-extern hal_status_t hal_wdt_deinit_ext(wdt_handle_t *p_wdt);
-extern void hal_wdt_register_callback(hal_wdt_callback_t *hal_wdt_callback);
-
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-
-static hal_wdt_callback_t wdt_callback =
-{
-    .wdt_msp_init                   = hal_wdt_msp_init,
-    .wdt_msp_deinit                 = hal_wdt_msp_deinit,
-    .wdt_period_elapsed_callback    = hal_wdt_period_elapsed_callback
-};
-
 /* Private function prototypes -----------------------------------------------*/
+/* Exported functions --------------------------------------------------------*/
 
-hal_status_t hal_wdt_init(wdt_handle_t *p_wdt)
+/** @defgroup WDT_Exported_Functions WDT Exported Functions
+  * @{
+  */
+
+/** @defgroup WDT_Exported_Functions_Group1 Initialization and Configuration functions
+ *  @brief    Initialization and Configuration functions.
+  * @{
+  */
+
+__WEAK hal_status_t hal_wdt_init(wdt_handle_t *p_wdt)
 {
-    hal_wdt_register_callback(&wdt_callback);
+    /* Check the WDT handle allocation */
+    if (NULL == p_wdt)
+    {
+        return HAL_ERROR;
+    }
 
-    return hal_wdt_init_ext(p_wdt);
+    /* Check the parameters */
+    gr_assert_param(IS_WDT_ALL_INSTANCE(p_wdt->p_instance));
+
+    /* Allocate lock resource and initialize it */
+    p_wdt->lock = HAL_UNLOCKED;
+
+    /* init the low level hardware */
+    hal_wdt_msp_init(p_wdt);
+
+    /* Enable write access to WDT_LOAD, WDT_CTRL and WDT_INTCLR registers */
+    ll_wdt_enable_write_access(p_wdt->p_instance);
+
+    /* Set WDT Counter Load Value */
+    ll_wdt_set_counter_load(p_wdt->p_instance, p_wdt->init.counter);
+
+    /* Set RESET mode */
+    if (WDT_RESET_ENABLE == p_wdt->init.reset_mode)
+    {
+        ll_wdt_enable_reset(p_wdt->p_instance);
+    }
+    else
+    {
+        ll_wdt_disable_reset(p_wdt->p_instance);
+    }
+
+    /* Clear interrupt status */
+    ll_wdt_clear_flag_it(p_wdt->p_instance);
+    /* Enable watchdog counter and interrupt event */
+    ll_wdt_enable(p_wdt->p_instance);
+
+    /* Disable write access to WDT_LOAD, WDT_CTRL and WDT_INTCLR registers */
+    ll_wdt_disable_write_access(p_wdt->p_instance);
+
+    return HAL_OK;
 }
 
-hal_status_t hal_wdt_deinit(wdt_handle_t *p_wdt)
+__WEAK hal_status_t hal_wdt_deinit(wdt_handle_t *p_wdt)
 {
-    hal_wdt_register_callback(&wdt_callback);
+    /* Check the WDT handle allocation */
+    if (NULL == p_wdt)
+    {
+        return HAL_ERROR;
+    }
 
-    return hal_wdt_deinit_ext(p_wdt);
+    /* Enable write access to WDT_LOAD, WDT_CTRL and WDT_INTCLR registers */
+    ll_wdt_enable_write_access(p_wdt->p_instance);
+
+    /* Disable Reset MODE */
+    ll_wdt_disable_reset(p_wdt->p_instance);
+    /* Disable WDT Counter and interrupt */
+    ll_wdt_disable(p_wdt->p_instance);
+    /* Clear interrupt status */
+    ll_wdt_clear_flag_it(p_wdt->p_instance);
+    /* Set counter load value to 0 */
+    ll_wdt_set_counter_load(p_wdt->p_instance, 0x0U);
+
+    /* Disable write access to WDT_LOAD, WDT_CTRL and WDT_INTCLR registers */
+    ll_wdt_disable_write_access(p_wdt->p_instance);
+
+    /* Process Unlock */
+    __HAL_UNLOCK(p_wdt);
+
+    return HAL_OK;
 }
 
 __WEAK void hal_wdt_msp_init(wdt_handle_t *p_wdt)
@@ -89,6 +154,59 @@ __WEAK void hal_wdt_msp_deinit(wdt_handle_t *p_wdt)
     */
 }
 
+/** @} */
+
+/** @defgroup WDT_Exported_Functions_Group2 IO operation functions
+ *  @brief    IO operation functions
+  * @{
+  */
+
+__WEAK hal_status_t hal_wdt_refresh(wdt_handle_t *p_wdt)
+{
+    /* Process Locked */
+    __HAL_LOCK(p_wdt);
+
+    /* Enable write access to WDT_INTCLR registers */
+    ll_wdt_enable_write_access(p_wdt->p_instance);
+    /* Reload Counter */
+    ll_wdt_reload_counter(p_wdt->p_instance);
+    /* Disable write access to WDT_INTCLR registers */
+    ll_wdt_disable_write_access(p_wdt->p_instance);
+
+    hal_nvic_clear_pending_irq(WDT_IRQn);
+    hal_nvic_enable_irq(WDT_IRQn);
+
+    /* Process Unlock */
+    __HAL_UNLOCK(p_wdt);
+
+    return HAL_OK;
+}
+
+__WEAK void hal_wdt_irq_handler(wdt_handle_t *p_wdt)
+{
+    /* Check if Interrupt occurred */
+    if (RESET != ll_wdt_is_active_flag_it(p_wdt->p_instance))
+    {
+        /* Clear Interrupt status and reload counter if RESET mode was disabled */
+        if (RESET == ll_wdt_is_enabled_reset(p_wdt->p_instance))
+        {
+            /* Enable write access to WDT_INTCLR registers */
+            ll_wdt_enable_write_access(p_wdt->p_instance);
+            /* Clear Interrupt status and reload counter */
+            ll_wdt_clear_flag_it(p_wdt->p_instance);
+            /* Disable write access to WDT_INTCLR registers */
+            ll_wdt_disable_write_access(p_wdt->p_instance);
+        }
+        else
+        {
+            hal_nvic_disable_irq(WDT_IRQn);
+        }
+
+        /* Interrupt callback */
+        hal_wdt_period_elapsed_callback(p_wdt);
+    }
+}
+
 __WEAK void hal_wdt_period_elapsed_callback(wdt_handle_t *p_wdt)
 {
     /* Prevent unused argument(s) compilation warning */
@@ -99,4 +217,11 @@ __WEAK void hal_wdt_period_elapsed_callback(wdt_handle_t *p_wdt)
     */
 }
 
+/** @} */
+
+/** @} */
+
 #endif /* HAL_WDT_MODULE_ENABLED */
+/** @} */
+
+/** @} */

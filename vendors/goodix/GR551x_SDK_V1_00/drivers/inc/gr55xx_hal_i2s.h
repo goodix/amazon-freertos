@@ -79,6 +79,7 @@ typedef enum
     HAL_I2S_STATE_BUSY         = 0x02,    /**< An internal process is ongoing                      */
     HAL_I2S_STATE_BUSY_TX      = 0x12,    /**< Data Transmission process is ongoing                */
     HAL_I2S_STATE_BUSY_RX      = 0x22,    /**< Data Reception process is ongoing                   */
+    HAL_I2S_STATE_BUSY_TX_RX   = 0x32,    /**< Data Transmission and Reception process is ongoing  */
     HAL_I2S_STATE_ABORT        = 0x08,    /**< Peripheral with abort request ongoing               */
     HAL_I2S_STATE_ERROR        = 0x04     /**< Peripheral in error                                 */
 
@@ -164,7 +165,7 @@ typedef struct _i2s_handle
 
 /** @} */
 
-/** @addtogroup HAL_I2S_STRUCTURES Callback Structures
+/** @addtogroup HAL_I2S_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -183,6 +184,7 @@ typedef struct _hal_i2s_callback
     void (*i2s_error_callback)(i2s_handle_t *p_i2s);
     void (*i2s_rx_cplt_callback)(i2s_handle_t *p_i2s);
     void (*i2s_tx_cplt_callback)(i2s_handle_t *p_i2s);
+    void (*i2s_tx_rx_cplt_callback)(i2s_handle_t *p_i2s);
 } hal_i2s_callback_t;
 
 /** @} */
@@ -289,6 +291,82 @@ typedef struct _hal_i2s_callback
   * @retval None
   */
 #define __HAL_I2S_DISABLE(__HANDLE__)                          CLEAR_BITS((__HANDLE__)->p_instance->ENABLE, I2S_ENABLE_EN)
+
+/** @brief  Enable the specified I2S clock.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_ENABLE_CLOCK(__HANDLE__)                     SET_BITS((__HANDLE__)->p_instance->CLKEN, I2S_CLKEN_EN)
+
+/** @brief  Disable the specified I2S clock.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_DISABLE_CLOCK(__HANDLE__)                    CLEAR_BITS((__HANDLE__)->p_instance->CLKEN, I2S_CLKEN_EN)
+
+/** @brief  Enable the specified I2S transmitter block.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_ENABLE_TX_BLOCK(__HANDLE__)                  ll_i2s_enable_txblock((__HANDLE__)->p_instance)
+
+/** @brief  Disable the specified I2S transmitter block.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_DISABLE_TX_BLOCK(__HANDLE__)                 ll_i2s_disable_txblock((__HANDLE__)->p_instance)
+
+/** @brief  Enable the specified I2S receiver block.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_ENABLE_RX_BLOCK(__HANDLE__)                  ll_i2s_enable_rxblock((__HANDLE__)->p_instance)
+
+/** @brief  Disable the specified I2S receiver block.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_DISABLE_RX_BLOCK(__HANDLE__)                 ll_i2s_disable_rxblock((__HANDLE__)->p_instance)
+
+/** @brief  Enable the specified I2S transmitter channel.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @param  __CH__ Specifies the I2S channel.
+  * @retval None
+  */
+#define __HAL_I2S_ENABLE_TX_CHANNEL(__HANDLE__, __CH__)        ll_i2s_enable_tx((__HANDLE__)->p_instance, (__CH__))
+
+/** @brief  Disable the specified I2S transmitter channel.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @param  __CH__ Specifies the I2S channel.
+  * @retval None
+  */
+#define __HAL_I2S_DISABLE_TX_CHANNEL(__HANDLE__, __CH__)       ll_i2s_disable_tx((__HANDLE__)->p_instance, (__CH__))
+
+/** @brief  Enable the specified I2S receiver channel.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @param  __CH__ Specifies the I2S channel.
+  * @retval None
+  */
+#define __HAL_I2S_ENABLE_RX_CHANNEL(__HANDLE__, __CH__)        ll_i2s_enable_rx((__HANDLE__)->p_instance, (__CH__))
+
+/** @brief  Disable the specified I2S receiver channel.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @param  __CH__ Specifies the I2S channel.
+  * @retval None
+  */
+#define __HAL_I2S_DISABLE_RX_CHANNEL(__HANDLE__, __CH__)       ll_i2s_disable_rx((__HANDLE__)->p_instance, (__CH__))
+
+/** @brief  Flush the I2S transmitter FIFO.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_FLUSH_TX_FIFO(__HANDLE__)                    ll_i2s_clr_txfifo_all((__HANDLE__)->p_instance)
+
+/** @brief  Flush the I2S receiver FIFO.
+  * @param  __HANDLE__ Specifies the I2S Handle.
+  * @retval None
+  */
+#define __HAL_I2S_FLUSH_RX_FIFO(__HANDLE__)                    ll_i2s_clr_rxfifo_all((__HANDLE__)->p_instance)
 
 /** @brief  Enable the I2S DMA Request.
   * @param  __HANDLE__ Specifies the I2S Handle.
@@ -506,7 +584,7 @@ void hal_i2s_msp_deinit(i2s_handle_t *p_i2s);
     This subsection provides a set of functions allowing to manage the I2S
     data transfers.
 
-    [..] The I2S supports master and slave mode :
+    [..] The I2S supports master and slave mode:
 
     (#) There are two modes of transfer:
        (++) Blocking mode: The communication is performed in polling mode.
@@ -562,6 +640,22 @@ hal_status_t hal_i2s_receive(i2s_handle_t *p_i2s, uint16_t *p_data, uint32_t len
 
 /**
  ****************************************************************************************
+ * @brief  Transmit and Receive an amount of data in blocking mode.
+ * @param[in]  p_i2s: Pointer to a I2S handle which contains the configuration information for the specified I2S module.
+ * @param[in]  p_tx_data: Pointer to transmission data buffer
+ * @param[out] p_rx_data: Pointer to reception data buffer
+ * @param[in]  length: Amount of data to be sent and received in bytes
+ * @param[in]  timeout: Timeout duration
+ * @retval ::HAL_OK: Operation is OK.
+ * @retval ::HAL_ERROR: Parameter error or operation not supported.
+ * @retval ::HAL_BUSY: Driver is busy.
+ * @retval ::HAL_TIMEOUT: Timeout occurred.
+ ****************************************************************************************
+ */
+hal_status_t hal_i2s_transmit_receive(i2s_handle_t *p_i2s, uint16_t *p_tx_data, uint16_t *p_rx_data, uint32_t length, uint32_t timeout);
+
+/**
+ ****************************************************************************************
  * @brief  Transmit an amount of data in non-blocking mode with Interrupt.
  * @param[in]  p_i2s: Pointer to an I2S handle which contains the configuration information for the specified I2S module.
  * @param[in]  p_data: Pointer to data buffer
@@ -592,6 +686,21 @@ hal_status_t hal_i2s_receive_it(i2s_handle_t *p_i2s, uint16_t *p_data, uint32_t 
 
 /**
  ****************************************************************************************
+ * @brief  Transmit and Receive an amount of data in non-blocking mode with Interrupt.
+ * @param[in]  p_i2s: Pointer to a I2S handle which contains the configuration information for the specified SPI module.
+ * @param[in]  p_tx_data: Pointer to transmission data buffer
+ * @param[out] p_rx_data: Pointer to reception data buffer
+ * @param[in]  length: Amount of data to be sent and received in bytes
+ * @retval ::HAL_OK: Operation is OK.
+ * @retval ::HAL_ERROR: Parameter error or operation not supported.
+ * @retval ::HAL_BUSY: Driver is busy.
+ * @retval ::HAL_TIMEOUT: Timeout occurred.
+ ****************************************************************************************
+ */
+hal_status_t hal_i2s_transmit_receive_it(i2s_handle_t *p_i2s, uint16_t *p_tx_data, uint16_t *p_rx_data, uint32_t length);
+
+/**
+ ****************************************************************************************
  * @brief  Transmit an amount of data in non-blocking mode with DMA.
  * @param[in]  p_i2s: Pointer to an I2S handle which contains the configuration information for the specified I2S module.
  * @param[in]  p_data: Pointer to data buffer
@@ -619,6 +728,21 @@ hal_status_t hal_i2s_transmit_dma(i2s_handle_t *p_i2s, uint16_t *p_data, uint32_
  ****************************************************************************************
  */
 hal_status_t hal_i2s_receive_dma(i2s_handle_t *p_i2s, uint16_t *p_data, uint32_t length);
+
+/**
+ ****************************************************************************************
+ * @brief  Transmit and Receive an amount of data in non-blocking mode with DMA.
+ * @param[in]  p_i2s: Pointer to a I2S handle which contains the configuration information for the specified I2S module.
+ * @param[in]  p_tx_data: Pointer to transmission data buffer
+ * @param[out] p_rx_data: Pointer to reception data buffer
+ * @param[in]  length: Amount of data to be sent in bytes,  ranging between 0 and 4095.
+ * @retval ::HAL_OK: Operation is OK.
+ * @retval ::HAL_ERROR: Parameter error or operation not supported.
+ * @retval ::HAL_BUSY: Driver is busy.
+ * @retval ::HAL_TIMEOUT: Timeout occurred.
+ ****************************************************************************************
+ */
+hal_status_t hal_i2s_transmit_receive_dma(i2s_handle_t *p_i2s, uint16_t *p_tx_data, uint16_t *p_rx_data, uint32_t length);
 
 /**
  ****************************************************************************************
@@ -657,7 +781,7 @@ hal_status_t hal_i2s_stop_clock(i2s_handle_t *p_i2s);
  *           - Disable the DMA transfer in the peripheral register (if enabled)
  *           - Abort DMA transfer by calling hal_dma_abort (in case of transfer in DMA mode)
  *           - Set handle State to READY
- * @note   This procedure is executed in blocking mode : when exiting function, Abort is considered as completed.
+ * @note   This procedure is executed in blocking mode: When exiting function, Abort is considered as completed.
  * @retval ::HAL_OK: Operation is OK.
  * @retval ::HAL_ERROR: Parameter error or operation not supported.
  * @retval ::HAL_BUSY: Driver is busy.
@@ -696,6 +820,14 @@ void hal_i2s_tx_cplt_callback(i2s_handle_t *p_i2s);
  ****************************************************************************************
  */
 void hal_i2s_rx_cplt_callback(i2s_handle_t *p_i2s);
+
+/**
+ ****************************************************************************************
+ * @brief  TX/RX Transfer completed callback.
+ * @param[in]  p_i2s: Pointer to an I2S handle which contains the configuration information for the specified I2S module.
+ ****************************************************************************************
+ */
+void hal_i2s_tx_rx_cplt_callback(i2s_handle_t *p_i2s);
 
 /**
  ****************************************************************************************
@@ -750,15 +882,6 @@ hal_i2s_state_t hal_i2s_get_state(i2s_handle_t *p_i2s);
  ****************************************************************************************
  */
 uint32_t hal_i2s_get_error(i2s_handle_t *p_i2s);
-
-/**
- ****************************************************************************************
- * @brief  Set the I2S internal process timeout value.
- * @param[in]  p_i2s: Pointer to an I2S handle which contains the configuration information for the specified I2S module.
- * @param[in]  timeout: Internal process timeout value.
- ****************************************************************************************
- */
-void hal_i2s_set_timeout(i2s_handle_t *p_i2s, uint32_t timeout);
 
 /**
  ****************************************************************************************

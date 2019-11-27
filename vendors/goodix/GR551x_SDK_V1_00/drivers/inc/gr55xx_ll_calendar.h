@@ -195,7 +195,7 @@ __STATIC_INLINE uint32_t ll_calendar_get_alarm(void)
 }
 
 /**
-  * @brief  Get the CALENDAR warp-around value.
+  * @brief  Get the CALENDAR wrap-around value.
   * @note   The value should be read multiple times until get the same value in at least two reads.
   *
   *  Register|BitsName
@@ -204,7 +204,7 @@ __STATIC_INLINE uint32_t ll_calendar_get_alarm(void)
   *
   * @retval Value between Min_Data=0 and Max_Data=0xF
   */
-__STATIC_INLINE uint32_t ll_calendar_get_warpcnt(void)
+__STATIC_INLINE uint32_t ll_calendar_get_wrapcnt(void)
 {
     return (uint32_t)(READ_BITS(AON->CALENDAR_TIMER_CTL, AON_CALENDAR_TIMER_CTL_WRAP_CNT) >> AON_CALENDAR_TIMER_CTL_WRAP_CNT_Pos);
 }
@@ -273,7 +273,7 @@ __STATIC_INLINE uint32_t ll_calendar_it_is_enabled_alarm(void)
 }
 
 /**
-  * @brief  Enable calendar warp interrupt.
+  * @brief  Enable calendar wrap interrupt.
   *
   *  Register|BitsName
   *  --------|--------
@@ -281,7 +281,7 @@ __STATIC_INLINE uint32_t ll_calendar_it_is_enabled_alarm(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_calendar_it_enable_warp(void)
+__STATIC_INLINE void ll_calendar_it_enable_wrap(void)
 {
     SET_BITS(AON->CALENDAR_TIMER_CTL, AON_CALENDAR_TIMER_CTL_WRAP_INT_EN);
 }
@@ -295,13 +295,13 @@ __STATIC_INLINE void ll_calendar_it_enable_warp(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_calendar_it_disable_warp(void)
+__STATIC_INLINE void ll_calendar_it_disable_wrap(void)
 {
     CLEAR_BITS(AON->CALENDAR_TIMER_CTL, AON_CALENDAR_TIMER_CTL_WRAP_INT_EN);
 }
 
 /**
-  * @brief  Check if the CALENDAR warp interrupt is enabled or disabled.
+  * @brief  Check if the CALENDAR wrap interrupt is enabled or disabled.
   *
   *  Register|BitsName
   *  --------|--------
@@ -309,7 +309,7 @@ __STATIC_INLINE void ll_calendar_it_disable_warp(void)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_calendar_it_is_enabled_warp(void)
+__STATIC_INLINE uint32_t ll_calendar_it_is_enabled_wrap(void)
 {
     return (READ_BITS(AON->CALENDAR_TIMER_CTL, AON_CALENDAR_TIMER_CTL_WRAP_INT_EN) == (AON_CALENDAR_TIMER_CTL_WRAP_INT_EN));
 }
@@ -321,7 +321,7 @@ __STATIC_INLINE uint32_t ll_calendar_it_is_enabled_warp(void)
   */
 
 /**
-  * @brief  Indicates if the CALENDAR alarm event flag is set or not.
+  * @brief  Indicate if the CALENDAR alarm event flag is set or not.
   * @note   This bit is set by hardware when the counter has reached alarm value.
   *         It can be cleared by writing 0 to this bit.
   *
@@ -337,7 +337,7 @@ __STATIC_INLINE uint32_t ll_calendar_is_active_flag_alarm(void)
 }
 
 /**
-  * @brief  Indicates if the CALENDAR warp event flag is set or not.
+  * @brief  Indicate if the CALENDAR wrap event flag is set or not.
   * @note   This bit is set by hardware when the counter has overflow.
   *         It can be cleared by writing 0 to this bit.
   *
@@ -347,7 +347,7 @@ __STATIC_INLINE uint32_t ll_calendar_is_active_flag_alarm(void)
   *
   * @retval State of bit (1 or 0).
   */
-__STATIC_INLINE uint32_t ll_calendar_is_active_flag_warp(void)
+__STATIC_INLINE uint32_t ll_calendar_is_active_flag_wrap(void)
 {
     return (uint32_t)(READ_BITS(AON->SLP_EVENT, AON_SLP_EVENT_CALENDAR_TIMER_WRAP) == AON_SLP_EVENT_CALENDAR_TIMER_WRAP);
 }
@@ -367,7 +367,7 @@ __STATIC_INLINE void ll_calendar_clear_flag_alarm(void)
 }
 
 /**
-  * @brief  Clear calendar warp interrupt flag.
+  * @brief  Clear calendar wrap interrupt flag.
   *
   *  Register|BitsName
   *  --------|--------
@@ -375,7 +375,7 @@ __STATIC_INLINE void ll_calendar_clear_flag_alarm(void)
   *
   * @retval None
   */
-__STATIC_INLINE void ll_calendar_clear_flag_warp(void)
+__STATIC_INLINE void ll_calendar_clear_flag_wrap(void)
 {
     WRITE_REG(AON->SLP_EVENT, ~AON_SLP_EVENT_CALENDAR_TIMER_WRAP);
 }

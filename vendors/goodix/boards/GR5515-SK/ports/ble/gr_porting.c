@@ -13,6 +13,12 @@
 #include "gr_utils.h"
 #include "patch.h"
 #include "iot_ble_hal_internals.h"
+#include "boards.h"
+#if APP_DRIVER_USE_ENABLE
+#include "app_uart.h"
+#else
+#include "gr55xx_hal.h"
+#endif
 
 
 /*
@@ -207,7 +213,81 @@ void gr_mutex_set_activate( gr_mutex_t * mutex , bool active)
 
 
 
+#if APP_DRIVER_USE_ENABLE
 
+#define UART_RX_BUFF_SIZE				1u
+#define UART_TX_BUFF_SIZE				2048u
+
+static uint8_t s_uart_rx_buffer[UART_RX_BUFF_SIZE];
+static uint8_t s_uart_tx_buffer[UART_TX_BUFF_SIZE];
+
+extern void app_log_transfer_rx_char(char data);
+
+void gr_bsp_uart_send(uint8_t *p_data, uint16_t length)
+{
+#if APP_DRIVER_USE_ENABLE
+    app_uart_transmit_async(APP_UART_ID, p_data, length);
+#endif
+}
+
+void gr_bsp_uart_flush(void)
+{
+#if APP_DRIVER_USE_ENABLE
+    app_uart_flush(APP_UART_ID);
+#endif
+}
+
+__WEAK void app_log_transfer_rx_char(char c) 
+{
+}
+
+/*
+ * Handle Rx Of UART0
+ * __WEAK version in bsp.c
+ */
+void app_uart_evt_handler(app_uart_evt_t *p_evt)
+{
+    if(p_evt->type == APP_UART_EVT_RX_DATA) {
+				if(p_evt->data.size == UART_RX_BUFF_SIZE) {
+						app_log_transfer_rx_char(s_uart_rx_buffer[0]);
+				}
+				memset(&s_uart_rx_buffer[0], 0 , UART_RX_BUFF_SIZE);
+				app_uart_receive_async(APP_UART_ID, &s_uart_rx_buffer[0], UART_RX_BUFF_SIZE);
+		}
+}
+
+#endif
+
+void gr_bsp_uart_init(void)
+{
+#if APP_DRIVER_USE_ENABLE
+
+    app_uart_tx_buf_t uart_buffer;
+    app_uart_params_t uart_param;
+
+    uart_buffer.tx_buf       = s_uart_tx_buffer;
+    uart_buffer.tx_buf_size  = UART_TX_BUFF_SIZE;
+
+    uart_param.id                   = APP_UART_ID;
+    uart_param.init.baud_rate       = APP_UART_BAUDRATE;
+    uart_param.init.data_bits       = UART_DATABITS_8;
+    uart_param.init.stop_bits       = UART_STOPBITS_1;
+    uart_param.init.parity          = UART_PARITY_NONE;
+    uart_param.init.hw_flow_ctrl    = UART_HWCONTROL_NONE;
+    uart_param.init.rx_timeout_mode = UART_RECEIVER_TIMEOUT_ENABLE;
+    uart_param.pin_cfg.rx.type      = APP_UART_RX_IO_TYPE;
+    uart_param.pin_cfg.rx.pin       = APP_UART_RX_PIN;
+    uart_param.pin_cfg.rx.mux       = APP_UART_RX_PINMUX;
+    uart_param.pin_cfg.tx.type      = APP_UART_TX_IO_TYPE;
+    uart_param.pin_cfg.tx.pin       = APP_UART_TX_PIN;
+    uart_param.pin_cfg.tx.mux       = APP_UART_TX_PINMUX;
+    uart_param.use_mode.type        = APP_UART_TYPE_INTERRUPT;
+
+    app_uart_init(&uart_param, app_uart_evt_handler, &uart_buffer);
+		
+		app_uart_receive_async(APP_UART_ID, s_uart_rx_buffer, UART_RX_BUFF_SIZE);
+#endif
+}
 
 
 

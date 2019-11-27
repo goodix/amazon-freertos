@@ -29,9 +29,9 @@
 #ifndef ROM_RTN_RAM_SIZE
     #define ROM_RTN_RAM_SIZE        0x4000
 #endif
-#if APP_CODE_RUN_ADDR < FLASH_START_ADDR
+
 #define RAM_ALIAS
-#endif
+
 /*****************************************************************
  * Warning: User App developer never change the six macros below
  */
@@ -43,7 +43,7 @@
 
 #ifdef ROM_RUN_IN_FLASH
 #ifdef SUPPORT_FOR_AUDIO
-    #define RAM_SIZE            0x0001D000
+    #define RAM_SIZE            0x00020000
 #else
     #define RAM_SIZE            0x00036000
 #endif
@@ -101,7 +101,12 @@
 #define ENV_HEAP_SIZE       (1464 + USER_MAX_CONNECTIONS * 788)
 /* The size of heap for ATT database depends on the number of attributes in
  * profiles. The value can be tuned based on supported profiles. */
+#if (CFG_MESH_SUPPORT == 1)
+#include "mesh_stack_config.h"
+#define ATT_DB_HEAP_SIZE    (1000 + MESH_HEAP_SIZE_ADD)
+#else
 #define ATT_DB_HEAP_SIZE    (3072 + 12)
+#endif
 #define KE_MSG_HEAP_SIZE    (13420 + USER_MAX_CONNECTIONS * 520)
 /* The size of non-retention heap is customized. This heap will used by BLE
  * stack only when other three heaps are full. */

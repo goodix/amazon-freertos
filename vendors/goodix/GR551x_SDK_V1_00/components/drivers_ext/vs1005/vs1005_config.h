@@ -48,18 +48,26 @@
  *****************************************************************************************
  */
 
-//#define OTHER_IO_CTL_GRP      GPIO1
-//#define VS_XCS_PIN            GPIO_PIN_8  //GPIO24
-//#define VS_XDCS_PIN           GPIO_PIN_9  //GPIO25
-//#define VS_DQ_PIN             GPIO_PIN_4 //GPIO26
-//#define VS_RST_PIN            GPIO_PIN_0  //GPIO16
+/*******VS1005 MP3 CODEC DRIVER IO CONFIG*******/
+#define VS1005_GROUP                    GPIO1
 
-//#define SPIM_GPIO_MUX         GPIO_MUX_3
-//#define SPIM_GPIO_PORT        GPIO0
-//#define VS_CLK_PIN            GPIO_PIN_7  //GPIO21
-//#define VS_MOSI_PIN           GPIO_PIN_6  //GPIO22
-//#define VS_MISO_PIN           GPIO_PIN_5  //GPIO16
+#define VS_XCS_PIN                      GPIO_PIN_1
+#define VS_XCS_PIN_GRP                  VS1005_GROUP
 
+#define VS_XDCS_PIN                     GPIO_PIN_15
+#define VS_XDCS_PIN_GRP                 VS1005_GROUP
+
+#define VS_RST_PIN                      GPIO_PIN_11
+#define VS_RST_PIN_GRP                  VS1005_GROUP
+
+#define VS_DQ_PIN                       GPIO_PIN_10
+#define VS_DQ_PIN_GRP                   VS1005_GROUP
+
+#define VS_SPI_GPIO_MUX                 GPIO_MUX_0
+#define VS_SPI_GPIO_GRP                 VS1005_GROUP
+#define VS_CLK_PIN                      GPIO_PIN_8
+#define VS_MOSI_PIN                     GPIO_PIN_9
+#define VS_MISO_PIN                     GPIO_PIN_0
 typedef enum
 {
     BIT_RESET = 0,
@@ -79,6 +87,7 @@ typedef enum
 void         vs_config_init(void);
 uint8_t      vs_spi_read_byte(void);
 void         vs_spi_write_byte(uint8_t data);
+void         vs_spi_write_buffer(uint8_t *data, uint16_t len);
 void         vs_set_rst_pin(bit_action_t bit_val);
 void         vs_set_xcs_pin(bit_action_t bit_val);
 void         vs_set_xdcs_pin(bit_action_t bit_val);

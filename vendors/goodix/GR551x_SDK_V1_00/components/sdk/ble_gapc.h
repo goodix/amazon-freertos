@@ -47,6 +47,10 @@
 #define GAP_ADDR_LEN             0x06 /**< The length of address. */
 #define GAP_INVALID_CONN_INDEX   0xFF /**< Invalid connection index. */
 
+#if defined(GR551xx_D0)
+#define GAP_MIN_IQ_SAMPLE_NUM    0x09
+#define GAP_MAX_IQ_SAMPLE_NUM    0x52
+#endif
 
 
 /**@defgroup BLE_GAP_ADDR_TYPES GAP Address types
@@ -58,7 +62,7 @@
 
 /**@defgroup BLE_GAP_PHY_OPTIONS GAP PHY OPTIONS (bitmask)
  * @{ */
-#define PHY_OPT_NO_CODING    0x00       /**< The Host has no preferred coding when transmitting on the LE CodedPHY. */
+#define PHY_OPT_NO_CODING    0x00       /**< The Host has no preferred coding when transmitting on the LE Coded PHY. */
 #define PHY_OPT_S2_CODING    0x01       /**< The Host prefers that S=2 coding be used when transmitting on the LE Coded PHY. */
 #define PHY_OPT_S8_CODING    0x02       /**< The Host prefers that S=8 coding be used when transmitting on the LE Coded PHY. */
 /**@} */
@@ -69,16 +73,16 @@
  * @defgroup BLE_SDK_GAP_ENUM Enumerations
  * @{
  */
-/** @brief The operation code of get connection info */
+/** @brief The operation code used to get connection info */
 typedef enum  
 {
-    GAP_GET_CON_RSSI = 0,        /**<Get connection RSSI info. */
-    GAP_GET_CON_CHANNEL_MAP,     /**<Get connection channel map. */
+    GAP_GET_CON_RSSI = 0,        /**< Get connection RSSI info. */
+    GAP_GET_CON_CHANNEL_MAP,     /**< Get connection channel map. */
     GAP_GET_PHY,                 /**< Get connection PHY. */
     GAP_GET_CHAN_SEL_ALGO        /**< Get selection algorithm for connection channel. */
 } gap_get_conn_info_op_t;
 
-/**@brief The operation code of get peer device info. */
+/**@brief The operation code used to get peer device info. */
 typedef enum 
 {
     GAP_GET_PEER_VERSION = 0,    /**< Get peer device version info. */
@@ -104,12 +108,12 @@ typedef enum
     GAP_REPORT_INFO_DIR_ADV_BIT  = (1 << 3), /**< Directed advertising. */
 } gap_adv_report_info_t;
 
-/** @brief Stopped reason code. */
+/** @brief Stop reason code. */
 typedef enum
 {
     GAP_STOPPED_REASON_TIMEOUT = 0,          /**< Stop with timeout. */
-    GAP_STOPPED_REASON_ON_USER,              /**< Stop with user stop it actively. */
-    GAP_STOPPED_REASON_CONN_EST              /**< Stop with connection established . */
+    GAP_STOPPED_REASON_ON_USER,              /**< Stop with user stopping it actively. */
+    GAP_STOPPED_REASON_CONN_EST              /**< Stop with connection established. */
 } gap_stopped_reason_t;
 
 /** @brief Device role of LL layer type */
@@ -140,13 +144,86 @@ typedef enum
 } gap_rslv_addr_read_op_id_t;
 
 /**
- * @brief Operation code used to LEPSM manager.
+ * @brief Operation code used for LEPSM manager.
  */
 typedef enum
 {
     GAP_OPCODE_LEPSM_REGISTER,      /**< LEPSM register operation. */
     GAP_OPCODE_LEPSM_UNREGISTER,    /**< LEPSM unregister operation. */
 } gap_psm_manager_op_id_t;
+
+
+#if defined(GR551xx_D0)
+
+/**
+ * @brief Type of constant tone extension.
+ */
+typedef enum
+{
+    GAP_CET_AOA,      /**< Allow AoA Constant Tone Extension Response. */
+    GAP_CET_AOD_1US,  /**< Allow AoD Constant Tone Extension Response with 1 ¦Ìs slots. */
+    GAP_CET_AOD_2US   /**< Allow AoD Constant Tone Extension Response with 2 ¦Ìs slots. */
+} gap_cte_type_t;
+
+/**
+ * @brief Type of switching and sampling slots 
+ */
+typedef enum
+{
+    GAP_SLOT_1US = 0x01,     /**< Switching and sampling slots are 1 ¦Ìs each. */
+    GAP_SLOT_2US,            /**< Switching and sampling slots are 2 ¦Ìs each. */
+} gap_switching_sampling_type_t;
+
+/**
+ * @brief Status of IQ report packet
+ */
+typedef enum
+{
+    GAP_CRC_OK,                      /**< CRC was correct. */
+    GAP_CRC_ERR1,                    /**< CRC was incorrect and the Length and CTETime fields of the packet were used to determine sampling points. */
+    GAP_CRC_ERR2,                    /**< CRC was incorrect but the Controller has determined the position and length of the Constant Tone Extension in some other way. */
+    GAP_INSUFFI_RESOURCE = 0xFF     /**< Insufficient resources to sample (data_channel_idx, cte_type, and slot_dur invalid). */
+} gap_iq_report_status_t;
+
+/**
+ * @brief Phy for power control management 
+ */
+ typedef enum
+{
+    GAP_PHY_1M       = 0x01,        /**< LE 1M PHY. */
+    GAP_PHY_2M       = 0x02,        /**< LE 2M PHY. */
+    GAP_PHY_CODED_S8 = 0x03,        /**< LE Coded PHY with S=8 data coding. */
+    GAP_PHY_CODED_S2 = 0x04         /**< LE Coded PHY with S=2 data coding. */
+} gap_phy_type_t;
+
+/**
+ * @brief Transmit power change reporting reason.
+ */
+typedef enum
+{
+    GAP_PWR_LOCAL_TX_CHG   = 0x00, /**< Local transmit power changed. */
+    GAP_PWR_REMOTE_TX_CHG  = 0x01, /**< Remote transmit power changed. */
+} gap_tx_pwr_change_report_reason_t;
+
+/**
+ * @brief Transmit Power level flag.
+ */
+typedef enum
+{
+    GAP_PWR_MID_LVL  = 0x00, /**< Transmit power level is between minimum and max level. */
+    GAP_PWR_MIN_LVL  = 0x01, /**< Transmit power level is at minimum level. */
+    GAP_PWR_MAX_LVL  = 0x02  /**< Transmit power level is at maximum level. */
+} gap_pwr_lvl_flag_t;
+
+/// Path Loss zones. HCI:7.8.118
+typedef enum
+{
+    GAP_PATH_LOSS_LOW           = 0x00, /**< Entered Low zone. */
+    GAP_PATH_LOSS_MID           = 0x01, /**< Entered Middle zone. */
+    GAP_PATH_LOSS_HIGH          = 0x02, /**< Entered High zone. */
+} gap_path_loss_zone_t;
+
+#endif
 
 /** @} */
 
@@ -178,7 +255,7 @@ typedef struct
 typedef struct
 {
     gap_addr_t gap_addr;     /**< Device BD Address. */
-    uint8_t    addr_type;    /**< Address type of the device 0=public/1=random. please @ref BLE_GAP_ADDR_TYPES. */
+    uint8_t    addr_type;    /**< Address type of the device: 0=public/1=random. please @ref BLE_GAP_ADDR_TYPES. */
 } gap_bdaddr_t;
 
 /** @brief Get broadcast address struct. */
@@ -191,14 +268,14 @@ typedef struct
 /** @brief TX power info struct. */
 typedef struct
 {
-    int8_t     power_lvl;       /**< Advertising channel TX power level. Range: -20 to 10. Units: dBm. Accuracy: +/-4dB. */
+    int8_t     power_lvl;       /**< Advertising channel TX power level. Range: -20 to 10. Unit: dBm. Accuracy: +/-4dB. */
 } gap_dev_adv_tx_power_t;
 
 /** @brief TX power info struct. */
 typedef struct
 {
-    int8_t min_tx_pwr;      /**< MIN of TX power. Size: 1 octet (signed integer). Range: -127  to +126. Units: dBm. */
-    int8_t max_tx_pwr;      /**< MAX of TX power. Size: 1 octet (signed integer). Range: -127 to +126. Units: dBm. */
+    int8_t min_tx_pwr;      /**< MIN of TX power. Size: 1 octet (signed integer). Range: -127  to +126. Unit: dBm. */
+    int8_t max_tx_pwr;      /**< MAX of TX power. Size: 1 octet (signed integer). Range: -127 to +126. Unit: dBm. */
 } gap_dev_tx_power_t;
 
 /** @brief Max data length info struct. */
@@ -242,6 +319,17 @@ typedef struct
     uint16_t rx_path_comp; /**< RF RX path compensation. */
 } gap_dev_rf_path_comp_ind_t;
 
+#if defined(GR551xx_D0)
+/** @brief antenna information. */
+typedef struct
+{
+    uint8_t     supp_switching_sampl_rates;  /**< Supported switching sampling rates bit field (@see enum gap_switch_sampling_rate). */
+    uint8_t     antennae_num;                /**< Number of antennae, range 0x01 to 0x4B. */
+    uint8_t     max_switching_pattern_len;   /**< Max length of switching pattern (number of antenna IDs in the pattern), range 0x02 to 0x4B. */
+    uint8_t     max_cte_len;                 /**< Max CTE length, range 0x02 to 0x14. */
+} gap_antenna_inf_t;
+#endif
+
 /** @brief Device info. */
 typedef union
 {
@@ -254,6 +342,10 @@ typedef union
     gap_max_adv_data_len_ind_t  max_adv_data_len;       /**< Maximum advertising data length info. */
     gap_dev_tx_power_t          dev_tx_power;           /**< Device TX power info. */
     gap_dev_rf_path_comp_ind_t  dev_rf_path_comp;       /**< RF path compensation values. */
+
+    #if defined(GR551xx_D0)
+    gap_antenna_inf_t           dev_antenna_inf;        /**< Device antenna information. */
+    #endif
 } gap_dev_info_t;
 
 /** @brief Get device info operation struct. */
@@ -278,13 +370,10 @@ typedef struct
     uint8_t      adv_sid;       /**< Advertising SID. */
     uint8_t      clk_acc;       /**< Advertiser clock accuracy. @see enum gapm_clk_acc. */
     gap_bdaddr_t bd_addr;       /**< Advertiser address. */
-#if defined(GR551xx_C0) || defined(GR551xx_C2)
     uint16_t sync_hdl;          /**< Sync handle. */
-#endif
 
 #if defined(GR551xx_D0)
-    uint16_t sync_hdl;    /**< Sync handle. */
-    uint16_t serv_data;   /**< Service data. */
+    uint16_t serv_data;         /**< Service data. */
 #endif
 
 } gap_sync_established_ind_t;
@@ -302,7 +391,7 @@ typedef struct
     uint8_t      phy_prim;              /**< Primary PHY on which advertising report has been received. */
     uint8_t      phy_second;            /**< Secondary PHY on which advertising report has been received. */
     uint8_t      adv_sid;               /**< Advertising SID , valid only for periodic advertising report. */
-    uint16_t     period_adv_intv;       /**< Periodic advertising interval (in unit of 1.25ms, min is 7.5ms) valid only for periodic advertising report. */
+    uint16_t     period_adv_intv;       /**< Periodic advertising interval (in unit of 1.25ms, min is 7.5ms), valid only for periodic advertising report. */
     uint8_t      per_sync_idx;          /**< Periodic syncronization index, valid only for periodic advertising report. */
     uint16_t     length;                /**< Report length. */
     uint8_t      data[__ARRAY_EMPTY];   /**< Report. */
@@ -311,18 +400,18 @@ typedef struct
 /** @brief  Name of peer device indication. */
 typedef struct
 {
-    gap_addr_t  peer_addr;              /**<  Peer device bd address. */
-    uint8_t     addr_type;              /**<  Peer device address type. */
-    uint8_t     name_len;               /**<  Peer device name length. */
-    uint8_t     name[__ARRAY_EMPTY];    /**<  Peer device name. */
+    gap_addr_t  peer_addr;              /**< Peer device bd address. */
+    uint8_t     addr_type;              /**< Peer device address type. */
+    uint8_t     name_len;               /**< Peer device name length. */
+    uint8_t     name[__ARRAY_EMPTY];    /**< Peer device name. */
 } gap_peer_name_ind_t;
 
 /** @brief Connection parameter used to update connection parameters. */
 typedef struct
 {
-    uint16_t interval; /**<  Connection interval. Range: 0x0006 to 0x0C80. Unit: 1.25 ms. Time range: 7.5 ms to 4 s. */
-    uint16_t latency;  /**<  Latency for the connection in number of connection events. Range: 0x0000 to 0x01F3. */
-    uint16_t time_out; /**< Supervision timeout for the LE link. Range: 0x000A to 0x0C80. Unit: 10 ms. Time range: 100 ms to 32 s. */
+    uint16_t interval;           /**< Connection interval. Range: 0x0006 to 0x0C80. Unit: 1.25 ms. Time range: 7.5 ms to 4 s. */
+    uint16_t latency;            /**< Latency for the connection in number of connection events. Range: 0x0000 to 0x01F3. */
+    uint16_t sup_timeout;        /**< Supervision timeout for the LE link. Range: 0x000A to 0x0C80, unit: 10 ms, time range: 100 ms to 32 s. */
 } gap_conn_update_cmp_t;
 
 /** @brief The parameter of connection. */
@@ -333,7 +422,7 @@ typedef  struct
      uint16_t interval_max;  /**< Maximum value for the connection interval. This shall be greater than or equal to Conn_Interval_Min.
                                   Range: 0x0006 to 0x0C80, unit: 1.25 ms, time range: 7.5 ms to 4 s.*/
      uint16_t slave_latency; /**< Slave latency for the connection in number of connection events. Range: 0x0000 to 0x01F3. */
-     uint16_t sup_timeout;   /**< Supervision timeout for the LE link. range: 0x000A to 0x0C80, unit: 10 ms, Time range: 100 ms to 32 s. */
+     uint16_t sup_timeout;   /**< Supervision timeout for the LE link. Range: 0x000A to 0x0C80, unit: 10 ms, time range: 100 ms to 32 s. */
 } gap_conn_param_t;
 
 
@@ -346,18 +435,18 @@ typedef  struct
                                   Range: 0x0006 to 0x0C80, unit: 1.25 ms, time range: 7.5 ms to 4 s.*/
      uint16_t slave_latency; /**< Slave latency for the connection in number of connection events. Range: 0x0000 to 0x01F3. */
      uint16_t sup_timeout;   /**< Supervision timeout for the LE link. range: 0x000A to 0x0C80, unit: 10 ms, Time range: 100 ms to 32 s. */
-     uint16_t ce_len;/**< The length of connection event needed for this LE connection.  Range: 0x0002 to 0xFFFF , Unit:0.625 ms, Time Range: 1.25 ms to 40.9 s. */
+     uint16_t ce_len;        /**< The length of connection event needed for this LE connection. Range: 0x0002 to 0xFFFF, unit: 0.625 ms, time Range: 1.25 ms to 40.9 s. */
 } gap_conn_update_param_t;
 
 /** @brief  Connection complete info. */
 typedef struct
 {
-    uint16_t             conhdl;            /**< Connection_Handle, range: 0x0000-0x0EFF (all other values reserved for future use). */
-    uint16_t            con_interval;       /**< Connection interval, range: 0x0006 to 0x0C80, unit: 1.25 ms, time range: 7.5 ms to 4 s. */
+    uint16_t             conhdl;            /**< Connection_Handle. Range: 0x0000-0x0EFF (all other values reserved for future use). */
+    uint16_t            con_interval;       /**< Connection interval. Range: 0x0006 to 0x0C80, unit: 1.25 ms, time range: 7.5 ms to 4 s. */
     uint16_t            con_latency;        /**< Latency for the connection in number of connection events. Range: 0x0000 to 0x01F3. */
-    uint16_t            sup_to;             /**< Connection supervision timeout. Range: 0x000A to 0x0C80. Unit:  10 ms. Time range: 100 ms to 32 s. */
-    uint8_t             clk_accuracy;       /**< Clock accuracy(0x00: 500 ppm, 0x01:250 ppm, 0x02:150 ppm, 0x03:100 ppm, 0x04:75 ppm, 
-                                                 0x05:50 ppm, 0x06:30 ppm,0x07:20 ppm, others: reserved for future use). */
+    uint16_t            sup_to;             /**< Connection supervision timeout. Range: 0x000A to 0x0C80, unit: 10 ms, time range: 100 ms to 32 s. */
+    uint8_t             clk_accuracy;       /**< Clock accuracy (0x00: 500 ppm, 0x01: 250 ppm, 0x02: 150 ppm, 0x03: 100 ppm, 0x04: 75 ppm, 
+                                                 0x05:50 ppm, 0x06:30 ppm, 0x07:20 ppm, others: reserved for future use). */
     uint8_t             peer_addr_type;     /**< Peer address type(0x00: Public Device Address, 0x01 : Random Device Address, others: reserved for future use). */
     gap_addr_t          peer_addr;          /**< Peer BT address. */
     gap_ll_role_type_t  ll_role;            /**< Device Role of LL Layer. */
@@ -366,8 +455,8 @@ typedef struct
 /** @brief  Channel map structure. */
 typedef struct
 {
-    uint8_t map[GAP_CHNL_MAP_LEN]; /**< This parameter contains 37 1-bit fields. The nth such field (in the range of 0 to 36) contains the value for the link layer channel index n.
-                                        Channel n is unused = 0. channel n is used = 1. The most significant bits are reserved for future use.*/
+    uint8_t map[GAP_CHNL_MAP_LEN]; /**< This parameter contains 37 1-bit fields. The nth bit (n is in the range of 0 to 36) contains the value for the link layer channel index n.
+                                        Channel n is unused = 0, channel n is used = 1. The most significant bits are reserved for future use.*/
 } gap_chnl_map_t;
 
 /** @brief PHY info. */
@@ -382,7 +471,7 @@ typedef union
 {
     int8_t           rssi;              /**< RSSI. */
     gap_chnl_map_t   chnl_map;          /**< channel map. */
-    gap_le_phy_ind_t phy;               /**< phy indicaiton. */
+    gap_le_phy_ind_t phy;               /**< PHY indicaiton. */
     uint8_t          chan_sel_algo;     /**< Chanel Selection algorithm, 0x00: LE Channel Selection Algorithm #1 is used.
                                              0x01: LE Channel Selection Algorithm #2 is used.\n 0x02-0xFF: reserved. */
 } gap_conn_info_t;
@@ -453,13 +542,133 @@ typedef struct
     uint16_t max_rx_time;   /**<  The maximum time that the local Controller will take to RX. */
 } gap_le_pkt_size_ind_t;
 
+/**@brief The Structure for BLE Connection Arrangement. */
+typedef struct
+{
+    uint16_t conn_idx;     /**< Connection Index. */
+    uint32_t interval;     /**< Connection Interval (in 625 ¦Ìs). */
+    uint32_t offset;       /**< Connection Offset (in 625 ¦Ìs). */
+    uint32_t duration;     /**< Connection Duration (in 625 ¦Ìs). */
+} gap_con_plan_tag_t;
 
 /** @brief Set preference slave event duration */
 typedef struct
 {
     uint16_t duration; /**< Preferred event duration. */
-    uint8_t single_tx; /**< Slave transmits a single packet per connection event (False/True). */
-}gapc_set_pref_slave_evt_dur_param_t;
+    uint8_t  single_tx; /**< Slave transmits a single packet per connection event (False/True). */
+} gap_set_pref_slave_evt_dur_param_t;
+
+#if defined(GR551xx_D0)
+
+/**
+ * @brief Connectionless IQ Report info
+ */
+typedef struct
+{
+    uint8_t  channel_idx;                     /**< The index of the channel on which the packet was received, range 0x00 to 0x24. */
+    int16_t  rssi;                            /**< RSSI units: 0.1 dBm, range -1270 to +200. */
+    uint8_t  rssi_antenna_id;                 /**< RSSI antenna ID. */
+    uint8_t  cte_type;                        /**< CTE type (0: GAP_CET_AOA | 1: GAP_CET_AOD_1US | 2: GAP_CET_AOD_2US), @see enum gap_cte_type_t. */
+    uint8_t  slot_dur;                        /**< Slot durations (1: GAP_SLOT_1US | 2: GAP_SLOT_2US), see @ref gap_switching_sampling_type_t. */
+    uint8_t  pkt_status;                      /**< Packet status, @see enum gap_iq_report_status_t. */
+    uint16_t pa_evt_cnt;                      /**< Periodic advertising event counter. */
+    uint8_t  nb_samples;                      /**< Number of samples. 0x00: no samples provided (only permitted if pkt_status is 0xFF),
+                                                   0x09 to 0x52: total number of sample pairs. */
+    int8_t i_sample[GAP_MAX_IQ_SAMPLE_NUM];   /**< The list of i samples for the reported PDU. */
+    int8_t q_sample[GAP_MAX_IQ_SAMPLE_NUM];   /**< The list of q samples for the reported PDU. */
+} gap_connless_iq_report_t;
+
+/** @brief Set connection CTE transmit parameters info. */
+typedef struct
+{
+    uint8_t cte_type;     /**< The type of cte, see @ref gap_cte_type_t. */
+    uint8_t num_antenna;  /**< The number of Antenna IDs in the pattern, range 0x02 to 0x4B. */
+    uint8_t *antenna_id;  /**< List of Antenna IDs in the pattern. */
+} gap_set_conn_cte_trans_param_t;
+
+/** @brief Set connection CTE receive parameters info. */
+typedef struct
+{
+    bool    sampling_enable; /**< Wheter to sample IQ from the CTE. */
+    uint8_t slot_durations;  /**< The slot for sample IQ from the CTE, see @ref gap_switching_sampling_type_t. */
+    uint8_t num_antenna;     /**< The number of Antenna IDs in the pattern, range 0x02 to 0x4B. */
+    uint8_t *antenna_id;     /**< List of Antenna IDs in the pattern. */
+} gap_set_conn_cte_rcv_param_t;
+
+/** @brief Set connection CTE Request enable info. */
+typedef struct
+{
+    uint16_t cte_req_interval;    /**< Defines whether the cte request procedure is initiated only once or periodically.
+                                       0x0000: initiate the Constant Tone Extension Request procedure once.
+                                       0x0001 to 0xFFFF: requested interval for initiating the cte request procedure in number of connection events. */
+    uint8_t  cte_req_len;         /**< Minimum length of the cte being requested in 8us units, range 0x02 to 0x14. */
+    uint8_t  cte_req_type;        /**< The type for requested cte, see @ref gap_cte_type_t. */
+} gap_set_conn_cte_req_enable_t;
+
+/** @brief Connection IQ Report info. */
+typedef struct
+{
+    uint8_t  rx_phy;                          /**< Rx PHY (0x01: 1M | 0x02: 2M), see @ref BLE_GAP_PHYS. */
+    uint8_t  data_channel_idx;                /**< Data channel index, range 0x00 to 0x24. */
+    int16_t  rssi;                            /**< RSSI units: 0.1 dBm, range -1270 to +200. */
+    uint8_t  rssi_antenna_id;                 /**< RSSI antenna ID. */
+    uint8_t  cte_type;                        /**< CTE type (0: GAP_CET_AOA | 1: GAP_CET_AOD_1US | 2: GAP_CET_AOD_2US), @see enum gap_cte_type_t. */
+    uint8_t  slot_dur;                        /**< Slot durations (1: GAP_SLOT_1US | 2: GAP_SLOT_2US), see @ref gap_switching_sampling_type_t. */
+    uint8_t  pkt_status;                      /**< Packet status, @see enum gap_iq_report_status_t. */
+    uint16_t con_evt_cnt;                     /**< Connection event counter. */
+    uint8_t  nb_samples;                      /**< Number of samples. 0x00: no samples provided (only permitted if pkt_status is 0xFF),
+                                                   0x09 to 0x52: total number of sample pairs. */
+    int8_t i_sample[GAP_MAX_IQ_SAMPLE_NUM];   /**< The list of i samples for the reported PDU. */
+    int8_t q_sample[GAP_MAX_IQ_SAMPLE_NUM];   /**< The list of q samples for the reported PDU. */
+} gap_conn_iq_report_t;
+
+/** @brief Set path loss reporting parameter info. */
+typedef struct
+{
+    uint8_t  high_thr;                  /**< High threshold for the path loss (dB). */
+    uint8_t  high_hyst;                 /**< Hysteresis value for the high threshold (dB). */
+    uint8_t  low_thr;                   /**< Low threshold for the path loss (dB). */
+    uint8_t  low_hyst;                  /**< Hysteresis value for the low threshold (dB). */
+    uint16_t min_conn_evt_num;          /**< Minimum time in number of connection events to be observed. */
+} gap_set_path_loss_report_param_t;
+
+/** @brief Transmit power change reporting info. */
+typedef struct
+{
+    uint8_t  reason;    /**< Reason see @ref gap_tx_pwr_change_report_reason_t. */
+    uint8_t  phy;       /**< Phy see @ref gap_phy_type_t. */
+    int8_t   tx_pwr;    /**< Transmit Power level (dBm). */
+    uint8_t  flags;     /**< Transmit Power level flags, see @ref gap_pwr_lvl_flag_t. */
+    int8_t   delta;     /**< Change in transmit power level (dBm). */
+} gap_tx_pwr_change_report_t;
+
+/** @brief Path loss threshold reporting info. */
+typedef struct
+{
+    uint8_t curr_path_loss;   /**< Current path loss (dB). */
+    uint8_t zone_entered;     /**< Zone entered, see @ref gap_path_loss_zone_t. */
+} gap_path_loss_threshold_report_t;
+
+/** @brief Local transmit power read indication info. */
+typedef struct
+{
+    uint8_t phy;              /**< Phy see @ref gap_phy_type_t. */
+    int8_t  curr_tx_pwr_lvl;  /**< Current transmit power level (dBm). */
+    int8_t  max_tx_pwr_lvl;   /**< Max transmit power level (dBm). */
+} gap_local_tx_pwr_read_ind_t;
+
+/** @brief Remote transmit power read indication info. */
+typedef struct
+{
+    uint8_t  phy;       /**< Phy see @ref gap_phy_type_t. */
+    int8_t   tx_pwr;    /**< Transmit Power level (dBm). */
+    uint8_t  flags;     /**< Transmit Power level flags, see @ref gap_pwr_lvl_flag_t. */
+} gap_remote_tx_pwr_read_ind_t;
+
+#endif
+
+/** @brief BLE initialization completed callback function for application. */
+typedef void (*app_ble_init_cmp_cb_t)(void);
 
 /** @brief The gap callback function struct. */
 typedef struct
@@ -470,7 +679,7 @@ typedef struct
 
     /**
       ****************************************************************************************
-      * @brief This callback function will be called when the set param(s) operation has completed.
+      * @brief This callback function will be called when the set param(s) operation has been completed.
       * @param[in] status:  The status of set param operation.
       * @param[in] set_param_op: The operation of setting. @see gap_param_set_op_id_t.
       * @retval void
@@ -480,9 +689,9 @@ typedef struct
     
     /**
       ****************************************************************************************
-      * @brief This callback function will be called when the psm register/unregister operation has completed.
-      * @param[in] status:  The status of psm manager operations.
-      * @param[in] set_param_op: The operation of register/unregister psm. @see gap_psm_op_id_t
+      * @brief This callback function will be called when the PSM register/unregister operation has been completed.
+      * @param[in] status:  The status of PSM manager operations.
+      * @param[in] set_param_op: The operation of register/unregister PSM. @see gap_psm_op_id_t
       * @retval void
       ****************************************************************************************
       */
@@ -490,10 +699,10 @@ typedef struct
 
      /**
       ****************************************************************************************
-      * @brief This callback function will be called when update phy completed.
+      * @brief This callback function will be called when update PHY completed.
       * @param[in] status:  The index of connections.
-      * @param[in] status:  The status of udpate phy operation.
-      * @param[in] phy:     The phy info.
+      * @param[in] status:  The status of udpate PHY operation.
+      * @param[in] phy:     The PHY info.
       * @retval void
       ****************************************************************************************
       */
@@ -502,7 +711,7 @@ typedef struct
 
     /**
       ****************************************************************************************
-      * @brief This callback function will be called once the requested parameters has been got.
+      * @brief This callback function will be called once the requested parameters has been available.
       * @param[in] status: GAP operation status.
       * @param[in] p_dev_info: The device info. See @ref gap_dev_info_get_t.
       * @retval void
@@ -518,7 +727,7 @@ typedef struct
     /**
      ****************************************************************************************
      * @brief This callback function will be called when the adv has started.
-     * @param[in] inst_idx:        The advertising index. valid range is: 0 - 4.
+     * @param[in] inst_idx:        The advertising index. Valid range is: 0 - 4.
      * @param[in] status:          The status of starting a advertiser.
      * @retval void
      ****************************************************************************************
@@ -528,7 +737,7 @@ typedef struct
     /**
      ****************************************************************************************
      * @brief This callback function will be called when the adv has stopped.
-     * @param[in] inst_idx:        The advertising index. valid range is: 0 - 4.
+     * @param[in] inst_idx:        The advertising index. Valid range is: 0 - 4.
      * @param[in] status:          The status of stopping a advertiser. If status is not success, adv_stop_reason is invalid.
      * @param[in] adv_stop_reason: The stop reason. See @ref gap_stopped_reason_t.
      * @retval void
@@ -539,7 +748,7 @@ typedef struct
     /**
      ****************************************************************************************
      * @brief This callback function will be called when app has received the scan request.
-     * @param[in] inst_idx:       The advertising index. valid range is: 0 - 4.
+     * @param[in] inst_idx:       The advertising index. Valid range is: 0 - 4.
      * @param[in] p_scanner_addr: The BD address. See @ref gap_bdaddr_t.
      * @retval void
      ****************************************************************************************
@@ -549,8 +758,8 @@ typedef struct
     /**
      ****************************************************************************************
      * @brief This callback function will be called when update adv data completed.
-     * @param[in] inst_idx:The advertising index. valid range is: 0 - 4.
-     * @param[in] status:  The status of udpate phy operation.
+     * @param[in] inst_idx:The advertising index. Valid range is: 0 - 4.
+     * @param[in] status:  The status of udpate PHY operation.
      * @retval void
      ****************************************************************************************
      */
@@ -562,7 +771,7 @@ typedef struct
 
     /**
      ****************************************************************************************
-     * @brief This callback function will be called when the scan has started .
+     * @brief This callback function will be called when the scan has started.
      * @param[in] status:          The status of starting a scanner.
      * @retval void
      ****************************************************************************************
@@ -592,7 +801,7 @@ typedef struct
      ****************************************************************************************
      * @brief This callback function will be called once the periodic advertising synchronization has been established.
      * @param[in] status:                  The status of sync.
-     * @param[in] inst_idx:                The periodic syncronization index. valid range is: 0 - 4.
+     * @param[in] inst_idx:                The periodic syncronization index. Valid range is: 0 - 4.
      * @param[in] p_sync_established_info: The established ind info.  See @ref gap_sync_established_ind_t.
      * @retval void
      ****************************************************************************************
@@ -603,7 +812,7 @@ typedef struct
      ****************************************************************************************
      * @brief This callback function will be called when sync has stopped.
      * @param[in] status:          The status of stopping sync.
-     * @param[in] inst_idx:        The periodic syncronization index. valid range is: 0 - 4.
+     * @param[in] inst_idx:        The periodic syncronization index. Valid range is: 0 - 4.
      * @retval void
      ****************************************************************************************
      */      
@@ -634,10 +843,10 @@ typedef struct
 
      /**
       ****************************************************************************************
-      * @brief This callback function will be called when disconnect completed.
+      * @brief This callback function will be called when disconnection completed.
       * @param[in] conn_idx: The connection index.
-      * @param[in] status:   The status of operation. If status is not success, disconnect reason is invalid.
-      * @param[in] reason:   The reason of disconnect. See @ref BLE_STACK_ERROR_CODES.
+      * @param[in] status:   The status of operation. If status is not success, disconnection reason is invalid.
+      * @param[in] reason:   The reason of disconnection. See @ref BLE_STACK_ERROR_CODES.
       * @retval void
       ****************************************************************************************
       */   
@@ -662,7 +871,7 @@ typedef struct
 
     /**
       ****************************************************************************************
-      * @brief This callback function will be called when the peer name info has been got.
+      * @brief This callback function will be called when the peer name info has been available.
       * @param[in] conn_idx:    The connection index.
       * @param[in] p_peer_name: The peer device name indication info. See @ref gap_peer_name_ind_t.
       * @retval void
@@ -731,13 +940,77 @@ typedef struct
 
     /**
      ****************************************************************************************
-     * @brief This callback function will be called when an app read the local or peer reslovable address.
+     * @brief This callback function will be called when an app reads the local or peer reslovable address.
      * @param[in]  status:                       The status of GAP operation.
      * @param[in]  p_read_rslv_addr:             Read resolvable address info. See @ref gap_rslv_addr_read_t.
      * @retval void
      ****************************************************************************************
      */    
     void (*app_rslv_addr_read_cb)(uint8_t status, const gap_rslv_addr_read_t *p_read_rslv_addr);
+
+#if defined(GR551xx_D0)
+    /**
+     ****************************************************************************************
+     * @brief This callback function will be called when an connection IQ report received.
+     * @param[in]  conn_idx:                     The connection index.
+     * @param[in]  p_conn_iq_report:             The connection IQ report info. See @ref gap_conn_iq_report_t.
+     * @retval void
+     ****************************************************************************************
+     */
+    void (*app_conn_iq_report_cb)(uint8_t conn_idx, const gap_conn_iq_report_t *p_conn_iq_report);
+
+    /**
+     ****************************************************************************************
+     * @brief This callback function will be called when an connectionless IQ report received.
+     * @param[in]  per_sync_idx:                 The index of the periodic syncronization instance.
+     * @param[in]  p_connless_iq_report:         The connectionless IQ report info. See @ref gap_connless_iq_report_t.
+     * @retval void
+     ****************************************************************************************
+     */
+    void (*app_connless_iq_report_cb)(uint8_t per_sync_idx, const gap_connless_iq_report_t *p_connless_iq_report);
+
+    /**
+     ****************************************************************************************
+     * @brief This callback function will be called an app read the local transmit power.
+     * @param[in]  conn_idx:                 The connection index.
+     * @param[in]  status:                   The status of GAP operation.
+     * @param[in]  p_local_tx_pwr_read:      The local transmit power read info, See @ref gap_local_tx_pwr_read_ind_t.
+     * @retval void
+     ****************************************************************************************
+     */
+    void (*app_local_tx_power_read_cb)(uint8_t conn_idx, uint8_t status, const gap_local_tx_pwr_read_ind_t *p_local_tx_pwr_read);
+
+     /**
+     ****************************************************************************************
+     * @brief This callback function will be called when an app read the remote transmit power.
+     * @param[in]  conn_idx:                 The connection index.
+     * @param[in]  status:                   The status of GAP operation.
+     * @param[in]  p_remote_tx_pwr_read:     The remote transmit power read info, See @ref gap_remote_tx_pwr_read_ind_t.
+     * @retval void
+     ****************************************************************************************
+     */
+    void (*app_remote_tx_power_read_cb)(uint8_t conn_idx, uint8_t status, const gap_remote_tx_pwr_read_ind_t *p_remote_tx_pwr_read);
+
+    /**
+     ****************************************************************************************
+     * @brief This callback function will be called when an transmit power change reporting event received.
+     * @param[in]  conn_idx:                 The connection index.
+     * @param[in]  p_tx_pwr_report:          The transmit power report info, See @ref gap_tx_pwr_change_report_t.
+     * @retval void
+     ****************************************************************************************
+     */
+    void (*app_tx_power_change_report_cb)(uint8_t conn_idx, const gap_tx_pwr_change_report_t *p_tx_pwr_change_report);
+
+    /**
+     ****************************************************************************************
+     * @brief This callback function will be called when a path loss threshold crossing.
+     * @param[in]  conn_idx:                 The connection index.
+     * @param[in]  p_path_loss_report:       The path loss threshold report info, See @ref gap_path_loss_threshold_report_t.
+     * @retval void
+     ****************************************************************************************
+     */
+    void (*app_path_loss_threshold_report_cb)(uint8_t conn_idx, const gap_path_loss_threshold_report_t *p_path_loss_report);
+#endif
 }gap_cb_fun_t;
 
 /** @} */
@@ -749,7 +1022,7 @@ typedef struct
 /**
  ****************************************************************************************
  * @brief Terminate an existing connection.
- * @note When APP wants to disconnect a connection, it should call this function, and when the disconnecting is finished, 
+ * @note When APP wants to disconnect a connection, it should call this function, and when the disconnection is finished, 
  *       the callback function @ref gap_cb_fun_t::app_gap_disconnect_cb will be called.
  *
  * @param[in] conn_idx: The index of connection.
@@ -764,7 +1037,7 @@ uint16_t ble_gap_disconnect(uint8_t conn_idx);
 /**
  ****************************************************************************************
  * @brief Change the Link Layer connection parameters of a connection. 
- * @note When APP want to update connection param, it should call this function, and if the update connection param is finished,
+ * @note When APP wants to update connection param, it should call this function, and if the update connection param is finished,
  *       the callback function @ref gap_cb_fun_t::app_gap_connection_update_cb will be called.
  *
  * @param[in] conn_idx:     The index of connection.
@@ -779,14 +1052,28 @@ uint16_t ble_gap_disconnect(uint8_t conn_idx);
 uint16_t ble_gap_conn_param_update (uint8_t conn_idx, const gap_conn_update_param_t *p_conn_param);
 
 /**
+ *****************************************************************************************
+ * @brief Consult BLE connection activity plan situation function.
+ * @note  This function should be called when connection established and no periodic advertising exists.
+ *
+ * @param[out] p_act_num:        Pointer to the number of existing connection activities.
+ * @param[out] p_conn_plan_arr:  Pointer to the global array that stores planned connection activities.
+ *                               
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_POINTER_NULL: Invalid pointer supplied.
+ *****************************************************************************************
+ */
+uint16_t ble_gap_con_plan_consult(uint8_t *p_act_num, gap_con_plan_tag_t **p_conn_plan_arr);
+
+/**
  ****************************************************************************************
  * @brief Connection param update reply to peer device.
  * 
- * @note If the Host receives the param update request from the peer device, it will call the callback function 
+ * @note If the Host receives the param update request from the peer device, it will call the callback function. 
  *       @ref gap_cb_fun_t::app_gap_connection_update_req_cb, and then the APP should call this function to confirm.
  *
  * @param[in] conn_idx:      The index of connection.
- * @param[in] accept: True to accept connection parameters, false to reject..
+ * @param[in] accept: True to accept connection parameters, false to reject.
  *
  * @retval ::SDK_SUCCESS: Operation is success.
  * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
@@ -799,7 +1086,7 @@ uint16_t ble_gap_conn_param_update_reply(uint8_t conn_idx, bool accept);
 /**
  ****************************************************************************************
  * @brief The suggested maximum transmission packet size and maximum packet transmission time to be used for a given connection.
- * @note Once this operation has completed, the callback function @ref gap_cb_fun_t::app_gap_le_pkt_size_info_cb will be called.
+ * @note Once this operation has been completed, the callback function @ref gap_cb_fun_t::app_gap_le_pkt_size_info_cb will be called.
  *
  * @param[in] conn_idx:   The index of connection.
  * @param[in] tx_octects: Preferred maximum number of payload octets that the local Controller should include in a single Link Layer packet on this connection.
@@ -818,12 +1105,12 @@ uint16_t ble_gap_data_length_update(uint8_t conn_idx,  uint16_t  tx_octects , ui
 /**
  ****************************************************************************************
  * @brief Set the PHY preferences for the connection identified by the connection index.
- * @note Once this operation has completed, the callback function @ref gap_cb_fun_t::app_gap_phy_update_cb will be called.
+ * @note Once this operation has been completed, the callback function @ref gap_cb_fun_t::app_gap_phy_update_cb will be called.
  *
  * @param[in] conn_idx:   The index of connection.
- * @param[in] tx_phys: the transmitter PHYs that the Host prefers the Controller to use(see @ref BLE_GAP_PHYS).
- * @param[in] rx_phys: A bit field that indicates the receiver PHYs that the Host prefers the Controller to use(see @ref BLE_GAP_PHYS).
- * @param[in] phy_opt: A bit field that allows the Host to specify options for PHYs(see @ref BLE_GAP_PHY_OPTIONS).
+ * @param[in] tx_phys: the transmitter PHYs that the Host prefers the Controller to use (see @ref BLE_GAP_PHYS).
+ * @param[in] rx_phys: A bit field that indicates the receiver PHYs that the Host prefers the Controller to use (see @ref BLE_GAP_PHYS).
+ * @param[in] phy_opt: A bit field that allows the Host to specify options for PHYs (see @ref BLE_GAP_PHY_OPTIONS).
  *
  * @retval ::SDK_SUCCESS: Operation is Success.
  * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
@@ -835,7 +1122,7 @@ uint16_t ble_gap_phy_update(uint8_t conn_idx, uint8_t tx_phys , uint8_t rx_phys,
 /**
  ****************************************************************************************
  * @brief Get the information of the connection.
- * @note Once the connection information has been gotten, the callback function @ref gap_cb_fun_t::app_gap_connection_info_get_cb will be called.
+ * @note Once the connection information has been available, the callback function @ref gap_cb_fun_t::app_gap_connection_info_get_cb will be called.
  *
  * @param[in] conn_idx: The index of connection.
  * @param[in] opcode:   The operation code. See @ref gap_get_conn_info_op_t.
@@ -850,8 +1137,8 @@ uint16_t ble_gap_conn_info_get(uint8_t conn_idx, gap_get_conn_info_op_t opcode);
 
 /**
  ****************************************************************************************
- * @brief Get the information of the peer device
- * @note Once the peer information has been gotten, the callback function @ref gap_cb_fun_t::app_gap_peer_info_get_cb will be called.
+ * @brief Get the information of the peer device.
+ * @note Once the peer information has been available, the callback function @ref gap_cb_fun_t::app_gap_peer_info_get_cb will be called.
  *
  * @param[in] conn_idx: The index of connection.
  * @param[in] opcode:   The operation code. See @ref gap_get_peer_info_op_t.
@@ -864,15 +1151,15 @@ uint16_t ble_gap_conn_info_get(uint8_t conn_idx, gap_get_conn_info_op_t opcode);
  */
 uint16_t ble_gap_peer_info_get(uint8_t conn_idx, gap_get_peer_info_op_t opcode);
 
-#ifdef GR551xx_D0
+#if defined(GR551xx_D0)
 /**
  ****************************************************************************************
  * @brief Send synchronization information about the periodic advertising in an advertising set to a connected device.
  *
  * @note Need to get the feature of peer device before invoke this function. 
  *
- * @param[in] conn_idx: The index of connection.
- * @param[in] per_adv_idx: The index of per adv.
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] per_adv_idx:  The index of per adv.
  * @param[in] service_data: Identify the periodic advertisement to the peer device.
  *
  * @retval ::SDK_SUCCESS: Operation is Success.
@@ -884,19 +1171,147 @@ uint16_t ble_gap_per_adv_set_info_trans(uint8_t conn_idx, uint8_t per_adv_idx, u
 
 /**
  ****************************************************************************************
- * @brief send synchronization information about the periodic advertising identified by the sync_hdl parameter to a connected device..
+ * @brief Send synchronization information about the periodic advertising identified by the sync_hdl parameter to a connected device.
  *
- * @param[in] conn_idx: The index of connection.
- * @param[in] sync_hdl: Identifying the periodic advertising.
- * @param[in] service_data: Identify the periodic advertisement to the peer device.
+ * @param[in] conn_idx:      The index of connection.
+ * @param[in] per_sync_idx:  The index of the periodic syncronization instance.
+ * @param[in] service_data:  Identify the periodic advertisement to the peer device.
+ *
  * @retval ::SDK_SUCCESS: Operation is Success.
- *
  * @retval ::SDK_ERR_INVALID_PARAM: Invalid parameter supplied.
  * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
  * @retval ::SDK_ERR_NO_RESOURCES: Not enough resources.
  ****************************************************************************************
  */
-uint16_t ble_gap_per_adv_sync_trans(uint8_t conn_idx, uint16_t sync_hdl, uint16_t service_data);
+uint16_t ble_gap_per_adv_sync_trans(uint8_t conn_idx, uint8_t per_sync_idx, uint16_t service_data);
+
+/**
+ ****************************************************************************************
+ * @brief Set connection CTE transmit parameters.
+ *
+ * @param[in] conn_idx:  The index of connection.
+ * @param[in] param:     Set connection CTE transmit parameters info, see @ref gap_set_conn_cte_trans_param_t.
+ *
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_PARAM: Invalid parameter supplied.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_conn_cte_trans_param_set(uint8_t conn_idx, gap_set_conn_cte_trans_param_t *param);
+
+/**
+ ****************************************************************************************
+ * @brief Set connection CTE receive parameters.
+ *
+ * @param[in] conn_idx:  The index of connection.
+ * @param[in] param:     Set connection CTE receive parameters info, see @ref gap_set_conn_cte_rcv_param_t.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_PARAM: Invalid parameter supplied.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_conn_cte_recv_param_set(uint8_t conn_idx, gap_set_conn_cte_rcv_param_t *param);
+
+/**
+ ****************************************************************************************
+ * @brief Set connection CTE request enable.
+ *
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] enable_flag:  Wheter to request the cte for the connection. If enable_flag is set to false, the param shall be NULL.
+ * @param[in] param:        Set connection CTE request enable info, see @ref gap_set_conn_cte_req_enable_t.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_PARAM: Invalid parameter supplied.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_conn_cte_req_enable_set(uint8_t conn_idx, bool enable_flag, gap_set_conn_cte_req_enable_t *param);
+
+/**
+ ****************************************************************************************
+ * @brief Set connection CTE response enable.
+ *
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] enable_flag:  Wheter to response the cte req for the connection.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_conn_cte_rsp_enable_set(uint8_t conn_idx, bool enable_flag);
+
+/**
+ ****************************************************************************************
+ * @brief Read the local current and maximum transmit power levels for the connection identified by the conn_idx.
+ * @note Once the local transmit power level has been available, the callback function @ref gap_cb_fun_t::app_local_tx_power_read_cb will be called.
+ *
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] phy:          Read the transmit power levels on which phy, see @ref gap_phy_type_t.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_local_tx_pwr_level_read(uint8_t conn_idx, gap_phy_type_t phy);
+
+/**
+ ****************************************************************************************
+ * @brief Read the remote transmit power levels for the connection identified by the conn_idx.
+ * @note Once the remote transmit power level has been available, the callback function @ref gap_cb_fun_t::app_remote_tx_power_read_cb will be called.
+ *
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] phy:          Read the transmit power levels on which phy, see @ref gap_phy_type_t.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_remote_tx_pwr_level_read(uint8_t conn_idx, gap_phy_type_t phy);
+
+/**
+ ****************************************************************************************
+ * @brief Set the path loss threshold reporting parameters for the connection identified by the conn_idx.
+ *
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] param:        Set path loss report parameter, see @ref gap_set_path_loss_report_param_t.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_PARAM: Invalid parameter supplied.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_path_loss_report_parameter_set(uint8_t conn_idx, gap_set_path_loss_report_param_t *param);
+
+/**
+ ****************************************************************************************
+ * @brief Enable or disable path loss reporting for the connection identified by the conn_idx.
+ * @note Once a path loss threshold crossing, the callback function @ref gap_cb_fun_t::app_path_loss_threshold_report_cb will be called.
+ *
+ * @param[in] conn_idx:     The index of connection.
+ * @param[in] enable_flag:  The enable flag for reporting path loss.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_path_loss_report_enable_set(uint8_t conn_idx, bool enable_flag);
+
+/**
+ ****************************************************************************************
+ * @brief Enable or disable the reporting of transmit power level changes in the local and remote for the connection identified by the conn_idx.
+ * @note Once the transmit power changes, the callback function @ref gap_cb_fun_t::app_tx_power_change_report_cb will be called.
+ *
+ * @param[in] conn_idx:           The index of connection.
+ * @param[in] local_enable_flag:  The enable flag for reporting transmit power level changes in the local.
+ * @param[in] remote_enable_flag: The enable flag for reporting transmit power level changes in the remote.
+
+ * @retval ::SDK_SUCCESS: Operation is Success.
+ * @retval ::SDK_ERR_INVALID_CONN_IDX: Invalid connection index supplied.
+ ****************************************************************************************
+ */
+uint16_t ble_gap_tx_pwr_change_report_enable_set(uint8_t conn_idx, bool local_enable_flag, bool remote_enable_flag);
+
 #endif
 /** @} */
 

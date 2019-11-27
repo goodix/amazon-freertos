@@ -66,7 +66,7 @@ extern "C" {
   * @{
   */
 
-/** @defgroup HAL_ADC_state HAL ADC state
+/** @defgroup HAL_ADC_state HAL ADC State
   * @{
   */
 
@@ -100,7 +100,7 @@ typedef enum
 typedef ll_adc_init_t       adc_init_t;
 /** @} */
 
-/** @defgroup ADC_handle ADC handle
+/** @defgroup ADC_handle ADC Handle
   * @{
   */
 
@@ -130,7 +130,7 @@ typedef struct _adc_handle
 
 /** @} */
 
-/** @addtogroup HAL_ADC_STRUCTURES Callback Structures
+/** @addtogroup HAL_ADC_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -172,7 +172,7 @@ typedef struct _adc_callback
 #define HAL_ADC_ERROR_NONE              ((uint32_t)0x00000000)  /**< No error           */
 #define HAL_ADC_ERROR_TIMEOUT           ((uint32_t)0x00000001)  /**< Timeout error      */
 #define HAL_ADC_ERROR_DMA               ((uint32_t)0x00000004)  /**< DMA transfer error */
-#define HAL_ADC_ERROR_INVALID_PARAM     ((uint32_t)0x00000008)  /**< Invalid parameters error */
+#define HAL_ADC_ERROR_INVALID_PARAM     ((uint32_t)0x00000008)  /**< Invalid parameter error */
 /** @} */
 
 /** @defgroup ADC_CLK ADC Clock Select
@@ -232,13 +232,10 @@ typedef struct _adc_callback
   * @{
   */
 #define ADC_REF_SRC_BUF_INT         LL_ADC_REF_SRC_BUF_INT  /**< Select buffered internal reference as reference   */
-#define ADC_REF_SRC_INT             LL_ADC_REF_SRC_INT      /**< Select unbuffered internal reference as reference */
-#define ADC_REF_SRC_BAT             LL_ADC_REF_SRC_BAT      /**< Select Vbattery as reference                      */
 #define ADC_REF_SRC_IO0             LL_ADC_REF_SRC_IO0      /**< Select MSIO0 as reference                         */
 #define ADC_REF_SRC_IO1             LL_ADC_REF_SRC_IO1      /**< Select MSIO1 as reference                         */
 #define ADC_REF_SRC_IO2             LL_ADC_REF_SRC_IO2      /**< Select MSIO2 as reference                         */
 #define ADC_REF_SRC_IO3             LL_ADC_REF_SRC_IO3      /**< Select MSIO3 as reference                         */
-#define ADC_REF_SRC_IO4             LL_ADC_REF_SRC_IO4      /**< Select MSIO4 as reference                         */
 /** @} */
 
 /**
@@ -259,37 +256,37 @@ typedef struct _adc_callback
 #define __HAL_ADC_RESET_HANDLE_STATE(__HANDLE__)               ((__HANDLE__)->state = HAL_ADC_STATE_RESET)
 
 /** @brief  Enable the specified ADC peripheral.
-  * @param  __HANDLE__ Specifies the ADC Handle.
+  * @param  __HANDLE__ Specify the ADC Handle.
   * @retval None
   */
 #define __HAL_ADC_ENABLE(__HANDLE__)                           ll_adc_enable()
 
 /** @brief  Disable the specified ADC peripheral.
-  * @param  __HANDLE__ Specifies the ADC Handle.
+  * @param  __HANDLE__ Specify the ADC Handle.
   * @retval None
   */
 #define __HAL_ADC_DISABLE(__HANDLE__)                          ll_adc_disable()
 
 /** @brief  Enable the specified ADC clock.
-  * @param  __HANDLE__ Specifies the ADC Handle.
+  * @param  __HANDLE__ Specify the ADC Handle.
   * @retval None
   */
 #define __HAL_ADC_ENABLE_CLOCK(__HANDLE__)                     ll_adc_enable_clock()
 
 /** @brief  Disable the specified ADC clock.
-  * @param  __HANDLE__ Specifies the ADC Handle.
+  * @param  __HANDLE__ Specify the ADC Handle.
   * @retval None
   */
 #define __HAL_ADC_DISABLE_CLOCK(__HANDLE__)                    ll_adc_disable_clock()
 
 /** @brief  Check the FIFO is not empty.
-  * @param  __HANDLE__ Specifies the ADC Handle.
+  * @param  __HANDLE__ Specify the ADC Handle.
   * @retval The new state of notempty flag (TRUE or FALSE).
   */
 #define __HAL_ADC_GET_FLAG_NOTEMPTY(__HANDLE__)                ll_adc_is_fifo_notempty()
 
 /** @brief  Flush the FIFO.
-  * @param  __HANDLE__ Specifies the ADC Handle.
+  * @param  __HANDLE__ Specify the ADC Handle.
   * @retval None
   */
 #define __HAL_ADC_FLUSH_FIFO(__HANDLE__)                       do {                                 \
@@ -335,12 +332,10 @@ typedef struct _adc_callback
   */
 #define IS_ADC_REF(__INPUT__)               (((__INPUT__) == ADC_REF_SRC_BUF_INT) || \
                                              ((__INPUT__) == ADC_REF_SRC_INT)     || \
-                                             ((__INPUT__) == ADC_REF_SRC_BAT)     || \
                                              ((__INPUT__) == ADC_REF_SRC_IO0)     || \
                                              ((__INPUT__) == ADC_REF_SRC_IO1)     || \
                                              ((__INPUT__) == ADC_REF_SRC_IO2)     || \
-                                             ((__INPUT__) == ADC_REF_SRC_IO3)     || \
-                                             ((__INPUT__) == ADC_REF_SRC_IO4))
+                                             ((__INPUT__) == ADC_REF_SRC_IO3))
 
 /**
   * @brief Check if ADC reference value is valid.
@@ -355,12 +350,12 @@ typedef struct _adc_callback
   * @param __CLOCK__ ADC clock.
   * @retval SET (__CLOCK__ is valid) or RESET (__CLOCK__ is invalid)
   */
-#define IS_ADC_CLOCK(__CLOCK__)             (((__CLOCK__) == ADC_CLK_16) || \
-                                             ((__CLOCK__) == ADC_CLK_8)  || \
-                                             ((__CLOCK__) == ADC_CLK_4)  || \
-                                             ((__CLOCK__) == ADC_CLK_2)  || \
-                                             ((__CLOCK__) == ADC_CLK_1)  || \
-                                             ((__CLOCK__) == ADC_CLK_1P6))
+#define IS_ADC_CLOCK(__CLOCK__)             (((__CLOCK__) == ADC_CLK_16M) || \
+                                             ((__CLOCK__) == ADC_CLK_8M)  || \
+                                             ((__CLOCK__) == ADC_CLK_4M)  || \
+                                             ((__CLOCK__) == ADC_CLK_2M)  || \
+                                             ((__CLOCK__) == ADC_CLK_1M)  || \
+                                             ((__CLOCK__) == ADC_CLK_1P6M))
 
 /** @} */
 
@@ -371,7 +366,7 @@ typedef struct _adc_callback
   * @{
   */
 
-/** @addtogroup ADC_Exported_Functions_Group1 Initialization and de-initialization functions
+/** @addtogroup ADC_Exported_Functions_Group1 Initialization and de-initialization Functions
   *  @brief    Initialization and Configuration functions
   * @{
   */
@@ -381,7 +376,7 @@ typedef struct _adc_callback
  * @brief  Initialize the ADC according to the specified parameters
  *         in the adc_init_t and initialize the associated handle.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -396,7 +391,7 @@ hal_status_t hal_adc_init(adc_handle_t *p_adc);
  ****************************************************************************************
  * @brief  De-initialize the ADC peripheral.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -414,7 +409,7 @@ hal_status_t hal_adc_deinit(adc_handle_t *p_adc);
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_adc_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                the specified ADC module.
  ****************************************************************************************
  */
@@ -427,7 +422,7 @@ void hal_adc_msp_init(adc_handle_t *p_adc);
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_adc_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  ****************************************************************************************
  */
@@ -435,7 +430,7 @@ void hal_adc_msp_deinit(adc_handle_t *p_adc);
 
 /** @} */
 
-/** @addtogroup ADC_Exported_Functions_Group2 IO operation functions
+/** @addtogroup ADC_Exported_Functions_Group2 IO Operation Functions
  *  @brief ADC polling and DMA conversion management functions.
  * @{
  */
@@ -444,7 +439,7 @@ void hal_adc_msp_deinit(adc_handle_t *p_adc);
  ****************************************************************************************
  * @brief  Set the FIFO threshold for DMA trigger.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  * @param[in]  threshold: FIFO threshold value ranging bwtween 0x0U ~ 0x64U.
  *
@@ -460,7 +455,7 @@ hal_status_t hal_adc_set_dma_threshold(adc_handle_t *p_adc, uint32_t threshold);
  ****************************************************************************************
  * @brief  Get the FIFO threshold for DMA trigger.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  *
  * @return FIFO threshold
@@ -472,8 +467,8 @@ uint32_t hal_adc_get_dma_threshold(adc_handle_t *p_adc);
  ****************************************************************************************
  * @brief  Polling for conversion.
  *
- * @param[in]  p_adc:  Pointer to a ADC handle.
- * @param[in]  p_data: Pointer to data buffer which to storage ADC conversion results.
+ * @param[in]  p_adc:  Pointer to an ADC handle.
+ * @param[in]  p_data: Pointer to data buffer which to store ADC conversion results.
  * @param[in]  length: Length of data buffer.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -482,14 +477,14 @@ uint32_t hal_adc_get_dma_threshold(adc_handle_t *p_adc);
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_adc_conversion(adc_handle_t *p_adc, uint16_t *p_data, uint32_t length);
+hal_status_t hal_adc_poll_for_conversion(adc_handle_t *p_adc, uint16_t *p_data, uint32_t length);
 
 /**
  ****************************************************************************************
  * @brief  DMA for conversion.
  *
- * @param[in]  p_adc:  Pointer to a ADC handle.
- * @param[in]  p_data: Pointer to data buffer which to storage ADC conversion results.
+ * @param[in]  p_adc:  Pointer to an ADC handle.
+ * @param[in]  p_data: Pointer to data buffer which to store ADC conversion results.
  * @param[in]  length: Length of data buffer,  ranging between 0 and 4095.
  *
  * @retval ::HAL_OK: Operation is OK.
@@ -498,18 +493,18 @@ hal_status_t hal_adc_conversion(adc_handle_t *p_adc, uint16_t *p_data, uint32_t 
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_adc_conversion_dma(adc_handle_t *p_adc, uint16_t *p_data, uint32_t length);
+hal_status_t hal_adc_start_dma(adc_handle_t *p_adc, uint16_t *p_data, uint32_t length);
 
 /**
  ****************************************************************************************
  * @brief  Abort ongoing conversion (blocking mode).
  *
  * @note   This procedure could be only used for aborting conversion started in DMA mode.
- *         This procedure performs following operations :
+ *         This procedure performs following operations:
  *           - Disable ADC clock, stop conversion
  *           - Abort DMA transfer by calling hal_dma_abort (in case of transfer in DMA mode)
- *           - Set handle State to READY
- *         This procedure is executed in blocking mode : when exiting function, Abort is considered as completed.
+ *           - Set handle State to READY.
+ *         This procedure is executed in blocking mode: when exiting function, Abort is considered as completed.
  *
  * @param[in]  p_adc: ADC handle.
  *
@@ -519,7 +514,7 @@ hal_status_t hal_adc_conversion_dma(adc_handle_t *p_adc, uint16_t *p_data, uint3
  * @retval ::HAL_TIMEOUT: Timeout occurred.
  ****************************************************************************************
  */
-hal_status_t hal_adc_conversion_abort(adc_handle_t *p_adc);
+hal_status_t hal_adc_stop_dma(adc_handle_t *p_adc);
 
 /**
  ****************************************************************************************
@@ -528,7 +523,7 @@ hal_status_t hal_adc_conversion_abort(adc_handle_t *p_adc);
  * @note   This function should not be modified. When the callback is needed,
  *          the hal_adc_msp_deinit can be implemented in the user file.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  ****************************************************************************************
  */
@@ -536,7 +531,7 @@ void hal_adc_conv_cplt_callback(adc_handle_t* p_adc);
 
 /** @} */
 
-/** @defgroup ADC_Exported_Functions_Group3 Peripheral State and Errors functions
+/** @defgroup ADC_Exported_Functions_Group3 Peripheral State and Errors Functions
   * @brief   ADC control functions
   *
 @verbatim
@@ -555,7 +550,7 @@ void hal_adc_conv_cplt_callback(adc_handle_t* p_adc);
  ****************************************************************************************
  * @brief  Return the ADC handle state.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  *
  * @retval ::HAL_ADC_STATE_RESET: Peripheral not initialized.
@@ -570,7 +565,7 @@ hal_adc_state_t hal_adc_get_state(adc_handle_t *p_adc);
  ****************************************************************************************
  * @brief  Return the ADC error code.
  *
- * @param[in]  p_adc: Pointer to a ADC handle which contains the configuration information for
+ * @param[in]  p_adc: Pointer to an ADC handle which contains the configuration information for
  *                    the specified ADC module.
  *
  * @return ADC error code in bitmap format

@@ -109,10 +109,19 @@ T_COLOR gui_read_point(uint16_t x, uint16_t y);
 
 /**
  *****************************************************************************************
- * @brief Refresh the gram memory data to display.
+ * @brief Set refresh flag to true.
  *****************************************************************************************
  */
 void  gui_refresh(void);
+
+/**
+ *****************************************************************************************
+ * @brief Check if the refresh flag is true, if flag is true, refresh the gram memory data to display.
+ * 
+ * @note  This function should be called in main while or in timer handler
+ *****************************************************************************************
+ */
+void gui_refresh_schedule(void);
 
 /**
  *****************************************************************************************

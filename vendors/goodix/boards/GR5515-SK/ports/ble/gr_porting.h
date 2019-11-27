@@ -120,5 +120,10 @@ bool gr_mutex_unlock( gr_mutex_t * mutex );
  */
 void gr_mutex_set_activate( gr_mutex_t * mutex , bool active);
 
+void gr_bsp_uart_init(void);
+
+void gr_bsp_uart_send(uint8_t *p_data, uint16_t length);
+
+void gr_bsp_uart_flush(void);
 
 #endif /*__GR_PORTING_H__*/

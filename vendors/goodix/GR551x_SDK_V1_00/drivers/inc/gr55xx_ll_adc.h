@@ -125,11 +125,11 @@ typedef struct _ll_adc_init
   * @{
   */
 #define LL_ADC_CLK_16               (0x00000000UL)                                /**< 16 MHz    */
-#define LL_ADC_CLK_8                (1UL << AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 8 MHz     */
-#define LL_ADC_CLK_4                (2UL << AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 4 MHz     */
-#define LL_ADC_CLK_2                (3UL << AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 2 MHz     */
-#define LL_ADC_CLK_1P6              (4UL << AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 1.6 MHz   */
-#define LL_ADC_CLK_1                (5UL << AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 1 MHz     */
+#define LL_ADC_CLK_8                (1UL << AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 8 MHz     */
+#define LL_ADC_CLK_4                (2UL << AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 4 MHz     */
+#define LL_ADC_CLK_2                (3UL << AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 2 MHz     */
+#define LL_ADC_CLK_1P6              (4UL << AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 1.6 MHz   */
+#define LL_ADC_CLK_1                (5UL << AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos)   /**< 1 MHz     */
 /** @} */
 
 /** @defgroup ADC_LL_EC_REFERENCE ADC Buffered Internal Reference Value
@@ -177,13 +177,10 @@ typedef struct _ll_adc_init
   * @{
   */
 #define LL_ADC_REF_SRC_BUF_INT      (0x00000000UL)                            /**< Select buffered internal reference as reference   */
-#define LL_ADC_REF_SRC_INT          (1UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select unbuffered internal reference as reference */
-#define LL_ADC_REF_SRC_BAT          (2UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select Vbattery as reference                      */
 #define LL_ADC_REF_SRC_IO0          (3UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select MSIO0 as reference                         */
 #define LL_ADC_REF_SRC_IO1          (4UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select MSIO1 as reference                         */
 #define LL_ADC_REF_SRC_IO2          (5UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select MSIO2 as reference                         */
 #define LL_ADC_REF_SRC_IO3          (6UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select MSIO3 as reference                         */
-#define LL_ADC_REF_SRC_IO4          (7UL << AON_SNSADC_CFG_REF_SEL_Pos)       /**< Select MSIO4 as reference                         */
 /** @} */
 
 /** @} */
@@ -204,7 +201,7 @@ typedef struct _ll_adc_init
   * @param  __VALUE__ Value to be written in the register
   * @retval None
   */
-#define LL_ADC_WriteReg(__instance__, __REG__, __VALUE__) WRITE_REG(__instance__->__REG__, (__VALUE__))
+#define LL_ADC_WriteReg(__instance__, __REG__, __VALUE__) WRITE_REG((__instance__)->__REG__, (__VALUE__))
 
 /**
   * @brief  Read a value in ADC register
@@ -212,7 +209,7 @@ typedef struct _ll_adc_init
   * @param  __REG__ Register to be read
   * @retval Register value
   */
-#define LL_ADC_ReadReg(__instance__, __REG__) READ_REG(__instance__->__REG__)
+#define LL_ADC_ReadReg(__instance__, __REG__) READ_REG((__instance__)->__REG__)
 
 /** @} */
 
@@ -304,13 +301,13 @@ __STATIC_INLINE uint32_t ll_adc_is_enabled(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | ADC_CLK_EN
+  *  MSIO_PAD_CFG_1 | ADC_CLK_EN
   *
   * @retval None
   */
 __STATIC_INLINE void ll_adc_enable_clock(void)
 {
-    SET_BITS(AON->MISO_PAD_CFG_1, AON_MISO_PAD_CFG_1_ADC_CLK_EN);
+    SET_BITS(AON->MSIO_PAD_CFG_1, AON_MSIO_PAD_CFG_1_ADC_CLK_EN);
 }
 
 /**
@@ -318,13 +315,13 @@ __STATIC_INLINE void ll_adc_enable_clock(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | ADC_CLK_EN
+  *  MSIO_PAD_CFG_1 | ADC_CLK_EN
   *
   * @retval None
   */
 __STATIC_INLINE void ll_adc_disable_clock(void)
 {
-    CLEAR_BITS(AON->MISO_PAD_CFG_1, AON_MISO_PAD_CFG_1_ADC_CLK_EN);
+    CLEAR_BITS(AON->MSIO_PAD_CFG_1, AON_MSIO_PAD_CFG_1_ADC_CLK_EN);
 }
 
 /**
@@ -332,13 +329,13 @@ __STATIC_INLINE void ll_adc_disable_clock(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | ADC_CLK_EN
+  *  MSIO_PAD_CFG_1 | ADC_CLK_EN
   *
   * @retval State of bit (1 or 0).
   */
 __STATIC_INLINE uint32_t ll_adc_is_enabled_clock(void)
 {
-    return (READ_BITS(AON->MISO_PAD_CFG_1, AON_MISO_PAD_CFG_1_ADC_CLK_EN) == (AON_MISO_PAD_CFG_1_ADC_CLK_EN));
+    return (READ_BITS(AON->MSIO_PAD_CFG_1, AON_MSIO_PAD_CFG_1_ADC_CLK_EN) == (AON_MSIO_PAD_CFG_1_ADC_CLK_EN));
 }
 
 /**
@@ -346,7 +343,7 @@ __STATIC_INLINE uint32_t ll_adc_is_enabled_clock(void)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | ADC_CLK_SEL
+  *  MSIO_PAD_CFG_1 | ADC_CLK_SEL
   *
   * @param  clk This parameter can be one of the following values:
   *         @arg @ref LL_ADC_CLK_16
@@ -359,7 +356,7 @@ __STATIC_INLINE uint32_t ll_adc_is_enabled_clock(void)
   */
 __STATIC_INLINE void ll_adc_set_clock(uint32_t clk)
 {
-    MODIFY_REG(AON->MISO_PAD_CFG_1, AON_MISO_PAD_CFG_1_ADC_CLK_SEL, clk);
+    MODIFY_REG(AON->MSIO_PAD_CFG_1, AON_MSIO_PAD_CFG_1_ADC_CLK_SEL, clk);
 }
 
 /**
@@ -367,7 +364,7 @@ __STATIC_INLINE void ll_adc_set_clock(uint32_t clk)
   *
   *  Register|BitsName
   *  --------|--------
-  *  MISO_PAD_CFG_1 | ADC_CLK_SEL
+  *  MSIO_PAD_CFG_1 | ADC_CLK_SEL
   *
   * @retval Returned value can be one of the following values:
   *         @arg @ref LL_ADC_CLK_16
@@ -379,7 +376,7 @@ __STATIC_INLINE void ll_adc_set_clock(uint32_t clk)
   */
 __STATIC_INLINE uint32_t ll_adc_get_clock(void)
 {
-    return (uint32_t)(READ_BITS(AON->MISO_PAD_CFG_1, AON_MISO_PAD_CFG_1_ADC_CLK_SEL) >> AON_MISO_PAD_CFG_1_ADC_CLK_SEL_Pos);
+    return (uint32_t)(READ_BITS(AON->MSIO_PAD_CFG_1, AON_MSIO_PAD_CFG_1_ADC_CLK_SEL) >> AON_MSIO_PAD_CFG_1_ADC_CLK_SEL_Pos);
 }
 
 /**
@@ -776,12 +773,10 @@ __STATIC_INLINE uint32_t ll_adc_is_enabled_mas_rst(void)
   * @param  source This parameter can be one of the following values:
   *         @arg @ref LL_ADC_REF_SRC_BUF_INT
   *         @arg @ref LL_ADC_REF_SRC_INT
-  *         @arg @ref LL_ADC_REF_SRC_BAT
   *         @arg @ref LL_ADC_REF_SRC_IO0
   *         @arg @ref LL_ADC_REF_SRC_IO1
   *         @arg @ref LL_ADC_REF_SRC_IO2
   *         @arg @ref LL_ADC_REF_SRC_IO3
-  *         @arg @ref LL_ADC_REF_SRC_IO4
   * @retval None
   */
 __STATIC_INLINE void ll_adc_set_ref(uint32_t source)
@@ -799,12 +794,10 @@ __STATIC_INLINE void ll_adc_set_ref(uint32_t source)
   * @retval Returned value can be one of the following values:
   *         @arg @ref LL_ADC_REF_SRC_BUF_INT
   *         @arg @ref LL_ADC_REF_SRC_INT
-  *         @arg @ref LL_ADC_REF_SRC_BAT
   *         @arg @ref LL_ADC_REF_SRC_IO0
   *         @arg @ref LL_ADC_REF_SRC_IO1
   *         @arg @ref LL_ADC_REF_SRC_IO2
   *         @arg @ref LL_ADC_REF_SRC_IO3
-  *         @arg @ref LL_ADC_REF_SRC_IO4
   */
 __STATIC_INLINE uint32_t ll_adc_get_ref(void)
 {

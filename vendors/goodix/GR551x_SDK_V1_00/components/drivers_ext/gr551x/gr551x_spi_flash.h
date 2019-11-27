@@ -1,8 +1,52 @@
+/**
+  ****************************************************************************************
+  * @file    gr551x_spi_flash.h
+  * @author  BLE Driver Team
+  * @brief   Header file containing functions prototypes of spi flash library.
+  ****************************************************************************************
+  * @attention
+  #####Copyright (c) 2019 GOODIX
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+   * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+   * Neither the name of GOODIX nor the names of its contributors may be used
+     to endorse or promote products derived from this software without
+     specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+  ****************************************************************************************
+  */
+
 #ifndef __GR551X_SPI_FLASH_H__
 #define __GR551X_SPI_FLASH_H__
 
 #include <stdbool.h>
 #include "gr55xx_hal.h"
+#include "app_io.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/** @addtogroup Flash operation instruction macro definition
+  * @{
+  */
 
 #define SPI_FLASH_CMD_WRSR              0x01
 #define SPI_FLASH_CMD_WRSR1             0x31
@@ -50,16 +94,32 @@
 #define SPI_FLASH_TYE_MX25              0xC2
 #define SPI_FLASH_TYE_SST26             0xBF
 
-#define DEFAULT_SPIM_GROUP0   {{GPIO0, GPIO_PIN_6, GPIO_MUX_7}, {GPIO0, GPIO_PIN_3, GPIO_MUX_2}, {GPIO0, GPIO_PIN_4, GPIO_MUX_2}, {GPIO0, GPIO_PIN_5, GPIO_MUX_2}}
-#define DEFAULT_SPIM_GROUP1   {{GPIO0, GPIO_PIN_4, GPIO_MUX_7}, {GPIO0, GPIO_PIN_7, GPIO_MUX_4}, {GPIO0, GPIO_PIN_6, GPIO_MUX_4}, {GPIO0, GPIO_PIN_5, GPIO_MUX_4}}
-#define DEFAULT_SPIM_GROUP2   {{GPIO0, GPIO_PIN_15, GPIO_MUX_7}, {GPIO0, GPIO_PIN_12, GPIO_MUX_1}, {GPIO0, GPIO_PIN_13, GPIO_MUX_1}, {GPIO0, GPIO_PIN_14, GPIO_MUX_1}}
-#define DEFAULT_SPIM_GROUP3   {{GPIO1, GPIO_PIN_1, GPIO_MUX_7}, {GPIO1, GPIO_PIN_8, GPIO_MUX_0}, {GPIO1, GPIO_PIN_9, GPIO_MUX_0}, {GPIO1, GPIO_PIN_0, GPIO_MUX_0}}
+/** @} */
 
+/** @addtogroup Flash hardware interface default parameters
+  * @{
+  */
+
+#define DEFAULT_SPIM_GROUP0   {{APP_IO_TYPE_NORMAL, APP_IO_PIN_6, APP_IO_MUX_7}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_3, APP_IO_MUX_2},\
+                               {APP_IO_TYPE_NORMAL, APP_IO_PIN_4, APP_IO_MUX_2}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_5, APP_IO_MUX_2}}
+#define DEFAULT_SPIM_GROUP1   {{APP_IO_TYPE_NORMAL, APP_IO_PIN_4, APP_IO_MUX_7}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_7, APP_IO_MUX_4},\
+                               {APP_IO_TYPE_NORMAL, APP_IO_PIN_6, APP_IO_MUX_4}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_5, APP_IO_MUX_4}}
+#define DEFAULT_SPIM_GROUP2   {{APP_IO_TYPE_NORMAL, APP_IO_PIN_15, APP_IO_MUX_7}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_12, APP_IO_MUX_1},\
+                               {APP_IO_TYPE_NORMAL, APP_IO_PIN_13, APP_IO_MUX_1}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_14, APP_IO_MUX_1}}
+#define DEFAULT_SPIM_GROUP3   {{APP_IO_TYPE_NORMAL, APP_IO_PIN_17, APP_IO_MUX_7}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_24, APP_IO_MUX_0},\
+                               {APP_IO_TYPE_NORMAL, APP_IO_PIN_25, APP_IO_MUX_0}, {APP_IO_TYPE_NORMAL, APP_IO_PIN_16, APP_IO_MUX_0}}
+
+/** @} */
+
+/**
+  * @addtogroup Spi Flash IO configuration Structures
+  * @{
+  */
 typedef struct _spi_io
 {
-    gpio_regs_t *gpio;
-    uint32_t pin;
-    uint32_t mux;
+    app_io_type_t gpio;
+    uint32_t      pin;
+    app_io_mux_t  mux;
 } spi_io_t;
 
 typedef struct _spi_flash_io
@@ -70,13 +130,109 @@ typedef struct _spi_flash_io
     spi_io_t spi_miso;
 } spi_flash_io_t;
 
+/** @} */
+
+/* Exported functions --------------------------------------------------------*/
+/** @addtogroup HAL_SPI_FLASH_DRIVER_FUNCTIONS Functions
+  * @{
+  */
+/**
+ ****************************************************************************************
+ * @brief  Initialize the SPI FLASH DRIVER according to the specified parameters
+ *         in the spi_flash_io_t.
+ *
+ * @param[in]  p_params: Pointer to spi_flash_io_t parameter.
+ *
+ ****************************************************************************************
+ */
 void spi_flash_init(spi_flash_io_t *p_spi_flash);
+
+/**
+ *******************************************************************************
+ * @brief Read flash Memory.
+ *
+ * @param[in]       address: start address in flash to read data.
+ * @param[in,out]   buffer: buffer to read data to.
+ * @param[in]       nbytes: number of bytes to read.
+ *
+ * @return          number of bytes read
+ *******************************************************************************
+ */
 uint32_t spi_flash_read(uint32_t address, uint8_t *buffer, uint32_t nbytes);
+
+/**
+ *******************************************************************************
+ * @brief Write flash Memory.
+ *
+ * @param[in]       address: start address in flash to write data to.
+ * @param[in,out]   buffer: buffer of data to write.
+ * @param[in]       nbytes: number of bytes to write.
+ *
+ * @return          number of bytes written
+ *******************************************************************************
+ */
 uint32_t spi_flash_write(uint32_t address, uint8_t *buffer, uint32_t nbytes);
+
+/**
+ *******************************************************************************
+ * @brief Erase flash region.
+ *
+ * @note All sectors that have address in range of [addr, addr+len]
+ *       will be erased. If addr is not sector aligned, preceding data
+ *       on the sector that addr belongs to will also be erased.
+ *       If (addr + size) is not sector aligned, the whole sector
+ *       will also be erased.
+ *
+ * @param[in] address: start address in flash to write data to.
+ * @param[in] size: number of bytes to write.
+ *
+ * @retval true: If successful.
+ * @retval false: If failure.
+ *******************************************************************************
+ */
 bool spi_flash_sector_erase(uint32_t address, uint32_t size);
+
+/**
+ *******************************************************************************
+ * @brief Erase flash chip.
+ *
+ * @retval true: If successful.
+ * @retval false: If failure.
+ *******************************************************************************
+ */
 bool spi_flash_chip_erase(void);
+
+/**
+ *******************************************************************************
+ * @brief Reset flash chip.
+ *
+ *******************************************************************************
+ */
 void spi_flash_chip_reset(void);
+
+/**
+ *******************************************************************************
+ * @brief Get flash chip id.
+ *
+ * @retval Flash chip id.
+ *******************************************************************************
+ */
 uint32_t spi_flash_device_id(void);
+
+/**
+ *******************************************************************************
+ * @brief Get Flash information.
+ *
+ * @param[in,out] id: Pointer to flash id.
+ * @param[in,out] size: Pointer to flash size.
+ *
+ *******************************************************************************
+ */
 void spi_flash_device_info(uint32_t *id, uint32_t *size);
+/** @} */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __GR551X_SPI_FLASH_H__

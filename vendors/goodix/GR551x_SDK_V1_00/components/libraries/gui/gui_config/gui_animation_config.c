@@ -46,7 +46,7 @@
 #if ANIMATION_EN==1
 
 #include "gr55xx_sys.h"
-#define ANIMATION_TIMER_INTERVAL 100
+#define ANIMATION_TIMER_INTERVAL 150
                                                                                   
 #ifdef ENV_USE_RTOS
 #include "FreeRTOS.h"

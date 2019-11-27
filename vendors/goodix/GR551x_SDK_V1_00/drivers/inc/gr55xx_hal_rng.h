@@ -131,7 +131,7 @@ typedef struct _rng_handle
 
     __IO hal_rng_state_t  state;         /*!< RNG communication state      */
 
-    uint32_t              random_number; /*!< Last Generated RNG Data      */
+    uint32_t              random_number; /*!< Last-generated RNG Data      */
 
 } rng_handle_t;
 
@@ -139,7 +139,7 @@ typedef struct _rng_handle
 
 /** @} */
 
-/** @addtogroup HAL_RNG_STRUCTURES Callback Structures
+/** @addtogroup HAL_RNG_CALLBACK_STRUCTURES Callback Structures
   * @{
   */
 
@@ -175,7 +175,7 @@ typedef struct _hal_rng_callback
 /** @defgroup RNG_SEED_SOURCE LFSR seed source
   * @{
   */
-#define RNG_SEED_FR0_S0                 LL_RNG_SEED_FR0_S0            /**< LFSR seed is from the switching oscillator s0. */
+#define RNG_SEED_FR0_S0                 LL_RNG_SEED_FR0_S0            /**< LFSR seed is from the switching oscillator S0. */
 #define RNG_SEED_USER                   LL_RNG_SEED_USER              /**< LFSR seed is configured by users. */
 /** @} */
 
@@ -199,7 +199,7 @@ typedef struct _hal_rng_callback
 /** @defgroup RNG_OUTPUT_MODE RNG Output mode
   * @{
   */
-#define RNG_OUTPUT_FR0_S0               LL_RNG_OUTPUT_FR0_S0          /**< Digital RNG direct output, ring oscillator s0. */
+#define RNG_OUTPUT_FR0_S0               LL_RNG_OUTPUT_FR0_S0          /**< Digital RNG direct output, ring oscillator S0. */
 #define RNG_OUTPUT_CYCLIC_PARITY        LL_RNG_OUTPUT_CYCLIC_PARITY   /**< LFSR and RNG cyclic sampling and parity generation. */
 #define RNG_OUTPUT_CYCLIC               LL_RNG_OUTPUT_CYCLIC          /**< LFSR and RNG cyclic sampling. */
 #define RNG_OUTPUT_LFSR_RNG             LL_RNG_OUTPUT_LFSR_RNG        /**< LFSR ⊕ RNG. */
@@ -350,7 +350,7 @@ uint32_t hal_rng_read_last_random_number(rng_handle_t *p_rng);
 /** @} */
 
 /** @addtogroup RNG_IRQ_Handler_and_Callbacks IRQ Handler and Callbacks
-  * @brief    IRQ Handler and Callbacks functions
+  * @brief    IRQ Handler and Callback functions
  * @{
  */
 /**

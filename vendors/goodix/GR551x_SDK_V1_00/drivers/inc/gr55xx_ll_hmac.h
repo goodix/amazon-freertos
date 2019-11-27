@@ -209,7 +209,7 @@ __STATIC_INLINE void ll_hmac_disable(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether the HMAC is enabled.
+  * @brief  Indicate whether the HMAC is enabled.
 
   *  Register|BitsName
   *  --------|--------
@@ -254,7 +254,7 @@ __STATIC_INLINE void ll_hmac_disable_dma_start(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether the HMAC DMA mode is enabled.
+  * @brief  Indicate whether the HMAC DMA mode is enabled.
 
   *  Register|BitsName
   *  --------|--------
@@ -329,7 +329,7 @@ __STATIC_INLINE void ll_hmac_disable_user_hash(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether the user HASH is enabled.
+  * @brief  Indicate whether the user HASH is enabled.
 
   *  Register|BitsName
   *  --------|--------
@@ -374,7 +374,7 @@ __STATIC_INLINE void ll_hmac_disable_little_endian(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether the HMAC is in little endian.
+  * @brief  Indicate whether the HMAC is in little endian.
 
   *  Register|BitsName
   *  --------|--------
@@ -456,7 +456,7 @@ __STATIC_INLINE void ll_hmac_disable_sha(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether the SHA mode is enabled.
+  * @brief  Indicate whether the SHA mode is enabled.
 
   *  Register|BitsName
   *  --------|--------
@@ -501,7 +501,7 @@ __STATIC_INLINE void ll_hmac_disable_private(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether the private mode is enabled.
+  * @brief  Indicate whether the private mode is enabled.
 
   *  Register|BitsName
   *  --------|--------
@@ -552,7 +552,7 @@ __STATIC_INLINE void ll_hmac_disable_it_done(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether Done Interrupt is enabled.
+  * @brief  Indicate whether Done Interrupt is enabled.
 
   *  Register|BitsName
   *  --------|--------
@@ -573,7 +573,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_enabled_it_done(hmac_regs_t *HMACx)
   */
 
 /**
-  * @brief  Indicates whether SHA Ready flag is set.
+  * @brief  Indicate whether SHA Ready flag is set.
 
   *  Register|BitsName
   *  --------|--------
@@ -588,7 +588,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_action_flag_sha_ready(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether HMAC Ready flag is set.
+  * @brief  Indicate whether HMAC Ready flag is set.
 
   *  Register|BitsName
   *  --------|--------
@@ -603,7 +603,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_action_flag_hmac_ready(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether DMA Transmit Message Done flag is set.
+  * @brief  Indicate whether DMA Transmit Message Done flag is set.
 
   *  Register|BitsName
   *  --------|--------
@@ -618,7 +618,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_action_flag_dma_message_done(hmac_regs_t *HM
 }
 
 /**
-  * @brief  Indicates whether DMA Transfer Done flag is set.
+  * @brief  Indicate whether DMA Transfer Done flag is set.
 
   *  Register|BitsName
   *  --------|--------
@@ -633,7 +633,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_action_flag_dma_done(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether DMA Transfer Error flag is set.
+  * @brief  Indicate whether DMA Transfer Error flag is set.
 
   *  Register|BitsName
   *  --------|--------
@@ -648,7 +648,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_action_flag_dma_error(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether Key Valid flag is set.
+  * @brief  Indicate whether Key Valid flag is set.
 
   *  Register|BitsName
   *  --------|--------
@@ -663,7 +663,7 @@ __STATIC_INLINE uint32_t ll_hmac_is_action_flag_key_valid(hmac_regs_t *HMACx)
 }
 
 /**
-  * @brief  Indicates whether Done interrupt flag is set.
+  * @brief  Indicate whether Done interrupt flag is set.
 
   *  Register|BitsName
   *  --------|--------
