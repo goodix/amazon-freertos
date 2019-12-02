@@ -61,7 +61,7 @@ The following instructions apply to Windows system. To build an Amazon-FreeRTOS 
 
 3. From the menu, click **File** > **Import**, to import the downloaded DFP file and finish installation. The interface after installation is shown as follows: 
 
-![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_3_1.png)
+![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_3_1.png)
 
 ### 3.3 Install J-Link
 
@@ -89,7 +89,7 @@ GR5515-SK Board provides on-board JTAG/SWD debugging interface, and you only nee
 
    Default path: C:\Keil_v5\ARM\Flash
 
-![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_3_2.png)
+![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_3_2.png)
 
 
 
@@ -131,21 +131,21 @@ To download Amazon FreeRTOS for Goodix GR5515-SK Board, go to the [Amazon FreeRT
 
 3. The project directory structure is shown as follows: 
 
-   ![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_aws_demo_4_1.png)
+   ![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_aws_demo_4_1.png)
 
    Project files are organized by (1) **Main entry and hardware initialization**, (2) **Demo and related header files**, (3) **AWS FreeRTOS public dependency**, (4) **GR5515 SDK dependency**, and (5) **Porting files and configuration of each module**, as shown in the above figure, to help users locate files quickly. 
 
 4. Use a Micro USB cable to connect a PC to GR5515-SK Board; check whether any device is discovered through **Device Manager** of Windows, as shown below. (Note: The serial port number of different computers may vary.)
 
-   ![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_4_2.png)
+   ![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_4_2.png)
 
 5. Choose the project and right click the menu: (1) choose **Options for Target 'aws_demos'**; (2) choose **Debug** tab; (3) choose **J-LINK/J-TRACE Cortex** from the **Use** list; (4) click **Settings**; (5) choose **Debug** tab; (6) choose **SW** under **Port**, as shown in the following figure. Verify that the SW device is available. 
 
-   ![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_4_3.png)
+   ![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_4_3.png)
 
 6. In the **Cortex/JLink/JTrace Target Driver Setup** pop-up, choose **Flash Download**, choose **GR551x 8 Mb Flash**, and click **Add** to set up algorithm file for GR551x family chip. 
 
-   ![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_4_4.png)
+   ![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_4_4.png)
 
 7. Open the serial port assistant tool, choose GR5515-SK Board port (configuration parameter: 115200|8|N|1), and open the port. 
 
@@ -282,23 +282,23 @@ Amazon FreeRTOS modules:
 
 1. Open CMake-GUI, configure the source code and build paths, and click **Configure**. 
 
-   ![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_1.jpg)
+   ![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_1.jpg)
 
 2. Choose the makefile generator in the pop-up. 
 
-![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_2.jpg)
+![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_2.jpg)
 
 2. Choose the CMake compiler script. 
 
-![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_3.jpg)
+![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_3.jpg)
 
 3. Finish other configurations. Choose **goodix.GR5515-SK**. To compile Demo project, do not check **AFR_ENABLE_TESTS**; to compile Test project, check **AFR_ENABLE_TESTS**. 
 
-![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_5.jpg)
+![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_5.jpg)
 
 4. After configuration, change to the build directory from command line, enter the directory, and execute the **make** command. 
 
-   ![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_9.png)
+   ![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/aws_keil_9.png)
 
 
 
@@ -306,7 +306,7 @@ Amazon FreeRTOS modules:
 
 Keil provides a debug menu with rich functions. When you perform runtime debugging for GR5515-SK Board with J-Link tool, common debugging functions are shown as follows: 
 
-![](https://github.com/nixlong/goodix-amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_6.png)
+![](https://github.com/goodix/amazon-freertos/raw/goodix/vendors/goodix/refs/gr5515_cmake_6_6.png)
 
 
 
