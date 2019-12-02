@@ -54,3 +54,5 @@ projects/goodix/GR5515-SK/keil_v5/aws_tests/Objects/*
 projects/goodix/GR5515-SK/keil_v5/aws_tests/build/*
 projects/goodix/GR5515-SK/keil_v5/aws_tests/goodix_aws_tests.uvguix.*
 projects/goodix/GR5515-SK/keil_v5/aws_tests/log_fw_encrypt_sign/*
+*.lib
+*.a
