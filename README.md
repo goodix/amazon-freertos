@@ -1,4 +1,4 @@
-# Amazon-FreeRTOS Getting Started Guide for Goodix GR5515-SK
+# Getting Started Guide for Goodix GR5515-SK
 
 [TOC]
 
@@ -196,7 +196,7 @@ For details about demo, see:
 
 ## 6. Build a Project with CMake
 
-**Note: **
+**Note:**
 
 > CMake version shall meet the Amazon FreeRTOS requirements. 
 
