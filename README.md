@@ -83,7 +83,7 @@ GR5515-SK Board provides on-board JTAG/SWD debugging interface, and you only nee
 
 1. Download the GR551x family chip algorithm file. 
 
-   It is available at: [GR551x_8Mb_Flash.FLM](Link TODO). 
+   It is available at: [GR551x_8Mb_Flash.FLM](https://github.com/goodix/amazon-freertos/tree/goodix/vendors/goodix/GR551x_SDK_V1_00/build/binaries/GR551x_8MB_Flash.FLM). 
 
 2. After downloading, save it to the Flash directory in the installation path of Keil. 
 
