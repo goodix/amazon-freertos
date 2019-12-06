@@ -121,11 +121,11 @@ To download Amazon FreeRTOS for Goodix GR5515-SK Board, go to the [Amazon FreeRT
 
 > The maximum length of a file path on Microsoft Windows is 260 characters. Lengthy Amazon FreeRTOS download directory paths can cause project build failures. 
 
-> In this guide, the path to the amazon-freertos directory is referred to as *<amazon-freertos>*. 
+> In this guide, the path to the amazon-freertos directory is referred to as $(amazon-freertos)  . 
 
 ### 4.2 Connect Device
 
-1. Run the Keil µVision5, and open the project <amazon-freertos>\projects\goodix\GR5515-SK\keil_v5\aws_demos\goodix_aws_demos.uvprojx.  
+1. Run the Keil µVision5, and open the project  $(amazon-freertos)\projects\goodix\GR5515-SK\keil_v5\aws_demos\goodix_aws_demos.uvprojx.  
 
 2. You might be prompted to choose a chip type when you open the project for the first time. If you are prompted, choose **ARM Cortex M4** > **ARMCM4_FP**; if this chip type is not available in the pop-up box, see **3.2 Installing ARM CM4-FP DFP** to install required pack files. 
 
@@ -159,14 +159,14 @@ To download Amazon FreeRTOS for Goodix GR5515-SK Board, go to the [Amazon FreeRT
 
 3. In the navigation pane, choose **Manage** > **Things**. Your device should have an AWS IoT thing name. Record this name. 
 
-4. Use your AWS IoT endpoint and AWS IoT thing name to open `<amazon-freertos>/demos/include/aws_clientcredential.h` in IDE, and specify values for the following `#define` constants: 
+4. Use your AWS IoT endpoint and AWS IoT thing name to open `$(amazon-freertos)/demos/include/aws_clientcredential.h` in IDE, and specify values for the following `#define` constants: 
 
    - `clientcredentialMQTT_BROKER_ENDPOINT` *Your AWS IoT endpoint*
    - `clientcredentialIOT_THING_NAME` *The AWS IoT thing name of your board*
 
 ### 4.4 Build a Project
 
-1. In the menu, click **Project** > **Build Target** to compile a project. After compilation, build a target binary file in the directory <amazon-freertos>\projects\goodix\GR5515-SK\keil_v5\aws_demos\build. 
+1. In the menu, click **Project** > **Build Target** to compile a project. After compilation, build a target binary file in the directory $(amazon-freertos)\projects\goodix\GR5515-SK\keil_v5\aws_demos\build. 
 2. To compile a project with make + CMake, see **6. Building a Project with CMake**. 
 
 
@@ -179,7 +179,7 @@ GR5515-SK Board supports the following demo projects:
 - CONFIG_BLE_GATT_SERVER_DEMO_ENABLED: GATT service demo project of Bluetooth Low Energy
 - CONFIG_OTA_UPDATE_DEMO_ENABLED: demo project that updates application through OTA
 
-GR5515-SK Board project configures other macro functions by default. Users can follow instructions in **4.3 Configuring Your AWS IoT Endpoint** to configure an endpoint, and then define above macros (users can define one macro each time) in the file <amazon-freertos>\vendors\goodix\boards\GR5515-SK\aws_demos\config_files\aws_demo_config.h, to enable the demonstration function of corresponding demos. 
+GR5515-SK Board project configures other macro functions by default. Users can follow instructions in **4.3 Configuring Your AWS IoT Endpoint** to configure an endpoint, and then define above macros (users can define one macro each time) in the file $(amazon-freertos)\vendors\goodix\boards\GR5515-SK\aws_demos\config_files\aws_demo_config.h, to enable the demonstration function of corresponding demos. 
 
 1. Compile the project after enabling macro definitions of corresponding demos. 
 2. After compilation, in the menu, click **Flash** > **Download** (or **F8**) for programming. 
@@ -202,8 +202,8 @@ For details about demo, see:
 
 ### 6.1 CMake Script Dependency
 
-- CMake file path of goodix/GR5515-SK: <amazon-freertos>\\vendors\goodix\boards\GR5515-SK\CMakeLists.txt
-- CMake compiler file of goodix/GR5515-SK: <amazon-freertos>\\tools\cmake\toolchains\arm-keil-v5.cmake
+- CMake file path of goodix/GR5515-SK: $(amazon-freertos)\\vendors\goodix\boards\GR5515-SK\CMakeLists.txt
+- CMake compiler file of goodix/GR5515-SK: $(amazon-freertos)\\tools\cmake\toolchains\arm-keil-v5.cmake
 
 ### 6.2 Use CMake Command Line for Compilation
 
