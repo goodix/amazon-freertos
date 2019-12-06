@@ -177,7 +177,6 @@ GR5515-SK Board supports the following demo projects:
 
 - CONFIG_MQTT_DEMO_ENABLED: demo project that establishes network connection to AWS IoT Cloud through MQTT (over BLE) for data **Subscribe/Publish** demos
 - CONFIG_BLE_GATT_SERVER_DEMO_ENABLED: GATT service demo project of Bluetooth Low Energy
-- CONFIG_OTA_UPDATE_DEMO_ENABLED: demo project that updates application through OTA
 
 GR5515-SK Board project configures other macro functions by default. Users can follow instructions in **4.3 Configuring Your AWS IoT Endpoint** to configure an endpoint, and then define above macros (users can define one macro each time) in the file $(amazon-freertos)\vendors\goodix\boards\GR5515-SK\aws_demos\config_files\aws_demo_config.h, to enable the demonstration function of corresponding demos. 
 
@@ -190,8 +189,7 @@ For details about demo, see:
 - [MQTT over Bluetooth Low Energy](https://docs.aws.amazon.com/freertos/latest/userguide/ble-demo.html#ble-demo-mqtt) 
 - [Generic Attributes Server](https://docs.aws.amazon.com/freertos/latest/userguide/ble-demo.html#ble-demo-server) 
 
-- [Over-the-Air Updates](https://docs.aws.amazon.com/zh_cn/freertos/latest/userguide/freertos-ota-dev.html)
-
+  
 
 
 ## 6. Build a Project with CMake
