@@ -122,11 +122,11 @@ GR5515-SK开发板已板载支持JTAG/SWD调试接口，不需要再购买JLink�
 
 > Microsoft Windows 上的文件路径最大长度为260个字符。过长的 Amazon FreeRTOS下载目录路径可能会导致构建操作失败。
 
-> 在本教程中，amazon-freertos目录的路径称为 <amazon-freertos>。
+> 在本教程中，amazon-freertos目录的路径称为 $(amazon-freertos)。
 
 ### 4.2 建立设备连接
 
-1. 开启keil μVision5软件，打开工程 <amazon-freertos>\projects\goodix\GR5515-SK\keil_v5\aws_demos\goodix_aws_demos.uvprojx 
+1. 开启keil μVision5软件，打开工程 $(amazon-freertos)\projects\goodix\GR5515-SK\keil_v5\aws_demos\goodix_aws_demos.uvprojx 
 
 2. 第一次打开工程，可能会提示选择芯片型号。如有提示，请选择ARM Cortex M4 -> ARMCM4_FP，如弹出的芯片选择框中无此芯片型号，请参考 **3.2 安装ARM CM4-FP DFP** 安装相关pack文件。
 
@@ -160,14 +160,14 @@ GR5515-SK开发板已板载支持JTAG/SWD调试接口，不需要再购买JLink�
 
 3. 在导航窗格中，选择**管理**，然后选择**事物**。记下设备的 AWS IoT 事物名称。
 
-4. 利用您拥有的 AWS IoT 终端节点和 AWS IoT 事物名称，在 IDE 中打开 `<amazon-freertos>/demos/include/aws_clientcredential.h`，并为以下 `#define` 常量指定值：
+4. 利用您拥有的 AWS IoT 终端节点和 AWS IoT 事物名称，在 IDE 中打开 `$(amazon-freertos)/demos/include/aws_clientcredential.h`，并为以下 `#define` 常量指定值：
 
    - `clientcredentialMQTT_BROKER_ENDPOINT` *您的 AWS IoT 终端节点*
    - `clientcredentialIOT_THING_NAME` *您的主板的 AWS IoT 事物名称*
 
 ### 4.4 进行项目构建
 
-1. 点击菜单 Project -> Build Target，可进行工程的编译， 编译完成后，会在 <amazon-freertos>\projects\goodix\GR5515-SK\keil_v5\aws_demos\build 目录生成目标二进制文件。
+1. 点击菜单 Project -> Build Target，可进行工程的编译， 编译完成后，会在 $(amazon-freertos)\projects\goodix\GR5515-SK\keil_v5\aws_demos\build 目录生成目标二进制文件。
 2. 如果使用make + cmake 进行项目的编译，请参考章节：**6. 通过cmake构建项目**。
 
 
@@ -179,7 +179,7 @@ GR5515-SK支持如下演示项目：
 - CONFIG_MQTT_DEMO_ENABLED: 通过 MQTT ( over BLE )和AWS Iot Cloud建立网络连接，进行数据Subscribe/Publish演示的项目
 - CONFIG_BLE_GATT_SERVER_DEMO_ENABLED: BLE低功耗蓝牙的GATT服务演示项目
 
-默认情况下，GR5515-SK工程已完成了其他宏功能的配置，用户遵照 4.3 章节配置好终端节点后，即可以在文件 <amazon-freertos>\vendors\goodix\boards\GR5515-SK\aws_demos\config_files\aws_demo_config.h中通过定义如上宏（单次只允许定义一个宏），开启相应Demo的演示功能。
+默认情况下，GR5515-SK工程已完成了其他宏功能的配置，用户遵照 4.3 章节配置好终端节点后，即可以在文件 $(amazon-freertos)\vendors\goodix\boards\GR5515-SK\aws_demos\config_files\aws_demo_config.h中通过定义如上宏（单次只允许定义一个宏），开启相应Demo的演示功能。
 
 1. 启用相应演示项目宏定义后，进行项目的编译。
 2. 项目编译完成后，点击菜单 Flash -> Download （或者快捷键 F8），进入程序的烧录。
@@ -200,8 +200,8 @@ GR5515-SK支持如下演示项目：
 
 ### 6.1 cmake 脚本依赖
 
-- goodix/GR5515-SK 的cmake文件路径:  <amazon-freertos>\\vendors\goodix\boards\GR5515-SK\CMakeLists.txt
-- goodix/GR5515-SK 的cmake编译器文件:  <amazon-freertos>\\tools\cmake\toolchains\arm-keil-v5.cmake
+- goodix/GR5515-SK 的cmake文件路径:  $(amazon-freertos)\vendors\goodix\boards\GR5515-SK\CMakeLists.txt
+- goodix/GR5515-SK 的cmake编译器文件:  $(amazon-freertos)\tools\cmake\toolchains\arm-keil-v5.cmake
 
 ### 6.2 使用cmake 命令行编译
 
