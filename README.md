@@ -1,6 +1,5 @@
 # Getting Started Guide for Goodix GR5515-SK
 
-[TOC]
 
 [EN](https://github.com/goodix/amazon-freertos/blob/goodix/README.md)   |  [中文](https://github.com/goodix/amazon-freertos/blob/goodix/README.zh.md)
 

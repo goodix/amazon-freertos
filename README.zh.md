@@ -1,6 +1,5 @@
 # Amazon-FreeRTOS基于Goodix GR5515-SK入门指南
 
-[TOC]
 
 [EN](https://github.com/goodix/amazon-freertos/blob/goodix/README.md)   |  [中文](https://github.com/goodix/amazon-freertos/blob/goodix/README.zh.md)
 
