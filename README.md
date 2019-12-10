@@ -2,6 +2,8 @@
 
 [TOC]
 
+[EN](https://github.com/goodix/amazon-freertos/blob/goodix/README.md)   |  [中文](https://github.com/goodix/amazon-freertos/blob/goodix/README.zh.md)
+
 ## 1. Introduction
 
 This tutorial provides instructions on getting started with the Amazon FreeRTOS system based on Goodix GR5515 Starter Kit Board (here after referred to as "Goodix GR5515-SK Board"). If you do not have the Goodix GR5515-SK Board, visit the [Goodix](https://www.goodix.com/en/support/distributors) to purchase one . 
