@@ -33,7 +33,7 @@ To run the Amazon FreeRTOS Bluetooth Low Energy demo, you also need an iOS or An
 
 ## 3. Set UP the Development Environment
 
-The following instructions apply to Windows system. To build an Amazon-FreeRTOS development environment for GR5515-SK Board, the following software is required: 
+The following instructions apply to Windows system. To build an Amazon FreeRTOS development environment for GR5515-SK Board, the following software is required: 
 
 - Keil µVision5: Integrated Development Environment (IDE) used by GR5515-SK Board
 - Device Family Pack (DFP) that supports ARM Cortex-M4 FPU Chip 
