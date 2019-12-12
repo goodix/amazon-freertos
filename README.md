@@ -5,7 +5,7 @@
 
 ## 1. Introduction
 
-This tutorial provides instructions on getting started with the Amazon FreeRTOS system based on Goodix GR5515 Starter Kit Board (here after referred to as "Goodix GR5515-SK Board"). If you do not have the Goodix GR5515-SK Board, visit the [Goodix](https://www.goodix.com/en/support/distributors) to purchase one . 
+This tutorial provides instructions on getting started with the Amazon FreeRTOS system based on Goodix GR5515 Starter Kit Board (here after referred to as "Goodix GR5515-SK Board"). If you do not have the Goodix GR5515-SK Board, visit the [Goodix](https://www.goodix.com/en/support/distributors) to purchase one. 
 
 Before getting started, you need to [Set Up AWS IoT and Amazon Cognito for Amazon FreeRTOS Bluetooth Low Energy](https://docs.aws.amazon.com/freertos/latest/userguide/ble-demo.html). 
 
@@ -33,7 +33,7 @@ To run the Amazon FreeRTOS Bluetooth Low Energy demo, you also need an iOS or An
 
 ## 3. Set UP the Development Environment
 
-The following instructions apply to Windows system. To build an Amazon-FreeRTOS development environment for GR5515-SK Board, the following software is required: 
+The following instructions apply to Windows system. To build an Amazon FreeRTOS development environment for GR5515-SK Board, the following software is required: 
 
 - Keil µVision5: Integrated Development Environment (IDE) used by GR5515-SK Board
 - Device Family Pack (DFP) that supports ARM Cortex-M4 FPU Chip 
